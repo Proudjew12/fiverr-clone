@@ -1,0 +1,39 @@
+/* ================================
+   Media Queries – Minimal
+   Mobile-first support
+================================ */
+
+/* Mobile */
+@media (max-width: 768px) {
+  /* Layout */
+  .container {
+    padding-inline: 12px;
+  }
+
+  main {
+    padding: 14px 12px;
+  }
+
+  /* Helpers */
+  .mobile-hidden {
+    display: none !important;
+  }
+
+  .mobile-center {
+    text-align: center;
+  }
+
+  .mobile-full {
+    width: 100%;
+  }
+
+  /* Forms */
+  .form {
+    gap: 10px;
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 0.6rem 1rem;
+  }
+}

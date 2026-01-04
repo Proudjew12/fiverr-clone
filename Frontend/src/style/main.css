@@ -1,0 +1,53 @@
+/* ============================
+   Global Styles Entry
+============================ */
+
+/* ============================
+   Design tokens
+============================ */
+@import './setup/variables.css';
+@import './setup/typography.css';
+
+/* ============================
+   Base + structure
+============================ */
+@import './base/base.css';
+@import './base/layout.css';
+
+/* ============================
+   Utilities
+============================ */
+@import './base/helpers.css';
+
+/* ============================
+   Forms
+============================ */
+@import './base/forms.css';
+
+/* ============================
+   Third-party system styles
+============================ */
+@import './base/swal.css';
+
+/* ============================
+   Component styles
+============================ */
+
+/* layout */
+@import './components/layout/AppHeader.css';
+@import './components/layout/AppFooter.css';
+
+/* search */
+@import './components/search/SearchBar.css';
+
+/* ============================
+   Page styles
+============================ */
+@import './pages/HomePage.css';
+@import './pages/SearchResultsPage.css';
+@import './pages/AboutPage.css';
+
+/* ============================
+   Media queries (ALWAYS LAST)
+============================ */
+@import './base/mq.css';

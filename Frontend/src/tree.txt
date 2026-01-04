@@ -1,0 +1,58 @@
+.
+├── App.jsx
+├── components
+│   ├── filter
+│   │   ├── FilterBar.jsx
+│   │   ├── FilterDropdown.jsx
+│   │   ├── FilterMultiSelect.jsx
+│   │   ├── FilterPriceRange.jsx
+│   │   ├── FilterRadioGroup.jsx
+│   │   └── FilterToggle.jsx
+│   ├── gallery
+│   │   ├── GalleryCard.jsx
+│   │   └── GalleryList.jsx
+│   ├── layout
+│   │   ├── AppFooter.jsx
+│   │   └── AppHeader.jsx
+│   ├── search
+│   │   ├── SearchBar.jsx
+│   │   ├── SearchInput.jsx
+│   │   └── SearchSuggestions.jsx
+│   └── ui
+│       ├── Button.jsx
+│       ├── EmptyState.jsx
+│       └── Loader.jsx
+├── hooks
+├── main.jsx
+├── pages
+│   ├── AboutPage.jsx
+│   ├── HomePage.jsx
+│   ├── MainLayout.jsx
+│   └── SearchResultsPage.jsx
+├── services
+│   ├── fiverr.service.remote.js
+│   ├── http.service.js
+│   ├── i18.js
+│   ├── toast.service.js
+│   └── util.service.js
+├── store
+│   ├── fiverr.slice.js
+│   ├── store.js
+│   └── user.slice.js
+├── style
+│   ├── base
+│   │   ├── base.css
+│   │   ├── forms.css
+│   │   ├── helpers.css
+│   │   ├── layout.css
+│   │   ├── mq.css
+│   │   └── swal.css
+│   ├── components
+│   ├── main.css
+│   ├── pages
+│   └── setup
+│       ├── typography.css
+│       └── variables.css
+└── tree.txt
+
+16 directories, 40 files

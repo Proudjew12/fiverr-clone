@@ -1,0 +1,52 @@
+:root {
+  /* =========================
+     Brand
+  ========================== */
+  --clr-brand1: #1dbf73; /* Fiverr green */
+  --clr-brand2: #19a463;
+
+  /* =========================
+     Backgrounds & Surfaces
+  ========================== */
+  --clr-bg-main: #ffffff;
+  --clr-surface: #ffffff;
+  --clr-surface-muted: #f9fafb;
+
+  /* =========================
+     Text
+  ========================== */
+  --clr-primary: #111827;
+  --clr-secondary: #374151;
+  --clr-muted: #6b7280;
+
+  /* =========================
+     Borders & Dividers
+  ========================== */
+  --clr-border: #e5e7eb;
+  --clr-divider: #d1d5db;
+
+  /* =========================
+     States
+  ========================== */
+  --clr-success: #1dbf73;
+  --clr-warning: #f59e0b;
+  --clr-danger: #ef4444;
+  --clr-info: #3b82f6;
+
+  /* =========================
+     Focus & Interaction
+  ========================== */
+  --clr-focus: #1dbf73;
+  --clr-focus-ring: rgba(29, 191, 115, 0.35);
+
+  /* =========================
+     Disabled / Subtle
+  ========================== */
+  --clr-disabled-bg: #f1f1f2;
+  --clr-disabled-text: #9ca3af;
+
+  /* =========================
+     Overlay
+  ========================== */
+  --clr-overlay: rgba(0, 0, 0, 0.45);
+}

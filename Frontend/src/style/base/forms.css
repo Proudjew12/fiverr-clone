@@ -1,0 +1,78 @@
+.form {
+  display: grid;
+  gap: 12px;
+}
+
+.form-row {
+  display: grid;
+  gap: 6px;
+}
+
+.label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  padding: 10px 12px;
+
+  border: 1px solid var(--clr-border, #dcdfe4);
+  border-radius: var(--radius-sm, 8px);
+  background: var(--clr-surface, #fff);
+
+  outline: none;
+}
+
+.textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  border-color: var(--clr-brand1, #19a463);
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--clr-brand1, #19a463) 25%, transparent);
+}
+
+.input:disabled,
+.select:disabled,
+.textarea:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  background: var(--clr-surface-muted, #f6f7f9);
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: var(--clr-muted, #6b7280);
+}
+
+.error {
+  font-size: 0.85rem;
+  color: var(--clr-danger, #dc2626);
+}
+
+/* For Formik: apply when touched+error */
+.input.is-invalid,
+.select.is-invalid,
+.textarea.is-invalid {
+  border-color: var(--clr-danger, #dc2626);
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--clr-danger, #dc2626) 18%, transparent);
+}
+
+/* Checkbox / radio row */
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.check-row input {
+  margin: 0;
+}

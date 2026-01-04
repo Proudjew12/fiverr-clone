@@ -1,0 +1,15 @@
+.search-bar input {
+  padding: 10px 12px;
+  border: 1px solid var(--clr-border);
+  border-radius: 6px;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: var(--clr-focus);
+  box-shadow: 0 0 0 2px var(--clr-focus-ring);
+}
+
+.search-bar button {
+  padding-inline: 16px;
+}

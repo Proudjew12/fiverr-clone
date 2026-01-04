@@ -1,0 +1,37 @@
+.app-footer {
+  border-top: 1px solid var(--clr-border);
+  background: var(--clr-surface-muted);
+  padding: 16px 0;
+  color: var(--clr-muted);
+  font-size: 0.9rem;
+}
+
+.app-footer-inner {
+  padding: 0 16px;
+
+  /* Layout: left (copyright) | right (links) */
+  grid-template-columns: 1fr auto;
+}
+
+/* Footer nav links in a row */
+.footer-nav {
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  justify-content: end;
+  gap: 8px;
+}
+
+.footer-link {
+  color: inherit;
+  padding: 6px 8px;
+  border-radius: 999px;
+}
+
+.footer-link:hover {
+  color: var(--clr-primary);
+  background: var(--clr-surface);
+}
+
+.copyright {
+  margin: 0;
+}

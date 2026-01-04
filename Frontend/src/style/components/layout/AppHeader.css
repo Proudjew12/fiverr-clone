@@ -1,0 +1,48 @@
+.app-header {
+  background: var(--clr-surface);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.app-header-inner {
+  padding: 12px 0;
+
+  /* Layout: 3 regions (logo | nav | actions) */
+  grid-template-columns: auto 1fr auto;
+}
+
+/* Make nav links flow horizontally */
+.nav {
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  justify-content: start;
+  gap: 8px;
+}
+
+/* Logo */
+.app-header .logo {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--clr-brand1);
+  letter-spacing: -0.02em;
+}
+
+/* Nav links */
+.app-header .nav-link {
+  font-weight: 500;
+  color: var(--clr-secondary);
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.app-header .nav-link.active {
+  color: var(--clr-primary);
+  background: var(--clr-surface-muted);
+}
+
+/* Actions: buttons flow horizontally */
+.header-actions {
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  justify-content: end;
+  gap: 8px;
+}

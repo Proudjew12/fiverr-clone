@@ -1,0 +1,8 @@
+.search-results-page {
+  padding-block: 40px;
+  background: var(--clr-surface-muted);
+}
+
+.search-results-page strong {
+  color: var(--clr-brand1);
+}

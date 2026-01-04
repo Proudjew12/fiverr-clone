@@ -1,0 +1,53 @@
+/* ================================
+   SweetAlert2 – System Styles
+   Used ONLY for:
+   - confirm dialogs
+   - success / error toasts
+================================ */
+
+/* Actions layout */
+.swal2-actions {
+  gap: 10px;
+}
+
+/* Buttons */
+.swal2-confirm,
+.swal2-cancel {
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Confirm (primary) */
+.swal2-confirm {
+  background: var(--clr-brand1);
+  color: #fff;
+}
+
+/* Cancel (secondary) */
+.swal2-cancel {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--clr-primary);
+}
+
+/* ----------------
+   Toasts only
+------------------ */
+.swal2-toast {
+  border-radius: 999px;
+  box-shadow: var(--shadow-soft);
+  font-family: inherit;
+}
+
+.swal2-toast .swal2-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.swal2-toast .swal2-icon {
+  margin: 0 8px 0 0;
+}
