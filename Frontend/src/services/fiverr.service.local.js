@@ -16,27 +16,27 @@ window.cs = carService
 
 
 async function query(filterBy = { txt: '', minSpeed: 0 }) {
-    var cars = await storageService.query(STORAGE_KEY)
-    const { txt, minSpeed, sortField, sortDir } = filterBy
+    var gig = await storageService.query(STORAGE_KEY)
+    // const { txt, minSpeed, sortField, sortDir } = filterBy
 
-    if (txt) {
-        const regex = new RegExp(filterBy.txt, 'i')
-        cars = cars.filter(car => regex.test(car.vendor) || regex.test(car.description))
-    }
-    if (minSpeed) {
-        cars = cars.filter(car => car.speed >= minSpeed)
-    }
-    if(sortField === 'vendor'){
-        cars.sort((car1, car2) => 
-            car1[sortField].localeCompare(car2[sortField]) * +sortDir)
-    }
-    if(sortField === 'speed'){
-        cars.sort((car1, car2) => 
-            (car1[sortField] - car2[sortField]) * +sortDir)
-    }
+    // if (txt) {
+    //     const regex = new RegExp(filterBy.txt, 'i')
+    //     gig = gig.filter(gig => regex.test(gig.vendor) || regex.test(gig.description))
+    // }
+    // if (minSpeed) {
+    //     gig = gig.filter(gig => gig.speed >= minSpeed)
+    // }
+    // if(sortField === 'vendor'){
+    //     gig.sort((gig1, gig2) => 
+    //         gig1[sortField].localeCompare(gig2[sortField]) * +sortDir)
+    // }
+    // if(sortField === 'speed'){
+    //     gig.sort((gig1, gig2) => 
+    //         (gig1[sortField] - gig2[sortField]) * +sortDir)
+    // }
     
-    cars = cars.map(({ _id, vendor, speed, owner }) => ({ _id, vendor, speed, owner }))
-    return cars
+    gig = gig.map(({ _id, title, owner, description,price,imgUrls }) => ({ _id, title, owner, description,price,imgUrls}))
+    return gig
 }
 
 function getById(carId) {

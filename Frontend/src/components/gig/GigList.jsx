@@ -1,20 +1,27 @@
-import gGigs from '../../data/gig.json'
-
-import { Link } from 'react-router-dom'
-import { ToyPreview } from './ToyPreview'
 
 
-export function ToyList() {
+import { data, Link } from 'react-router-dom'
+import { GigPreview } from './GigPreview'
+import { useEffect, useState } from 'react'
+
+
+export function GigList() {
+    const [gigs, setGigs] = useState(null)
+
+    useEffect(() => {
+        query()
+        .then(setGigs)
+    },)
 
     return (
-        <section className="toy-list container">
+        <section className="gig-list container">
             <ul>
-                {toys.map(gig => (
+                {gigs.map(gig => (
                     <li key={gig._id}>
-                        <ToyPreview toy={gig} />
+                        <GigPreview gig={gig} />
                         <div>
                             <button>
-                                <Link to={`/toy/edit/${gig._id}`}>Edit</Link>
+                                <Link>Edit</Link>
                             </button>
                             <button>Remove</button>
                         </div>
