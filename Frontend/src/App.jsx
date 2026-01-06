@@ -3,7 +3,7 @@ import { MainLayout } from './pages/MainLayout.jsx'
 import { HomePage } from './pages/HomePage.jsx'
 import { SearchResultsPage } from './pages/SearchResultsPage.jsx'
 import { AboutPage } from './pages/AboutPage.jsx'
-import { ExplorerPage } from './pages/ExplorerPage.jsx'
+import { GigIndex } from './pages/GigIndex.jsx'
 
 function App() {
   return (
@@ -11,9 +11,9 @@ function App() {
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/index" element={<GigIndex />} />
           <Route path="/search" element={<SearchResultsPage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/explorer" element={<ExplorerPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
