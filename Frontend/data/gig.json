@@ -15,10 +15,18 @@
     "avgResponseTime": 1,
     "loc": "Ghana",
     "imgUrls": [
-      "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png"
+      "/assets/Popular-Services/Video-Editing/video/ahitwsblrjquehepmyhn.mp4"
     ],
-    "tags": ["Arts And Crafts", "video editing"],
-    "likedByUsers": ["mini-user"],
+    "videoUrls": [
+      "/assets/Popular-Services/Video-Editing/video/ahitwsblrjquehepmyhn.mp4"
+    ],
+    "tags": [
+      "Arts And Crafts",
+      "video editing"
+    ],
+    "likedByUsers": [
+      "mini-user"
+    ],
     "reviews": [
       {
         "id": "madeId",
@@ -47,9 +55,21 @@
     "description": "I will edit your YouTube videos to look professional with cuts, transitions, and text animations.",
     "avgResponseTime": 2,
     "loc": "United States",
-    "imgUrls": ["/assets/Popular-Services/Video-Editing/img/video1.jpg"],
-    "tags": ["video editing", "youtube", "motion graphics"],
-    "likedByUsers": ["user5", "user10"],
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/video1.jpg"
+    ],
+    "videoUrls": [
+      "/assets/Popular-Services/Video-Editing/video/bffs0bahnbjj94eyfd32.mp4"
+    ],
+    "tags": [
+      "video editing",
+      "youtube",
+      "motion graphics"
+    ],
+    "likedByUsers": [
+      "user5",
+      "user10"
+    ],
     "reviews": [
       {
         "id": "rev201",
@@ -82,8 +102,18 @@
       "/assets/Popular-Services/Video-Editing/img/wedding1.jpg",
       "/assets/Popular-Services/Video-Editing/img/wedding2.jpg"
     ],
-    "tags": ["video editing", "cinematic", "color grading"],
-    "likedByUsers": ["bride2026", "groom_a"],
+    "videoUrls": [
+      "/assets/Popular-Services/Video-Editing/video/blpwzqxpnlbcq1f5zhuh.mp4"
+    ],
+    "tags": [
+      "video editing",
+      "cinematic",
+      "color grading"
+    ],
+    "likedByUsers": [
+      "bride2026",
+      "groom_a"
+    ],
     "reviews": [
       {
         "id": "rev301",
@@ -112,9 +142,21 @@
     "description": "Viral-style editing for your social media. Subtitles, emojis, and fast pacing.",
     "avgResponseTime": 1,
     "loc": "Ukraine",
-    "imgUrls": ["/assets/Popular-Services/Video-Editing/img/shorts.jpg"],
-    "tags": ["video editing", "tiktok", "reels"],
-    "likedByUsers": ["influencer_1", "shop_owner"],
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/shorts.jpg"
+    ],
+    "videoUrls": [
+      "/assets/Popular-Services/Video-Editing/video/digjsvp1e9fiwfcxqmag.mp4"
+    ],
+    "tags": [
+      "video editing",
+      "tiktok",
+      "reels"
+    ],
+    "likedByUsers": [
+      "influencer_1",
+      "shop_owner"
+    ],
     "reviews": []
   },
   {
@@ -132,9 +174,21 @@
     "description": "Specialized in Final Cut Pro. I can handle complex multi-cam editing and advanced VFX.",
     "avgResponseTime": 3,
     "loc": "United Kingdom",
-    "imgUrls": ["/assets/Popular-Services/Video-Editing/img/fcp_edit.jpg"],
-    "tags": ["video editing", "final cut pro", "post production"],
-    "likedByUsers": ["tech_guru", "filmmaker_99"],
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/fcp_edit.jpg"
+    ],
+    "videoUrls": [
+      "/assets/Popular-Services/Video-Editing/video/dtkfpyq0pgembhtglris.mp4"
+    ],
+    "tags": [
+      "video editing",
+      "final cut pro",
+      "post production"
+    ],
+    "likedByUsers": [
+      "tech_guru",
+      "filmmaker_99"
+    ],
     "reviews": [
       {
         "id": "rev501",

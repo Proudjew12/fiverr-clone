@@ -37,7 +37,7 @@ async function query() {
     //         (gig1[sortField] - gig2[sortField]) * +sortDir)
     // }
     
-    gig = gig.map(({ _id, title, owner, description,price,imgUrls }) => ({ _id, title, owner, description,price,imgUrls}))
+    gig = gig.map(({ _id, title, owner, description,price,videoUrls}) => ({ _id, title, owner, description,price,videoUrls}))
     return gig
 }
 
