@@ -32,6 +32,8 @@
 /* ============================
    Component styles
 ============================ */
+@import url('./components/GigPreview.css');
+
 
 /* layout */
 @import './components/layout/AppHeader.css';

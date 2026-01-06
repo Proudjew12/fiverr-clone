@@ -6,7 +6,7 @@
     "owner": {
       "_id": "u101",
       "fullname": "Dudu Da",
-      "imgUrl": "url",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
       "level": "basic/premium",
       "rate": 4
     },
@@ -14,7 +14,9 @@
     "description": "Make unique logo...",
     "avgResponseTime": 1,
     "loc": "Ghana",
-    "imgUrls": ["/img/img1.jpg"],
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png"
+    ],
     "tags": ["Arts And Crafts", "video editing"],
     "likedByUsers": ["mini-user"],
     "reviews": [
@@ -25,7 +27,7 @@
         "by": {
           "_id": "u102",
           "fullname": "user2",
-          "imgUrl": "/img/img2.jpg"
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png"
         }
       }
     ]
@@ -37,7 +39,7 @@
     "owner": {
       "_id": "u103",
       "fullname": "Alice Cooper",
-      "imgUrl": "/img/u103.jpg",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
       "level": "level 2 seller",
       "rate": 5
     },
@@ -45,7 +47,7 @@
     "description": "I will edit your YouTube videos to look professional with cuts, transitions, and text animations.",
     "avgResponseTime": 2,
     "loc": "United States",
-    "imgUrls": ["/img/video1.jpg"],
+    "imgUrls": ["/assets/Popular-Services/Video-Editing/img/video1.jpg"],
     "tags": ["video editing", "youtube", "motion graphics"],
     "likedByUsers": ["user5", "user10"],
     "reviews": [
@@ -56,7 +58,7 @@
         "by": {
           "_id": "u104",
           "fullname": "John Doe",
-          "imgUrl": "/img/u104.jpg"
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/u104.jpg"
         }
       }
     ]
@@ -68,7 +70,7 @@
     "owner": {
       "_id": "u105",
       "fullname": "Yossi Cohen",
-      "imgUrl": "/img/u105.jpg",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
       "level": "top rated",
       "rate": 5
     },
@@ -76,7 +78,10 @@
     "description": "Transforming your raw wedding footage into a cinematic masterpiece with professional color grading.",
     "avgResponseTime": 5,
     "loc": "Israel",
-    "imgUrls": ["/img/wedding1.jpg", "/img/wedding2.jpg"],
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/wedding1.jpg",
+      "/assets/Popular-Services/Video-Editing/img/wedding2.jpg"
+    ],
     "tags": ["video editing", "cinematic", "color grading"],
     "likedByUsers": ["bride2026", "groom_a"],
     "reviews": [
@@ -87,7 +92,7 @@
         "by": {
           "_id": "u106",
           "fullname": "Sarah Levi",
-          "imgUrl": "/img/u106.jpg"
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/u106.jpg"
         }
       }
     ]
@@ -99,7 +104,7 @@
     "owner": {
       "_id": "u107",
       "fullname": "Daniella Art",
-      "imgUrl": "/img/u107.jpg",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
       "level": "basic",
       "rate": 4
     },
@@ -107,7 +112,7 @@
     "description": "Viral-style editing for your social media. Subtitles, emojis, and fast pacing.",
     "avgResponseTime": 1,
     "loc": "Ukraine",
-    "imgUrls": ["/img/shorts.jpg"],
+    "imgUrls": ["/assets/Popular-Services/Video-Editing/img/shorts.jpg"],
     "tags": ["video editing", "tiktok", "reels"],
     "likedByUsers": ["influencer_1", "shop_owner"],
     "reviews": []
@@ -119,7 +124,7 @@
     "owner": {
       "_id": "u108",
       "fullname": "Mark Tech",
-      "imgUrl": "/img/u108.jpg",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
       "level": "pro",
       "rate": 5
     },
@@ -127,7 +132,7 @@
     "description": "Specialized in Final Cut Pro. I can handle complex multi-cam editing and advanced VFX.",
     "avgResponseTime": 3,
     "loc": "United Kingdom",
-    "imgUrls": ["/img/fcp_edit.jpg"],
+    "imgUrls": ["/assets/Popular-Services/Video-Editing/img/fcp_edit.jpg"],
     "tags": ["video editing", "final cut pro", "post production"],
     "likedByUsers": ["tech_guru", "filmmaker_99"],
     "reviews": [
@@ -138,7 +143,7 @@
         "by": {
           "_id": "u109",
           "fullname": "Kevin B.",
-          "imgUrl": "/img/u109.jpg"
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/u109.jpg"
         }
       }
     ]

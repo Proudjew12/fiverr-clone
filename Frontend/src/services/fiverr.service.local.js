@@ -1,21 +1,23 @@
 
-import { storageService } from '../async-storage.service'
-import { makeId } from '../util.service'
-import { userService } from '../user'
+import { storageService } from './async-storage.service.js'
+import { utilService } from './util.service.js'
+import gGigs from '../../data/gig.json'
 
-const STORAGE_KEY = 'car'
+const STORAGE_KEY = 'gig_db'
 
-export const carService = {
+_createGigs()
+
+export const gigService = {
     query,
     getById,
     save,
     remove,
     addCarMsg
 }
-window.cs = carService
+window.cs = gigService
 
 
-async function query(filterBy = { txt: '', minSpeed: 0 }) {
+async function query() {
     var gig = await storageService.query(STORAGE_KEY)
     // const { txt, minSpeed, sortField, sortDir } = filterBy
 
@@ -74,7 +76,7 @@ async function addCarMsg(carId, txt) {
     const car = await getById(carId)
 
     const msg = {
-        id: makeId(),
+        id: utilService.makeId(),
         by: userService.getLoggedinUser(),
         txt
     }
@@ -82,4 +84,11 @@ async function addCarMsg(carId, txt) {
     await storageService.put(STORAGE_KEY, car)
 
     return msg
+}
+
+function _createGigs() {
+    let gigs = JSON.parse(localStorage.getItem(STORAGE_KEY))
+    if (!gigs || !gigs.length) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(gGigs))
+    }
 }
