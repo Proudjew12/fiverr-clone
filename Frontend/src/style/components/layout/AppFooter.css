@@ -1,37 +1,160 @@
 .app-footer {
-  border-top: 1px solid var(--clr-border);
-  background: var(--clr-surface-muted);
-  padding: 16px 0;
-  color: var(--clr-muted);
-  font-size: 0.9rem;
+  background: #fff;
+  margin-bottom: 20px;
+  position: relative;
 }
 
-.app-footer-inner {
-  padding: 0 16px;
+.app-footer::before {
+  content: '';
+  display: block;
 
-  /* Layout: left (copyright) | right (links) */
-  grid-template-columns: 1fr auto;
+  height: 1px;
+  background: #e4e5e7;
+
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-/* Footer nav links in a row */
-.footer-nav {
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 16px 24px;
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
+
+/* LEFT */
+.footer-left {
+  display: grid;
+}
+
+.footer-brand {
+  display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: max-content;
+  gap: 16px;
+  align-items: center; /* official: centered line */
+}
+
+.footer-logo {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+  color: #404145;
+}
+
+/* if you use SVG logo instead of text, keep this too */
+.footer-logo svg,
+.footer-logo img {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+.footer-copy {
+  font-size: 14px;
+  line-height: 22px;
+  color: #404145;
+  white-space: nowrap;
+}
+
+/* RIGHT */
+.footer-right {
+  display: grid;
+  grid-auto-flow: column;
   justify-content: end;
+  align-items: center;
+  gap: 12px;
+}
+
+/* SOCIAL ICONS */
+.footer-social {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 4px; /* tight like Fiverr */
+}
+
+.footer-icon-btn {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  border-radius: 9999px;
+}
+
+.footer-icon-btn img {
+  width: 16px; /* official size */
+  height: 16px;
+  display: block;
+}
+
+/* divider dot */
+.footer-divider {
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+  background: #dadbdd;
+  justify-self: center;
+}
+
+/* LANGUAGE BUTTON */
+.footer-lang-btn {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
   gap: 8px;
+
+  background: none;
+  border: 0;
+  cursor: pointer;
+
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+  color: #74767e;
+  padding: 8px 12px;
+  white-space: nowrap;
 }
 
-.footer-link {
-  color: inherit;
-  padding: 6px 8px;
-  border-radius: 999px;
+.footer-lang-btn .globe {
+  display: grid;
+  place-items: center;
 }
 
-.footer-link:hover {
-  color: var(--clr-primary);
-  background: var(--clr-surface);
+.footer-lang-btn img {
+  width: 16px;
+  height: 16px;
+  display: block;
 }
 
-.copyright {
-  margin: 0;
+/* CURRENCY */
+.footer-currency {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+  color: #74767e;
+  white-space: nowrap;
+}
+
+/* ACCESSIBILITY ICON (handicap) */
+.footer-accessibility {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.footer-accessibility img {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
