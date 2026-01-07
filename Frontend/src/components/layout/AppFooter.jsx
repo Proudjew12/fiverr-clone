@@ -5,7 +5,10 @@ export function AppFooter() {
         {/* LEFT SIDE */}
         <div className="footer-left">
           <div className="footer-brand">
-            <span className="footer-logo">Leo.</span>
+            <span className="footer-logo">
+              Leo<span className="logo-dot">.</span>
+            </span>
+
             <span className="footer-copy">© 2026 Fiverr Clone</span>
           </div>
         </div>
