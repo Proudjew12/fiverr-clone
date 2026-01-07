@@ -1,5 +1,5 @@
 import { GigList } from "@/components/gig/GigList";
-import { ExplorerPage } from "./ExplorerPage";
+import { GigIndex } from "./GigIndex";
 
 export function AboutPage() {
   return (

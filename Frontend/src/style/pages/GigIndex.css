@@ -1,0 +1,7 @@
+.main-layout-index {
+
+    display: grid;
+   grid-template-columns: 1fr minmax(auto, 1200px) 1fr;
+    justify-items: center;
+    gap: 25px;
+}

@@ -1,66 +1,52 @@
 .fiverr-gig-card {
     width: 100%;
-    max-width: 300px; 
+    max-width: 300px;
     background: #fff;
     cursor: pointer;
     font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
     display: flex;
     flex-direction: column;
+    gap: 10px;
 
-    .card-media {
-        position: relative;
-        width: 100%;
-        aspect-ratio: 1.6 / 1; 
-        border-radius: 8px;
-        overflow: hidden;
-
-        .gig-thumbnail { width: 100%; height: 100%; object-fit: cover; }
-        
-        .heart-icon-container {
-            position: absolute; top: 12px; right: 12px;
-            fill: rgba(0, 0, 0, 0.4); stroke: #fff; stroke-width: 2px;
-        }
-
-        .carousel-dots {
-            position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
-            display: flex; gap: 4px;
-            .dot { width: 6px; height: 6px; background: rgba(255,255,255,0.6); border-radius: 50%; &.active { background: #fff; } }
-        }
+    video{
+        border-radius: 10px;
     }
-
+    
     .card-content {
-        padding: 12px 0;
-
+        
         .seller-row {
-            display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
-            .seller-avatar { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; }
-            .seller-name { font-weight: 700; color: #404145; font-size: 14px; }
-            .ad-label { color: #74767e; font-size: 14px; }
-            
-            .top-rated-badge {
-                margin-left: auto; background: #ffede0; color: #552200;
-                padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 12px;
-                .stars { font-size: 10px; }
+            display: flex;
+            gap: 10px;
+            font-weight: bold;
+            .seller-avatar {
+                border-radius: 50%;
+
+            }
+            :hover{
+                cursor: pointer;
             }
         }
 
-        .gig-title {
-            font-size: 16px; color: #404145; font-weight: 400; line-height: 1.4;
-            height: 44px; margin: 0 0 8px 0; overflow: hidden;
-            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; 
+        .p {
+            font-weight: 5px;
         }
 
         .rating-row {
-            display: flex; align-items: center; gap: 4px; font-weight: 700; color: #404145;
-            margin-bottom: 12px; .count { color: #74767e; font-weight: 400; }
+            display: flex;
+            gap: 2.5px;
+            font-weight: bold;
         }
 
-        .pricing-row {
-            .price-info {
-                display: flex; align-items: baseline; gap: 4px; font-weight: 700; color: #404145;
-                .starting-from { font-size: 16px; } .price-tag { font-size: 18px; }
-            }
-            .tax-fees-note { color: #95979d; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .rating-row .count {
+            font-weight: 300;
         }
+
+        .pricing-row .price-info {
+            display: flex;
+            gap: 3px;
+            font-weight: bold;
+        }
+
+
     }
 }

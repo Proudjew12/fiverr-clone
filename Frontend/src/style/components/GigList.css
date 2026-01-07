@@ -1,38 +1,15 @@
-.gig-list-container {
-    padding: 24px 0;
+.gig-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;    
+    
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-    .gig-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 32px 24px; 
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
 
-    .gig-card-item {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-
-        .actions {
-            margin-top: 8px;
-            display: flex;
-            justify-content: flex-end;
-
-            .btn-remove {
-                background: #ff4d4d;
-                color: white;
-                border: none;
-                padding: 4px 12px;
-                border-radius: 4px;
-                cursor: pointer;
-                font-size: 12px;
-                opacity: 0.7;
-                transition: 0.2s;
-
-                &:hover { opacity: 1; }
-            }
-        }
-    }
+.gig-card-wrapper {   
+    flex: 1 0 250px; 
+    max-width: 400px; 
 }
