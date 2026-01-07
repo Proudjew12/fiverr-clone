@@ -2,6 +2,7 @@ import { LogoHeader } from '@/components/svg/LogoHeader'
 import { FiverrProHeader } from '@/components/headerCmps/FiverrProHeader'
 import { FiverrChange } from '@/components/headerCmps/FiverrChange'
 import { ExploreDd } from '@/components/headerCmps/ExploreDd'
+import { SearchInput } from '@/components/headerCmps/SearchInput'
 import { useDropdown } from '@/hooks/useDropdown'
 
 export function AppHeader() {
@@ -11,21 +12,28 @@ export function AppHeader() {
     <header ref={rootRef} className="app-header">
       <div className="app-header-row">
         <div className="app-header-inner grid align-center">
-          <LogoHeader />
+          {/* LEFT SIDE */}
+          <div className="header-left grid align-center">
+            <LogoHeader />
 
-          <nav className="header-nav grid align-center" aria-label="Header">
-            <div className="nav-group nav-group-dd grid align-center">
-              <ProDd isOpen={openDd === 'pro'} onToggle={() => toggleDd('pro')} />
-              <ExploreDd
-                isOpen={openDd === 'explore'}
-                onToggle={() => toggleDd('explore')}
-              />
+            <div className="header-search">
+              <SearchInput />
             </div>
+          </div>
 
+          {/* RIGHT SIDE */}
+          <nav className="header-nav grid align-center" aria-label="Header">
             <div className="nav-group nav-group-links grid align-center">
+              <div className="nav-group nav-group-dd grid align-center">
+                <ProDd isOpen={openDd === 'pro'} onToggle={() => toggleDd('pro')} />
+                <ExploreDd
+                  isOpen={openDd === 'explore'}
+                  onToggle={() => toggleDd('explore')}
+                />
+              </div>
               <FiverrChange initialLang="English" initialCurrency="USD">
                 <button type="button" className="header-link header-link-green">
-                  <span className="globe" aria-hidden="true">
+                  <span className="globe grid place-center" aria-hidden="true">
                     <img
                       className="globe-icon"
                       src="/assets/HeaderIcons/3[H].svg"
@@ -48,7 +56,7 @@ export function AppHeader() {
               </a>
             </div>
 
-            <a className="join-btn" href="#">
+            <a className="join-btn grid place-center" href="#">
               Join
             </a>
           </nav>

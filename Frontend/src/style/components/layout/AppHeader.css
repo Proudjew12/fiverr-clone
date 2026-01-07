@@ -33,7 +33,7 @@
   grid-auto-columns: max-content;
   justify-content: end;
   align-items: center;
-  column-gap: 12px;
+  column-gap: 1px;
 }
 
 /* =========================
@@ -44,7 +44,7 @@
   grid-auto-flow: column;
   grid-auto-columns: max-content;
   align-items: center;
-  column-gap: 12px;
+  column-gap: 1px;
 }
 
 /* =========================
@@ -58,7 +58,7 @@
   cursor: pointer;
   text-decoration: none;
 
-  /* icon + text alignment */
+  /* icon + text alignment (OK to keep: internal alignment, not page layout) */
   display: inline-grid;
   grid-auto-flow: column;
   align-items: center;
@@ -99,8 +99,6 @@
    ========================= */
 
 .globe {
-  display: grid;
-  place-items: center;
   width: 16px;
   height: 16px;
 }
@@ -152,9 +150,6 @@
    ========================= */
 
 .join-btn {
-  display: grid;
-  place-items: center;
-
   font-size: 14px;
   font-weight: 700;
   line-height: 100%;
@@ -175,4 +170,15 @@
   background: #222325;
   color: var(--clr-surface);
   text-decoration: none;
+}
+
+/* Left cluster: Logo + Search + Dropdowns */
+.header-left {
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  align-items: center;
+  column-gap: 16px;
+
+  /* allow the search to actually take space */
+  min-width: 0;
 }

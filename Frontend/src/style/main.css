@@ -37,6 +37,7 @@
 @import './components/headerCmps/FiverrChange.css';
 @import './components/headerCmps/HeaderDropdowns.css';
 @import './components/headerCmps/LogoHeader.css';
+@import './components/headerCmps/SearchInput.css';
 
 /* layout */
 @import './components/layout/AppHeader.css';
