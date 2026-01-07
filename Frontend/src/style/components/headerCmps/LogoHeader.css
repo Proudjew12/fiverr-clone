@@ -1,0 +1,47 @@
+/* =========================
+   Logo container
+   ========================= */
+
+.site-logo {
+  display: grid;
+  align-items: center;
+  min-width: 121px;
+  height: 100%;
+  margin: 0;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* SVG logo */
+.site-logo-svg {
+  display: block;
+  width: 89px;
+  height: 27px;
+}
+
+.site-logo-svg .logo-word {
+  fill: #404145;
+}
+
+.site-logo-svg .logo-dot {
+  fill: #1dbf73;
+}
+
+/* Text logo (if you use it instead of SVG) */
+.site-logo-text {
+  font-family:
+    Macan,
+    Helvetica Neue,
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: #404145;
+  letter-spacing: -0.5px;
+}
+
+.site-logo-text::after {
+  content: '.';
+  color: #1dbf73;
+}

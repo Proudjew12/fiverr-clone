@@ -25,36 +25,6 @@
 }
 
 /* =========================
-   Logo
-   ========================= */
-
-.site-logo {
-  display: grid;
-  align-items: center;
-
-  min-width: 121px;
-  height: 100%;
-
-  margin: 0;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.site-logo-svg {
-  display: block;
-  width: 89px;
-  height: 27px;
-}
-
-.site-logo-svg .logo-word {
-  fill: #404145;
-}
-
-.site-logo-svg .logo-dot {
-  fill: #1dbf73;
-}
-
-/* =========================
    Right navigation
    ========================= */
 
@@ -88,6 +58,12 @@
   cursor: pointer;
   text-decoration: none;
 
+  /* icon + text alignment */
+  display: inline-grid;
+  grid-auto-flow: column;
+  align-items: center;
+  column-gap: 8px;
+
   font:
     600 16px/24px Macan,
     Helvetica Neue,
@@ -106,19 +82,11 @@
     background-color 0.2s;
 }
 
-/* =========================
-   Default hover
-   ========================= */
-
 .header-link:hover,
 .nav-dd-trigger:hover {
   color: #222325;
   background: var(--clr-surface-muted);
 }
-
-/* =========================
-   Green hover links
-   ========================= */
 
 .header-link-green:hover {
   color: #1dbf73;
@@ -131,20 +99,25 @@
    ========================= */
 
 .globe {
-  margin-inline-end: 8px;
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+}
+
+.globe-icon {
+  display: block;
+  width: 16px;
+  height: 16px;
 }
 
 /* =========================
-   Dropdown trigger
+   Dropdown trigger + arrow
    ========================= */
 
 .nav-dd {
   position: relative;
 }
-
-/* =========================
-   Arrow
-   ========================= */
 
 .nav-arrow-down {
   margin-inline-start: 8px;
@@ -171,75 +144,7 @@
 
   min-width: 240px;
   white-space: normal;
-
   display: block;
-}
-
-/* =========================
-   Fiverr Pro dropdown card
-   ========================= */
-
-.nav-dd-panel-pro {
-  width: 420px;
-  max-width: 500px;
-
-  background: #fff;
-  border-radius: 12px;
-  box-shadow:
-    0 0 0.88px rgba(0, 0, 0, 0.03),
-    0 0 2.29px rgba(0, 0, 0, 0.03),
-    0 0 5.52px rgba(0, 0, 0, 0.054),
-    0 0 11px rgba(0, 0, 0, 0.09);
-
-  padding: 8px 0;
-  overflow: hidden;
-}
-
-/* =========================
-   Explore dropdown card
-   ========================= */
-
-.nav-dd-panel-explore {
-  width: 320px;
-
-  background: var(--clr-surface);
-  border: 1px solid var(--clr-border);
-  border-radius: 12px;
-  box-shadow: var(--shadow-card);
-  padding: 10px;
-}
-
-/* =========================
-   Explore items
-   ========================= */
-
-.nav-dd-item {
-  display: block;
-  padding: 12px;
-  border-radius: 10px;
-  text-decoration: none;
-  color: inherit;
-}
-
-.nav-dd-item:hover {
-  background: var(--clr-surface-muted);
-}
-
-.nav-dd-item.compact {
-  padding: 10px 12px;
-}
-
-.nav-dd-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: #222325;
-}
-
-.nav-dd-sub {
-  margin-top: 2px;
-  font-size: 13px;
-  color: #74767e;
-  line-height: 1.35;
 }
 
 /* =========================
@@ -270,92 +175,4 @@
   background: #222325;
   color: var(--clr-surface);
   text-decoration: none;
-}
-
-/* =========================
-   Fiverr Pro menu layout
-   ========================= */
-
-.pro-menu {
-  display: grid;
-  grid-auto-flow: row;
-}
-
-/* =========================
-   Fiverr Pro item row
-   ========================= */
-
-.pro-menu-item {
-  display: grid;
-  grid-template-columns: 56px 1fr;
-  column-gap: 24px;
-
-  padding: 12px 16px;
-  text-decoration: none;
-  color: inherit;
-}
-
-.pro-menu-item:hover {
-  background: var(--clr-surface-muted);
-}
-
-/* =========================
-   Fiverr Pro icon
-   ========================= */
-
-.pro-menu-icon {
-  width: 56px;
-  height: 56px;
-
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-}
-
-/* =========================
-   Fiverr Pro text
-   ========================= */
-
-.pro-menu-text {
-  display: grid;
-  grid-auto-flow: row;
-  gap: 2px;
-  min-width: 0;
-}
-
-.pro-menu-title,
-.pro-menu-sub {
-  display: block;
-}
-
-.pro-menu-title {
-  font:
-    700 14px/22px Macan,
-    Helvetica Neue,
-    Helvetica,
-    Arial,
-    sans-serif;
-
-  color: #222325;
-}
-
-.pro-menu-sub {
-  font:
-    400 14px/22px Macan,
-    Helvetica Neue,
-    Helvetica,
-    Arial,
-    sans-serif;
-
-  color: #222325;
-}
-
-/* =========================
-   Fiverr Pro divider
-   ========================= */
-
-.pro-menu-divider {
-  height: 1px;
-  background: #dadbdd;
-  margin: 8px 0;
 }

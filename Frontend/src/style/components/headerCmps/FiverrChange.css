@@ -1,0 +1,163 @@
+/* Overlay */
+.prefs-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 99999;
+}
+
+/* Modal */
+.prefs-modal {
+  position: fixed;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  max-width: calc(100vw - 32px);
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  z-index: 100000;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Visually hidden (accessibility) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Header */
+.prefs-header {
+  padding: 24px 32px 16px;
+  grid-template-columns: 1fr max-content;
+}
+
+.prefs-title {
+  margin: 0;
+  font-family:
+    Macan,
+    Helvetica Neue,
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-size: 20px;
+  line-height: 22px;
+  color: #404145;
+  font-weight: 700;
+}
+
+.prefs-close {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+}
+
+.prefs-close-icon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  color: #95979d;
+}
+
+/* Body */
+.prefs-body {
+  background: #fff;
+}
+
+/* Tabs */
+.prefs-tabs {
+  margin: 0 24px;
+  border-bottom: 1px solid #e4e5e7;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  column-gap: 12px;
+}
+
+.prefs-tab {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 12px 12px 10px;
+  color: #95979d;
+  border-bottom: 2px solid transparent;
+}
+
+.prefs-tab.active {
+  color: #1dbf73;
+  border-color: #1dbf73;
+}
+
+/* List */
+.prefs-list {
+  padding: 16px 0 24px;
+  height: 300px;
+  overflow-y: auto;
+}
+
+/* Row */
+.prefs-row {
+  width: 100%;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 10px 24px;
+  color: #62646a;
+  grid-template-columns: 16px 1fr;
+  column-gap: 14px;
+}
+
+.prefs-row:hover,
+.prefs-row.is-selected {
+  background: #f5f5f5;
+}
+
+.prefs-check-wrap {
+  width: 16px;
+  height: 16px;
+}
+
+.prefs-row-text {
+  color: #62646a;
+}
+
+/* Currency text (2 lines) */
+.prefs-currency {
+  grid-auto-flow: row;
+  row-gap: 2px;
+}
+
+.prefs-currency-name {
+  color: #404145;
+  font-weight: 700;
+}
+
+.prefs-currency-code {
+  color: #74767e;
+}
+
+/* Actions */
+.prefs-actions {
+  padding: 16px 24px 24px;
+  border-top: 1px solid #e4e5e7;
+  justify-items: end;
+}
+
+.prefs-save {
+  border: 0;
+  border-radius: 6px;
+  padding: 10px 14px;
+  cursor: pointer;
+  background: #1dbf73;
+  color: #fff;
+  font-weight: 700;
+}

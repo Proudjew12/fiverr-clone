@@ -34,6 +34,9 @@
 ============================ */
 @import url('./components/GigPreview.css');
 
+@import './components/headerCmps/FiverrChange.css';
+@import './components/headerCmps/HeaderDropdowns.css';
+@import './components/headerCmps/LogoHeader.css';
 
 /* layout */
 @import './components/layout/AppHeader.css';
