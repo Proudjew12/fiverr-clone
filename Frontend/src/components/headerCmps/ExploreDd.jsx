@@ -22,7 +22,7 @@ export function ExploreDd({ isOpen, onToggle }) {
           role="menu"
           aria-label="Explore"
         >
-          <Link to="/explorer" className="nav-dd-item compact" role="menuitem">
+          <Link to="/index" className="nav-dd-item compact" role="menuitem">
             <div className="nav-dd-title">GigExplore</div>
             <div className="nav-dd-sub">Continue to Gig</div>
           </Link>

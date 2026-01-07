@@ -3,7 +3,10 @@
    ========================= */
 
 .app-header {
-  background: var(--clr-surface);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
 }
 
 .app-header-row {

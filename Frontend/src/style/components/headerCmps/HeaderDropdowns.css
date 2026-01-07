@@ -21,6 +21,17 @@
 /* =========================
    Explore dropdown card
    ========================= */
+.nav-dd {
+  position: relative;
+}
+
+.nav-dd-panel-explore {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+
+  z-index: 2000;
+}
 
 .nav-dd-panel-explore {
   width: 320px;
