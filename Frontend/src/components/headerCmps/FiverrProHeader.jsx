@@ -4,7 +4,6 @@ export function FiverrProHeader() {
       {/* ITEM 1 */}
       <a
         className="pro-menu-item"
-        href="https://pro.fiverr.com/?source=header_pop_up"
         target="_blank"
         rel="noreferrer"
         role="menuitem"
@@ -33,7 +32,6 @@ export function FiverrProHeader() {
       {/* ITEM 2 */}
       <a
         className="pro-menu-item"
-        href="https://pro.fiverr.com/cp/pro-freelancers?source=header_pop_up"
         target="_blank"
         rel="noreferrer"
         role="menuitem"
