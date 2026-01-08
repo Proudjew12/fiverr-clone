@@ -1,9 +1,34 @@
 import { Link } from 'react-router-dom'
 
+export const svg = {
+  ArrowRightIcon,
+  LogoHeader,
+}
+
 export function LogoHeader() {
   return (
     <Link to="/" className="site-logo" aria-label="Go to homepage">
       <span className="site-logo-text">Leo</span>
     </Link>
+  )
+}
+
+function ArrowRightIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="lucide lucide-arrow-right-icon lucide-arrow-right"
+    >
+      <path d="M5 12h14" />
+      <path d="m12 5 7 7-7 7" />
+    </svg>
   )
 }
