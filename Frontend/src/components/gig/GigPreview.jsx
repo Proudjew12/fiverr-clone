@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom'
 
 
 export function GigPreview({ gig }) {
-    const { title, price, owner, videoUrls,description} = gig
+    const { title, price, owner, videoUrls, description } = gig
 
     return (
         <article className="fiverr-gig-card">
 
             <div className="card-media">
-                <video width="500" controls>
+                <video width="600" controls>
                     <source src={videoUrls} type="video/mp4" />
                 </video>
             </div>
@@ -18,8 +18,11 @@ export function GigPreview({ gig }) {
 
             <div className="card-content">
                 <div className="seller-row">
+                    <div className="mini-layout-seller">
                     <img className="seller-avatar" src={owner.imgUrl} alt={owner.fullname} />
                     <span className="seller-name">{owner.fullname}</span>
+                    </div>
+                    <span className="seller-Level">Level {owner.level}</span>
                 </div>
 
                 <p className="gig-title">{title}</p>
@@ -34,8 +37,8 @@ export function GigPreview({ gig }) {
                     <div className="price-info">
                         <span className="starting-from">From</span>
                         <span className="price-tag">₪{Math.round(price * 4)}</span>
+                        <span className="tax-fees-note">+ taxes & fees </span>
                     </div>
-                    <span className="tax-fees-note">+ taxes & fees </span>
                 </div>
             </div>
         </article>

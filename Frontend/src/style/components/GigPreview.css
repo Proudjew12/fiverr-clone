@@ -8,21 +8,34 @@
     flex-direction: column;
     gap: 10px;
 
-    video{
+    video {
         border-radius: 10px;
     }
-    
+
     .card-content {
-        
+
         .seller-row {
             display: flex;
             gap: 10px;
             font-weight: bold;
+            font-size: 0.85rem;
+            justify-content: space-between;
+            
             .seller-avatar {
                 border-radius: 50%;
-
+                
             }
-            :hover{
+            .mini-layout-seller{
+                display: flex;
+                gap: 0.70em;
+            }
+
+            img {
+                height: 24px;
+                width: 24px;
+            }
+
+            :hover {
                 cursor: pointer;
             }
         }
@@ -45,6 +58,10 @@
             display: flex;
             gap: 3px;
             font-weight: bold;
+
+            .tax-fees-note {
+                font-weight: lighter;
+            }
         }
 
 
