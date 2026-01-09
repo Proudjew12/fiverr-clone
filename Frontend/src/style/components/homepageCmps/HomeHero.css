@@ -1,0 +1,97 @@
+/* ======================================================
+   HERO CONTENT WRAPPER
+   ====================================================== */
+
+.home-hero-inner {
+  position: relative;
+  z-index: 2;
+
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 176px 24px 32px;
+  min-height: 680px;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: start;
+}
+
+/* ======================================================
+   HERO MAIN CONTENT (LEFT COLUMN)
+   ====================================================== */
+
+.home-hero-content {
+  max-width: 760px;
+  display: grid;
+  gap: 28px;
+}
+
+/* ======================================================
+   HERO TITLE
+   ====================================================== */
+
+.home-hero-title {
+  margin: 0;
+  color: #fff;
+  font-size: 72px;
+  font-weight: 280;
+  line-height: 1.2;
+  letter-spacing: -0.06em;
+}
+
+/* ======================================================
+   CATEGORY CHIPS
+   ====================================================== */
+
+.home-hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: min(1100px, 100%);
+}
+
+.home-hero-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 8px 16px;
+  border-radius: 10px;
+
+  color: #fff;
+  text-decoration: none;
+
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.home-hero-chip span {
+  opacity: 0.95;
+}
+
+/* ======================================================
+   TRUSTED BY
+   ====================================================== */
+
+.home-hero-trusted {
+  margin-top: 72px;
+  display: flex;
+  gap: 56px;
+  align-items: center;
+  flex-wrap: wrap;
+  color: #fff;
+}
+
+.home-hero-trustedLabel {
+  white-space: nowrap;
+  opacity: 0.9;
+}
+
+.home-hero-trustedLogos {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 12px;
+  opacity: 0.95;
+}

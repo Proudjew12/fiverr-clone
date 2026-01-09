@@ -1,3 +1,4 @@
+// src/pages/HomePage.jsx
 import { HomeHero } from '@/components/homepageCmps/HomeHero'
 
 export function HomePage() {

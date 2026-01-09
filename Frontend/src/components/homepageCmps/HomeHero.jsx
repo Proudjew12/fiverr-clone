@@ -1,6 +1,6 @@
+// src/components/homepageCmps/HomeHero.jsx
 import React from 'react'
-
-import { svg } from '@/components/svg/LogoHeader'
+import { SvgIcon } from '@/components/svg/SvgIcon'
 
 export function HomeHero() {
   return (
@@ -18,7 +18,6 @@ export function HomeHero() {
             will take it from here
           </h1>
 
-          {/* SEARCH */}
           <form className="home-hero-search" role="search">
             <input
               className="home-hero-searchInput"
@@ -41,34 +40,46 @@ export function HomeHero() {
             </button>
           </form>
 
-          {/* CHIPS */}
           <div className="home-hero-chips">
             <a className="home-hero-chip" href="#">
-              Website Development{' '}
-              <span className="hero-arrow-right">{svg.ArrowRightIcon()}</span>
+              Website Development
+              <span className="hero-arrow-right" aria-hidden="true">
+                <SvgIcon icon="arrowRight" />
+              </span>
             </a>
+
             <a className="home-hero-chip" href="#">
-              Architecture &amp; Interior Design{' '}
-              <span className="hero-arrow-right">{svg.ArrowRightIcon()}</span>
+              Architecture &amp; Interior Design
+              <span className="hero-arrow-right" aria-hidden="true">
+                <SvgIcon icon="arrowRight" />
+              </span>
             </a>
+
             <a className="home-hero-chip" href="#">
-              UGC Videos <span className="hero-arrow-right">{svg.ArrowRightIcon()}</span>
+              UGC Videos
+              <span className="hero-arrow-right" aria-hidden="true">
+                <SvgIcon icon="arrowRight" />
+              </span>
             </a>
+
             <a className="home-hero-chip" href="#">
-              Video Editing{' '}
-              <span className="hero-arrow-right">{svg.ArrowRightIcon()}</span>
+              Video Editing
+              <span className="hero-arrow-right" aria-hidden="true">
+                <SvgIcon icon="arrowRight" />
+              </span>
             </a>
+
             <a className="home-hero-chip" href="#">
-              Book Publishing{' '}
-              <span className="hero-arrow-right">{svg.ArrowRightIcon()}</span>
+              Book Publishing
+              <span className="hero-arrow-right" aria-hidden="true">
+                <SvgIcon icon="arrowRight" />
+              </span>
             </a>
           </div>
 
-          {/* TRUSTED */}
           <div className="home-hero-trusted">
             <span className="home-hero-trustedLabel">Trusted by:</span>
             <div className="home-hero-trustedLogos">
-              {/* put your svg/img logos here */}
               <span>Meta</span>
               <span>Google</span>
               <span>Netflix</span>
