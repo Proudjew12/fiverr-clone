@@ -1,6 +1,6 @@
 .fiverr-gig-card {
     width: 100%;
-    max-width: 300px;
+    max-width: 276px;
     background: #fff;
     cursor: pointer;
     font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -9,7 +9,7 @@
     gap: 10px;
 
     video {
-        border-radius: 10px;
+        border-radius: 8px;
     }
 
     .card-content {

@@ -33,6 +33,7 @@ export function GigIndex() {
             </aside>
 
             <main>
+                
                 <GigList gigs={gigs} />
             </main>
 
