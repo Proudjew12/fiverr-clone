@@ -1,0 +1,129 @@
+/* --- הקונטיינר הראשי של ה-Dropdown --- */
+.fiverr-dropdown-container {
+  width: 380px; /* רוחב קבוע כמו בתמונה */
+  background-color: #fff;
+  border: 1px solid #e4e5e7;
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1); /* צל עדין */
+  padding: 24px;
+  font-family: "Macan", "Helvetica Neue", Helvetica, Arial, sans-serif; /* הפונט של פייבר */
+  color: #404145;
+  box-sizing: border-box;
+}
+
+/* --- כותרות (Seller level, Hourly rate) --- */
+.filter-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: block;
+  color: #222325;
+}
+
+/* --- הגריד העליון (2 עמודות) --- */
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* חצי חצי */
+  gap: 12px 20px; /* רווח בין שורות ועמודות */
+  margin-bottom: 24px;
+}
+
+/* --- שורת צ'קבוקס בודדת --- */
+.checkbox-label {
+  display: flex;
+  align-items: flex-start; /* יישור למעלה למקרה של טקסט ארוך */
+  gap: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 24px; /* גובה שורה */
+}
+
+/* עיצוב הצ'קבוקס עצמו */
+.checkbox-input {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px; /* יישור עדין מול הטקסט */
+  cursor: pointer;
+  accent-color: #222325; /* צבע שחור כשהוא מסומן */
+}
+
+/* הטקסט האפור בסוגריים */
+.count {
+  color: #95979d;
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+/* --- חלק תחתון: תגית ה-NEW והטקסט הקטן --- */
+.badge-new {
+  background-color: #ff62ad; /* ורוד פוקסיה של פייבר */
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  margin: 0 6px;
+  position: relative;
+  top: -1px;
+}
+
+/* הטקסט הקטן מתחת ל-Hourly Rate */
+.helper-text {
+  display: block;
+  font-size: 14px;
+  color: #95979d;
+  margin-top: 0px;
+  line-height: 20px;
+}
+
+/* עוטף את הטקסט כדי שה-Helper text יהיה מתחתיו */
+.text-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- קו מפריד --- */
+.divider {
+  border: 0;
+  border-top: 1px solid #e4e5e7;
+  margin: 20px 0;
+}
+
+/* --- Footer (כפתורים למטה) --- */
+.dropdown-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.btn-clear {
+  background: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: #404145;
+  cursor: pointer;
+}
+
+.btn-clear:hover {
+  color: #222325;
+  text-decoration: underline;
+}
+
+.btn-apply {
+  background-color: #222325; /* שחור */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-apply:hover {
+  opacity: 0.9;
+}

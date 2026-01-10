@@ -1,0 +1,29 @@
+.gig-filter {
+    display: flex;
+    gap: 10px;
+    background-color: var(--clr2bg);
+    padding: 1em;
+    height: 15%;
+
+    .filter-dropdown {
+        display: flex;
+        gap: 5px;
+        border: 1px solid rgb(190, 190, 190);
+        border-radius: 5px;
+        padding: 10px 20px;
+        max-height: 48px;
+        max-width: 200px;
+
+        font-weight: bold;
+
+        .drop-arrow{
+            display: inline-block;
+            transform: rotate(180deg);
+            margin-bottom: 2.6px;
+        }
+    }
+    :hover{
+        background-color: rgb(240, 240, 240) ;
+        cursor: pointer;
+    }
+}

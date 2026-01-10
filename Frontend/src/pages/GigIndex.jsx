@@ -2,6 +2,7 @@ import { GigList } from "@/components/gig/GigList";
 import { data, Link } from 'react-router-dom'
 import { gigService } from '@/services/fiverr.service.local.js'
 import { useEffect, useState } from 'react'
+import { GigFilter } from "@/components/filter/GigFilter.jsx";
 
 export function GigIndex() {
 
@@ -33,7 +34,7 @@ export function GigIndex() {
             </aside>
 
             <main>
-                
+                <GigFilter />
                 <GigList gigs={gigs} />
             </main>
 
