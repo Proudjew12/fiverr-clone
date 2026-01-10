@@ -54,7 +54,7 @@
 @import './pages/SearchResultsPage.css';
 @import './pages/AboutPage.css';
 @import './pages/GigIndex.css';
-
+@import './pages/GigDetails.css';
 /* ============================
    Media queries (ALWAYS LAST)
 ============================ */
