@@ -1,13 +1,14 @@
 .home-page {
   position: relative;
+  background: #fff;
+}
+
+/* HERO owns the clipping (NOT the whole homepage) */
+.home-hero {
+  position: relative;
   min-height: 680px;
   overflow: hidden;
   background: #000;
-}
-
-/* keep hero section from adding its own sizing */
-.home-hero {
-  min-height: inherit;
 }
 
 /* video behind everything */

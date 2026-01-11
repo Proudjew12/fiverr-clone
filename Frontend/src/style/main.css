@@ -39,7 +39,9 @@
 @import './components/headerCmps/HeaderDropdowns.css';
 @import './components/headerCmps/LogoHeader.css';
 @import './components/headerCmps/SearchInput.css';
-@import './components/homepageCmps//HomeHero.css';
+@import './components/homepageCmps/HomeHero.css';
+@import './components/homepageCmps/HomeCategories.css';
+@import './components/homepageCmps/PopularCarousel.css';
 
 /* layout */
 @import './components/layout/AppHeader.css';

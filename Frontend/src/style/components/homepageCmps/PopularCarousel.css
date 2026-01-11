@@ -1,0 +1,193 @@
+/* PopularCarousel.css */
+.popular {
+  background: #fff;
+  padding: 40px 0;
+}
+
+.popular-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.popular-title {
+  margin: 0 0 24px;
+  color: #404145;
+  font-family:
+    Macan,
+    Helvetica Neue,
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-weight: 400;
+  letter-spacing: -1.44px;
+  font-size: 48px;
+  line-height: 1.05;
+}
+
+.popular-carousel {
+  position: relative;
+}
+
+/* ✅ NEW: this clips the slider + provides "safe area" so masks DON'T cut cards */
+.popular-viewport {
+  position: relative;
+  overflow: hidden;
+
+  /* ✅ IMPORTANT: safe area equals mask width */
+  padding: 0 56px;
+}
+
+/* ✅ NEW: hide everything under the arrows (no peeking) */
+.popular-viewport::before,
+.popular-viewport::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+
+  width: 56px; /* keep in sync with .popular-viewport padding */
+  background: #fff; /* must match .popular background */
+
+  z-index: 4; /* above slides, under arrows */
+  pointer-events: none;
+}
+
+.popular-viewport::before {
+  left: 0;
+}
+
+.popular-viewport::after {
+  right: 0;
+}
+
+/* Swiper area */
+.popular-swiper {
+  overflow: visible; /* allow shadows to render */
+}
+
+/* IMPORTANT: fixed width slides like Fiverr */
+.popular-slide {
+  width: 188px !important;
+}
+
+/* Card */
+.popular-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 235px;
+  width: 188px;
+
+  border-radius: 16px;
+  padding: 22px 10px 10px;
+
+  text-decoration: none;
+  box-shadow: rgba(0, 0, 0, 0.13) 0 3px 10px;
+
+  transform: translateY(0);
+  transition:
+    transform 140ms ease,
+    box-shadow 140ms ease;
+}
+
+.popular-card:hover {
+  transform: translateY(-1px);
+  box-shadow: rgba(0, 0, 0, 0.2) 0 10px 18px;
+}
+
+.popular-card:focus-visible {
+  outline: 2px solid rgba(26, 188, 106, 0.55);
+  outline-offset: 4px;
+}
+
+.popular-card-title {
+  margin: 0;
+  padding: 0 6px;
+  color: #fff;
+  font-family:
+    Macan,
+    Helvetica Neue,
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.popular-card-media {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.popular-card-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* arrows */
+.popular-arrow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+
+  display: grid;
+  place-items: center;
+
+  border: 0;
+  background: #fff;
+  cursor: pointer;
+
+  z-index: 5; /* ✅ above masks */
+
+  box-shadow:
+    rgba(0, 0, 0, 0.02) 0px 1.2px 1.92251px,
+    rgba(0, 0, 0, 0.04) 0px 2px 3.68135px,
+    rgba(0, 0, 0, 0.05) 0px 1px 5px;
+
+  color: #62646a;
+  transition:
+    transform 120ms ease,
+    opacity 120ms ease;
+}
+
+.popular-arrow.left {
+  left: 0;
+  transform: translateX(-50%);
+}
+
+.popular-arrow.right {
+  right: 0;
+  transform: translateX(50%);
+}
+
+.popular-arrow:hover {
+  transform: translateX(var(--dx, 0)) scale(1.04);
+}
+
+.popular-arrow.left:hover {
+  --dx: -50%;
+}
+
+.popular-arrow.right:hover {
+  --dx: 50%;
+}
+
+.popular-arrow.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ✅ CHANGED: swiper padding is vertical only.
+   Side padding moved to .popular-viewport safe-area. */
+.popular-carousel .swiper {
+  padding: 12px 0;
+}
