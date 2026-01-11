@@ -1,7 +1,17 @@
 .main-layout-index {
 
     display: grid;
-   grid-template-columns: 1fr minmax(auto, 1200px) 1fr;
+    grid-template-columns: 1fr minmax(auto, 1200px) 1fr;
     justify-items: center;
     gap: 25px;
+
+    button{
+        border: solid green 1px;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    button:hover {
+        cursor: pointer;
+    }
+
 }

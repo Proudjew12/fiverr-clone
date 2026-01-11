@@ -5,29 +5,36 @@ import gGigs from '../../data/gig.json'
 
 const STORAGE_KEY = 'gig_db'
 
-_createGigs()
-
+createGigs()
 export const gigService = {
     query,
     getById,
     save,
     remove,
-    addCarMsg
+    addCarMsg,
+    createGigs
 }
 window.cs = gigService
 
 
-async function query() {
-    var gig = await storageService.query(STORAGE_KEY)
-    // const { txt, minSpeed, sortField, sortDir } = filterBy
+async function query(filterBy = {}) {
+    var gigs = await storageService.query(STORAGE_KEY)
+    const { topRated, basic, level1, level2 } = filterBy
 
-    // if (txt) {
-    //     const regex = new RegExp(filterBy.txt, 'i')
-    //     gig = gig.filter(gig => regex.test(gig.vendor) || regex.test(gig.description))
-    // }
-    // if (minSpeed) {
-    //     gig = gig.filter(gig => gig.speed >= minSpeed)
-    // }
+    const levelsToFilter = []
+
+    if (topRated) levelsToFilter.push("top rated")
+    if (basic) levelsToFilter.push("basic")
+    if (level1) levelsToFilter.push("1")
+    if (level2) levelsToFilter.push("2")
+
+    if (levelsToFilter.length > 0) {
+        gigs = gigs.filter(gig => {
+            return levelsToFilter.includes(gig.owner.level)
+        })
+    }
+
+
     // if(sortField === 'vendor'){
     //     gig.sort((gig1, gig2) => 
     //         gig1[sortField].localeCompare(gig2[sortField]) * +sortDir)
@@ -36,9 +43,9 @@ async function query() {
     //     gig.sort((gig1, gig2) => 
     //         (gig1[sortField] - gig2[sortField]) * +sortDir)
     // }
-    
-    gig = gig.map(({ _id, title, owner, description,price,videoUrls}) => ({ _id, title, owner, description,price,videoUrls}))
-    return gig
+
+    gigs = gigs.map(({ _id, title, owner, description, price, videoUrls }) => ({ _id, title, owner, description, price, videoUrls }))
+    return gigs
 }
 
 function getById(carId) {
@@ -86,7 +93,7 @@ async function addCarMsg(carId, txt) {
     return msg
 }
 
-function _createGigs() {
+function createGigs() {
     let gigs = JSON.parse(localStorage.getItem(STORAGE_KEY))
     if (!gigs || !gigs.length) {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(gGigs))
