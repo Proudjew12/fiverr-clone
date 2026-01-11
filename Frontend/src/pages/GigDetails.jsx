@@ -1,3 +1,4 @@
+import { SvgIcon } from "@/components/svg/SvgIcon";
 import { gigService } from "@/services/fiverr.service.local.js";
 import { Loader } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -97,11 +98,8 @@ function RatingByStars({ rate }) {
     return (
         <div className="rating-by-stars">
             {Array.from({ length: rate }).map((_, i) => (
-                <RatingStar key={i} />
+                <SvgIcon icon={'star'} key={i} />
             ))}
         </div>
     )
-}
-function RatingStar(){
-    
 }
