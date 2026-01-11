@@ -1,6 +1,9 @@
 .gig-filter {
     display: flex;
     gap: 10px;
+
+    position: relative;
+
     background-color: var(--clr2bg);
     padding: 1em;
     height: 15%;
@@ -16,14 +19,15 @@
 
         font-weight: bold;
 
-        .drop-arrow{
+        .drop-arrow {
             display: inline-block;
             transform: rotate(180deg);
             margin-bottom: 2.6px;
         }
     }
-    :hover{
-        background-color: rgb(240, 240, 240) ;
+
+    :hover {
+        background-color: rgb(240, 240, 240);
         cursor: pointer;
     }
 }
