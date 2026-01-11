@@ -7,7 +7,7 @@
       "_id": "u101",
       "fullname": "Dudu Da",
       "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
-      "level": "basic/premium",
+      "level": "basic",
       "rate": 4
     },
     "daysToMake": 3,
@@ -48,7 +48,7 @@
       "_id": "u103",
       "fullname": "Alice Cooper",
       "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
-      "level": "level 2 seller",
+      "level": "2 seller",
       "rate": 5
     },
     "daysToMake": 2,
