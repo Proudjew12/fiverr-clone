@@ -1,0 +1,43 @@
+.dropdown-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: absolute;
+  width: 27rem;
+  max-width: 600px;
+  height: 248px;
+  font-size: 0.9rem;
+
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  z-index: 1;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+
+  top: 68px;
+  
+  h2{
+    font-size: 1.15rem;
+  }
+
+  .checks-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 15px;
+  }
+
+  .check-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  .check-filter input {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    margin: 0;
+  }
+}

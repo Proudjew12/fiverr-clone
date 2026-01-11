@@ -1,17 +1,39 @@
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 
 export function GigPreview({ gig }) {
     const { title, price, owner, videoUrls, description } = gig
+    const vidRef = useRef(null)
+
+    const handleMouseEnter = () => {
+        if (vidRef.current) vidRef.current.play()
+    }
+
+    const handleMouseLeave = () => {
+        if (vidRef.current) {
+            vidRef.current.pause()
+            vidRef.current.currentTime = 0
+        }
+    }
 
     return (
         <article className="fiverr-gig-card">
 
             <div className="card-media">
-                <video width="600" controls>
-                    <source src={videoUrls} type="video/mp4" />
+
+                <video
+                    ref={vidRef}
+                    width="600"
+                    muted
+                    loop
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                    className="gig-video"
+                    style={{ cursor: 'pointer' }}
+                >
+                    <source src={videoUrls[0] || videoUrls} type="video/mp4" />
                 </video>
             </div>
 
@@ -19,8 +41,8 @@ export function GigPreview({ gig }) {
             <div className="card-content">
                 <div className="seller-row">
                     <div className="mini-layout-seller">
-                    <img className="seller-avatar" src={owner.imgUrl} alt={owner.fullname} />
-                    <span className="seller-name">{owner.fullname}</span>
+                        <img className="seller-avatar" src={owner.imgUrl} alt={owner.fullname} />
+                        <span className="seller-name">{owner.fullname}</span>
                     </div>
                     <span className="seller-Level">Level {owner.level}</span>
                 </div>
