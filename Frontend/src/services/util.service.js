@@ -3,6 +3,7 @@ export const utilService = {
   makeId,
   getRandomIntInclusive,
   pickRandom,
+  makeRandomGig,
 
   // numbers
   clamp,
@@ -123,7 +124,6 @@ function formatCurrency(amount, currency = "USD", locale = "en-US") {
 }
 
 function deepClone(value) {
-  // good enough for POJOs used in UI state
   if (typeof structuredClone === "function") return structuredClone(value);
   return JSON.parse(JSON.stringify(value));
 }
@@ -152,4 +152,74 @@ function buildQueryParams(obj) {
   });
 
   return params.toString();
+}
+
+
+function makeRandomGig() {
+  const titles = [
+    "I will design your unique logo",
+    "I will do professional video editing",
+    "I will write a killer blog post",
+    "I will build your react website",
+    "I will create short videos for tiktok",
+    "I will record a professional voice over",
+    "I will translate english to hebrew"
+  ]
+
+  const fullnames = [
+    "John Doe", "Jane Smith", "Dudu Da", "Alice Cooper", "Yossi Cohen",
+    "Daniella Art", "Mark Tech", "Sarah Connor", "Mike Ross"
+  ]
+
+  const levels = ["basic", "level 1", "level 2", "top rated", "pro"]
+
+  const videos = [
+    "/assets/Popular-Services/Video-Editing/video/ahitwsblrjquehepmyhn.mp4",
+    "/assets/Popular-Services/Video-Editing/video/bffs0bahnbjj94eyfd32.mp4",
+    "/assets/Popular-Services/Video-Editing/video/blpwzqxpnlbcq1f5zhuh.mp4",
+    "/assets/Popular-Services/Video-Editing/video/digjsvp1e9fiwfcxqmag.mp4"
+  ]
+
+  const images = [
+    "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
+    "/assets/Popular-Services/Video-Editing/img/video1.jpg",
+    "/assets/Popular-Services/Video-Editing/img/wedding1.jpg",
+    "/assets/Popular-Services/Video-Editing/img/shorts.jpg"
+  ]
+
+  return {
+    _id: makeId(),
+    title: titles[getRandomIntInclusive(0, titles.length - 1)],
+    price: getRandomFloat(10, 200), 
+    description: makeLorem(20),
+    owner: {
+      _id: makeId(),
+      fullname: fullnames[getRandomIntInclusive(0, fullnames.length - 1)],
+      imgUrl: images[getRandomIntInclusive(0, images.length - 1)],
+      level: levels[getRandomIntInclusive(0, levels.length - 1)],
+      rate: getRandomFloat(3, 5)
+    },
+
+    imgUrls: [
+      images[getRandomIntInclusive(0, images.length - 1)],
+      images[getRandomIntInclusive(0, images.length - 1)]
+    ],
+    videoUrls: [
+      videos[getRandomIntInclusive(0, videos.length - 1)]
+    ],
+  }
+}
+
+function getRandomFloat(min, max) {
+    return parseFloat((Math.random() * (max - min) + min).toFixed(1))
+}
+
+function makeLorem(size = 100) {
+    var words = ['The sky', 'above', 'the port', 'was', 'the color of television', 'tuned', 'to', 'a dead channel', '.', 'All', 'this happened', 'more or less', '.', 'I', 'had', 'the story', 'bit by bit', 'from various people', 'and', 'as generally', 'happens', 'in such cases', 'each time', 'it', 'was', 'a different story', '.', 'It', 'was', 'a pleasure', 'to', 'burn']
+    var txt = ''
+    while (size > 0) {
+        size--
+        txt += words[Math.floor(Math.random() * words.length)] + ' '
+    }
+    return txt
 }
