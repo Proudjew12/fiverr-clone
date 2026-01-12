@@ -20,6 +20,7 @@ window.cs = gigService
 async function query(filterBy = {}) {
     var gigs = await storageService.query(STORAGE_KEY)
     const { topRated, basic, level1, level2 } = filterBy
+    const txt = String(filterBy.txt || '').trim().toLowerCase()
 
     const levelsToFilter = []
 
@@ -31,6 +32,20 @@ async function query(filterBy = {}) {
     if (levelsToFilter.length > 0) {
         gigs = gigs.filter(gig => {
             return levelsToFilter.includes(gig.owner.level)
+        })
+    }
+    if (txt) {
+        gigs = gigs.filter(gig => {
+            const haystack = [
+                gig.title,
+                gig.description,
+                gig.owner?.fullname,
+                ...(gig.tags || [])
+            ]
+                .filter(Boolean)
+                .join(' ')
+                .toLowerCase()
+            return haystack.includes(txt)
         })
     }
 
