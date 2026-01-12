@@ -42,7 +42,7 @@ export function GigDetails() {
                         <img src={gig.owner.imgUrl} />
                     </div>
                     <div className="name-rate-container">
-                        <div className="fullname">{gig.owner.fullname}</div>
+                        <div className="owner-details"><div className="fullname">{gig.owner.fullname}</div> <div className={"level "+gig.owner.level.replace(/\s+/g, "-")}>{gig.owner.level}</div></div>
                         <div className="rate"> <RatingByStars rate={gig.owner.rate} />{gig.owner.rate}</div>
                     </div>
 
@@ -92,6 +92,20 @@ export function GigDetails() {
                         <li key={tag}>{tag}</li>
                     )}
                 </ul>
+                <div className="about-the-seller">
+                <h2>Get to know {gig.owner.fullname}</h2>
+                <div className="seller-details">
+                 <div className="seller-img">
+                        <img src={gig.owner.imgUrl} />
+                    </div>
+                    <div className="seller-name-rate">
+                        <span className="fullname">{gig.owner.fullname}</span>
+                        <span>Performance Marketer And Ad Creative Specialist</span>
+                        <span className={"level "+gig.owner.level.replace(/\s+/g, "-")}>{gig.owner.level}</span>
+                    </div>
+                </div>
+                <button className="contact-btn">Contact me</button>
+                </div>
             </div>
             <aside>
                 <div className="call-to-action">

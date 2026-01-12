@@ -1,7 +1,7 @@
 .gig-details {
-  padding: 32px 32px  0;
+  padding: 32px 32px 0;
   display: grid;
-  grid-template-areas: "main aside";
+  grid-template-areas: 'main aside';
   grid-template-columns: 60% 33%;
 }
 .gig-details .main {
@@ -33,11 +33,28 @@
   flex-direction: column;
   gap: 4px;
 }
-.gig-details .main .name-rate-container .fullname {
+.gig-details .main .name-rate-container .owner-details {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.gig-details .main .name-rate-container .owner-details .fullname {
   cursor: pointer;
   color: #404145;
   margin-right: 8px;
   font-weight: 700;
+  display: flex;
+  align-items: center;
+  font-size: 1.125rem;
+  margin-right: 8px;
+}
+.gig-details .main .name-rate-container .owner-details .level {
+  padding: 0 6px;
+  font-size: 1em;
+  border-radius: 4px;
+}
+.gig-details .main .level.top-rated {
+  background-color: #ffe0b3;
 }
 .gig-details .main .name-rate-container .fullname:hover {
   text-decoration: underline;
@@ -166,92 +183,172 @@
   background: white;
   cursor: pointer;
 }
-.gig-details aside{
-    grid-area: aside;
+.gig-details .main .about-the-seller h2 {
+  font-size: 1.25rem;
+  padding: 0 0 25px;
+  color: #404145;
 }
-.gig-details aside .call-to-action{
-    padding-top: 32px;
-    width: 100%;
-    border: 1px solid lightgray;
-    border-radius: 10px;
-    position: sticky;
-    top: 100px;
+.gig-details .main .about-the-seller .seller-details {
+  display: flex;
+  justify-content: stretch;
+  gap: 20px;
 }
-.gig-details aside .call-to-action .package-content{
-    padding: 0 24px;
-    
+.gig-details .main .about-the-seller .seller-details .seller-img {
+  width: 96px;
+  height: 96px;
+  position: relative;
 }
-.gig-details aside .call-to-action .package-content header .title{
-    color: #74767e;
-    font-size: 1.25rem;
+.gig-details .main .about-the-seller .seller-details .seller-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
 }
-.gig-details aside .call-to-action .package-content header .price{
-    color: #222325;
+.gig-details .main .about-the-seller .seller-details .seller-img::before {
+  content: "";
+  background: linear-gradient(
+    225deg,
+    #003912 0%,
+    #1dbf73 37.55%,
+    #1dbf73 63.2%,
+    #d0e500 100%
+  );
+  width: calc(100% + 16px);
+  height: calc(100% + 16px);
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  z-index: 0;
+  border-radius: 50%;
 }
-.gig-details aside .call-to-action .package-content header .subtitle{
-    font-size: 1rem;
+.gig-details .main .about-the-seller .seller-details .seller-img::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  background: white;
+  border-radius: 50%;
+  z-index: 1;
 }
-.gig-details aside .call-to-action .package-content header .subscribe{
-    color: #026a5d;
-    margin-right: 8px;
-    font-weight: 600 !important;
-    font-size: 1rem;
+.gig-details .main .about-the-seller .seller-details .seller-name-rate{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding-block: 8px;
+  gap: 8px;
 }
-.gig-details aside .call-to-action .package-content header p{
-    margin-bottom: 10px;
-    margin-top: 24px !important;
-    font-size: 1rem;
-    color: #62646A;
+.gig-details .main .about-the-seller .seller-details .seller-name-rate .fullname{
+cursor: pointer;
+  color: #404145;
+  margin-right: 8px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  font-size: 1.125rem; 
 }
-.gig-details aside .call-to-action .package-content main .features{
-    list-style: none;
-    color: #95979d;
-    font-size: 1em;
-    margin-bottom: 20px;
+.gig-details .main .about-the-seller .seller-details .seller-name-rate .fullname:hover{
+  text-decoration: underline;
 }
-.gig-details aside .call-to-action .package-content main .features li{
-    display: flex;
-    gap: 12px;
+.gig-details .main .about-the-seller .seller-details .seller-name-rate .level{
+  padding: 0 6px;
+  font-size: 1em;
+  border-radius: 4px;
 }
-.gig-details aside .call-to-action .package-content footer{
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+.gig-details .main .about-the-seller .contact-btn{
+  padding: 8px 16px;
+  font-size: 1rem;
+  color: #222325;
+  border: 0.667px solid black;
+  border-radius: 8px;
+  font-weight: 700;
+  margin-top: 10px;
 }
-.gig-details aside .call-to-action .package-content footer button{
- border: 1px solid transparent;
- font-size: 1rem;
- font-weight: 600;
- padding: 12px 24px;
- cursor: pointer;
- border-radius: 4px;
+.gig-details aside {
+  grid-area: aside;
 }
-.gig-details aside .call-to-action .package-content footer .continue-btn{
-    background-color: black;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+.gig-details aside .call-to-action {
+  padding-top: 32px;
+  width: 100%;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  position: sticky;
+  top: 100px;
 }
-.gig-details aside .call-to-action .package-content footer .continue-btn:hover{
-      background: #404145
+.gig-details aside .call-to-action .package-content {
+  padding: 0 24px;
 }
-.gig-details aside .call-to-action .package-content footer .continue-btn span{
+.gig-details aside .call-to-action .package-content header .title {
+  color: #74767e;
+  font-size: 1.25rem;
+}
+.gig-details aside .call-to-action .package-content header .price {
+  color: #222325;
+}
+.gig-details aside .call-to-action .package-content header .subtitle {
+  font-size: 1rem;
+}
+.gig-details aside .call-to-action .package-content header .subscribe {
+  color: #026a5d;
+  margin-right: 8px;
+  font-weight: 600 !important;
+  font-size: 1rem;
+}
+.gig-details aside .call-to-action .package-content header p {
+  margin-bottom: 10px;
+  margin-top: 24px !important;
+  font-size: 1rem;
+  color: #62646a;
+}
+.gig-details aside .call-to-action .package-content main .features {
+  list-style: none;
+  color: #95979d;
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+.gig-details aside .call-to-action .package-content main .features li {
+  display: flex;
+  gap: 12px;
+}
+.gig-details aside .call-to-action .package-content footer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.gig-details aside .call-to-action .package-content footer button {
+  border: 1px solid transparent;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 12px 24px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.gig-details aside .call-to-action .package-content footer .continue-btn {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.gig-details aside .call-to-action .package-content footer .continue-btn:hover {
+  background: #404145;
+}
+.gig-details aside .call-to-action .package-content footer .continue-btn span {
   position: absolute;
   right: 24px;
-  
 }
 
-.gig-details aside .call-to-action .package-content footer .contact-btn{
-    background-color: white;
-    margin: 0 0 24px;
-    border-color: #e4e5e7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
+.gig-details aside .call-to-action .package-content footer .contact-btn {
+  background-color: white;
+  margin: 0 0 24px;
+  border-color: #e4e5e7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
-.gig-details aside .call-to-action .package-content footer .contact-btn:hover{
+.gig-details aside .call-to-action .package-content footer .contact-btn:hover {
   background: #74767e;
 }
