@@ -48,7 +48,7 @@
       "_id": "u103",
       "fullname": "Alice Cooper",
       "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
-      "level": "2 seller",
+      "level": "2",
       "rate": 5
     },
     "daysToMake": 2,
@@ -167,7 +167,7 @@
       "_id": "u108",
       "fullname": "Mark Tech",
       "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
-      "level": "pro",
+      "level": "1",
       "rate": 5
     },
     "daysToMake": 4,
