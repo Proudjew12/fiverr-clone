@@ -12,10 +12,35 @@ export function useDropdown() {
     setOpenDd(null)
   }, [])
 
+  // Use this on dropdown options so clicking them closes the dropdown
+  const getOptionProps = useCallback(
+    (userProps = {}) => {
+      const { onClick, onPointerDown, ...rest } = userProps
+
+      return {
+        ...rest,
+
+        // pointerdown happens before click; closing here feels instant and avoids races
+        onPointerDown: (ev) => {
+          onPointerDown?.(ev)
+          if (ev.defaultPrevented) return
+          closeDd()
+        },
+
+        // keep click too (covers keyboard "Enter" on buttons/links in some setups)
+        onClick: (ev) => {
+          onClick?.(ev)
+          if (ev.defaultPrevented) return
+          closeDd()
+        },
+      }
+    },
+    [closeDd]
+  )
+
   function isClickInsideAnyDialog(target) {
     if (!(target instanceof Element)) return false
 
-    // Radix Dialog patterns (covers most setups)
     return (
       !!target.closest('[data-radix-portal]') ||
       !!target.closest('[role="dialog"]') ||
@@ -24,30 +49,37 @@ export function useDropdown() {
   }
 
   useEffect(() => {
-    function onDocMouseDown(ev) {
+    if (typeof document === 'undefined') return
+
+    function onDocPointerDown(ev) {
       const rootEl = rootRef.current
       if (!rootEl) return
 
-      // if click is inside header -> do nothing
       if (rootEl.contains(ev.target)) return
-
-      // if click is inside an open dialog portal -> do nothing
       if (isClickInsideAnyDialog(ev.target)) return
 
       closeDd()
     }
 
-    document.addEventListener('mousedown', onDocMouseDown)
-    return () => document.removeEventListener('mousedown', onDocMouseDown)
+    document.addEventListener('pointerdown', onDocPointerDown, true)
+    document.addEventListener('touchstart', onDocPointerDown, true)
+
+    return () => {
+      document.removeEventListener('pointerdown', onDocPointerDown, true)
+      document.removeEventListener('touchstart', onDocPointerDown, true)
+    }
   }, [closeDd])
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
     function onKeyDown(ev) {
       if (ev.key === 'Escape') closeDd()
     }
+
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [closeDd])
 
-  return { openDd, toggleDd, closeDd, rootRef }
+  return { openDd, toggleDd, closeDd, rootRef, getOptionProps }
 }

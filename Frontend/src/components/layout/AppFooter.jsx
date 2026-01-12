@@ -1,55 +1,93 @@
+import { Locale } from '@/components/ui/Locale'
+import { SvgIcon, FOOTER_SOCIAL_LINKS } from '@/components/svg/SvgIconBackupEran'
+
 export function AppFooter() {
   return (
     <footer className="app-footer">
-      <div className="footer-inner">
-        {/* LEFT SIDE */}
-        <div className="footer-left">
-          <div className="footer-brand">
-            <span className="footer-logo">
-              Leo<span className="logo-dot">.</span>
-            </span>
-
-            <span className="footer-copy">© 2026 Fiverr Clone</span>
-          </div>
-        </div>
-
-        {/* RIGHT SIDE */}
-        <div className="footer-right">
-          {/* SOCIAL ICONS */}
-          <div className="footer-social">
-            <a className="footer-icon-btn" href="#" aria-label="LinkedIn">
-              <img src="/assets/FooterIcons/2[F].svg" alt="" draggable="false" />
-            </a>
-
-            <a className="footer-icon-btn" href="#" aria-label="GitHub">
-              <img src="/assets/FooterIcons/4[F].svg" alt="" draggable="false" />
-            </a>
-          </div>
-
-          {/* DOT */}
-          <span className="footer-divider" aria-hidden="true" />
-
-          {/* LANGUAGE */}
-          <button type="button" className="footer-lang-btn">
-            <span className="globe" aria-hidden="true">
-              <img src="/assets/FooterIcons/1[F].svg" alt="" draggable="false" />
-            </span>
-            English
-          </button>
-
-          {/* CURRENCY */}
-          <span className="footer-currency">€ EUR</span>
-
-          {/* ACCESSIBILITY */}
-          <button
-            type="button"
-            className="footer-icon-btn footer-accessibility"
-            aria-label="Accessibility"
-          >
-            <img src="/assets/FooterIcons/3[F].svg" alt="" draggable="false" />
-          </button>
-        </div>
+      <div className="footer-inner grid items-center">
+        <FooterBrand />
+        <FooterActions />
       </div>
     </footer>
+  )
+}
+
+/* =========================
+   Brand
+   ========================= */
+
+function FooterBrand() {
+  return (
+    <div className="footer-left grid">
+      <div className="footer-brand grid items-center">
+        <span className="footer-logo">
+          Leo<span className="logo-dot">.</span>
+        </span>
+
+        <span className="footer-copy">© 2026 Leo Service Rights</span>
+      </div>
+    </div>
+  )
+}
+
+/* =========================
+   Actions
+   ========================= */
+
+function FooterActions() {
+  return (
+    <div className="footer-right grid items-center">
+      <FooterSocial />
+
+      <span className="footer-divider" aria-hidden="true" />
+
+      <Locale />
+
+      <FooterAccessibility />
+    </div>
+  )
+}
+
+/* =========================
+   Social
+   ========================= */
+
+function FooterSocial() {
+  function onSocialClick(ev) {
+    ev.preventDefault()
+  }
+
+  return (
+    <div className="footer-social grid items-center" aria-label="Footer social links">
+      {FOOTER_SOCIAL_LINKS.map((link) => (
+        <a
+          key={link.key}
+          className="footer-icon-btn grid place-center"
+          href={link.href}
+          aria-label={link.label}
+          onClick={link.href === '#' ? onSocialClick : undefined}
+          target={link.isExternal ? '_blank' : undefined}
+          rel={link.isExternal ? 'noreferrer' : undefined}
+        >
+          <SvgIcon icon={link.icon} />
+        </a>
+      ))}
+    </div>
+  )
+}
+
+/* =========================
+   Accessibility
+   ========================= */
+
+function FooterAccessibility() {
+  return (
+    <button
+      type="button"
+      className="footer-icon-btn footer-accessibility grid place-center"
+      aria-label="Accessibility"
+    >
+      <SvgIcon icon="footerAccessibility" />
+    </button>
   )
 }

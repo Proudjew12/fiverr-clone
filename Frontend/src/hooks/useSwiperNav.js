@@ -38,12 +38,11 @@ export function useSwiperNav() {
     syncEdges(swiper)
   }, [swiper, syncEdges])
 
-  // Keyboard support (left/right)
   useEffect(() => {
-    function onKeyDown(ev) {
-      if (!swiper) return
+    if (typeof window === 'undefined') return
+    if (!swiper) return
 
-      // don't hijack typing
+    function onKeyDown(ev) {
       const tag = ev.target?.tagName?.toLowerCase()
       const isTyping =
         tag === 'input' || tag === 'textarea' || ev.target?.isContentEditable

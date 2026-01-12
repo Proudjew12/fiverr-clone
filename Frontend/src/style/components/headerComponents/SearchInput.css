@@ -10,11 +10,8 @@
   height: 40px;
 }
 
-/* ===== INPUT ===== */
-
 .search-input {
   grid-column: 1 / 2;
-
   width: 100%;
   margin: 0;
 
@@ -38,19 +35,16 @@
   appearance: none;
 }
 
-/* Placeholder swap */
 .search-input-long {
   display: block;
 }
+
 .search-input-short {
   display: none;
 }
 
-/* ===== BUTTON ===== */
-
 .search-btn {
   grid-column: 2 / 3;
-
   height: 100%;
   padding: 8px 16px;
 
@@ -73,10 +67,47 @@
 }
 
 .search-icon {
-  display: block;
   width: 16px;
   height: 16px;
-
-  /* force SVG image to white */
   filter: brightness(0) invert(1);
+}
+
+/* =========================
+   Search focus dim
+   ========================= */
+
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  z-index: 900;
+}
+
+.header-search:focus-within ~ .search-overlay,
+.header-search:focus-within + .search-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.app-header {
+  position: relative;
+  z-index: 1000;
+}
+
+body.is-search-focused::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 900; /* below header */
+  pointer-events: none;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* above overlay */
 }

@@ -1,7 +1,23 @@
-// headerCmps/SearchInput.jsx
 export function SearchInput() {
+  function onFocusCapture() {
+    document.body.classList.add('is-search-focused')
+  }
+
+  function onBlurCapture() {
+    // wait a tick so focus moving within the search won't instantly remove
+    setTimeout(() => {
+      const active = document.activeElement
+      const stillInSearch = active?.closest?.('.search')
+      if (!stillInSearch) document.body.classList.remove('is-search-focused')
+    }, 0)
+  }
+
   return (
-    <div className="search grid">
+    <div
+      className="search grid"
+      onFocusCapture={onFocusCapture}
+      onBlurCapture={onBlurCapture}
+    >
       <input
         className="search-input search-input-long"
         type="search"

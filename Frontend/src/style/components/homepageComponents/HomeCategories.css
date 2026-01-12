@@ -10,15 +10,9 @@
 }
 
 .home-categories-row {
-  display: flex;
-  gap: 20px; /* ✅ was 28 */
-  align-items: stretch;
-  overflow: hidden; /* no scroll needed */
+  gap: 20px;
+  overflow: hidden;
   padding: 6px 0 14px;
-}
-
-.home-categories-row::-webkit-scrollbar {
-  display: none;
 }
 
 .home-category-card {
@@ -26,8 +20,6 @@
   width: 132px;
   height: 124px;
 
-  display: grid;
-  align-content: start;
   gap: 12px;
 
   padding: 18px 16px;
@@ -64,8 +56,6 @@
   width: 28px;
   height: 28px;
   color: #222325;
-  display: grid;
-  place-items: center;
 }
 
 .home-category-title {

@@ -1,6 +1,6 @@
 import { useMemo, useState, useCallback, cloneElement, isValidElement } from 'react'
 
-export function useFiverrChange({ children }) {
+export function useLeoChange({ children }) {
   const [open, setOpen] = useState(false)
   const [tab, setTab] = useState('language')
 
@@ -9,7 +9,6 @@ export function useFiverrChange({ children }) {
     setTab('language')
   }, [])
 
-  // Prevent AppHeader document mousedown handler from firing
   const stopHeaderOutsideClose = useCallback((ev) => {
     ev.stopPropagation()
   }, [])
@@ -18,6 +17,10 @@ export function useFiverrChange({ children }) {
     if (!isValidElement(children)) return children
 
     return cloneElement(children, {
+      onPointerDownCapture: (ev) => {
+        stopHeaderOutsideClose(ev)
+        children.props?.onPointerDownCapture?.(ev)
+      },
       onMouseDownCapture: (ev) => {
         stopHeaderOutsideClose(ev)
         children.props?.onMouseDownCapture?.(ev)

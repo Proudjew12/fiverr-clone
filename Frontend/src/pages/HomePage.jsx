@@ -1,6 +1,6 @@
-import { HomeHero } from '@/components/homepageCmps/HomeHero'
-import { HomeCategories } from '@/components/homepageCmps/HomeCategories'
-import { PopularCarousel } from '@/components/homepageCmps/PopularCarousel'
+import { HomeHero } from '@/components/homepageComponents/HomeHero'
+import { HomeCategories } from '@/components/homepageComponents/HomeCategories'
+import { PopularCarousel } from '@/components/homepageComponents/PopularCarousel'
 
 export function HomePage() {
   return (

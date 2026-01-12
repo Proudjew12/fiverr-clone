@@ -1,7 +1,3 @@
-/* =========================
-   Header shell
-   ========================= */
-
 .app-header {
   position: sticky;
   top: 0;
@@ -19,40 +15,22 @@
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-
   height: 80px;
   padding-inline: 32px;
-
-  grid-template-columns: max-content 1fr;
-  column-gap: 32px;
 }
 
-/* =========================
-   Right navigation
-   ========================= */
+.header-left {
+  min-width: 0;
+  gap: 16px;
+}
 
 .header-nav {
-  grid-auto-flow: column;
-  grid-auto-columns: max-content;
-  justify-content: end;
-  align-items: center;
-  column-gap: 1px;
+  gap: 1px;
 }
-
-/* =========================
-   Nav groups
-   ========================= */
 
 .nav-group {
-  grid-auto-flow: column;
-  grid-auto-columns: max-content;
-  align-items: center;
-  column-gap: 1px;
+  gap: 1px;
 }
-
-/* =========================
-   Base links & buttons
-   ========================= */
 
 .header-link,
 .nav-dd-trigger {
@@ -61,7 +39,6 @@
   cursor: pointer;
   text-decoration: none;
 
-  /* icon + text alignment (OK to keep: internal alignment, not page layout) */
   display: inline-grid;
   grid-auto-flow: column;
   align-items: center;
@@ -97,24 +74,10 @@
   text-decoration: none;
 }
 
-/* =========================
-   Language icon
-   ========================= */
-
 .globe {
   width: 16px;
   height: 16px;
 }
-
-.globe-icon {
-  display: block;
-  width: 16px;
-  height: 16px;
-}
-
-/* =========================
-   Dropdown trigger + arrow
-   ========================= */
 
 .nav-dd {
   position: relative;
@@ -122,10 +85,11 @@
 
 .nav-arrow-down {
   margin-inline-start: 8px;
-  font-size: 12px;
-  line-height: 12px;
+  width: 16px;
+  height: 16px;
   opacity: 0.85;
-  display: inline-block;
+  display: inline-grid;
+  place-items: center;
   transition: transform 0.15s ease-in-out;
 }
 
@@ -133,29 +97,19 @@
   transform: rotate(180deg);
 }
 
-/* =========================
-   Dropdown panel base
-   ========================= */
-
 .nav-dd-panel {
   position: absolute;
   top: calc(100% + 10px);
   left: 0;
   z-index: var(--z-overlay);
-
   min-width: 240px;
   white-space: normal;
-  display: block;
 }
-
-/* =========================
-   Join button
-   ========================= */
 
 .join-btn {
   font-size: 14px;
   font-weight: 700;
-  line-height: 100%;
+  line-height: 1;
 
   padding: 10px 16px;
   border-radius: 4px;
@@ -173,15 +127,4 @@
   background: #222325;
   color: var(--clr-surface);
   text-decoration: none;
-}
-
-/* Left cluster: Logo + Search + Dropdowns */
-.header-left {
-  grid-auto-flow: column;
-  grid-auto-columns: max-content;
-  align-items: center;
-  column-gap: 16px;
-
-  /* allow the search to actually take space */
-  min-width: 0;
 }

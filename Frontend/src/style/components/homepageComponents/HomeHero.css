@@ -1,4 +1,3 @@
-/* wrapper on top of video */
 .home-hero-inner {
   position: relative;
   z-index: 2;
@@ -12,12 +11,10 @@
   padding: 176px 24px 24px;
 }
 
-/* key fix: trusted stays inside hero */
 .home-hero-content {
   max-width: 760px;
 
-  display: grid;
-  grid-template-rows: auto auto auto 1fr auto; /* ✅ spacer row */
+  grid-template-rows: auto auto auto 1fr auto;
   gap: 28px;
 
   height: 100%;
@@ -32,7 +29,6 @@
   letter-spacing: -0.06em;
 }
 
-/* SEARCH */
 .home-hero-search {
   position: relative;
   height: 60px;
@@ -71,21 +67,19 @@
 
   background: rgb(34, 35, 37);
   color: #fff;
-
-  display: grid;
-  place-items: center;
 }
 
 /* CHIPS */
 .home-hero-chips {
-  display: flex;
-  flex-wrap: wrap;
   gap: 16px;
   width: min(1100px, 100%);
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .home-hero-chip {
   display: inline-flex;
+
   align-items: center;
   gap: 10px;
 
@@ -97,6 +91,10 @@
 
   border: 1px solid rgba(255, 255, 255, 0.9);
   background: rgba(255, 255, 255, 0.1);
+
+  cursor: pointer;
+
+  width: fit-content;
 }
 
 .hero-arrow-right {
@@ -106,8 +104,7 @@
 
 /* TRUSTED BY */
 .home-hero-trusted {
-  margin-top: 0; /* ✅ critical: no extra push down */
-  display: flex;
+  margin-top: 0;
   gap: 56px;
   align-items: center;
   flex-wrap: wrap;
@@ -120,7 +117,6 @@
 }
 
 .home-hero-trustedLogos {
-  display: flex;
   gap: 48px;
   align-items: center;
   flex-wrap: wrap;

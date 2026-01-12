@@ -1,22 +1,19 @@
-export function FiverrProHeader() {
+import { SvgIcon } from '@/components/svg/SvgIconBackupEran'
+
+export function LeoProDd({ getOptionProps }) {
   return (
     <div className="pro-menu" aria-label="Fiverr Pro">
-      {/* ITEM 1 */}
       <a
         className="pro-menu-item"
+        href="#"
         target="_blank"
         rel="noreferrer"
         role="menuitem"
         aria-label="Leo Pro: I’m looking to hire"
+        {...(getOptionProps ? getOptionProps() : {})}
       >
         <div className="pro-menu-icon" aria-hidden="true">
-          <img
-            src="/assets/HeaderIcons/1[H].png"
-            alt=""
-            width={56}
-            height={56}
-            loading="lazy"
-          />
+          <SvgIcon icon="proHireIcon" width={56} height={56} />
         </div>
 
         <div className="pro-menu-text">
@@ -29,22 +26,17 @@ export function FiverrProHeader() {
 
       <div className="pro-menu-divider" role="separator" />
 
-      {/* ITEM 2 */}
       <a
         className="pro-menu-item"
+        href="#"
         target="_blank"
         rel="noreferrer"
         role="menuitem"
         aria-label="Leo Pro: I want to offer pro services"
+        {...(getOptionProps ? getOptionProps() : {})}
       >
         <div className="pro-menu-icon" aria-hidden="true">
-          <img
-            src="/assets/HeaderIcons/2[H].png"
-            alt=""
-            width={56}
-            height={56}
-            loading="lazy"
-          />
+          <SvgIcon icon="proOfferIcon" width={56} height={56} />
         </div>
 
         <div className="pro-menu-text">
@@ -54,26 +46,6 @@ export function FiverrProHeader() {
           </span>
         </div>
       </a>
-
-      {/* <div className="pro-menu-divider" role="separator" /> */}
-
-      {/* ITEM 3 */}
-      {/* <a className="pro-menu-item" href="#" role="menuitem" aria-label="Leo Pro">
-        <div className="pro-menu-icon" aria-hidden="true">
-          <img
-            src="/assets/HeaderIcons/4[H].jpg"
-            alt=""
-            width={56}
-            height={56}
-            loading="lazy"
-          />
-        </div>
-
-        <div className="pro-menu-text">
-          <span className="pro-menu-title">Leo Pro [The Real Thing]</span>
-          <span className="pro-menu-sub">⚡Click here to get your SuperPowers⚡</span>
-        </div>
-      </a> */}
     </div>
   )
 }

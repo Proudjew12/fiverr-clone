@@ -35,20 +35,20 @@
 @import url('./components/GigPreview.css');
 @import url('./components/GigList.css');
 
-@import './components/headerCmps/FiverrChange.css';
-@import './components/headerCmps/HeaderDropdowns.css';
-@import './components/headerCmps/LogoHeader.css';
-@import './components/headerCmps/SearchInput.css';
-@import './components/homepageCmps/HomeHero.css';
-@import './components/homepageCmps/HomeCategories.css';
-@import './components/homepageCmps/PopularCarousel.css';
+@import url('./components/headerComponents/ProDd.css');
+@import url('./components/headerComponents/ExploreDd.css');
+
+@import './components/headerComponents/LeoChange.css';
+
+@import './components/headerComponents/LogoHeader.css';
+@import './components/headerComponents/SearchInput.css';
+@import './components/homepageComponents/HomeHero.css';
+@import './components/homepageComponents/HomeCategories.css';
+@import './components/homepageComponents/PopularCarousel.css';
 
 /* layout */
 @import './components/layout/AppHeader.css';
 @import './components/layout/AppFooter.css';
-
-/* search */
-@import './components/search/SearchBar.css';
 
 /* ============================
    Page styles

@@ -7,10 +7,8 @@
 .app-footer::before {
   content: '';
   display: block;
-
   height: 1px;
   background: #e4e5e7;
-
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -19,22 +17,12 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 16px 24px;
-
-  display: grid;
   grid-template-columns: auto 1fr;
-  align-items: center;
-}
-
-/* LEFT */
-.footer-left {
-  display: grid;
 }
 
 .footer-brand {
-  display: grid;
   grid-auto-flow: column;
   gap: 16px;
-  align-items: center; /* official: centered line */
 }
 
 .footer-logo {
@@ -44,7 +32,6 @@
   color: #404145;
 }
 
-/* if you use SVG logo instead of text, keep this too */
 .footer-logo svg,
 .footer-logo img {
   height: 28px;
@@ -63,26 +50,18 @@
   white-space: nowrap;
 }
 
-/* RIGHT */
 .footer-right {
-  display: grid;
   grid-auto-flow: column;
   justify-content: end;
-  align-items: center;
   gap: 12px;
 }
 
-/* SOCIAL ICONS */
 .footer-social {
-  display: grid;
   grid-auto-flow: column;
-  align-items: center;
-  gap: 4px; /* tight like Fiverr */
+  gap: 4px;
 }
 
 .footer-icon-btn {
-  display: grid;
-  place-items: center;
   width: 36px;
   height: 36px;
   background: none;
@@ -92,12 +71,11 @@
 }
 
 .footer-icon-btn img {
-  width: 16px; /* official size */
+  width: 16px;
   height: 16px;
   display: block;
 }
 
-/* divider dot */
 .footer-divider {
   width: 4px;
   height: 4px;
@@ -106,17 +84,12 @@
   justify-self: center;
 }
 
-/* LANGUAGE BUTTON */
 .footer-lang-btn {
-  display: grid;
   grid-auto-flow: column;
-  align-items: center;
   gap: 8px;
-
   background: none;
   border: 0;
   cursor: pointer;
-
   font-size: 14px;
   line-height: 21px;
   font-weight: 600;
@@ -125,36 +98,18 @@
   white-space: nowrap;
 }
 
-.footer-lang-btn .globe {
-  display: grid;
-  place-items: center;
-}
-
 .footer-lang-btn img {
   width: 16px;
   height: 16px;
   display: block;
 }
 
-/* CURRENCY */
 .footer-currency {
   font-size: 14px;
   line-height: 21px;
   font-weight: 600;
   color: #74767e;
   white-space: nowrap;
-}
-
-/* ACCESSIBILITY ICON (handicap) */
-.footer-accessibility {
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 9999px;
-  background: none;
-  border: 0;
-  cursor: pointer;
 }
 
 .footer-accessibility img {
