@@ -1,5 +1,5 @@
-// src/components/homepageCmps/HomeHero.jsx
 import { SvgIcon } from '@/components/svg/SvgIconBackupEran'
+import { SearchBar } from '@/components/homepageComponents/SearchBar'
 
 const HERO_CHIPS = [
   'Website Development',
@@ -13,10 +13,6 @@ const TRUSTED_BY = ['Meta', 'Google', 'Netflix', 'P&G', 'PayPal', 'Payoneer']
 
 export function HomeHero() {
   function onChipClick(ev) {
-    ev.preventDefault()
-  }
-
-  function onSearchSubmit(ev) {
     ev.preventDefault()
   }
 
@@ -35,22 +31,9 @@ export function HomeHero() {
             will take it from here
           </h1>
 
-          <form className="home-hero-search" role="search" onSubmit={onSearchSubmit}>
-            <input
-              className="home-hero-searchInput"
-              type="search"
-              placeholder="Search for any service..."
-              autoComplete="off"
-            />
-
-            <button
-              className="home-hero-searchBtn grid place-center"
-              type="submit"
-              aria-label="Search"
-            >
-              <SvgIcon icon="heroSearch" />
-            </button>
-          </form>
+          <div className="home-hero-search" role="search">
+            <SearchBar />
+          </div>
 
           <div className="home-hero-chips flex">
             {HERO_CHIPS.map((label) => (

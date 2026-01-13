@@ -1,17 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-export function SearchInput() {
+export function SearchBar() {
   const [query, setQuery] = useState('')
   const navigate = useNavigate()
   const location = useLocation()
   const prevPathRef = useRef(location.pathname)
-
-  useEffect(() => {
-    return () => {
-      document.body.classList.remove('is-search-focused')
-    }
-  }, [])
 
   useEffect(() => {
     const prevPath = prevPathRef.current
@@ -22,31 +16,16 @@ export function SearchInput() {
     prevPathRef.current = nextPath
   }, [location.pathname])
 
-  function onFocusCapture() {
-    document.body.classList.add('is-search-focused')
-  }
-
-  function onBlurCapture() {
-    setTimeout(() => {
-      const active = document.activeElement
-      const stillInSearch = active?.closest?.('.header-search')
-      if (!stillInSearch) document.body.classList.remove('is-search-focused')
-    }, 0)
-  }
-
   function onSubmit(ev) {
     ev.preventDefault()
     const trimmed = query.trim()
     if (!trimmed) return
-    document.body.classList.remove('is-search-focused')
     navigate(`/search?q=${encodeURIComponent(trimmed)}`)
   }
 
   return (
     <form
       className="search grid"
-      onFocusCapture={onFocusCapture}
-      onBlurCapture={onBlurCapture}
       onSubmit={onSubmit}
     >
       <input
