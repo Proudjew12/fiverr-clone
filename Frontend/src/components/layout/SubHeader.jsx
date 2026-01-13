@@ -1,32 +1,39 @@
 import 'swiper/css'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Mousewheel } from 'swiper/modules'
+import { useNavigate } from 'react-router-dom'
 import { useSwiperNav } from '@/hooks/useSwiperNav'
 import { SvgIcon } from '@/components/svg/SvgIconBackupEran'
+import { gigService } from '@/services/leo.service.local.js'
+import { utilService } from '@/services/util.service'
 
 const CATEGORIES = [
-  { key: 'trending', label: 'Trending 🔥' },
-  { key: 'graphics', label: 'Graphics & Design' },
-  { key: 'tech', label: 'Programming & Tech' },
-  { key: 'marketing', label: 'Digital Marketing' },
-  { key: 'video', label: 'Video & Animation' },
-  { key: 'writing', label: 'Writing & Translation' },
-  { key: 'music', label: 'Music & Audio' },
-  { key: 'business', label: 'Business' },
-  { key: 'finance', label: 'Finance' },
-  { key: 'ai', label: 'AI Services' },
-  { key: 'lifestyle', label: 'Personal Growth' },
-  { key: 'consulting', label: 'Consulting' },
-  { key: 'data', label: 'Data' },
-  { key: 'photo', label: 'Photography' },
+  { key: 'trending', label: 'Trending 🔥', tag: 'trending' },
+  { key: 'graphics', label: 'Graphics & Design', tag: 'graphics' },
+  { key: 'tech', label: 'Programming & Tech', tag: 'programming' },
+  { key: 'marketing', label: 'Digital Marketing', tag: 'marketing' },
+  { key: 'video', label: 'Video & Animation', tag: 'video editing' },
+  { key: 'writing', label: 'Writing & Translation', tag: 'writing' },
+  { key: 'music', label: 'Music & Audio', tag: 'music' },
+  { key: 'business', label: 'Business', tag: 'business' },
+  { key: 'finance', label: 'Finance', tag: 'finance' },
+  { key: 'ai', label: 'AI Services', tag: 'ai' },
+  { key: 'lifestyle', label: 'Personal Growth', tag: 'personal growth' },
+  { key: 'consulting', label: 'Consulting', tag: 'consulting' },
+  { key: 'data', label: 'Data', tag: 'data' },
+  { key: 'photo', label: 'Photography', tag: 'photography' },
 ]
 
 export function SubHeader() {
   const { onSwiper, onSlideChange, slidePrev, slideNext, isBeginning, isEnd } =
     useSwiperNav()
+  const navigate = useNavigate()
 
-  function onCategoryClick(ev) {
-    ev.preventDefault()
+  function onCategoryClick(item) {
+    const filterBy = gigService.getDefaultFilter()
+    if (item?.tag) filterBy.tags = [item.tag]
+    const queryStr = utilService.buildQueryParams(filterBy)
+    navigate(`/search?${queryStr}`)
   }
 
   return (
@@ -62,7 +69,11 @@ export function SubHeader() {
         >
           {CATEGORIES.map((item) => (
             <SwiperSlide key={item.key} className="sub-header-slide">
-              <button type="button" className="sub-header-link" onClick={onCategoryClick}>
+              <button
+                type="button"
+                className="sub-header-link"
+                onClick={() => onCategoryClick(item)}
+              >
                 {item.label}
               </button>
             </SwiperSlide>

@@ -18,7 +18,7 @@ export function SearchInput() {
   useEffect(() => {
     const prevPath = prevPathRef.current
     const nextPath = location.pathname
-    if (prevPath.startsWith('/search') && !nextPath.startsWith('/search')) {
+    if (prevPath !== nextPath && !nextPath.startsWith('/search')) {
       setQuery('')
     }
     prevPathRef.current = nextPath

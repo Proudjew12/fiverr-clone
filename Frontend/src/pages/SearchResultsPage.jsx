@@ -16,7 +16,17 @@ export function SearchResultsPage() {
     async function loadResults() {
       try {
         setIsLoading(true)
-        const data = await gigService.query({ txt: query })
+        const filterBy = {
+          txt: query,
+          tags: searchParams.getAll('tags'),
+          minPrice: searchParams.get('minPrice'),
+          maxPrice: searchParams.get('maxPrice'),
+          topRated: searchParams.get('topRated') === 'true',
+          basic: searchParams.get('basic') === 'true',
+          level1: searchParams.get('level1') === 'true',
+          level2: searchParams.get('level2') === 'true',
+        }
+        const data = await gigService.query(filterBy)
         if (isMounted) setGigs(data)
       } catch (err) {
         console.error('Failed to search gigs', err)
@@ -31,7 +41,7 @@ export function SearchResultsPage() {
     return () => {
       isMounted = false
     }
-  }, [query])
+  }, [query, searchParams])
 
   const title = query ? (
     <>
