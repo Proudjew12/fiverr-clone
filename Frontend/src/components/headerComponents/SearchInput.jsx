@@ -1,9 +1,20 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 export function SearchInput() {
   const [query, setQuery] = useState('')
   const navigate = useNavigate()
+  const location = useLocation()
+  const prevPathRef = useRef(location.pathname)
+
+  useEffect(() => {
+    const prevPath = prevPathRef.current
+    const nextPath = location.pathname
+    if (prevPath.startsWith('/search') && !nextPath.startsWith('/search')) {
+      setQuery('')
+    }
+    prevPathRef.current = nextPath
+  }, [location.pathname])
 
   function onFocusCapture() {
     document.body.classList.add('is-search-focused')
