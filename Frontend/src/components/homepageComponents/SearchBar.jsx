@@ -12,7 +12,7 @@ export function SearchBar() {
   useEffect(() => {
     const prevPath = prevPathRef.current
     const nextPath = location.pathname
-    if (prevPath.startsWith('/search') && !nextPath.startsWith('/search')) {
+    if (prevPath.startsWith('/index') && !nextPath.startsWith('/index')) {
       setQuery('')
     }
     prevPathRef.current = nextPath
@@ -25,7 +25,7 @@ export function SearchBar() {
     const filterBy = gigService.getDefaultFilter()
     filterBy.txt = trimmed
     const queryStr = utilService.buildQueryParams(filterBy)
-    navigate(`/search?${queryStr}`)
+    navigate(`/index?${queryStr}`)
   }
 
   return (

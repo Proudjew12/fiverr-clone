@@ -1,30 +1,29 @@
 import { useEffect, useRef, useState } from 'react'
 import { utilService } from '@/services/util.service.js'
 import { FilterDropDown } from './FilterDropDown'
+import { useSearchParams } from 'react-router-dom'
 
 export function GigFilter({ filterBy, onSetFilter }) {
-  const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
   const [activeFilter, setActiveFilter] = useState(null)
-
-  onSetFilter = useRef(utilService.debounce(onSetFilter, 100))
+  const [searchParams] = useSearchParams()
 
   useEffect(() => {
-    onSetFilter.current(filterByToEdit)
-  }, [filterByToEdit])
+  }, [searchParams])
 
-  function onToggleFilter(filterName) {
-    setActiveFilter((prevFilter) => {
-      if (prevFilter === filterName) return null
-      return filterName
-    })
+ function onToggleFilter(filterName) {
+    setActiveFilter((prevFilter) => (prevFilter === filterName ? null : filterName))
   }
 
   function handleChange({ target }) {
     let { value, name: field, type, checked } = target
+
     value = type === 'checkbox' ? checked : type === 'number' ? +value : value
-    setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
+    
+
+    onSetFilter({ ...filterBy, [field]: value })
   }
-  console.log(filterByToEdit)
+
+
   return (
     <section className="gig-filter ">
       <div className="filter-dropdown" onClick={() => onToggleFilter('service_options')}>
@@ -32,7 +31,7 @@ export function GigFilter({ filterBy, onSetFilter }) {
         <span className="drop-arrow">⌃</span>
         {activeFilter === 'service_options' && (
           <FilterDropDown
-            filterByToEdit={filterByToEdit}
+           
             handleChange={handleChange}
             filterBy={filterBy}
             onSetFilter={onSetFilter}
@@ -45,7 +44,7 @@ export function GigFilter({ filterBy, onSetFilter }) {
         <span className="drop-arrow">⌃</span>
         {activeFilter === 'seller_details' && (
           <FilterDropDown
-            filterByToEdit={filterByToEdit}
+           
             handleChange={handleChange}
             filterBy={filterBy}
             onSetFilter={onSetFilter}
@@ -58,7 +57,7 @@ export function GigFilter({ filterBy, onSetFilter }) {
         <span className="drop-arrow">⌃</span>
         {activeFilter === 'budget' && (
           <FilterDropDown
-            filterByToEdit={filterByToEdit}
+           
             handleChange={handleChange}
             filterBy={filterBy}
             onSetFilter={onSetFilter}
@@ -71,7 +70,7 @@ export function GigFilter({ filterBy, onSetFilter }) {
         <span className="drop-arrow">⌃</span>
         {activeFilter === 'delivery_time' && (
           <FilterDropDown
-            filterByToEdit={filterByToEdit}
+           
             handleChange={handleChange}
             filterBy={filterBy}
             onSetFilter={onSetFilter}

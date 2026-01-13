@@ -33,7 +33,7 @@ export function SubHeader() {
     const filterBy = gigService.getDefaultFilter()
     if (item?.tag) filterBy.tags = [item.tag]
     const queryStr = utilService.buildQueryParams(filterBy)
-    navigate(`/search?${queryStr}`)
+    navigate(`/index?${queryStr}`)
   }
 
   return (

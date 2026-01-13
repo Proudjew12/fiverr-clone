@@ -44,7 +44,7 @@ export function SearchInput() {
     const filterBy = gigService.getDefaultFilter()
     filterBy.txt = trimmed
     const queryStr = utilService.buildQueryParams(filterBy)
-    navigate(`/search?${queryStr}`)
+    navigate(`/index?${queryStr}`)
   }
 
   return (

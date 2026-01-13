@@ -13,5 +13,8 @@
     button:hover {
         cursor: pointer;
     }
+    main{
+        width: 100%;
+    }
 
 }
