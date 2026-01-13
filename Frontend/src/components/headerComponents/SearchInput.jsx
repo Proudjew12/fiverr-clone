@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { gigService } from '@/services/leo.service.local.js'
+import { utilService } from '@/services/util.service'
 
 export function SearchInput() {
   const [query, setQuery] = useState('')
@@ -39,7 +41,10 @@ export function SearchInput() {
     const trimmed = query.trim()
     if (!trimmed) return
     document.body.classList.remove('is-search-focused')
-    navigate(`/search?q=${encodeURIComponent(trimmed)}`)
+    const filterBy = gigService.getDefaultFilter()
+    filterBy.txt = trimmed
+    const queryStr = utilService.buildQueryParams(filterBy)
+    navigate(`/search?${queryStr}`)
   }
 
   return (

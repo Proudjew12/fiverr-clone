@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { GigList } from '@/components/gig/GigList'
 import { EmptyState } from '@/components/ui/EmptyState'
-import { gigService } from '@/services/fiverr.service.local.js'
+import { gigService } from '@/services/leo.service.local.js'
 
 export function SearchResultsPage() {
   const [searchParams] = useSearchParams()
-  const query = searchParams.get('q') || ''
+  const query = searchParams.get('txt') || searchParams.get('q') || ''
   const [gigs, setGigs] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
@@ -88,7 +88,8 @@ export function SearchResultsPage() {
           <div className="results-meta">
             <span className="results-count">{resultsLabel}</span>
             <button className="sort-btn" type="button">
-              Sort by: <strong>Relevance</strong> <span className="dropdown-caret">v</span>
+              Sort by: <strong>Relevance</strong>{' '}
+              <span className="dropdown-caret">v</span>
             </button>
           </div>
         </header>

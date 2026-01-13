@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { gigService } from '@/services/leo.service.local.js'
+import { utilService } from '@/services/util.service'
 
 export function SearchBar() {
   const [query, setQuery] = useState('')
@@ -20,14 +22,14 @@ export function SearchBar() {
     ev.preventDefault()
     const trimmed = query.trim()
     if (!trimmed) return
-    navigate(`/search?q=${encodeURIComponent(trimmed)}`)
+    const filterBy = gigService.getDefaultFilter()
+    filterBy.txt = trimmed
+    const queryStr = utilService.buildQueryParams(filterBy)
+    navigate(`/search?${queryStr}`)
   }
 
   return (
-    <form
-      className="search grid"
-      onSubmit={onSubmit}
-    >
+    <form className="search grid" onSubmit={onSubmit}>
       <input
         className="search-input search-input-long"
         type="search"
