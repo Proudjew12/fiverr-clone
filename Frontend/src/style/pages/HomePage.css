@@ -1,6 +1,7 @@
 .home-page {
   position: relative;
   background: #fff;
+  margin-top: -40px;
 }
 
 /* HERO owns the clipping (NOT the whole homepage) */

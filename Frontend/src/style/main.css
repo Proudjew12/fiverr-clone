@@ -51,6 +51,8 @@
 /* layout */
 @import './components/layout/AppHeader.css';
 @import './components/layout/AppFooter.css';
+@import './components/layout/SubHeader.css';
+@import './components/layout/SubFooter.css';
 
 /* ============================
    Page styles
