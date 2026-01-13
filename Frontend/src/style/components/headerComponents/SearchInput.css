@@ -2,6 +2,13 @@
   width: 480px;
   max-width: 42vw;
   min-width: 260px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.header-search.is-hidden {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
 }
 
 .search {

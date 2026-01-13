@@ -6,6 +6,7 @@ import { ExploreDd } from '@/components/headerComponents/ExploreDd'
 import { SearchInput } from '@/components/headerComponents/SearchInput'
 import { SvgIcon } from '@/components/svg/SvgIconBackupEran'
 import { useDropdown } from '@/hooks/useDropdown'
+import { useHeaderSearchObserver } from '@/hooks/useHeaderSearchObserver'
 
 const DEFAULT_LOCALE = {
   langLabel: 'English',
@@ -14,12 +15,13 @@ const DEFAULT_LOCALE = {
 
 export function AppHeader() {
   const { openDd, toggleDd, closeDd, rootRef } = useDropdown()
+  const showHeaderSearch = useHeaderSearchObserver()
 
   return (
     <header ref={rootRef} className="app-header">
       <div className="app-header-row">
         <div className="app-header-inner flex items-center justify-between">
-          <HeaderLeft />
+          <HeaderLeft showSearch={showHeaderSearch} />
           <HeaderRight openDd={openDd} onToggleDd={toggleDd} onCloseDd={closeDd} />
         </div>
       </div>
@@ -31,12 +33,12 @@ export function AppHeader() {
    Left side
    ========================= */
 
-function HeaderLeft() {
+function HeaderLeft({ showSearch }) {
   return (
     <div className="header-left flex items-center">
       <Logo />
 
-      <div className="header-search">
+      <div className={`header-search ${showSearch ? '' : 'is-hidden'}`}>
         <SearchInput />
       </div>
     </div>
