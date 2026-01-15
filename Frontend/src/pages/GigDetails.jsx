@@ -18,7 +18,7 @@ export function GigDetails() {
     '/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png',
     '/assets/Details/Stefan/img/FF6571B6-B693-4818-84F9-23B3BDA495E1.jpeg',
     '/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png',
-    '/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png'
+    '/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png',
   ]
   const [index, setIndex] = useState(0)
   useEffect(() => {
@@ -29,7 +29,7 @@ export function GigDetails() {
     try {
       const gig = await gigService.getById(gigId)
       setGig(gig)
-      setGigImgs([...gig.videoUrls,...gig.imgUrls])
+      setGigImgs([...gig.videoUrls, ...gig.imgUrls])
     } catch (error) {
       console.log('There is no gig with id:', gigId, error)
     }
@@ -40,15 +40,14 @@ export function GigDetails() {
     else setIndex((index) => index + diff)
   }
   function getFileType(src) {
-  const extension = src.split('.').pop().toLowerCase();
+    const extension = src.split('.').pop().toLowerCase()
 
-  if (['mp4', 'webm', 'ogg'].includes(extension)) return 'video';
-  if (['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(extension)) return 'image';
+    if (['mp4', 'webm', 'ogg'].includes(extension)) return 'video'
+    if (['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(extension)) return 'image'
 
-  return 'unknown';
-}
+    return 'unknown'
+  }
 
-  
   if (!gig) return <Loader />
   return (
     <section className="gig-details">
@@ -76,10 +75,11 @@ export function GigDetails() {
           <button className="arrow left" onClick={() => setImg(-1)}>
             ‹
           </button>
-          {getFileType(gigImgs[index]) === 'video' ? 
-          <video src={gigImgs[index]} muted autoPlay loop playsInline/>:
-          <img src={`${gigImgs[index]}`} alt="Hero visual" />
-        }
+          {getFileType(gigImgs[index]) === 'video' ? (
+            <video src={gigImgs[index]} muted autoPlay loop playsInline />
+          ) : (
+            <img src={`${gigImgs[index]}`} alt="Hero visual" />
+          )}
           <button className="arrow right" onClick={() => setImg(1)}>
             ›
           </button>
@@ -90,20 +90,25 @@ export function GigDetails() {
           </button>
 
           <div className="thumbnails">
-            {gigImgs.map((img, i) => (
-                
-                getFileType(img) === 'video'
-                ?
-                <video key={i} src={img} className={`thumbnail ${i === index ? 'active' : ''}`} onClick={() => setIndex(i)}
-                alt="thumbnail"/>:
-              <img
-                key={i}
-                src={img}
-                className={`thumbnail ${i === index ? 'active' : ''}`}
-                onClick={() => setIndex(i)}
-                alt="thumbnail"
-              />
-            ))}
+            {gigImgs.map((img, i) =>
+              getFileType(img) === 'video' ? (
+                <video
+                  key={i}
+                  src={img}
+                  className={`thumbnail ${i === index ? 'active' : ''}`}
+                  onClick={() => setIndex(i)}
+                  alt="thumbnail"
+                />
+              ) : (
+                <img
+                  key={i}
+                  src={img}
+                  className={`thumbnail ${i === index ? 'active' : ''}`}
+                  onClick={() => setIndex(i)}
+                  alt="thumbnail"
+                />
+              )
+            )}
           </div>
 
           <button className="thumb-arrow" onClick={() => setImg(1)}>
@@ -135,13 +140,28 @@ export function GigDetails() {
             </div>
           </div>
           <button className="contact-btn">Contact me</button>
-          <div className='seller-details'>
+          <div className="seller-details">
             <ul>
-            <li>From: <br/><strong>{gig.loc}</strong></li>
-            <li>Avg. respone time: <br/><strong>{gig.avgResponseTime} hours</strong></li>   
-            <li>Languages: <br/><strong>English, German</strong></li> 
-            <li>Member since: <br/><strong>Jan 2023</strong></li>
-            <li>Last Delivery: <br/><strong>18 hours</strong></li>
+              <li>
+                From: <br />
+                <strong>{gig.loc}</strong>
+              </li>
+              <li>
+                Avg. respone time: <br />
+                <strong>{gig.avgResponseTime} hours</strong>
+              </li>
+              <li>
+                Languages: <br />
+                <strong>English, German</strong>
+              </li>
+              <li>
+                Member since: <br />
+                <strong>Jan 2023</strong>
+              </li>
+              <li>
+                Last Delivery: <br />
+                <strong>18 hours</strong>
+              </li>
             </ul>
           </div>
         </div>
@@ -164,10 +184,10 @@ export function GigDetails() {
               </p>
             </header>
             <main>
-                <div className='delivery'>
-                    <SvgIcon icon={'time'}/>
-                    {gig.daysToMake}-day delivery
-                </div>
+              <div className="delivery">
+                <SvgIcon icon={'time'} />
+                {gig.daysToMake}-day delivery
+              </div>
               <ul className="features">
                 <li>
                   <SvgIcon icon={'v'} />
