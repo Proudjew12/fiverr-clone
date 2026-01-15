@@ -5,6 +5,7 @@ import { HomePage } from './pages/HomePage.jsx'
 import { AboutPage } from './pages/AboutPage.jsx'
 import { GigIndex } from './pages/GigIndex.jsx'
 import { GigDetails } from './pages/GigDetails.jsx'
+import { PaymentPage } from './pages/PaymentPage.jsx'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           {/* <Route path="/search" element={<SearchResultsPage />} /> */}
           <Route path="/about" element={<AboutPage />} />
           <Route path='/gig/:gigId' element={<GigDetails/>}/>
+          <Route path="/gig/:gigId/payment" element={<PaymentPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

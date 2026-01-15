@@ -2,12 +2,13 @@ import { SvgIcon } from '@/components/svg/SvgIcon'
 import { gigService } from '@/services/leo.service.local.js'
 import { Loader } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 export function GigDetails() {
   const { gigId } = useParams()
   const [gig, setGig] = useState(null)
   const [gigImgs, setGigImgs] = useState([])
+  const navigate = useNavigate()
   const imgs = [
     '/assets/Details/Stefan/img/FF6571B6-B693-4818-84F9-23B3BDA495E1.jpeg',
     '/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png',
@@ -195,7 +196,10 @@ export function GigDetails() {
               </ul>
             </main>
             <footer>
-              <button className="continue-btn">
+              <button
+                className="continue-btn"
+                onClick={() => navigate(`/gig/${gigId}/payment`)}
+              >
                 Continue{' '}
                 <span>
                   <SvgIcon icon={'rightArrow'} />

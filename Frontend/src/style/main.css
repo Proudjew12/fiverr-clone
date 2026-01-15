@@ -62,6 +62,7 @@
 @import './pages/AboutPage.css';
 @import './pages/GigIndex.css';
 @import './pages/GigDetails.css';
+@import './pages/PaymentPage.css';
 /* ============================
    Media queries (ALWAYS LAST)
 ============================ */
