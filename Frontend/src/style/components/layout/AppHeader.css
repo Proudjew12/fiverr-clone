@@ -128,3 +128,33 @@
   color: var(--clr-surface);
   text-decoration: none;
 }
+
+/* =========================
+   Logo container
+   ========================= */
+
+.logo-header {
+  color: inherit;
+}
+
+.site-logo-text {
+  font-family:
+    Macan,
+    Helvetica Neue,
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: #404145;
+  letter-spacing: -0.5px;
+}
+
+.site-logo-text::after {
+  content: '.';
+  color: #1dbf73;
+}
+
+.logo-header:hover {
+  text-decoration: none;
+}
