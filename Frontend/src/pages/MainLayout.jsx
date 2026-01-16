@@ -6,19 +6,20 @@ import { SubFooter } from '../components/layout/SubFooter.jsx'
 
 export function MainLayout() {
   const location = useLocation()
-  const showSubHeader = location.pathname !== '/'
+  const isPaymentPage = location.pathname.includes('/payment')
+  const showSubHeader = location.pathname !== '/' && !isPaymentPage
 
   return (
     <div className="main-layout">
-      <AppHeader />
+      {!isPaymentPage && <AppHeader />}
       {showSubHeader && <SubHeader />}
 
       <main className="main-content">
         <Outlet />
       </main>
 
-      <SubFooter />
-      <AppFooter />
+      {!isPaymentPage && <SubFooter />}
+      {!isPaymentPage && <AppFooter />}
     </div>
   )
 }

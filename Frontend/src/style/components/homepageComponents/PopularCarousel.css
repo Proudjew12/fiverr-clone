@@ -12,12 +12,7 @@
 .popular-title {
   margin: 0 0 24px;
   color: #404145;
-  font-family:
-    Macan,
-    Helvetica Neue,
-    Helvetica,
-    Arial,
-    sans-serif;
+  font-family: var(--font-primary);
   font-weight: 400;
   letter-spacing: -1.44px;
   font-size: 48px;
@@ -97,12 +92,7 @@
   margin: 0 0 8px;
   padding: 0 6px;
   color: #fff;
-  font-family:
-    Macan,
-    Helvetica Neue,
-    Helvetica,
-    Arial,
-    sans-serif;
+  font-family: var(--font-primary);
   font-weight: 700;
   font-size: 18px;
   line-height: 28px;

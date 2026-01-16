@@ -5,16 +5,22 @@
     justify-items: center;
     gap: 25px;
 
-    button{
-        border: solid green 1px;
-        border-radius: 5px;
-        padding: 5px;
-    }
-    button:hover {
-        cursor: pointer;
-    }
     main{
         width: 100%;
     }
 
+}
+
+.main-layout-index .random-gig-btn {
+    border: 1px solid var(--clr-border);
+    border-radius: 6px;
+    padding: 6px 10px;
+    background: #fff;
+    font-weight: 600;
+    color: var(--clr-primary);
+    margin: 10px 0 18px;
+}
+
+.main-layout-index .random-gig-btn:hover {
+    cursor: pointer;
 }

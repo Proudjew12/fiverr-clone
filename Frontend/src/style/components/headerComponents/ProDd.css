@@ -55,23 +55,13 @@
 }
 
 .pro-menu-title {
-  font:
-    700 14px/22px Macan,
-    Helvetica Neue,
-    Helvetica,
-    Arial,
-    sans-serif;
+  font: 700 14px/22px var(--font-primary);
 
   color: #222325;
 }
 
 .pro-menu-sub {
-  font:
-    400 14px/22px Macan,
-    Helvetica Neue,
-    Helvetica,
-    Arial,
-    sans-serif;
+  font: 400 14px/22px var(--font-primary);
 
   color: #222325;
 }

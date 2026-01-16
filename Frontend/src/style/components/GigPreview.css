@@ -4,7 +4,7 @@
     max-width: 276px;
     background: #fff;
     cursor: pointer;
-    font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: var(--font-primary);
     display: flex;
     flex-direction: column;
     gap: 10px;
