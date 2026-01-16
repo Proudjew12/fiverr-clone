@@ -14,6 +14,7 @@ export function GigIndex() {
     txt: searchParams.get('txt') || searchParams.get('q') || '',
     minPrice: searchParams.get('minPrice') || '',
     maxPrice: searchParams.get('maxPrice') || '',
+    sort: searchParams.get('sort') || '',
     tags: searchParams.getAll('tags') || [],
     topRated: searchParams.get('topRated') === 'true',
     basic: searchParams.get('basic') === 'true',

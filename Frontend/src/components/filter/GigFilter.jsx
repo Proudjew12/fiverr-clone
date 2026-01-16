@@ -2,15 +2,17 @@ import { useEffect, useRef, useState } from 'react'
 import { utilService } from '@/services/util.service.js'
 import { FilterDropDown } from './FilterDropDown'
 import { useSearchParams } from 'react-router-dom'
+import * as Switch from '@radix-ui/react-switch'
 
 export function GigFilter({ filterBy, onSetFilter }) {
   const [activeFilter, setActiveFilter] = useState(null)
   const [searchParams] = useSearchParams()
+  const isChecked = searchParams.get('sort') === 'true'
 
   useEffect(() => {
   }, [searchParams])
 
- function onToggleFilter(filterName) {
+  function onToggleFilter(filterName) {
     setActiveFilter((prevFilter) => (prevFilter === filterName ? null : filterName))
   }
 
@@ -18,7 +20,7 @@ export function GigFilter({ filterBy, onSetFilter }) {
     let { value, name: field, type, checked } = target
 
     value = type === 'checkbox' ? checked : type === 'number' ? +value : value
-    
+
 
     onSetFilter({ ...filterBy, [field]: value })
   }
@@ -31,7 +33,7 @@ export function GigFilter({ filterBy, onSetFilter }) {
         <span className="drop-arrow">⌃</span>
         {activeFilter === 'service_options' && (
           <FilterDropDown
-           
+
             handleChange={handleChange}
             filterBy={filterBy}
             onSetFilter={onSetFilter}
@@ -44,7 +46,7 @@ export function GigFilter({ filterBy, onSetFilter }) {
         <span className="drop-arrow">⌃</span>
         {activeFilter === 'seller_details' && (
           <FilterDropDown
-           
+
             handleChange={handleChange}
             filterBy={filterBy}
             onSetFilter={onSetFilter}
@@ -57,7 +59,7 @@ export function GigFilter({ filterBy, onSetFilter }) {
         <span className="drop-arrow">⌃</span>
         {activeFilter === 'budget' && (
           <FilterDropDown
-           
+
             handleChange={handleChange}
             filterBy={filterBy}
             onSetFilter={onSetFilter}
@@ -70,7 +72,7 @@ export function GigFilter({ filterBy, onSetFilter }) {
         <span className="drop-arrow">⌃</span>
         {activeFilter === 'delivery_time' && (
           <FilterDropDown
-           
+
             handleChange={handleChange}
             filterBy={filterBy}
             onSetFilter={onSetFilter}
@@ -78,6 +80,22 @@ export function GigFilter({ filterBy, onSetFilter }) {
           />
         )}
       </div>
-    </section>
+
+      <label className="sort-filter">
+        <span className="label-text">Price</span>
+        <div className="switch-wrapper">
+          <input
+            type="checkbox"
+            name="sort"
+            checked={searchParams.get('sort') === 'true'}
+            onChange={handleChange}
+          />
+          <span className="slider"></span>
+        </div>
+      </label>
+
+      
+
+    </section >
   )
 }

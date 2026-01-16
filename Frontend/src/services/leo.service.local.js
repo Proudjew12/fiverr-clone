@@ -31,6 +31,11 @@ async function query(filterBy = {}) {
     )
   }
 
+  if (filterBy.sort) {
+    console.log('price')
+    gigs = gigs.sort((a, b) =>  a.price - b.price)
+  }
+
   if (txt) {
     gigs = gigs.filter((gig) => {
       const haystack = [
