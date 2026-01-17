@@ -32,7 +32,6 @@ async function query(filterBy = {}) {
   }
 
   if (filterBy.sort) {
-    console.log('price')
     gigs = gigs.sort((a, b) =>  a.price - b.price)
   }
 
@@ -57,12 +56,10 @@ async function query(filterBy = {}) {
     )
   }
 
-  if (minPrice !== null || maxPrice !== null) {
+  if (maxPrice) {
     gigs = gigs.filter((gig) => {
-      const price = Number(gig.price || 0)
-      if (minPrice !== null && price < minPrice) return false
-      if (maxPrice !== null && price > maxPrice) return false
-      return true
+      const price = gig.price || 0
+      return price <= maxPrice
     })
   }
 

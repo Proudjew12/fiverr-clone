@@ -4,16 +4,16 @@ import { useSearchParams } from 'react-router-dom'
 
 
 
-export function FilterDropDown({ handleChange, filterName }) {
+export function SellerDetailsFilter({ handleChange }) {
 
   const [searchParams] = useSearchParams()
 
   return (
     <>
-      {filterName === "Seller details" && (
+      
         <div className="dropdown-container" onClick={(ev) => ev.stopPropagation()}>
 
-          <h2 className="drop-name">{filterName}</h2>
+          <h2 className="drop-name">Seller Details</h2>
 
           <div className="checks-container">
             <label className="check-filter">
@@ -41,7 +41,7 @@ export function FilterDropDown({ handleChange, filterName }) {
 
           </div>
         </div>
-      )}
+      
     </>
   )
 }

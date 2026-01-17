@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import { utilService } from '@/services/util.service.js'
-import { FilterDropDown } from './FilterDropDown'
+import { SellerDetailsFilter } from './SellerDetailsFilter.jsx'
 import { useSearchParams } from 'react-router-dom'
-import * as Switch from '@radix-ui/react-switch'
+import { BudgetFilter } from './BudgetFilter.jsx'
+
+
 
 export function GigFilter({ filterBy, onSetFilter }) {
   const [activeFilter, setActiveFilter] = useState(null)
   const [searchParams] = useSearchParams()
-  const isChecked = searchParams.get('sort') === 'true'
+
 
   useEffect(() => {
   }, [searchParams])
@@ -23,7 +25,9 @@ export function GigFilter({ filterBy, onSetFilter }) {
 
 
     onSetFilter({ ...filterBy, [field]: value })
+    setActiveFilter(null)
   }
+
 
 
   return (
@@ -47,12 +51,12 @@ export function GigFilter({ filterBy, onSetFilter }) {
           <span>Seller details</span>
           <span className="drop-arrow">⌃</span>
           {activeFilter === 'seller_details' && (
-            <FilterDropDown
+            <SellerDetailsFilter
 
               handleChange={handleChange}
               filterBy={filterBy}
               onSetFilter={onSetFilter}
-              filterName={'Seller details'}
+
             />
           )}
         </div>
@@ -60,12 +64,9 @@ export function GigFilter({ filterBy, onSetFilter }) {
           <span>Budget</span>
           <span className="drop-arrow">⌃</span>
           {activeFilter === 'budget' && (
-            <FilterDropDown
+            <BudgetFilter
 
               handleChange={handleChange}
-              filterBy={filterBy}
-              onSetFilter={onSetFilter}
-              filterName={'budget'}
             />
           )}
         </div>
@@ -78,7 +79,7 @@ export function GigFilter({ filterBy, onSetFilter }) {
               handleChange={handleChange}
               filterBy={filterBy}
               onSetFilter={onSetFilter}
-              filterName={'delivery time'}
+
             />
           )}
         </div>

@@ -58,7 +58,7 @@ export function GigPreview({ gig }) {
                 <div className="pricing-row">
                     <div className="price-info">
                         <span className="starting-from">From</span>
-                        <span className="price-tag">₪{Math.round(price * 4)}</span>
+                        <span className="price-tag">₪{price}</span>
                         <span className="tax-fees-note">+ taxes & fees </span>
                     </div>
                 </div>

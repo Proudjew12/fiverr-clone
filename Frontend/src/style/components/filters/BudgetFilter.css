@@ -1,0 +1,102 @@
+.filter-budget {
+
+    position: absolute;
+    top: 53px;
+    left: 378px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    z-index: 1;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+
+}
+
+.input-section {
+
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-label {
+    font-size: 14px;
+    color: #717171;
+    font-weight: 500;
+}
+
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.currency-symbol {
+    position: absolute;
+    left: 12px;
+    color: #222;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.price-input {
+    width: 100%;
+    padding: 12px 12px 12px 30px;
+    font-size: 16px;
+    border: 1px solid #b0b0b0;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+
+.price-input:focus {
+    border-color: #222;
+    border-width: 1.5px;
+}
+
+.divider {
+    height: 1px;
+    background-color: #eddddd;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+
+.actions-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px 20px 20px;
+}
+
+.btn-clear {
+    background: none;
+    border: none;
+    text-decoration: underline;
+    color: #5e5e5e;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.btn-clear:hover {
+    color: #222;
+}
+
+.btn-apply {
+    background-color: #222;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-apply:hover {
+    background-color: #000;
+}
