@@ -1,13 +1,18 @@
 .gig-filter {
     display: flex;
+    justify-content: space-between;
 
     gap: 10px;
 
     position: relative;
 
     background-color: var(--clr2bg);
-    padding: 1em;
     height: 15%;
+
+    .dropdown {
+      display: flex;
+      gap: 18px;
+    }
 
     .filter-dropdown {
         display: flex;

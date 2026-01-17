@@ -28,57 +28,60 @@ export function GigFilter({ filterBy, onSetFilter }) {
 
   return (
     <section className="gig-filter ">
-      <div className="filter-dropdown" onClick={() => onToggleFilter('service_options')}>
-        <span>Service options</span>
-        <span className="drop-arrow">⌃</span>
-        {activeFilter === 'service_options' && (
-          <FilterDropDown
+      <div className="dropdown">
 
-            handleChange={handleChange}
-            filterBy={filterBy}
-            onSetFilter={onSetFilter}
-            filterName={'Service options'}
-          />
-        )}
-      </div>
-      <div className="filter-dropdown" onClick={() => onToggleFilter('seller_details')}>
-        <span>Seller details</span>
-        <span className="drop-arrow">⌃</span>
-        {activeFilter === 'seller_details' && (
-          <FilterDropDown
+        <div className="filter-dropdown" onClick={() => onToggleFilter('service_options')}>
+          <span>Service options</span>
+          <span className="drop-arrow">⌃</span>
+          {activeFilter === 'service_options' && (
+            <FilterDropDown
 
-            handleChange={handleChange}
-            filterBy={filterBy}
-            onSetFilter={onSetFilter}
-            filterName={'Seller details'}
-          />
-        )}
-      </div>
-      <div className="filter-dropdown" onClick={() => onToggleFilter('budget')}>
-        <span>Budget</span>
-        <span className="drop-arrow">⌃</span>
-        {activeFilter === 'budget' && (
-          <FilterDropDown
+              handleChange={handleChange}
+              filterBy={filterBy}
+              onSetFilter={onSetFilter}
+              filterName={'Service options'}
+            />
+          )}
+        </div>
+        <div className="filter-dropdown" onClick={() => onToggleFilter('seller_details')}>
+          <span>Seller details</span>
+          <span className="drop-arrow">⌃</span>
+          {activeFilter === 'seller_details' && (
+            <FilterDropDown
 
-            handleChange={handleChange}
-            filterBy={filterBy}
-            onSetFilter={onSetFilter}
-            filterName={'budget'}
-          />
-        )}
-      </div>
-      <div className="filter-dropdown" onClick={() => onToggleFilter('delivery_time')}>
-        <span>Delivery time</span>
-        <span className="drop-arrow">⌃</span>
-        {activeFilter === 'delivery_time' && (
-          <FilterDropDown
+              handleChange={handleChange}
+              filterBy={filterBy}
+              onSetFilter={onSetFilter}
+              filterName={'Seller details'}
+            />
+          )}
+        </div>
+        <div className="filter-dropdown" onClick={() => onToggleFilter('budget')}>
+          <span>Budget</span>
+          <span className="drop-arrow">⌃</span>
+          {activeFilter === 'budget' && (
+            <FilterDropDown
 
-            handleChange={handleChange}
-            filterBy={filterBy}
-            onSetFilter={onSetFilter}
-            filterName={'delivery time'}
-          />
-        )}
+              handleChange={handleChange}
+              filterBy={filterBy}
+              onSetFilter={onSetFilter}
+              filterName={'budget'}
+            />
+          )}
+        </div>
+        <div className="filter-dropdown" onClick={() => onToggleFilter('delivery_time')}>
+          <span>Delivery time</span>
+          <span className="drop-arrow">⌃</span>
+          {activeFilter === 'delivery_time' && (
+            <FilterDropDown
+
+              handleChange={handleChange}
+              filterBy={filterBy}
+              onSetFilter={onSetFilter}
+              filterName={'delivery time'}
+            />
+          )}
+        </div>
       </div>
 
       <label className="sort-filter">
@@ -94,7 +97,7 @@ export function GigFilter({ filterBy, onSetFilter }) {
         </div>
       </label>
 
-      
+
 
     </section >
   )

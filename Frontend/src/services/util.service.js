@@ -164,19 +164,9 @@ function makeRandomGig() {
     'I will translate english to hebrew',
   ]
 
-  const fullnames = [
-    'John Doe',
-    'Jane Smith',
-    'Dudu Da',
-    'Alice Cooper',
-    'Yossi Cohen',
-    'Daniella Art',
-    'Mark Tech',
-    'Sarah Connor',
-    'Mike Ross',
-  ]
-
+  const fullnames = ['John Doe', 'Jane Smith', 'Dudu Da', 'Alice Cooper', 'Yossi Cohen', 'Daniella Art', 'Mark Tech', 'Sarah Connor', 'Mike Ross']
   const levels = ['basic', 'level 1', 'level 2', 'top rated', 'pro']
+  const tags = ['logo-design', 'video-editing', 'writing', 'react', 'tiktok', 'voice-over', 'translation']
 
   const videos = [
     '/assets/Popular-Services/Video-Editing/video/ahitwsblrjquehepmyhn.mp4',
@@ -195,21 +185,24 @@ function makeRandomGig() {
   return {
     _id: makeId(),
     title: titles[getRandomIntInclusive(0, titles.length - 1)],
-    price: getRandomFloat(10, 200),
+    price: getRandomIntInclusive(20, 500), 
     description: makeLorem(20),
+    daysToDeliver: getRandomIntInclusive(1, 7), 
+    tags: [tags[getRandomIntInclusive(0, tags.length - 1)]],
     owner: {
       _id: makeId(),
       fullname: fullnames[getRandomIntInclusive(0, fullnames.length - 1)],
       imgUrl: images[getRandomIntInclusive(0, images.length - 1)],
       level: levels[getRandomIntInclusive(0, levels.length - 1)],
-      rate: getRandomFloat(3, 5),
+      rate: getRandomFloat(3.8, 5), 
+      reviewsCount: getRandomIntInclusive(1, 500) 
     },
-
     imgUrls: [
       images[getRandomIntInclusive(0, images.length - 1)],
       images[getRandomIntInclusive(0, images.length - 1)],
     ],
     videoUrls: [videos[getRandomIntInclusive(0, videos.length - 1)]],
+    createdAt: Date.now() - getRandomIntInclusive(0, 1000000000) 
   }
 }
 
@@ -258,4 +251,41 @@ function makeLorem(size = 100) {
     txt += words[Math.floor(Math.random() * words.length)] + ' '
   }
   return txt
+}
+
+
+async function saveGigsToFile(gigs) {
+    try {
+       
+        const content = JSON.stringify(gigs, null, 2)
+        
+        await writeToFile('./data/gig.json', content)
+        console.log('Gigs saved successfully!')
+    } catch (err) {
+        console.error('Had trouble saving gigs', err)
+        throw err
+    }
+}
+
+async function loadGigsFromFile() {
+    try {
+        const content = await readFile('./data/gig.json')
+       
+        const gigs = JSON.parse(content)
+        return gigs
+    } catch (err) {
+     
+        console.error('Had trouble loading gigs', err)
+        return []
+    }
+}
+
+async function addRandomGig() {
+    const gigs = await loadGigsFromFile()
+    const newGig = makeRandomGig()
+
+    gigs.push(newGig)
+    await saveGigsToFile(gigs)
+    
+    return newGig
 }
