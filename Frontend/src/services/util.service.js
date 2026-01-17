@@ -1,3 +1,5 @@
+
+
 export const utilService = {
   // ids & random
   makeId,
@@ -25,6 +27,14 @@ export const utilService = {
   deepClone,
   isEmpty,
   buildQueryParams,
+
+  saveGigsToFile,
+  loadGigsFromFile,
+  addRandomGig,
+  
+
+  readJsonFile,
+  writeJsonFile
 }
 
 function makeId(length = 6) {
@@ -254,22 +264,9 @@ function makeLorem(size = 100) {
 }
 
 
-async function saveGigsToFile(gigs) {
-    try {
-       
-        const content = JSON.stringify(gigs, null, 2)
-        
-        await writeToFile('./data/gig.json', content)
-        console.log('Gigs saved successfully!')
-    } catch (err) {
-        console.error('Had trouble saving gigs', err)
-        throw err
-    }
-}
-
 async function loadGigsFromFile() {
     try {
-        const content = await readFile('./data/gig.json')
+        const content = await readFile('../data/gig.json')
        
         const gigs = JSON.parse(content)
         return gigs
@@ -289,3 +286,41 @@ async function addRandomGig() {
     
     return newGig
 }
+
+
+function readJsonFile(path) {
+    const str = fs.readFileSync(path, 'utf8')
+    const json = JSON.parse(str)
+    return json
+}
+
+function writeJsonFile(path, data) {
+    return new Promise((resolve, reject) => {
+        const json = JSON.stringify(data, null, 2)
+        fs.writeFile(path, json, (err) => {
+            if (err) return reject(err)
+            resolve()
+        })
+    })
+}
+
+
+async function saveGigsToFile(gigs) {
+    try {
+        await writeJsonFile('./data/gig.json', gigs)
+        console.log('Gigs saved successfully!')
+    } catch (err) {
+        console.error('Had trouble saving gigs', err)
+        throw err
+    }
+}
+
+// async function loadGigsFromFile() {
+//     try {
+//         const gigs = readJsonFile('./data/gig.json')
+//         return gigs
+//     } catch (err) {
+//         console.error('Had trouble loading gigs', err)
+//         return []
+//     }
+// }

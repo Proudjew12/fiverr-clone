@@ -157,5 +157,260 @@
         }
       }
     ]
+  },
+  {
+    "_id": "g106",
+    "title": "Dynamic Gaming Montage and Highlights Editing",
+    "price": 35.0,
+    "owner": {
+      "_id": "u110",
+      "fullname": "Alex Chen",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/2aff3fb3-bdbd-495c-9aa3-d8e1be9cb2fa.png",
+      "level": "1",
+      "rate": 4.7
+    },
+    "daysToMake": 2,
+    "description": "I will take your stream VODs or clips and turn them into an exciting, fast-paced montage with music sync and effects.",
+    "avgResponseTime": 1,
+    "loc": "South Korea",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/3d28b23b-29f5-48c5-a9a5-02d0a6a3ce15.jpeg",
+      "/assets/Popular-Services/Video-Editing/img/6d446992-fd6b-47df-a643-2107d86e79df.jpg"
+    ],
+    "videoUrls": [
+      "/assets/Popular-Services/Video-Editing/video/dxqqy7tj1ccgckmlagwa.mp4"
+    ],
+    "tags": ["gaming", "montage", "video editing", "twitch"],
+    "likedByUsers": ["gamer_pro", "streamerX"],
+    "reviews": []
+  },
+  {
+    "_id": "g107",
+    "title": "High-End Corporate Interview and Testimonial Editing",
+    "price": 120.0,
+    "owner": {
+      "_id": "u111",
+      "fullname": "Sarah Jenkins",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/4afd03f3-2e64-47f0-914d-6f5129c9510f.PNG",
+      "level": "top rated",
+      "rate": 5
+    },
+    "daysToMake": 5,
+    "description": "Professional editing for corporate interviews. Includes color correction, audio cleaning, lower thirds, and branding integration.",
+    "avgResponseTime": 4,
+    "loc": "Canada",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/2dfa4b57-92a2-4576-b9ba-83602aadbebf.jpg"
+    ],
+    "videoUrls": [
+      "/assets/Popular-Services/Video-Editing/video/e8hgkgd4bio xrmshgpv2.mp4",
+      "/assets/Popular-Services/Video-Editing/video/ecmncdvurwaosxbcgzgp.mp4"
+    ],
+    "tags": ["corporate", "interview", "testimonials", "business"],
+    "likedByUsers": ["biz_owner_NYC"],
+    "reviews": []
+  },
+  {
+    "_id": "g108",
+    "title": "Creative Music Video Production and VFX",
+    "price": 250.0,
+    "owner": {
+      "_id": "u112",
+      "fullname": "Marcus Thorne",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/11 Music Video Ideas to Take Your Music to the Next Level in..png",
+      "level": "2",
+      "rate": 4.9
+    },
+    "daysToMake": 10,
+    "description": "Bring your song to life with a professionally edited music video. Specializing in trippy visuals, smooth transitions, and narrative flow.",
+    "avgResponseTime": 6,
+    "loc": "UK",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/8b1f73ef-c8a8-4342-85f4-da67c86ee783.png",
+      "/assets/Popular-Services/Video-Editing/img/9b249995-f682-4947-8581-88e31580f93a.JPG"
+    ],
+    "videoUrls": [
+      "/assets/Popular-Services/Video-Editing/video/fi5hu5sxzpukadbdadph.mp4"
+    ],
+    "tags": ["music video", "vfx", "creative editing"],
+    "likedByUsers": ["band_member_1"],
+    "reviews": []
+  },
+  {
+    "_id": "g109",
+    "title": "Real Estate Property Walkthrough Video Editing",
+    "price": 65.0,
+    "owner": {
+      "_id": "u113",
+      "fullname": "Elena Rodriguez",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/2fad7c21-59b3-45d3-bd17-ee191afe59a1.png",
+      "level": "1",
+      "rate": 4.5
+    },
+    "daysToMake": 3,
+    "description": "Smooth, stabilized editing for real estate tours. I will add location callouts, background music, and color enhancement to sell the property.",
+    "avgResponseTime": 2,
+    "loc": "Spain",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/32e077eb-3e59-4ede-aa8b-48ed8e968da0.jpg"
+    ],
+    "videoUrls": [],
+    "tags": ["real estate", "property", "walkthrough"],
+    "likedByUsers": ["realtor_jane"],
+    "reviews": []
+  },
+  {
+    "_id": "g110",
+    "title": "Documentary Style storytelling and Post-Production",
+    "price": 180.0,
+    "owner": {
+      "_id": "u114",
+      "fullname": "Kenji Sato",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/43 VET gives advice to his 22 year old self.png",
+      "level": "2",
+      "rate": 5
+    },
+    "daysToMake": 14,
+    "description": "I focus on narrative structure. I will take your interviews and B-roll and craft a compelling documentary story.",
+    "avgResponseTime": 8,
+    "loc": "Japan",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/4e04730c300ee10ffaf6a5f525c09a599b2f4cce.png",
+      "/assets/Popular-Services/Video-Editing/img/06dcfd49-703a-44a7-9acf-a389b14d62f6.jpg"
+    ],
+    "videoUrls": [
+      "/assets/Popular-Services/Video-Editing/video/frygph9qxugik6lujrgo.mp4"
+    ],
+    "tags": ["documentary", "storytelling", "journalism"],
+    "likedByUsers": [],
+    "reviews": []
+  },
+  {
+    "_id": "g111",
+    "title": "Engaging Travel Vlog Editing for YouTube",
+    "price": 55.0,
+    "owner": {
+      "_id": "u115",
+      "fullname": "Chloe Dubois",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/53b025a0-8671-47f0-beee-01175a419df8.jpg",
+      "level": "basic",
+      "rate": 4.2
+    },
+    "daysToMake": 4,
+    "description": "Turn your vacation footage into an engaging vlog. I handle cutting dead air, adding cinematic sequences, music, and sound effects.",
+    "avgResponseTime": 3,
+    "loc": "France",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/1bd2f0f0-602e-4bd7-9de8-d2f33f68d1aa.png"
+    ],
+    "videoUrls": [
+      "/assets/Popular-Services/Video-Editing/video/g7z7tb3cb6ngowcyqnax.mp4"
+    ],
+    "tags": ["travel", "vlog", "youtube"],
+    "likedByUsers": ["travel_couple"],
+    "reviews": []
+  },
+  {
+    "_id": "g112",
+    "title": "Professional Color Grading and Correction Services",
+    "price": 95.0,
+    "owner": {
+      "_id": "u116",
+      "fullname": "Igor V.",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/8eb271fe-5e78-4a39-a956-73416078b9ed.png",
+      "level": "2",
+      "rate": 5
+    },
+    "daysToMake": 3,
+    "description": "Give your video a cinematic look. I specialize in color correction (fixing white balance/exposure) and creative color grading using DaVinci Resolve.",
+    "avgResponseTime": 2,
+    "loc": "Ukraine",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/6e0b1efe-a65c-4b64-b967-4a25072e6ead.png",
+      "/assets/Popular-Services/Video-Editing/img/7E8FCD91-BC4D-4C6B-B2BD-DE9643708A7D.jpeg"
+    ],
+    "videoUrls": [
+      "/assets/Popular-Services/Video-Editing/video/geovhjhu278xloqcmuxt.mp4"
+    ],
+    "tags": ["color grading", "davinci resolve", "cinematic"],
+    "likedByUsers": ["filmmaker_mike"],
+    "reviews": []
+  },
+  {
+    "_id": "g113",
+    "title": "Quick & Catchy Social Media Ads Editing (FB/IG)",
+    "price": 40.0,
+    "owner": {
+      "_id": "u117",
+      "fullname": "Maria Garcia",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/8f1d4a42fd507fb4b340987e654ce7d2ee5adcc7.jpg",
+      "level": "1",
+      "rate": 4.6
+    },
+    "daysToMake": 2,
+    "description": "I create short, attention-grabbing video ads designed to convert on Facebook and Instagram. Square or vertical formats available.",
+    "avgResponseTime": 1,
+    "loc": "USA",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/9ed61bc6-f453-447c-b329-2b9ae27e1660.png"
+    ],
+    "videoUrls": [
+      "/assets/Popular-Services/Video-Editing/video/grho742jrvfyhqphjgvx.mp4"
+    ],
+    "tags": ["ads", "social media", "marketing"],
+    "likedByUsers": ["dropshipper_guy"],
+    "reviews": []
+  },
+  {
+    "_id": "g114",
+    "title": "Green Screen Removal and Chroma Key Composition",
+    "price": 75.0,
+    "owner": {
+      "_id": "u118",
+      "fullname": "David O'Connell",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/29f9d2bf-05a6-4fc3-95dd-f3ebbbc899c9.png",
+      "level": "2",
+      "rate": 4.8
+    },
+    "daysToMake": 4,
+    "description": "Flawless green screen keying. I will remove your background and replace it with a professional virtual set or image of your choice.",
+    "avgResponseTime": 3,
+    "loc": "Ireland",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/9fcb41bb-aa15-4d52-bd9e-cec1c2915781.jpg",
+      "/assets/Popular-Services/Video-Editing/img/9ff2db89-9507-4c70-9b49-c93475551f11.png"
+    ],
+    "videoUrls": [],
+    "tags": ["green screen", "vfx", "chroma key"],
+    "likedByUsers": [],
+    "reviews": []
+  },
+  {
+    "_id": "g115",
+    "title": "Podcast Video Editing with Multi-Cam Sync",
+    "price": 110.0,
+    "owner": {
+      "_id": "u119",
+      "fullname": "Aisha Patel",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/30ef42da5c48b888881f477cc42b9242ca74f21f.jpg",
+      "level": "top rated",
+      "rate": 5
+    },
+    "daysToMake": 5,
+    "description": "I will edit your multi-camera video podcast. Includes syncing audio/video, switching angles actively, adding intro/outro, and basic audio mixing.",
+    "avgResponseTime": 4,
+    "loc": "India",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/43aa8609-6a44-4bd1-a1a7-90c0fa6cff4e.jpg"
+    ],
+    "videoUrls": [
+      "/assets/Popular-Services/Video-Editing/video/gtwq8oinzfbqawco2bpe.mp4"
+    ],
+    "tags": ["podcast", "multi-cam", "audio editing"],
+    "likedByUsers": ["podcaster_daily"],
+    "reviews": []
   }
+
+
+
 ]

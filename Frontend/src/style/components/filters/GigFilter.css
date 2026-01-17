@@ -9,6 +9,8 @@
   background-color: var(--clr2bg);
   height: 15%;
 
+  margin-bottom: 25px;
+
   .dropdown {
     display: flex;
     gap: 18px;

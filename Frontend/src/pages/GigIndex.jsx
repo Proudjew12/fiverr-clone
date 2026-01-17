@@ -94,14 +94,7 @@ export function GigIndex() {
           )}
 
           <GigFilter filterBy={filterBy}  onSetFilter={onSetFilter}/>
-          <button
-            className="random-gig-btn"
-            onClick={() => {
-              utilService.makeRandomGig()
-            }}
-          >
-            Random Gig
-          </button>
+  
           {isLoading && <div>Loading...</div>}
           {!isLoading && !visibleGigs.length && <EmptyState />}
           {!isLoading && !!visibleGigs.length && <GigList gigs={visibleGigs} />}
