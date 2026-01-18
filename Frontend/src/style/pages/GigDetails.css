@@ -1,12 +1,15 @@
 .gig-details {
-  padding: 32px 32px 0;
+  width: 100vw;
+  padding: 104px 104px 0;
+  padding-top: 25px;
   display: grid;
   grid-template-areas: 'main aside';
-  grid-template-columns: 60% 30%;
+  grid-template-columns: 1.67fr 1fr;
+  justify-content: space-between;
+  gap: 52.5px;
 }
 .gig-details .main {
   order: 10;
-  margin-right: 5.5%;
   display: block;
   grid-area: main;
 }
