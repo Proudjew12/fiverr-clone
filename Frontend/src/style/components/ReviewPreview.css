@@ -1,0 +1,45 @@
+.review-preview {
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid #dadbdd;
+  border-radius: 20px;
+}
+.review-preview .user-container {
+  display: flex;
+  gap: 16px;
+}
+.review-preview .user-container .profile-img-container {
+  width: 48px !important;
+  height: 48px !important;
+  overflow: hidden;
+}
+.review-preview .user-container .profile-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.review-preview .user-container .fullname {
+  color: #222325;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.review-preview .review-details {
+  border-top: 1px solid #dadbdd;
+}
+.review-preview .review-details .rate {
+  display: flex;
+  gap: 4px;
+  color: #222325;
+  font-size: 1rem;
+  font-weight: 700;
+  padding-top: 16px;
+}
+.review-preview .review-details .rate .rating-by-stars {
+  display: flex;
+  gap: 4px;
+}
+.review-preview .review-details .review-txt {
+  padding-block: 12px;
+}

@@ -1,3 +1,5 @@
+import { ReviewList } from '@/components/review/ReviewList'
+import { ReviewPreview } from '@/components/review/ReviewPreview'
 import { SvgIcon } from '@/components/svg/SvgIcon'
 import { gigService } from '@/services/leo.service.local.js'
 import { Loader } from 'lucide-react'
@@ -165,6 +167,8 @@ export function GigDetails() {
             </ul>
           </div>
         </div>
+        <div className='reviews-title'>Reviews</div>
+        <ReviewList reviews={gig.reviews}/>
       </div>
       <aside>
         <div className="call-to-action">
@@ -238,7 +242,7 @@ export function GigDetails() {
     </section>
   )
 }
-function RatingByStars({ rate }) {
+export function RatingByStars({ rate }) {
   return (
     <div className="rating-by-stars">
       {Array.from({ length: rate }).map((_, i) => (

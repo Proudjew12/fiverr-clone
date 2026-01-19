@@ -283,6 +283,14 @@ cursor: pointer;
   gap: 16px;
   grid-auto-flow: column;
 }
+.gig-details .main .reviews-title{
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #404145;
+  margin-bottom: 32px;
+  margin-top: 64px;
+  
+}
 .gig-details aside {
   grid-area: aside;
 }

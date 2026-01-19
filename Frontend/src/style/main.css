@@ -47,6 +47,8 @@
 @import './components/homepageComponents/HomeHero.css';
 @import './components/homepageComponents/HomeCategories.css';
 @import './components/homepageComponents/PopularCarousel.css';
+@import './components/ReviewList.css';
+@import './components/ReviewPreview.css';
 
 /* layout */
 @import './components/layout/AppHeader.css';
