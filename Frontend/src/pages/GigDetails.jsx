@@ -11,17 +11,7 @@ export function GigDetails() {
   const [gig, setGig] = useState(null)
   const [gigImgs, setGigImgs] = useState([])
   const navigate = useNavigate()
-  const imgs = [
-    '/assets/Details/Stefan/img/FF6571B6-B693-4818-84F9-23B3BDA495E1.jpeg',
-    '/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png',
-    '/assets/Details/Stefan/img/FF6571B6-B693-4818-84F9-23B3BDA495E1.jpeg',
-    '/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png',
-    '/assets/Details/Stefan/img/FF6571B6-B693-4818-84F9-23B3BDA495E1.jpeg',
-    '/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png',
-    '/assets/Details/Stefan/img/FF6571B6-B693-4818-84F9-23B3BDA495E1.jpeg',
-    '/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png',
-    '/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png',
-  ]
+  const [selectedTab, setSelectedTab] = useState(1)
   const [index, setIndex] = useState(0)
   useEffect(() => {
     if (gigId) loadGig()
@@ -168,53 +158,67 @@ export function GigDetails() {
           </div>
         </div>
         <div className='reviews-title'>Reviews</div>
-        <ReviewList reviews={gig.reviews}/>
+        <ReviewList reviews={gig.reviews} />
       </div>
       <aside>
         <div className="call-to-action">
+          <div className='tabs-container'>
+            <div className={(selectedTab === 1) ? 'tab selected' : 'tab'} onClick={() => { setSelectedTab(1) }}>Basic</div>
+            <div className={(selectedTab === 2) ? 'tab selected' : 'tab'} onClick={() => { setSelectedTab(2) }}>Standard</div>
+            <div className={(selectedTab === 3) ? 'tab selected' : 'tab'} onClick={() => { setSelectedTab(3) }}>Premium</div>
+          </div>
           <div className="package-content">
             <header>
               <span className="title">
                 {' '}
-                <span className="price">{gig.price}$</span> + taxes & fees
+                <span className="price">{gig.price*selectedTab}$</span> + taxes & fees
               </span>
               <br />
               <span className="sub-title">
                 Save up to 20% with <span className="subscribe">Subscribe to Save</span>
               </span>
               <p>
-                <b>Standard Ad </b>I will turn your video into a high-converting ad.
-                Includes captions, b-roll, transitions and SFX.
+                <b>{(selectedTab === 1)?'Basic Ad'
+                   :(selectedTab === 2)?'Standard Ad'
+                   :'Premium Ad'
+                  } </b>
+                  {(selectedTab === 1)
+                  ?`I will turn your video into a high-converting ad.
+                Includes captions, b-roll, transitions and SFX.`
+                  :(selectedTab === 2)?'Everything in Basic + animations & motion graphics for maximum engagement + 3 hooks.'
+                  :'I will create 3 Premium Ads with animations & motion graphics + 3 hooks each. (9 versions total)'
+                  }
+                  
               </p>
             </header>
             <main>
               <div className="delivery">
                 <SvgIcon icon={'time'} />
-                {gig.daysToMake}-day delivery
+                {gig.daysToMake+selectedTab}-day delivery
               </div>
               <ul className="features">
                 <li>
-                  <SvgIcon icon={'v'} />
+                  <SvgIcon icon={'vBlack'} />
                   <span> Up to Unlimited minutes of footage provided</span>
                 </li>
                 <li>
-                  <SvgIcon icon={'v'} />
+                  <SvgIcon icon={'vBlack'} />
                   <span> Up to 1 minute running time</span>
                 </li>
                 <li>
-                  <SvgIcon icon={'v'} />
+                  <SvgIcon icon={(selectedTab>1)?'vBlack':'vGray'} />
                   <span> Color grading</span>
                 </li>
                 <li>
-                  <SvgIcon icon={'v'} />
+                  <SvgIcon icon={(selectedTab>1)?'vBlack':'vGray'} />
                   <span> Sound design & mixing</span>
                 </li>
                 <li>
-                  <SvgIcon icon={'v'} />
+                  <SvgIcon icon={(selectedTab>2)?'vBlack':'vGray'} />
                   <span> Motion graphics</span>
                 </li>
                 <li>
-                  <SvgIcon icon={'v'} />
+                  <SvgIcon icon={(selectedTab>2)?'vBlack':'vGray'} />
                   <span> Subtitles</span>
                 </li>
               </ul>

@@ -7,7 +7,7 @@ export function ReviewList({reviews}){
         <ul className="reviews">
             {
              reviews.map(
-               review=><ReviewPreview review={review}/> 
+               review=><ReviewPreview key={review.id} review={review}/> 
              )   
             }
         </ul>
