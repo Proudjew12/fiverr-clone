@@ -4,9 +4,9 @@
 }
 
 .popular-inner {
-  max-width: 1400px;
+  max-width: var(--page-max-width);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--page-padding);
 }
 
 .popular-title {
@@ -15,7 +15,7 @@
   font-family: var(--font-primary);
   font-weight: 400;
   letter-spacing: -1.44px;
-  font-size: 48px;
+  font-size: var(--popular-title-size);
   line-height: 1.05;
 }
 
@@ -54,12 +54,12 @@
 }
 
 .popular-slide {
-  width: 188px !important;
+  width: var(--popular-card-width) !important;
 }
 
 .popular-card {
-  height: 235px;
-  width: 188px;
+  height: var(--popular-card-height);
+  width: var(--popular-card-width);
 
   border-radius: 16px;
   padding: 18px 10px 10px;
@@ -94,12 +94,12 @@
   color: #fff;
   font-family: var(--font-primary);
   font-weight: 700;
-  font-size: 18px;
-  line-height: 28px;
+  font-size: clamp(14px, 1.6vw, 18px);
+  line-height: 1.35;
 }
 
 .popular-card-media {
-  height: 140px;
+  height: var(--popular-media-height);
   border-radius: 12px;
   overflow: hidden;
 }
