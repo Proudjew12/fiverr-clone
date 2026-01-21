@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 import { LeoProDd } from '@/components/headerComponents/ProDd'
 import { LeoChange } from '@/components/headerComponents/LeoChange'
@@ -14,15 +15,34 @@ const DEFAULT_LOCALE = {
 }
 
 export function AppHeader() {
-  const { openDd, toggleDd, closeDd, rootRef } = useDropdown()
+  const { openDd, toggleDd, closeDd, rootRef, getOptionProps } = useDropdown()
   const showHeaderSearch = useHeaderSearchObserver()
+  const [isSignedIn, setIsSignedIn] = useState(false)
+
+  function handleSignIn() {
+    setIsSignedIn(true)
+    closeDd()
+  }
+
+  function handleSignOut() {
+    setIsSignedIn(false)
+    closeDd()
+  }
 
   return (
     <header ref={rootRef} className="app-header">
       <div className="app-header-row">
         <div className="app-header-inner flex items-center justify-between">
           <HeaderLeft showSearch={showHeaderSearch} />
-          <HeaderRight openDd={openDd} onToggleDd={toggleDd} onCloseDd={closeDd} />
+          <HeaderRight
+            openDd={openDd}
+            onToggleDd={toggleDd}
+            onCloseDd={closeDd}
+            getOptionProps={getOptionProps}
+            isSignedIn={isSignedIn}
+            onSignIn={handleSignIn}
+            onSignOut={handleSignOut}
+          />
         </div>
       </div>
     </header>
@@ -57,7 +77,15 @@ function Logo() {
    Right side
    ========================= */
 
-function HeaderRight({ openDd, onToggleDd, onCloseDd }) {
+function HeaderRight({
+  openDd,
+  onToggleDd,
+  onCloseDd,
+  getOptionProps,
+  isSignedIn,
+  onSignIn,
+  onSignOut,
+}) {
   return (
     <nav className="header-nav flex items-center" aria-label="Header">
       <div className="nav-group nav-group-links flex items-center">
@@ -68,10 +96,19 @@ function HeaderRight({ openDd, onToggleDd, onCloseDd }) {
           currencyCode={DEFAULT_LOCALE.currencyCode}
         />
 
-        <HeaderActions />
+        {isSignedIn ? (
+          <SignedInActions
+            openDd={openDd}
+            onToggleDd={onToggleDd}
+            getOptionProps={getOptionProps}
+            onSignOut={onSignOut}
+          />
+        ) : (
+          <HeaderActions onSignIn={onSignIn} />
+        )}
       </div>
 
-      <JoinButton />
+      {!isSignedIn && <JoinButton />}
     </nav>
   )
 }
@@ -94,14 +131,14 @@ function HeaderDropdowns({ openDd, onToggleDd, onCloseDd }) {
   )
 }
 
-function HeaderActions() {
+function HeaderActions({ onSignIn }) {
   return (
     <>
       <button type="button" className="header-link header-link-green">
         Become a Seller
       </button>
 
-      <button type="button" className="header-link header-link-green">
+      <button type="button" className="header-link header-link-green" onClick={onSignIn}>
         Sign in
       </button>
     </>
@@ -113,6 +150,20 @@ function JoinButton() {
     <button type="button" className="join-btn grid place-center">
       Join
     </button>
+  )
+}
+
+function SignedInActions({ openDd, onToggleDd, getOptionProps, onSignOut }) {
+  return (
+    <>
+      <OrdersDropdown isOpen={openDd === 'orders'} onToggle={() => onToggleDd('orders')} />
+      <UserDropdown
+        isOpen={openDd === 'user'}
+        onToggle={() => onToggleDd('user')}
+        getOptionProps={getOptionProps}
+        onSignOut={onSignOut}
+      />
+    </>
   )
 }
 
@@ -152,6 +203,67 @@ function ProDropdown({ isOpen, onToggle, onClose }) {
       {isOpen && (
         <div className="nav-dd-panel nav-dd-panel-pro" aria-label="Leo Pro">
           <LeoProDd onClose={onClose} />
+        </div>
+      )}
+    </div>
+  )
+}
+
+function OrdersDropdown({ isOpen, onToggle }) {
+  return (
+    <div className="nav-dd">
+      <button
+        type="button"
+        className="nav-dd-trigger"
+        aria-expanded={isOpen}
+        aria-haspopup="dialog"
+        onClick={onToggle}
+      >
+        Orders
+        <span className={`nav-arrow-down ${isOpen ? 'is-open' : ''}`} aria-hidden="true">
+          <SvgIcon icon="chevronDown" />
+        </span>
+      </button>
+
+      {isOpen && <div className="nav-dd-panel nav-dd-panel-orders" aria-label="Orders" />}
+    </div>
+  )
+}
+
+function UserDropdown({ isOpen, onToggle, getOptionProps, onSignOut }) {
+  return (
+    <div className="nav-dd nav-dd-user">
+      <button
+        type="button"
+        className="user-avatar-btn"
+        aria-expanded={isOpen}
+        aria-haspopup="menu"
+        aria-label="User menu"
+        onClick={onToggle}
+      >
+        <span className="user-avatar-icon" aria-hidden="true">
+          <SvgIcon icon="userCircle" />
+        </span>
+        <span className={`nav-arrow-down ${isOpen ? 'is-open' : ''}`} aria-hidden="true">
+          <SvgIcon icon="chevronDown" />
+        </span>
+      </button>
+
+      {isOpen && (
+        <div className="nav-dd-panel nav-dd-panel-user" aria-label="User menu" role="menu">
+          <button type="button" className="user-menu-item" {...getOptionProps?.()}>
+            Profile
+          </button>
+          <button type="button" className="user-menu-item" {...getOptionProps?.()}>
+            Become a Seller
+          </button>
+          <button
+            type="button"
+            className="user-menu-item"
+            onClick={onSignOut}
+          >
+            Sign out
+          </button>
         </div>
       )}
     </div>

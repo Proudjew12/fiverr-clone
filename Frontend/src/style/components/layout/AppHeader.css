@@ -124,6 +124,76 @@
   text-decoration: none;
 }
 
+.user-avatar-btn {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  display: inline-grid;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 999px;
+  transition: background-color 0.2s;
+}
+
+.user-avatar-btn:hover {
+  background: var(--clr-surface-muted);
+}
+
+.user-avatar-icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  color: #62646a;
+}
+
+.user-avatar-btn:hover .user-avatar-icon {
+  color: #222325;
+}
+
+.nav-dd-panel-orders,
+.nav-dd-panel-user {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+  padding: 8px;
+}
+
+.nav-dd-panel-orders {
+  width: 220px;
+  min-height: 120px;
+}
+
+.nav-dd-panel-user {
+  right: 0;
+  left: auto;
+  width: 220px;
+  display: grid;
+  gap: 2px;
+}
+
+.user-menu-item {
+  border: 0;
+  background: transparent;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font: 600 14px/20px var(--font-primary);
+  color: #62646a;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.user-menu-item:hover {
+  background: var(--clr-surface-muted);
+  color: #222325;
+}
+
 /* =========================
    Logo container
    ========================= */
