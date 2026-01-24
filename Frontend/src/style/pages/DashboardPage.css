@@ -1,0 +1,154 @@
+.dashboard-page {
+  display: grid;
+  grid-template-columns: minmax(240px, 320px) 1fr;
+  gap: 28px;
+  padding: 28px 24px 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.dashboard-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(16, 24, 40, 0.08);
+  padding: 20px;
+}
+
+.dashboard-sidebar {
+  display: grid;
+  gap: 20px;
+  align-self: start;
+}
+
+.profile-card {
+  text-align: center;
+  display: grid;
+  gap: 10px;
+}
+
+.profile-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.profile-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--clr-primary);
+  margin: 0;
+}
+
+.profile-role {
+  color: var(--clr-muted);
+  margin: 0;
+}
+
+.stats-card {
+  display: grid;
+  gap: 12px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  color: var(--clr-secondary);
+  font-weight: 600;
+}
+
+.progress-card {
+  display: grid;
+  gap: 12px;
+}
+
+.progress-row {
+  display: grid;
+  gap: 8px;
+}
+
+.progress-label {
+  color: var(--clr-secondary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.progress-track {
+  height: 8px;
+  border-radius: 999px;
+  background: #e8eef2;
+  overflow: hidden;
+}
+
+.progress-fill {
+  display: block;
+  height: 100%;
+  background: #2ecc71;
+  border-radius: inherit;
+}
+
+.dashboard-main {
+  display: grid;
+  gap: 20px;
+  align-content: start;
+}
+
+.dashboard-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--clr-primary);
+  margin: 0 0 6px;
+}
+
+.dashboard-subtitle {
+  margin: 0;
+  color: var(--clr-muted);
+}
+
+.orders-card {
+  min-height: 320px;
+  display: grid;
+  align-items: center;
+}
+
+.orders-empty {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 18px;
+  align-items: center;
+}
+
+.orders-empty-img {
+  width: 110px;
+  height: 110px;
+  border-radius: 16px;
+  object-fit: cover;
+  background: #f3f5f7;
+}
+
+.orders-empty h3 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  color: var(--clr-primary);
+}
+
+.orders-empty p {
+  margin: 0;
+  color: var(--clr-muted);
+}
+
+@media (max-width: 900px) {
+  .dashboard-page {
+    grid-template-columns: 1fr;
+  }
+
+  .orders-empty {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .orders-empty-img {
+    margin: 0 auto;
+  }
+}

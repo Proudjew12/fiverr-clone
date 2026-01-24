@@ -2,14 +2,15 @@ import { GigList } from '@/components/gig/GigList'
 import { gigService } from '@/services/leo.service.local.js'
 import { useEffect, useState } from 'react'
 import { GigFilter } from '@/components/filter/GigFilter.jsx'
-import { utilService } from '@/services/util.service'
 import { useSearchParams } from 'react-router-dom'
 import { EmptyState } from '@/components/ui/EmptyState'
 
 export function GigIndex() {
   const [gigs, setGigs] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const [searchParams,setSearchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const isSignedIn = localStorage.getItem('isSignedIn') === 'true'
+  const userName = localStorage.getItem('userName') || 'ProudJew'
 
   const filterBy = {
     txt: searchParams.get('txt') || searchParams.get('q') || '',
@@ -49,28 +50,35 @@ export function GigIndex() {
   }, [searchParams])
 
   function onSetFilter(filterUpdate) {
-    setSearchParams(prevParams => {
-        const newParams = new URLSearchParams(prevParams)
-        
-        
-        for (const field in filterUpdate) {
-            const value = filterUpdate[field]
-      
-            if (value === '' || value === null || value === undefined || value === false) {
-                newParams.delete(field)
-            } else if (Array.isArray(value)) {
-                newParams.delete(field)
-                value.filter(Boolean).forEach((entry) => newParams.append(field, entry))
-            } else {
-                newParams.set(field, value)
-            }
+    setSearchParams((prevParams) => {
+      const newParams = new URLSearchParams(prevParams)
+
+      for (const field in filterUpdate) {
+        const value = filterUpdate[field]
+
+        if (value === '' || value === null || value === undefined || value === false) {
+          newParams.delete(field)
+        } else if (Array.isArray(value)) {
+          newParams.delete(field)
+          value.filter(Boolean).forEach((entry) => newParams.append(field, entry))
+        } else {
+          newParams.set(field, value)
         }
-        return newParams
+      }
+      return newParams
     })
   }
 
   return (
     <div className="main-layout-index">
+      {isSignedIn && (
+        <section className="welcome-banner" aria-label="Welcome">
+          <div className="welcome-banner-inner">
+            <h2 className="welcome-title">Welcome back, {userName}</h2>
+          </div>
+        </section>
+      )}
+
       <aside className="side-col left"></aside>
 
       <main>
@@ -85,16 +93,14 @@ export function GigIndex() {
 
               <div className="results-meta">
                 <span className="results-count">
-                  {isLoading
-                    ? 'Loading results...'
-                    : `${visibleGigs.length} results`}
+                  {isLoading ? 'Loading results...' : `${visibleGigs.length} results`}
                 </span>
               </div>
             </header>
           )}
 
-          <GigFilter filterBy={filterBy}  onSetFilter={onSetFilter}/>
-  
+          <GigFilter filterBy={filterBy} onSetFilter={onSetFilter} />
+
           {isLoading && <div>Loading...</div>}
           {!isLoading && !visibleGigs.length && <EmptyState />}
           {!isLoading && !!visibleGigs.length && <GigList gigs={visibleGigs} />}

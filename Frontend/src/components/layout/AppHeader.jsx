@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 import { LeoProDd } from '@/components/headerComponents/ProDd'
@@ -17,16 +17,25 @@ const DEFAULT_LOCALE = {
 export function AppHeader() {
   const { openDd, toggleDd, closeDd, rootRef, getOptionProps } = useDropdown()
   const showHeaderSearch = useHeaderSearchObserver()
-  const [isSignedIn, setIsSignedIn] = useState(false)
+  const [isSignedIn, setIsSignedIn] = useState(
+    () => localStorage.getItem('isSignedIn') === 'true'
+  )
+  const navigate = useNavigate()
 
   function handleSignIn() {
     setIsSignedIn(true)
+    localStorage.setItem('isSignedIn', 'true')
+    localStorage.setItem('userName', 'ProudJew')
     closeDd()
+    navigate('/index')
   }
 
   function handleSignOut() {
     setIsSignedIn(false)
+    localStorage.removeItem('isSignedIn')
+    localStorage.removeItem('userName')
     closeDd()
+    navigate('/')
   }
 
   return (
@@ -86,6 +95,8 @@ function HeaderRight({
   onSignIn,
   onSignOut,
 }) {
+  const navigate = useNavigate()
+
   return (
     <nav className="header-nav flex items-center" aria-label="Header">
       <div className="nav-group nav-group-links flex items-center">
@@ -101,6 +112,7 @@ function HeaderRight({
             openDd={openDd}
             onToggleDd={onToggleDd}
             getOptionProps={getOptionProps}
+            onDashboard={() => navigate('/dashboard')}
             onSignOut={onSignOut}
           />
         ) : (
@@ -153,7 +165,7 @@ function JoinButton() {
   )
 }
 
-function SignedInActions({ openDd, onToggleDd, getOptionProps, onSignOut }) {
+function SignedInActions({ openDd, onToggleDd, getOptionProps, onDashboard, onSignOut }) {
   return (
     <>
       <OrdersDropdown isOpen={openDd === 'orders'} onToggle={() => onToggleDd('orders')} />
@@ -161,6 +173,7 @@ function SignedInActions({ openDd, onToggleDd, getOptionProps, onSignOut }) {
         isOpen={openDd === 'user'}
         onToggle={() => onToggleDd('user')}
         getOptionProps={getOptionProps}
+        onDashboard={onDashboard}
         onSignOut={onSignOut}
       />
     </>
@@ -230,7 +243,7 @@ function OrdersDropdown({ isOpen, onToggle }) {
   )
 }
 
-function UserDropdown({ isOpen, onToggle, getOptionProps, onSignOut }) {
+function UserDropdown({ isOpen, onToggle, getOptionProps, onDashboard, onSignOut }) {
   return (
     <div className="nav-dd nav-dd-user">
       <button
@@ -251,8 +264,12 @@ function UserDropdown({ isOpen, onToggle, getOptionProps, onSignOut }) {
 
       {isOpen && (
         <div className="nav-dd-panel nav-dd-panel-user" aria-label="User menu" role="menu">
-          <button type="button" className="user-menu-item" {...getOptionProps?.()}>
-            Profile
+          <button
+            type="button"
+            className="user-menu-item"
+            {...getOptionProps?.({ onClick: onDashboard })}
+          >
+            Dashboard
           </button>
           <button type="button" className="user-menu-item" {...getOptionProps?.()}>
             Become a Seller

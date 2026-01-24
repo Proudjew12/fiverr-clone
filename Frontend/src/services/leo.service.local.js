@@ -63,14 +63,23 @@ async function query(filterBy = {}) {
     })
   }
 
-  return gigs.map(({ _id, title, owner, description, price, videoUrls }) => ({
-    _id,
-    title,
-    owner,
-    description,
-    price,
-    videoUrls,
-  }))
+  return gigs.map(({ _id, title, owner, description, price, videoUrls }) => {
+    const safeOwner = owner || getEmptyGig().owner
+    const safeVideoUrls = Array.isArray(videoUrls)
+      ? videoUrls
+      : videoUrls
+        ? [videoUrls]
+        : []
+
+    return {
+      _id,
+      title,
+      owner: safeOwner,
+      description,
+      price,
+      videoUrls: safeVideoUrls,
+    }
+  })
 }
 
 function getById(gigId) {

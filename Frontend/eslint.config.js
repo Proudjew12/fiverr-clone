@@ -36,6 +36,7 @@ js.configs.recommended,
   rules: {
     // React 17+ / Vite: no need to import React for JSX
     "react/react-in-jsx-scope": "off",
+    "react/jsx-uses-vars": "error",
 
     // Hooks rules
     ...reactHooksPlugin.configs.recommended.rules,
