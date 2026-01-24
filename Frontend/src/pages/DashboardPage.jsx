@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { utilService } from '@/services/util.service'
 
 const PROFILE_IMAGE = '/assets/ProfileImgs/personOne.png'
@@ -12,10 +12,13 @@ const DASHBOARD_FALLBACK_THUMBS = [
 const WISHLIST_STORAGE_KEY = 'wishlist'
 
 export function DashboardPage() {
+  const [searchParams] = useSearchParams()
   const userName = localStorage.getItem('userName') || 'ProudJew'
   const [orders, setOrders] = useState(() => loadOrders())
   const [wishlist, setWishlist] = useState(() => loadWishlist())
-  const [activeTab, setActiveTab] = useState('orders')
+  const [activeTab, setActiveTab] = useState(
+    () => searchParams.get('tab') || 'orders'
+  )
   const emptyImage = useMemo(() => PROFILE_IMAGE, [])
 
   useEffect(() => {
@@ -37,6 +40,13 @@ export function DashboardPage() {
       window.removeEventListener('wishlist-updated', updateWishlist)
     }
   }, [])
+
+  useEffect(() => {
+    const nextTab = searchParams.get('tab')
+    if (nextTab === 'wishlist' || nextTab === 'orders') {
+      setActiveTab(nextTab)
+    }
+  }, [searchParams])
 
   const formatMoney = (value) => `₪${Number(value).toFixed(2)}`
   function onClearOrders() {

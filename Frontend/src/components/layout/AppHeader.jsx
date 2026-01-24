@@ -215,11 +215,13 @@ function SignedInActions({
       <WishlistDropdown
         isOpen={openDd === 'wishlist'}
         onToggle={() => onToggleDd('wishlist')}
+        onClose={onCloseDd}
         wishlist={wishlist}
       />
       <OrdersDropdown
         isOpen={openDd === 'orders'}
         onToggle={() => onToggleDd('orders')}
+        onClose={onCloseDd}
         orders={orders}
       />
       <UserDropdown
@@ -275,7 +277,7 @@ function ProDropdown({ isOpen, onToggle, onClose }) {
   )
 }
 
-function OrdersDropdown({ isOpen, onToggle, orders }) {
+function OrdersDropdown({ isOpen, onToggle, onClose, orders }) {
   const fallbackThumbs = [
     'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=200&q=80',
     'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=200&q=80',
@@ -309,7 +311,11 @@ function OrdersDropdown({ isOpen, onToggle, orders }) {
                   <li key={order.id} className="orders-dd-item">
                     <img className="orders-dd-thumb" src={thumbSrc} alt="" />
                     <div className="orders-dd-content">
-                      <Link to={`/gig/${order.gigId}`} className="orders-dd-title">
+                      <Link
+                        to={`/gig/${order.gigId}`}
+                        className="orders-dd-title"
+                        onClick={onClose}
+                      >
                         {order.title}
                       </Link>
                     </div>
@@ -318,7 +324,7 @@ function OrdersDropdown({ isOpen, onToggle, orders }) {
               })}
             </ul>
           )}
-          <Link to="/dashboard" className="orders-dd-link">
+          <Link to="/dashboard?tab=orders" className="orders-dd-link" onClick={onClose}>
             View all orders
           </Link>
         </div>
@@ -327,7 +333,7 @@ function OrdersDropdown({ isOpen, onToggle, orders }) {
   )
 }
 
-function WishlistDropdown({ isOpen, onToggle, wishlist = [] }) {
+function WishlistDropdown({ isOpen, onToggle, onClose, wishlist = [] }) {
   const fallbackThumbs = [
     'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=200&q=80',
     'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=200&q=80',
@@ -360,7 +366,11 @@ function WishlistDropdown({ isOpen, onToggle, wishlist = [] }) {
                   <li key={item.id} className="orders-dd-item">
                     <img className="orders-dd-thumb" src={thumbSrc} alt="" />
                     <div className="orders-dd-content">
-                      <Link to={`/gig/${item.gigId}`} className="orders-dd-title">
+                      <Link
+                        to={`/gig/${item.gigId}`}
+                        className="orders-dd-title"
+                        onClick={onClose}
+                      >
                         {item.title}
                       </Link>
                     </div>
@@ -369,7 +379,11 @@ function WishlistDropdown({ isOpen, onToggle, wishlist = [] }) {
               })}
             </ul>
           )}
-          <Link to="/dashboard" className="orders-dd-link">
+          <Link
+            to="/dashboard?tab=wishlist"
+            className="orders-dd-link"
+            onClick={onClose}
+          >
             View wishlist
           </Link>
         </div>
