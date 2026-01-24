@@ -95,8 +95,6 @@ function HeaderRight({
   onSignIn,
   onSignOut,
 }) {
-  const navigate = useNavigate()
-
   return (
     <nav className="header-nav flex items-center" aria-label="Header">
       <div className="nav-group nav-group-links flex items-center">
@@ -111,8 +109,8 @@ function HeaderRight({
           <SignedInActions
             openDd={openDd}
             onToggleDd={onToggleDd}
+            onCloseDd={onCloseDd}
             getOptionProps={getOptionProps}
-            onDashboard={() => navigate('/dashboard')}
             onSignOut={onSignOut}
           />
         ) : (
@@ -165,15 +163,15 @@ function JoinButton() {
   )
 }
 
-function SignedInActions({ openDd, onToggleDd, getOptionProps, onDashboard, onSignOut }) {
+function SignedInActions({ openDd, onToggleDd, onCloseDd, getOptionProps, onSignOut }) {
   return (
     <>
       <OrdersDropdown isOpen={openDd === 'orders'} onToggle={() => onToggleDd('orders')} />
       <UserDropdown
         isOpen={openDd === 'user'}
         onToggle={() => onToggleDd('user')}
+        onClose={onCloseDd}
         getOptionProps={getOptionProps}
-        onDashboard={onDashboard}
         onSignOut={onSignOut}
       />
     </>
@@ -243,7 +241,7 @@ function OrdersDropdown({ isOpen, onToggle }) {
   )
 }
 
-function UserDropdown({ isOpen, onToggle, getOptionProps, onDashboard, onSignOut }) {
+function UserDropdown({ isOpen, onToggle, onClose, getOptionProps, onSignOut }) {
   return (
     <div className="nav-dd nav-dd-user">
       <button
@@ -264,13 +262,9 @@ function UserDropdown({ isOpen, onToggle, getOptionProps, onDashboard, onSignOut
 
       {isOpen && (
         <div className="nav-dd-panel nav-dd-panel-user" aria-label="User menu" role="menu">
-          <button
-            type="button"
-            className="user-menu-item"
-            {...getOptionProps?.({ onClick: onDashboard })}
-          >
+          <Link to="/dashboard" className="user-menu-item" onClick={onClose}>
             Dashboard
-          </button>
+          </Link>
           <button type="button" className="user-menu-item" {...getOptionProps?.()}>
             Become a Seller
           </button>

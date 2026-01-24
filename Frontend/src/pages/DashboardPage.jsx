@@ -1,17 +1,10 @@
 import { useMemo } from 'react'
 
-const DASHBOARD_IMAGES = [
-  '/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png',
-  '/assets/Popular-Services/Video-Editing/img/u104.jpg',
-  '/assets/Popular-Services/Video-Editing/img/u106.jpg',
-]
+const PROFILE_IMAGE = '/assets/ProfileImgs/personOne.png'
 
 export function DashboardPage() {
   const userName = localStorage.getItem('userName') || 'ProudJew'
-  const emptyImage = useMemo(
-    () => DASHBOARD_IMAGES[Math.floor(Math.random() * DASHBOARD_IMAGES.length)],
-    []
-  )
+  const emptyImage = useMemo(() => PROFILE_IMAGE, [])
 
   return (
     <section className="dashboard-page">
@@ -76,7 +69,6 @@ export function DashboardPage() {
 
         <section className="dashboard-card orders-card">
           <div className="orders-empty">
-            <img src={emptyImage} alt="" className="orders-empty-img" />
             <div>
               <h3>No orders yet</h3>
               <p>When you place an order, it will show up here.</p>

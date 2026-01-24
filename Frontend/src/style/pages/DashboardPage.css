@@ -109,14 +109,14 @@
 .orders-card {
   min-height: 320px;
   display: grid;
-  align-items: center;
+  place-items: center;
 }
 
 .orders-empty {
   display: grid;
-  grid-template-columns: 110px 1fr;
-  gap: 18px;
-  align-items: center;
+  gap: 10px;
+  text-align: center;
+  max-width: 320px;
 }
 
 .orders-empty-img {
