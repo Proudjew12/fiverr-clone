@@ -162,6 +162,21 @@
   gap: 16px;
 }
 
+.demo-btn {
+  justify-self: start;
+  border: 1px dashed var(--clr-border);
+  background: #f7f9fb;
+  color: var(--clr-primary);
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.demo-btn:hover {
+  background: #eef2f6;
+}
+
 .input-field {
   display: grid;
   gap: 8px;

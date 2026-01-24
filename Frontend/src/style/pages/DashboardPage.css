@@ -46,52 +46,18 @@
   margin: 0;
 }
 
-.stats-card {
-  display: grid;
-  gap: 12px;
-}
-
-.stat-row {
-  display: flex;
-  justify-content: space-between;
-  color: var(--clr-secondary);
-  font-weight: 600;
-}
-
-.progress-card {
-  display: grid;
-  gap: 12px;
-}
-
-.progress-row {
-  display: grid;
-  gap: 8px;
-}
-
-.progress-label {
-  color: var(--clr-secondary);
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-.progress-track {
-  height: 8px;
-  border-radius: 999px;
-  background: #e8eef2;
-  overflow: hidden;
-}
-
-.progress-fill {
-  display: block;
-  height: 100%;
-  background: #2ecc71;
-  border-radius: inherit;
-}
-
 .dashboard-main {
   display: grid;
   gap: 20px;
   align-content: start;
+}
+
+.dashboard-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .dashboard-header h1 {
@@ -106,10 +72,88 @@
   color: var(--clr-muted);
 }
 
+.dashboard-clear-btn {
+  border: 1px solid var(--clr-border);
+  background: #fff;
+  color: var(--clr-primary);
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.dashboard-clear-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .orders-card {
   min-height: 320px;
   display: grid;
   place-items: center;
+}
+
+.orders-card.has-orders {
+  place-items: start;
+}
+
+.orders-table {
+  width: 100%;
+  display: grid;
+  gap: 12px;
+}
+
+.orders-head,
+.orders-row {
+  display: grid;
+  grid-template-columns: 1fr 120px 120px;
+  gap: 12px;
+  align-items: center;
+}
+
+.orders-head {
+  font-weight: 700;
+  color: var(--clr-muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.orders-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.orders-row {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #f7f9fb;
+}
+
+.orders-title {
+  font-weight: 700;
+  color: var(--clr-primary);
+}
+
+.orders-meta {
+  color: var(--clr-muted);
+  font-size: 0.85rem;
+}
+
+.orders-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #e8f7ef;
+  color: #1c7c54;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: capitalize;
 }
 
 .orders-empty {

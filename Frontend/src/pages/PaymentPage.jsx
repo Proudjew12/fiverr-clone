@@ -1,10 +1,30 @@
 import { gigService } from '@/services/leo.service.local.js'
+import { utilService } from '@/services/util.service'
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import Swal from 'sweetalert2'
+
+const ORDERS_STORAGE_KEY = 'orders'
+const DEMO_CARD = {
+  cardNumber: '4242 4242 4242 4242',
+  expiry: '08 / 28',
+  cvc: '123',
+  name: 'ProudJew',
+  displayName: 'Demo card',
+  saveCard: true,
+}
 
 export function PaymentPage() {
   const { gigId } = useParams()
   const [gig, setGig] = useState(null)
+  const [form, setForm] = useState({
+    cardNumber: '',
+    expiry: '',
+    cvc: '',
+    name: '',
+    displayName: '',
+    saveCard: true,
+  })
 
   useEffect(() => {
     if (gigId) loadGig()
@@ -39,6 +59,41 @@ export function PaymentPage() {
   }
 
   if (!gig) return <div className="payment-loading">Loading...</div>
+
+  function handleFormChange(event) {
+    const { name, value, type, checked } = event.target
+    setForm((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }))
+  }
+
+  function onAutoFill() {
+    setForm(DEMO_CARD)
+  }
+
+  async function onConfirmPay() {
+    const order = {
+      id: utilService.makeId(),
+      gigId,
+      title: gig?.title || 'Gig',
+      total,
+      sellerName: gig?.owner?.fullname || 'Seller',
+      createdAt: Date.now(),
+      status: 'approved',
+    }
+    const existing = utilService.loadFromStorage(ORDERS_STORAGE_KEY, [])
+    utilService.saveToStorage(ORDERS_STORAGE_KEY, [order, ...existing])
+    window.dispatchEvent(new CustomEvent('orders-updated'))
+
+    await Swal.fire({
+      title: 'Thank you for purchase',
+      text: 'Your order was placed successfully.',
+      icon: 'success',
+      confirmButtonText: 'OK',
+    })
+    window.location.assign('/dashboard')
+  }
 
   return (
     <section className="payment-page">
@@ -100,10 +155,20 @@ export function PaymentPage() {
               </label>
 
               <div className="payment-form">
+                <button type="button" className="demo-btn" onClick={onAutoFill}>
+                  Autofill demo data
+                </button>
+
                 <label className="input-field">
                   <span>Card number</span>
                   <div className="input-with-icon">
-                    <input type="text" placeholder="1234 5678 9012 3456" />
+                    <input
+                      type="text"
+                      name="cardNumber"
+                      placeholder="1234 5678 9012 3456"
+                      value={form.cardNumber}
+                      onChange={handleFormChange}
+                    />
                     <span className="input-icon">🔒</span>
                   </div>
                 </label>
@@ -111,30 +176,56 @@ export function PaymentPage() {
                 <div className="input-row">
                   <label className="input-field">
                     <span>Expiration date</span>
-                    <input type="text" placeholder="MM / YY" />
+                    <input
+                      type="text"
+                      name="expiry"
+                      placeholder="MM / YY"
+                      value={form.expiry}
+                      onChange={handleFormChange}
+                    />
                   </label>
                   <label className="input-field">
                     <span>Security code</span>
-                    <input type="text" placeholder="123" />
+                    <input
+                      type="text"
+                      name="cvc"
+                      placeholder="123"
+                      value={form.cvc}
+                      onChange={handleFormChange}
+                    />
                   </label>
                 </div>
 
                 <label className="input-field">
                   <span>Cardholder's name</span>
-                  <input type="text" placeholder="As written on card" />
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="As written on card"
+                    value={form.name}
+                    onChange={handleFormChange}
+                  />
                 </label>
 
                 <label className="input-field">
                   <span>Card display name (Optional)</span>
                   <input
                     type="text"
+                    name="displayName"
                     placeholder="e.g. Marketing card, Legal team card..."
+                    value={form.displayName}
+                    onChange={handleFormChange}
                   />
                   <span className="input-hint">0/30</span>
                 </label>
 
                 <label className="checkbox-row">
-                  <input type="checkbox" defaultChecked />
+                  <input
+                    type="checkbox"
+                    name="saveCard"
+                    checked={form.saveCard}
+                    onChange={handleFormChange}
+                  />
                   <span>Save this card for future payments</span>
                 </label>
               </div>
@@ -185,7 +276,7 @@ export function PaymentPage() {
               <span>Total</span>
               <span>{formatMoney(total)}</span>
             </div>
-            <button className="summary-pay-btn" type="button">
+            <button className="summary-pay-btn" type="button" onClick={onConfirmPay}>
               Confirm &amp; Pay
             </button>
             <p className="summary-terms">

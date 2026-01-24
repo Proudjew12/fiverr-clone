@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { utilService } from '@/services/util.service'
 
 import { LeoProDd } from '@/components/headerComponents/ProDd'
 import { LeoChange } from '@/components/headerComponents/LeoChange'
@@ -20,7 +21,22 @@ export function AppHeader() {
   const [isSignedIn, setIsSignedIn] = useState(
     () => localStorage.getItem('isSignedIn') === 'true'
   )
+  const [orders, setOrders] = useState(() => getOrdersFromStorage())
   const navigate = useNavigate()
+
+  useEffect(() => {
+    function updateOrders() {
+      setOrders(getOrdersFromStorage())
+    }
+
+    window.addEventListener('storage', updateOrders)
+    window.addEventListener('orders-updated', updateOrders)
+
+    return () => {
+      window.removeEventListener('storage', updateOrders)
+      window.removeEventListener('orders-updated', updateOrders)
+    }
+  }, [])
 
   function handleSignIn() {
     setIsSignedIn(true)
@@ -48,6 +64,7 @@ export function AppHeader() {
             onToggleDd={toggleDd}
             onCloseDd={closeDd}
             getOptionProps={getOptionProps}
+            orders={orders}
             isSignedIn={isSignedIn}
             onSignIn={handleSignIn}
             onSignOut={handleSignOut}
@@ -91,6 +108,7 @@ function HeaderRight({
   onToggleDd,
   onCloseDd,
   getOptionProps,
+  orders,
   isSignedIn,
   onSignIn,
   onSignOut,
@@ -111,6 +129,7 @@ function HeaderRight({
             onToggleDd={onToggleDd}
             onCloseDd={onCloseDd}
             getOptionProps={getOptionProps}
+            orders={orders}
             onSignOut={onSignOut}
           />
         ) : (
@@ -163,10 +182,21 @@ function JoinButton() {
   )
 }
 
-function SignedInActions({ openDd, onToggleDd, onCloseDd, getOptionProps, onSignOut }) {
+function SignedInActions({
+  openDd,
+  onToggleDd,
+  onCloseDd,
+  getOptionProps,
+  orders,
+  onSignOut,
+}) {
   return (
     <>
-      <OrdersDropdown isOpen={openDd === 'orders'} onToggle={() => onToggleDd('orders')} />
+      <OrdersDropdown
+        isOpen={openDd === 'orders'}
+        onToggle={() => onToggleDd('orders')}
+        orders={orders}
+      />
       <UserDropdown
         isOpen={openDd === 'user'}
         onToggle={() => onToggleDd('user')}
@@ -220,7 +250,9 @@ function ProDropdown({ isOpen, onToggle, onClose }) {
   )
 }
 
-function OrdersDropdown({ isOpen, onToggle }) {
+function OrdersDropdown({ isOpen, onToggle, orders }) {
+  const formatMoney = (value) => `₪${Number(value).toFixed(2)}`
+
   return (
     <div className="nav-dd">
       <button
@@ -236,9 +268,30 @@ function OrdersDropdown({ isOpen, onToggle }) {
         </span>
       </button>
 
-      {isOpen && <div className="nav-dd-panel nav-dd-panel-orders" aria-label="Orders" />}
+      {isOpen && (
+        <div className="nav-dd-panel nav-dd-panel-orders" aria-label="Orders">
+          {!orders.length && <div className="orders-dd-empty">No orders yet</div>}
+          {!!orders.length && (
+            <ul className="orders-dd-list">
+              {orders.slice(0, 3).map((order) => (
+                <li key={order.id} className="orders-dd-item">
+                  <span className="orders-dd-title">{order.title}</span>
+                  <span className="orders-dd-meta">{formatMoney(order.total)}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+          <Link to="/dashboard" className="orders-dd-link">
+            View all orders
+          </Link>
+        </div>
+      )}
     </div>
   )
+}
+
+function getOrdersFromStorage() {
+  return utilService.loadFromStorage('orders', [])
 }
 
 function UserDropdown({ isOpen, onToggle, onClose, getOptionProps, onSignOut }) {
