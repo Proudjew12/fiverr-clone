@@ -1,4 +1,4 @@
-import { SvgIcon } from '@/components/svg/SvgIconBackupEran'
+import { SvgIcon } from '@/components/svg/SvgIcon'
 
 const categories = [
   { key: 'programming', label: 'Programming\n& Tech', icon: 'Programming' },

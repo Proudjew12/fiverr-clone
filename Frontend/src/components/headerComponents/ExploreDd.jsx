@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { SvgIcon } from '../svg/SvgIconBackupEran'
+import { SvgIcon } from '../svg/SvgIcon'
 
 export function ExploreDd({ isOpen, onToggle, onClose }) {
   return (

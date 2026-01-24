@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
-import { utilService } from '@/services/util.service.js'
+import { useEffect, useState } from 'react'
 import { SellerDetailsFilter } from './SellerDetailsFilter.jsx'
 import { useSearchParams } from 'react-router-dom'
 import { BudgetFilter } from './BudgetFilter.jsx'

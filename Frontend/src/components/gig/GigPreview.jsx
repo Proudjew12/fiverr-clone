@@ -1,5 +1,6 @@
 
 import { useRef, useState } from 'react'
+import { SvgIcon } from '@/components/svg/SvgIcon'
 import { utilService } from '@/services/util.service'
 
 export function GigPreview({ gig }) {
@@ -41,19 +42,14 @@ export function GigPreview({ gig }) {
                     aria-label={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
                     onClick={onToggleWishlist}
                 >
-                    <svg
+                    <SvgIcon
+                        icon="wishlistHeart"
                         className="wishlist-icon"
-                        viewBox="0 0 24 24"
                         aria-hidden="true"
-                    >
-                        <path
-                            d="M12 20.8c-.3 0-.6-.1-.8-.3-2.2-1.9-6.7-5.6-8.5-8-1.6-2.1-1.2-5.2 1-6.8 2-1.4 4.7-.8 6.3 1 1.6-1.8 4.3-2.4 6.3-1 2.2 1.6 2.6 4.7 1 6.8-1.8 2.4-6.3 6.1-8.5 8-.2.2-.5.3-.8.3Z"
-                            fill={isWishlisted ? '#ffffff' : 'none'}
-                            stroke="#ffffff"
-                            strokeWidth="1.6"
-                            strokeLinejoin="round"
-                        />
-                    </svg>
+                        filled={isWishlisted}
+                        fillColor="#ffffff"
+                        strokeColor="#ffffff"
+                    />
                 </button>
 
                 <video

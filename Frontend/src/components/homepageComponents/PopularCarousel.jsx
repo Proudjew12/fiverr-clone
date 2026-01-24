@@ -3,7 +3,7 @@ import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Mousewheel } from 'swiper/modules'
 import { useSwiperNav } from '@/hooks/useSwiperNav'
-import { SvgIcon } from '@/components/svg/SvgIconBackupEran'
+import { SvgIcon } from '@/components/svg/SvgIcon'
 
 const popularServices = [
   { key: 'vibe-coding', title: 'Vibe Coding', bg: '#003912', icon: 'popularCarousel1' },

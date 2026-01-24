@@ -6,7 +6,7 @@ import { LeoProDd } from '@/components/headerComponents/ProDd'
 import { LeoChange } from '@/components/headerComponents/LeoChange'
 import { ExploreDd } from '@/components/headerComponents/ExploreDd'
 import { SearchInput } from '@/components/headerComponents/SearchInput'
-import { SvgIcon } from '@/components/svg/SvgIconBackupEran'
+import { SvgIcon } from '@/components/svg/SvgIcon'
 import { useDropdown } from '@/hooks/useDropdown'
 import { useHeaderSearchObserver } from '@/hooks/useHeaderSearchObserver'
 

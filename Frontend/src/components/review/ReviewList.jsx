@@ -1,4 +1,3 @@
-import { EmptyState } from "../ui/EmptyState";
 import { ReviewPreview } from "./ReviewPreview";
 
 export function ReviewList({reviews}){

@@ -1,4 +1,4 @@
-import { SvgIcon } from '@/components/svg/SvgIconBackupEran'
+import { SvgIcon } from '@/components/svg/SvgIcon'
 
 export const DEFAULT_LOCALE = {
   langLabel: 'English',
