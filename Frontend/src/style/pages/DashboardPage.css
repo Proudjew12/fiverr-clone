@@ -138,6 +138,20 @@
   color: var(--clr-primary);
 }
 
+.orders-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.orders-thumb {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #f3f5f7;
+}
+
 .orders-meta {
   color: var(--clr-muted);
   font-size: 0.85rem;

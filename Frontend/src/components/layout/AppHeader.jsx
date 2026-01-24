@@ -251,7 +251,11 @@ function ProDropdown({ isOpen, onToggle, onClose }) {
 }
 
 function OrdersDropdown({ isOpen, onToggle, orders }) {
-  const formatMoney = (value) => `₪${Number(value).toFixed(2)}`
+  const fallbackThumbs = [
+    'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=200&q=80',
+    'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=200&q=80',
+    'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=200&q=80',
+  ]
 
   return (
     <div className="nav-dd">
@@ -273,12 +277,20 @@ function OrdersDropdown({ isOpen, onToggle, orders }) {
           {!orders.length && <div className="orders-dd-empty">No orders yet</div>}
           {!!orders.length && (
             <ul className="orders-dd-list">
-              {orders.slice(0, 3).map((order) => (
-                <li key={order.id} className="orders-dd-item">
-                  <span className="orders-dd-title">{order.title}</span>
-                  <span className="orders-dd-meta">{formatMoney(order.total)}</span>
-                </li>
-              ))}
+              {orders.slice(0, 3).map((order) => {
+                const thumbSrc =
+                  order.previewImg || utilService.pickRandom(fallbackThumbs)
+                return (
+                  <li key={order.id} className="orders-dd-item">
+                    <img className="orders-dd-thumb" src={thumbSrc} alt="" />
+                    <div className="orders-dd-content">
+                      <Link to={`/gig/${order.gigId}`} className="orders-dd-title">
+                        {order.title}
+                      </Link>
+                    </div>
+                  </li>
+                )
+              })}
             </ul>
           )}
           <Link to="/dashboard" className="orders-dd-link">

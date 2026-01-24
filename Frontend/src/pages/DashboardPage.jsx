@@ -1,8 +1,14 @@
 import { useEffect, useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { utilService } from '@/services/util.service'
 
 const PROFILE_IMAGE = '/assets/ProfileImgs/personOne.png'
 const ORDERS_STORAGE_KEY = 'orders'
+const DASHBOARD_FALLBACK_THUMBS = [
+  'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=200&q=80',
+  'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=200&q=80',
+  'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=200&q=80',
+]
 
 export function DashboardPage() {
   const userName = localStorage.getItem('userName') || 'ProudJew'
@@ -75,10 +81,18 @@ export function DashboardPage() {
                 <span>Status</span>
               </div>
               <ul className="orders-list">
-                {orders.map((order) => (
-                  <li key={order.id} className="orders-row">
-                    <div className="orders-cell">
-                      <div className="orders-title">{order.title}</div>
+                {orders.map((order) => {
+                  const thumbSrc =
+                    order.previewImg || utilService.pickRandom(DASHBOARD_FALLBACK_THUMBS)
+                  return (
+                    <li key={order.id} className="orders-row">
+                      <div className="orders-cell">
+                        <div className="orders-title-row">
+                          <img className="orders-thumb" src={thumbSrc} alt="" />
+                          <Link className="orders-title" to={`/gig/${order.gigId}`}>
+                            {order.title}
+                          </Link>
+                        </div>
                       <div className="orders-meta">
                         {new Date(order.createdAt).toLocaleDateString()}
                       </div>
@@ -87,8 +101,9 @@ export function DashboardPage() {
                     <div className="orders-cell">
                       <span className="orders-status">{order.status}</span>
                     </div>
-                  </li>
-                ))}
+                    </li>
+                  )
+                })}
               </ul>
             </div>
           )}

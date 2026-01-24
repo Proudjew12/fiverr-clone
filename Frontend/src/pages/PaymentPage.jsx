@@ -73,6 +73,7 @@ export function PaymentPage() {
   }
 
   async function onConfirmPay() {
+    const previewImg = getPreviewImg()
     const order = {
       id: utilService.makeId(),
       gigId,
@@ -81,6 +82,7 @@ export function PaymentPage() {
       sellerName: gig?.owner?.fullname || 'Seller',
       createdAt: Date.now(),
       status: 'approved',
+      previewImg,
     }
     const existing = utilService.loadFromStorage(ORDERS_STORAGE_KEY, [])
     utilService.saveToStorage(ORDERS_STORAGE_KEY, [order, ...existing])
