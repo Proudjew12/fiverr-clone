@@ -9,10 +9,13 @@ const DASHBOARD_FALLBACK_THUMBS = [
   'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=200&q=80',
   'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=200&q=80',
 ]
+const WISHLIST_STORAGE_KEY = 'wishlist'
 
 export function DashboardPage() {
   const userName = localStorage.getItem('userName') || 'ProudJew'
   const [orders, setOrders] = useState(() => loadOrders())
+  const [wishlist, setWishlist] = useState(() => loadWishlist())
+  const [activeTab, setActiveTab] = useState('orders')
   const emptyImage = useMemo(() => PROFILE_IMAGE, [])
 
   useEffect(() => {
@@ -20,12 +23,18 @@ export function DashboardPage() {
       setOrders(loadOrders())
     }
 
+    function updateWishlist() {
+      setWishlist(loadWishlist())
+    }
+
     window.addEventListener('storage', updateOrders)
     window.addEventListener('orders-updated', updateOrders)
+    window.addEventListener('wishlist-updated', updateWishlist)
 
     return () => {
       window.removeEventListener('storage', updateOrders)
       window.removeEventListener('orders-updated', updateOrders)
+      window.removeEventListener('wishlist-updated', updateWishlist)
     }
   }, [])
 
@@ -33,6 +42,11 @@ export function DashboardPage() {
   function onClearOrders() {
     clearOrders()
     setOrders([])
+  }
+
+  function onClearWishlist() {
+    clearWishlist()
+    setWishlist([])
   }
 
   return (
@@ -49,22 +63,57 @@ export function DashboardPage() {
         <header className="dashboard-header">
           <div className="dashboard-header-row">
             <div>
-              <h1>Manage Orders</h1>
-              <p className="dashboard-subtitle">All your orders will appear here.</p>
+              <h1>{activeTab === 'orders' ? 'Manage Orders' : 'Wishlist'}</h1>
+              <p className="dashboard-subtitle">
+                {activeTab === 'orders'
+                  ? 'All your orders will appear here.'
+                  : 'All your saved gigs will appear here.'}
+              </p>
             </div>
+            {activeTab === 'orders' ? (
+              <button
+                type="button"
+                className="dashboard-clear-btn"
+                onClick={onClearOrders}
+                disabled={!orders.length}
+              >
+                Clear orders
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="dashboard-clear-btn"
+                onClick={onClearWishlist}
+                disabled={!wishlist.length}
+              >
+                Clear wishlist
+              </button>
+            )}
+          </div>
+          <div className="dashboard-tabs">
             <button
               type="button"
-              className="dashboard-clear-btn"
-              onClick={onClearOrders}
-              disabled={!orders.length}
+              className={`dashboard-tab ${activeTab === 'orders' ? 'is-active' : ''}`}
+              onClick={() => setActiveTab('orders')}
             >
-              Clear orders
+              Manage Orders
+            </button>
+            <button
+              type="button"
+              className={`dashboard-tab ${activeTab === 'wishlist' ? 'is-active' : ''}`}
+              onClick={() => setActiveTab('wishlist')}
+            >
+              Wishlist
             </button>
           </div>
         </header>
 
-        <section className={`dashboard-card orders-card ${orders.length ? 'has-orders' : ''}`}>
-          {!orders.length && (
+        <section
+          className={`dashboard-card orders-card ${
+            activeTab === 'orders' && orders.length ? 'has-orders' : ''
+          } ${activeTab === 'wishlist' && wishlist.length ? 'has-orders' : ''}`}
+        >
+          {activeTab === 'orders' && !orders.length && (
             <div className="orders-empty">
               <div>
                 <h3>No orders yet</h3>
@@ -73,7 +122,7 @@ export function DashboardPage() {
             </div>
           )}
 
-          {!!orders.length && (
+          {activeTab === 'orders' && !!orders.length && (
             <div className="orders-table">
               <div className="orders-head">
                 <span>Order</span>
@@ -93,14 +142,58 @@ export function DashboardPage() {
                             {order.title}
                           </Link>
                         </div>
-                      <div className="orders-meta">
-                        {new Date(order.createdAt).toLocaleDateString()}
+                        <div className="orders-meta">
+                          {new Date(order.createdAt).toLocaleDateString()}
+                        </div>
                       </div>
-                    </div>
-                    <div className="orders-cell">{formatMoney(order.total)}</div>
-                    <div className="orders-cell">
-                      <span className="orders-status">{order.status}</span>
-                    </div>
+                      <div className="orders-cell">{formatMoney(order.total)}</div>
+                      <div className="orders-cell">
+                        <span className="orders-status">{order.status}</span>
+                      </div>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          )}
+
+          {activeTab === 'wishlist' && !wishlist.length && (
+            <div className="orders-empty">
+              <div>
+                <h3>No items yet</h3>
+                <p>Tap the heart on a gig to save it here.</p>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'wishlist' && !!wishlist.length && (
+            <div className="orders-table">
+              <div className="orders-head">
+                <span>Gig</span>
+                <span>Price</span>
+                <span>Status</span>
+              </div>
+              <ul className="orders-list">
+                {wishlist.map((item) => {
+                  const thumbSrc =
+                    item.previewImg || utilService.pickRandom(DASHBOARD_FALLBACK_THUMBS)
+                  return (
+                    <li key={item.id} className="orders-row">
+                      <div className="orders-cell">
+                        <div className="orders-title-row">
+                          <img className="orders-thumb" src={thumbSrc} alt="" />
+                          <Link className="orders-title" to={`/gig/${item.gigId}`}>
+                            {item.title}
+                          </Link>
+                        </div>
+                        <div className="orders-meta">
+                          {new Date(item.createdAt).toLocaleDateString()}
+                        </div>
+                      </div>
+                      <div className="orders-cell">{formatMoney(item.price)}</div>
+                      <div className="orders-cell">
+                        <span className="orders-status wishlist-status">Saved</span>
+                      </div>
                     </li>
                   )
                 })}
@@ -120,4 +213,13 @@ function loadOrders() {
 function clearOrders() {
   utilService.saveToStorage(ORDERS_STORAGE_KEY, [])
   window.dispatchEvent(new CustomEvent('orders-updated'))
+}
+
+function loadWishlist() {
+  return utilService.loadFromStorage(WISHLIST_STORAGE_KEY, [])
+}
+
+function clearWishlist() {
+  utilService.saveToStorage(WISHLIST_STORAGE_KEY, [])
+  window.dispatchEvent(new CustomEvent('wishlist-updated'))
 }

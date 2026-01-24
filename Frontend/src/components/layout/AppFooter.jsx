@@ -1,5 +1,6 @@
-import { Locale } from '@/components/ui/Locale'
+import { DEFAULT_LOCALE } from '@/components/ui/Locale'
 import { SvgIcon, FOOTER_SOCIAL_LINKS } from '@/components/svg/SvgIconBackupEran'
+import { LeoChange } from '@/components/headerComponents/LeoChange'
 
 export function AppFooter() {
   return (
@@ -41,7 +42,18 @@ function FooterActions() {
 
       <span className="footer-divider" aria-hidden="true" />
 
-      <Locale />
+      <LeoChange
+        initialLang={DEFAULT_LOCALE.langLabel}
+        initialCurrency={DEFAULT_LOCALE.currencyCode}
+      >
+        <button type="button" className="footer-lang-btn grid items-center">
+          <span className="globe" aria-hidden="true">
+            <SvgIcon icon="footerGlobe" />
+          </span>
+          {DEFAULT_LOCALE.langLabel}
+          <span className="footer-currency">{DEFAULT_LOCALE.currencyCode}</span>
+        </button>
+      </LeoChange>
 
       <FooterAccessibility />
     </div>

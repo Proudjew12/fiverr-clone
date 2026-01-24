@@ -22,19 +22,25 @@ export function AppHeader() {
     () => localStorage.getItem('isSignedIn') === 'true'
   )
   const [orders, setOrders] = useState(() => getOrdersFromStorage())
+  const [wishlist, setWishlist] = useState(() => getWishlistFromStorage())
   const navigate = useNavigate()
 
   useEffect(() => {
     function updateOrders() {
       setOrders(getOrdersFromStorage())
     }
+    function updateWishlist() {
+      setWishlist(getWishlistFromStorage())
+    }
 
     window.addEventListener('storage', updateOrders)
     window.addEventListener('orders-updated', updateOrders)
+    window.addEventListener('wishlist-updated', updateWishlist)
 
     return () => {
       window.removeEventListener('storage', updateOrders)
       window.removeEventListener('orders-updated', updateOrders)
+      window.removeEventListener('wishlist-updated', updateWishlist)
     }
   }, [])
 
@@ -65,6 +71,7 @@ export function AppHeader() {
             onCloseDd={closeDd}
             getOptionProps={getOptionProps}
             orders={orders}
+            wishlist={wishlist}
             isSignedIn={isSignedIn}
             onSignIn={handleSignIn}
             onSignOut={handleSignOut}
@@ -109,6 +116,7 @@ function HeaderRight({
   onCloseDd,
   getOptionProps,
   orders,
+  wishlist,
   isSignedIn,
   onSignIn,
   onSignOut,
@@ -116,12 +124,19 @@ function HeaderRight({
   return (
     <nav className="header-nav flex items-center" aria-label="Header">
       <div className="nav-group nav-group-links flex items-center">
-        <HeaderDropdowns openDd={openDd} onToggleDd={onToggleDd} onCloseDd={onCloseDd} />
-
-        <LanguageCurrencyButton
-          langLabel={DEFAULT_LOCALE.langLabel}
-          currencyCode={DEFAULT_LOCALE.currencyCode}
+        <HeaderDropdowns
+          openDd={openDd}
+          onToggleDd={onToggleDd}
+          onCloseDd={onCloseDd}
+          isSignedIn={isSignedIn}
         />
+
+        {!isSignedIn && (
+          <LanguageCurrencyButton
+            langLabel={DEFAULT_LOCALE.langLabel}
+            currencyCode={DEFAULT_LOCALE.currencyCode}
+          />
+        )}
 
         {isSignedIn ? (
           <SignedInActions
@@ -130,6 +145,7 @@ function HeaderRight({
             onCloseDd={onCloseDd}
             getOptionProps={getOptionProps}
             orders={orders}
+            wishlist={wishlist}
             onSignOut={onSignOut}
           />
         ) : (
@@ -142,7 +158,7 @@ function HeaderRight({
   )
 }
 
-function HeaderDropdowns({ openDd, onToggleDd, onCloseDd }) {
+function HeaderDropdowns({ openDd, onToggleDd, onCloseDd, isSignedIn }) {
   return (
     <div className="nav-group nav-group-dd flex items-center">
       <ProDropdown
@@ -151,11 +167,13 @@ function HeaderDropdowns({ openDd, onToggleDd, onCloseDd }) {
         onClose={onCloseDd}
       />
 
-      <ExploreDd
-        isOpen={openDd === 'explore'}
-        onToggle={() => onToggleDd('explore')}
-        onClose={onCloseDd}
-      />
+      {!isSignedIn && (
+        <ExploreDd
+          isOpen={openDd === 'explore'}
+          onToggle={() => onToggleDd('explore')}
+          onClose={onCloseDd}
+        />
+      )}
     </div>
   )
 }
@@ -188,10 +206,17 @@ function SignedInActions({
   onCloseDd,
   getOptionProps,
   orders,
+  wishlist,
   onSignOut,
 }) {
   return (
     <>
+      <HeaderIconButtons />
+      <WishlistDropdown
+        isOpen={openDd === 'wishlist'}
+        onToggle={() => onToggleDd('wishlist')}
+        wishlist={wishlist}
+      />
       <OrdersDropdown
         isOpen={openDd === 'orders'}
         onToggle={() => onToggleDd('orders')}
@@ -302,8 +327,76 @@ function OrdersDropdown({ isOpen, onToggle, orders }) {
   )
 }
 
+function WishlistDropdown({ isOpen, onToggle, wishlist = [] }) {
+  const fallbackThumbs = [
+    'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=200&q=80',
+    'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=200&q=80',
+    'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=200&q=80',
+  ]
+
+  return (
+    <div className="nav-dd">
+      <button
+        type="button"
+        className="nav-dd-trigger nav-dd-trigger--icon"
+        aria-expanded={isOpen}
+        aria-haspopup="dialog"
+        onClick={onToggle}
+      >
+        <span className="header-icon">
+          <SvgIcon icon="headerHeart" />
+        </span>
+      </button>
+
+      {isOpen && (
+        <div className="nav-dd-panel nav-dd-panel-orders" aria-label="Wishlist">
+          {!wishlist.length && <div className="orders-dd-empty">No saved gigs</div>}
+          {!!wishlist.length && (
+            <ul className="orders-dd-list">
+              {wishlist.slice(0, 3).map((item) => {
+                const thumbSrc =
+                  item.previewImg || utilService.pickRandom(fallbackThumbs)
+                return (
+                  <li key={item.id} className="orders-dd-item">
+                    <img className="orders-dd-thumb" src={thumbSrc} alt="" />
+                    <div className="orders-dd-content">
+                      <Link to={`/gig/${item.gigId}`} className="orders-dd-title">
+                        {item.title}
+                      </Link>
+                    </div>
+                  </li>
+                )
+              })}
+            </ul>
+          )}
+          <Link to="/dashboard" className="orders-dd-link">
+            View wishlist
+          </Link>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function HeaderIconButtons() {
+  return (
+    <div className="header-icon-group">
+      <button type="button" className="header-icon-btn" aria-label="Notifications">
+        <SvgIcon icon="headerBell" />
+      </button>
+      <button type="button" className="header-icon-btn" aria-label="Messages">
+        <SvgIcon icon="headerMail" />
+      </button>
+    </div>
+  )
+}
+
 function getOrdersFromStorage() {
   return utilService.loadFromStorage('orders', [])
+}
+
+function getWishlistFromStorage() {
+  return utilService.loadFromStorage('wishlist', [])
 }
 
 function UserDropdown({ isOpen, onToggle, onClose, getOptionProps, onSignOut }) {

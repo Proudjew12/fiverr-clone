@@ -116,6 +116,72 @@ function _getIcon(icon, ctx) {
         className={className}
       />
     ),
+    headerBell: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        fill="none"
+        viewBox="0 0 24 24"
+        {...props}
+        className={className}
+      >
+        <path
+          d="M6 9a6 6 0 0 1 12 0c0 4 1.5 5.5 2.5 6.5H3.5C4.5 14.5 6 13 6 9Z"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M9.5 18a2.5 2.5 0 0 0 5 0"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+        />
+      </svg>
+    ),
+    headerMail: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        fill="none"
+        viewBox="0 0 24 24"
+        {...props}
+        className={className}
+      >
+        <path
+          d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinejoin="round"
+        />
+        <path
+          d="m4 7 8 6 8-6"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
+    headerHeart: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        fill="none"
+        viewBox="0 0 24 24"
+        {...props}
+        className={className}
+      >
+        <path
+          d="M12 20.5s-6.5-4.6-9-7.9C1.2 10.3 2.1 7.1 4.8 6.2c2-0.7 3.9 0.2 5.2 1.7 1.3-1.5 3.2-2.4 5.2-1.7 2.7 0.9 3.6 4.1 1.8 6.4-2.5 3.3-9 7.9-9 7.9Z"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
 
     footerLinkedIn: (
       <img

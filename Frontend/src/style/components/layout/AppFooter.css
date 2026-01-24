@@ -98,6 +98,10 @@
   white-space: nowrap;
 }
 
+.footer-lang-btn .footer-currency {
+  margin-left: 6px;
+}
+
 .footer-lang-btn img {
   width: 16px;
   height: 16px;
