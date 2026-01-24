@@ -1,15 +1,8 @@
 import { SvgIcon } from '@/components/svg/SvgIcon'
 import { SearchBar } from '@/components/homepageComponents/SearchBar'
+import demoData from '@/data/demo-data.json'
 
-const HERO_CHIPS = [
-  'Website Development',
-  'Architecture & Interior Design',
-  'UGC Videos',
-  'Video Editing',
-  'Book Publishing',
-]
-
-const TRUSTED_BY = ['Meta', 'Google', 'Netflix', 'P&G', 'PayPal', 'Payoneer']
+const { heroChips: HERO_CHIPS, trustedBy: TRUSTED_BY } = demoData.home
 
 export function HomeHero() {
   function onChipClick(ev) {

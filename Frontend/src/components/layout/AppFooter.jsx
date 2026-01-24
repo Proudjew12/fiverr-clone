@@ -1,5 +1,6 @@
 import { DEFAULT_LOCALE } from '@/components/ui/Locale'
-import { SvgIcon, FOOTER_SOCIAL_LINKS } from '@/components/svg/SvgIcon'
+import { SvgIcon } from '@/components/svg/SvgIcon'
+import { FOOTER_SOCIAL_LINKS } from '@/components/svg/svg.constants'
 import { LeoChange } from '@/components/headerComponents/LeoChange'
 
 export function AppFooter() {

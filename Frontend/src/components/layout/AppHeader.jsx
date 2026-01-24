@@ -9,11 +9,13 @@ import { SearchInput } from '@/components/headerComponents/SearchInput'
 import { SvgIcon } from '@/components/svg/SvgIcon'
 import { useDropdown } from '@/hooks/useDropdown'
 import { useHeaderSearchObserver } from '@/hooks/useHeaderSearchObserver'
+import demoData from '@/data/demo-data.json'
 
 const DEFAULT_LOCALE = {
   langLabel: 'English',
   currencyCode: 'USD',
 }
+const FALLBACK_THUMBS = demoData.fallbackThumbs
 
 export function AppHeader() {
   const { openDd, toggleDd, closeDd, rootRef, getOptionProps } = useDropdown()
@@ -278,12 +280,6 @@ function ProDropdown({ isOpen, onToggle, onClose }) {
 }
 
 function OrdersDropdown({ isOpen, onToggle, onClose, orders }) {
-  const fallbackThumbs = [
-    'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=200&q=80',
-    'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=200&q=80',
-    'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=200&q=80',
-  ]
-
   return (
     <div className="nav-dd">
       <button
@@ -306,7 +302,7 @@ function OrdersDropdown({ isOpen, onToggle, onClose, orders }) {
             <ul className="orders-dd-list">
               {orders.slice(0, 3).map((order) => {
                 const thumbSrc =
-                  order.previewImg || utilService.pickRandom(fallbackThumbs)
+                  order.previewImg || utilService.pickRandom(FALLBACK_THUMBS)
                 return (
                   <li key={order.id} className="orders-dd-item">
                     <img className="orders-dd-thumb" src={thumbSrc} alt="" />
@@ -334,12 +330,6 @@ function OrdersDropdown({ isOpen, onToggle, onClose, orders }) {
 }
 
 function WishlistDropdown({ isOpen, onToggle, onClose, wishlist = [] }) {
-  const fallbackThumbs = [
-    'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=200&q=80',
-    'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=200&q=80',
-    'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=200&q=80',
-  ]
-
   return (
     <div className="nav-dd">
       <button
@@ -361,7 +351,7 @@ function WishlistDropdown({ isOpen, onToggle, onClose, wishlist = [] }) {
             <ul className="orders-dd-list">
               {wishlist.slice(0, 3).map((item) => {
                 const thumbSrc =
-                  item.previewImg || utilService.pickRandom(fallbackThumbs)
+                  item.previewImg || utilService.pickRandom(FALLBACK_THUMBS)
                 return (
                   <li key={item.id} className="orders-dd-item">
                     <img className="orders-dd-thumb" src={thumbSrc} alt="" />

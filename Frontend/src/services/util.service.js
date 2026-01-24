@@ -1,4 +1,6 @@
+import demoData from '@/data/demo-data.json'
 
+const RANDOM_GIG_DATA = demoData.randomGig
 
 export const utilService = {
   // ids & random
@@ -164,33 +166,7 @@ function buildQueryParams(obj) {
 }
 
 function makeRandomGig() {
-  const titles = [
-    'I will design your unique logo',
-    'I will do professional video editing',
-    'I will write a killer blog post',
-    'I will build your react website',
-    'I will create short videos for tiktok',
-    'I will record a professional voice over',
-    'I will translate english to hebrew',
-  ]
-
-  const fullnames = ['John Doe', 'Jane Smith', 'Dudu Da', 'Alice Cooper', 'Yossi Cohen', 'Daniella Art', 'Mark Tech', 'Sarah Connor', 'Mike Ross']
-  const levels = ['basic', 'level 1', 'level 2', 'top rated', 'pro']
-  const tags = ['logo-design', 'video-editing', 'writing', 'react', 'tiktok', 'voice-over', 'translation']
-
-  const videos = [
-    '/assets/Popular-Services/Video-Editing/video/ahitwsblrjquehepmyhn.mp4',
-    '/assets/Popular-Services/Video-Editing/video/bffs0bahnbjj94eyfd32.mp4',
-    '/assets/Popular-Services/Video-Editing/video/blpwzqxpnlbcq1f5zhuh.mp4',
-    '/assets/Popular-Services/Video-Editing/video/digjsvp1e9fiwfcxqmag.mp4',
-  ]
-
-  const images = [
-    '/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png',
-    '/assets/Popular-Services/Video-Editing/img/video1.jpg',
-    '/assets/gigExampleImg/1[gig].jpg',
-    '/assets/Popular-Services/Video-Editing/img/shorts.jpg',
-  ]
+  const { titles, fullnames, levels, tags, videos, images } = RANDOM_GIG_DATA
 
   return {
     _id: makeId(),
@@ -221,40 +197,7 @@ function getRandomFloat(min, max) {
 }
 
 function makeLorem(size = 100) {
-  var words = [
-    'The sky',
-    'above',
-    'the port',
-    'was',
-    'the color of television',
-    'tuned',
-    'to',
-    'a dead channel',
-    '.',
-    'All',
-    'this happened',
-    'more or less',
-    '.',
-    'I',
-    'had',
-    'the story',
-    'bit by bit',
-    'from various people',
-    'and',
-    'as generally',
-    'happens',
-    'in such cases',
-    'each time',
-    'it',
-    'was',
-    'a different story',
-    '.',
-    'It',
-    'was',
-    'a pleasure',
-    'to',
-    'burn',
-  ]
+  var words = RANDOM_GIG_DATA.loremWords
   var txt = ''
   while (size > 0) {
     size--

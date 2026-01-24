@@ -1,25 +1,6 @@
-const SUB_FOOTER_COLUMNS = [
-  {
-    title: 'Categories',
-    items: ['Graphics & Design', 'Programming & Tech', 'Digital Marketing', 'Video & Animation'],
-  },
-  {
-    title: 'For Clients',
-    items: ['Customer Success Stories'],
-  },
-  {
-    title: 'For Freelancers',
-    items: ['Become a Freelancer'],
-  },
-  {
-    title: 'Business Solutions',
-    items: ['Strategy & Roadmaps'],
-  },
-  {
-    title: 'Company',
-    items: ['About Leo', 'Contact Us'],
-  },
-]
+import demoData from '@/data/demo-data.json'
+
+const SUB_FOOTER_COLUMNS = demoData.subFooter.columns
 
 export function SubFooter() {
   function onLinkClick(ev) {

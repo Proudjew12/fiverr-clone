@@ -3,11 +3,6 @@ export function SvgIcon({ icon, className = '', ...props }) {
   return <>{el || null}</>
 }
 
-export const FOOTER_SOCIAL_LINKS = [
-  { key: 'linkedin', label: 'LinkedIn', icon: 'footerLinkedIn', href: '#' },
-  { key: 'github', label: 'GitHub', icon: 'footerGithub', href: '#' },
-]
-
 function _getIcon(icon, ctx) {
   const { className, props } = ctx || {}
 

@@ -1,16 +1,7 @@
 import { SvgIcon } from '@/components/svg/SvgIcon'
+import demoData from '@/data/demo-data.json'
 
-const categories = [
-  { key: 'programming', label: 'Programming\n& Tech', icon: 'Programming' },
-  { key: 'graphics', label: 'Graphics &\nDesign', icon: 'Graphics' },
-  { key: 'marketing', label: 'Digital\nMarketing', icon: 'Marketing' },
-  { key: 'writing', label: 'Writing &\nTranslation', icon: 'Writing' },
-  { key: 'video', label: 'Video &\nAnimation', icon: 'Video' },
-  { key: 'ai', label: 'AI Services', icon: 'AI' },
-  { key: 'music', label: 'Music & Audio', icon: 'Music' },
-  { key: 'business', label: 'Business', icon: 'Business' },
-  { key: 'consulting', label: 'Consulting', icon: 'Consulting' },
-]
+const categories = demoData.home.categories
 
 export function HomeCategories({ onCategoryClick }) {
   function handleCategoryClick(cat) {

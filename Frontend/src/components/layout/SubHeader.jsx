@@ -6,23 +6,9 @@ import { useSwiperNav } from '@/hooks/useSwiperNav'
 import { SvgIcon } from '@/components/svg/SvgIcon'
 import { gigService } from '@/services/leo.service.local.js'
 import { utilService } from '@/services/util.service'
+import demoData from '@/data/demo-data.json'
 
-const CATEGORIES = [
-  { key: 'trending', label: 'Trending 🔥', tag: 'trending' },
-  { key: 'graphics', label: 'Graphics & Design', tag: 'graphics' },
-  { key: 'tech', label: 'Programming & Tech', tag: 'programming' },
-  { key: 'marketing', label: 'Digital Marketing', tag: 'marketing' },
-  { key: 'video', label: 'Video & Animation', tag: 'video editing' },
-  { key: 'writing', label: 'Writing & Translation', tag: 'writing' },
-  { key: 'music', label: 'Music & Audio', tag: 'music' },
-  { key: 'business', label: 'Business', tag: 'business' },
-  { key: 'finance', label: 'Finance', tag: 'finance' },
-  { key: 'ai', label: 'AI Services', tag: 'ai' },
-  { key: 'lifestyle', label: 'Personal Growth', tag: 'personal growth' },
-  { key: 'consulting', label: 'Consulting', tag: 'consulting' },
-  { key: 'data', label: 'Data', tag: 'data' },
-  { key: 'photo', label: 'Photography', tag: 'photography' },
-]
+const CATEGORIES = demoData.subHeader.categories
 
 export function SubHeader() {
   const { onSwiper, onSlideChange, slidePrev, slideNext, isBeginning, isEnd } =

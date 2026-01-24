@@ -1,0 +1,160 @@
+{
+  "fallbackThumbs": [
+    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=200&q=80",
+    "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=200&q=80",
+    "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=200&q=80"
+  ],
+  "payment": {
+    "demoCard": {
+      "cardNumber": "4242 4242 4242 4242",
+      "expiry": "08 / 28",
+      "cvc": "123",
+      "name": "ProudJew",
+      "displayName": "Demo card",
+      "saveCard": true
+    }
+  },
+  "home": {
+    "heroChips": [
+      "Website Development",
+      "Architecture & Interior Design",
+      "UGC Videos",
+      "Video Editing",
+      "Book Publishing"
+    ],
+    "trustedBy": ["Meta", "Google", "Netflix", "P&G", "PayPal", "Payoneer"],
+    "categories": [
+      { "key": "programming", "label": "Programming\n& Tech", "icon": "Programming" },
+      { "key": "graphics", "label": "Graphics &\nDesign", "icon": "Graphics" },
+      { "key": "marketing", "label": "Digital\nMarketing", "icon": "Marketing" },
+      { "key": "writing", "label": "Writing &\nTranslation", "icon": "Writing" },
+      { "key": "video", "label": "Video &\nAnimation", "icon": "Video" },
+      { "key": "ai", "label": "AI Services", "icon": "AI" },
+      { "key": "music", "label": "Music & Audio", "icon": "Music" },
+      { "key": "business", "label": "Business", "icon": "Business" },
+      { "key": "consulting", "label": "Consulting", "icon": "Consulting" }
+    ],
+    "popularServices": [
+      { "key": "vibe-coding", "title": "Vibe Coding", "bg": "#003912", "icon": "popularCarousel1" },
+      { "key": "website-dev", "title": "Website\nDevelopment", "bg": "#003912", "icon": "popularCarousel2" },
+      { "key": "video-editing", "title": "Video Editing", "bg": "#003912", "icon": "popularCarousel3" },
+      { "key": "software-dev", "title": "Software\nDevelopment", "bg": "#003912", "icon": "popularCarousel4" },
+      { "key": "book-publishing", "title": "Book Publishing", "bg": "#003912", "icon": "popularCarousel5" },
+      { "key": "arch-interior", "title": "Architecture &\nInterior Design", "bg": "#003912", "icon": "popularCarousel6" },
+      { "key": "logo-design", "title": "Logo Design", "bg": "#003912", "icon": "popularCarousel7" },
+      { "key": "web-design", "title": "Website Design", "bg": "#003912", "icon": "popularCarousel8" }
+    ]
+  },
+  "subHeader": {
+    "categories": [
+      { "key": "trending", "label": "Trending 🔥", "tag": "trending" },
+      { "key": "graphics", "label": "Graphics & Design", "tag": "graphics" },
+      { "key": "tech", "label": "Programming & Tech", "tag": "programming" },
+      { "key": "marketing", "label": "Digital Marketing", "tag": "marketing" },
+      { "key": "video", "label": "Video & Animation", "tag": "video editing" },
+      { "key": "writing", "label": "Writing & Translation", "tag": "writing" },
+      { "key": "music", "label": "Music & Audio", "tag": "music" },
+      { "key": "business", "label": "Business", "tag": "business" },
+      { "key": "finance", "label": "Finance", "tag": "finance" },
+      { "key": "ai", "label": "AI Services", "tag": "ai" },
+      { "key": "lifestyle", "label": "Personal Growth", "tag": "personal growth" },
+      { "key": "consulting", "label": "Consulting", "tag": "consulting" },
+      { "key": "data", "label": "Data", "tag": "data" },
+      { "key": "photo", "label": "Photography", "tag": "photography" }
+    ]
+  },
+  "subFooter": {
+    "columns": [
+      {
+        "title": "Categories",
+        "items": ["Graphics & Design", "Programming & Tech", "Digital Marketing", "Video & Animation"]
+      },
+      {
+        "title": "For Clients",
+        "items": ["Customer Success Stories"]
+      },
+      {
+        "title": "For Freelancers",
+        "items": ["Become a Freelancer"]
+      },
+      {
+        "title": "Business Solutions",
+        "items": ["Strategy & Roadmaps"]
+      },
+      {
+        "title": "Company",
+        "items": ["About Leo", "Contact Us"]
+      }
+    ]
+  },
+  "randomGig": {
+    "titles": [
+      "I will design your unique logo",
+      "I will do professional video editing",
+      "I will write a killer blog post",
+      "I will build your react website",
+      "I will create short videos for tiktok",
+      "I will record a professional voice over",
+      "I will translate english to hebrew"
+    ],
+    "fullnames": [
+      "John Doe",
+      "Jane Smith",
+      "Dudu Da",
+      "Alice Cooper",
+      "Yossi Cohen",
+      "Daniella Art",
+      "Mark Tech",
+      "Sarah Connor",
+      "Mike Ross"
+    ],
+    "levels": ["basic", "level 1", "level 2", "top rated", "pro"],
+    "tags": ["logo-design", "video-editing", "writing", "react", "tiktok", "voice-over", "translation"],
+    "videos": [
+      "/assets/Popular-Services/Video-Editing/video/ahitwsblrjquehepmyhn.mp4",
+      "/assets/Popular-Services/Video-Editing/video/bffs0bahnbjj94eyfd32.mp4",
+      "/assets/Popular-Services/Video-Editing/video/blpwzqxpnlbcq1f5zhuh.mp4",
+      "/assets/Popular-Services/Video-Editing/video/digjsvp1e9fiwfcxqmag.mp4"
+    ],
+    "images": [
+      "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
+      "/assets/Popular-Services/Video-Editing/img/video1.jpg",
+      "/assets/gigExampleImg/1[gig].jpg",
+      "/assets/Popular-Services/Video-Editing/img/shorts.jpg"
+    ],
+    "loremWords": [
+      "The sky",
+      "above",
+      "the port",
+      "was",
+      "the color of television",
+      "tuned",
+      "to",
+      "a dead channel",
+      ".",
+      "All",
+      "this happened",
+      "more or less",
+      ".",
+      "I",
+      "had",
+      "the story",
+      "bit by bit",
+      "from various people",
+      "and",
+      "as generally",
+      "happens",
+      "in such cases",
+      "each time",
+      "it",
+      "was",
+      "a different story",
+      ".",
+      "It",
+      "was",
+      "a pleasure",
+      "to",
+      "burn"
+    ]
+  }
+}

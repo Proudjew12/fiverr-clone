@@ -4,42 +4,9 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Mousewheel } from 'swiper/modules'
 import { useSwiperNav } from '@/hooks/useSwiperNav'
 import { SvgIcon } from '@/components/svg/SvgIcon'
+import demoData from '@/data/demo-data.json'
 
-const popularServices = [
-  { key: 'vibe-coding', title: 'Vibe Coding', bg: '#003912', icon: 'popularCarousel1' },
-  {
-    key: 'website-dev',
-    title: 'Website\nDevelopment',
-    bg: '#003912',
-    icon: 'popularCarousel2',
-  },
-  {
-    key: 'video-editing',
-    title: 'Video Editing',
-    bg: '#003912',
-    icon: 'popularCarousel3',
-  },
-  {
-    key: 'software-dev',
-    title: 'Software\nDevelopment',
-    bg: '#003912',
-    icon: 'popularCarousel4',
-  },
-  {
-    key: 'book-publishing',
-    title: 'Book Publishing',
-    bg: '#003912',
-    icon: 'popularCarousel5',
-  },
-  {
-    key: 'arch-interior',
-    title: 'Architecture &\nInterior Design',
-    bg: '#003912',
-    icon: 'popularCarousel6',
-  },
-  { key: 'logo-design', title: 'Logo Design', bg: '#003912', icon: 'popularCarousel7' },
-  { key: 'web-design', title: 'Website Design', bg: '#003912', icon: 'popularCarousel8' },
-]
+const popularServices = demoData.home.popularServices
 
 export function PopularCarousel() {
   const { onSwiper, onSlideChange, slidePrev, slideNext, isBeginning, isEnd } =

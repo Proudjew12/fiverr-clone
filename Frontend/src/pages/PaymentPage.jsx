@@ -1,23 +1,13 @@
 import { gigService } from '@/services/leo.service.local.js'
 import { utilService } from '@/services/util.service'
+import demoData from '@/data/demo-data.json'
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
 const ORDERS_STORAGE_KEY = 'orders'
-const DEMO_CARD = {
-  cardNumber: '4242 4242 4242 4242',
-  expiry: '08 / 28',
-  cvc: '123',
-  name: 'ProudJew',
-  displayName: 'Demo card',
-  saveCard: true,
-}
-const ORDER_FALLBACK_THUMBS = [
-  'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=200&q=80',
-  'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=200&q=80',
-  'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=200&q=80',
-]
+const DEMO_CARD = demoData.payment.demoCard
+const FALLBACK_THUMBS = demoData.fallbackThumbs
 
 export function PaymentPage() {
   const { gigId } = useParams()
@@ -78,7 +68,7 @@ export function PaymentPage() {
   }
 
   async function onConfirmPay() {
-    const previewImg = utilService.pickRandom(ORDER_FALLBACK_THUMBS)
+    const previewImg = utilService.pickRandom(FALLBACK_THUMBS)
     const order = {
       id: utilService.makeId(),
       gigId,
