@@ -13,6 +13,11 @@ const DEMO_CARD = {
   displayName: 'Demo card',
   saveCard: true,
 }
+const ORDER_FALLBACK_THUMBS = [
+  'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=200&q=80',
+  'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=200&q=80',
+  'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=200&q=80',
+]
 
 export function PaymentPage() {
   const { gigId } = useParams()
@@ -73,7 +78,7 @@ export function PaymentPage() {
   }
 
   async function onConfirmPay() {
-    const previewImg = getPreviewImg()
+    const previewImg = utilService.pickRandom(ORDER_FALLBACK_THUMBS)
     const order = {
       id: utilService.makeId(),
       gigId,
