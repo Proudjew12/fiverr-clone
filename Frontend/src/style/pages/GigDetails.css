@@ -36,6 +36,13 @@
   flex-direction: column;
   gap: 4px;
 }
+.gig-details .main .name-rate-container .reviews-counter{
+  color: #74767E;
+  margin-left: 4px;
+  font-size: 1rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
 .gig-details .main .name-rate-container .owner-details {
   display: flex;
   align-items: center;
@@ -69,13 +76,13 @@
 .gig-details .main .name-rate-container .fullname:hover {
   text-decoration: underline;
 }
-.gig-details .main .name-rate-container .rate {
+.gig-details .main  .rate {
   display: flex;
   gap: 4px;
   color: #222325;
   font-size: 1rem;
 }
-.gig-details .main .name-rate-container .rate .rating-by-stars {
+.gig-details .main  .rate .rating-by-stars {
   display: flex;
   gap: 4px;
 }
@@ -296,7 +303,17 @@ cursor: pointer;
   color: #404145;
   margin-bottom: 32px;
   margin-top: 64px;
+  scroll-margin-top: 90px;
   
+}
+.gig-details .main .reviews-sub-title {
+  display: flex;
+  gap: 12px;
+  font-size: 1rem;
+  color: #222325;
+  font-weight: 600;
+  justify-content: space-between;
+  margin-bottom: 12px;
 }
 .gig-details aside {
   grid-area: aside;

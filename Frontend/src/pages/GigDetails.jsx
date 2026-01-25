@@ -1,7 +1,7 @@
 import { ReviewList } from '@/components/review/ReviewList'
 import { SvgIcon } from '@/components/svg/SvgIcon'
 import { Loader } from 'lucide-react'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useGigDetails } from '@/hooks/useGigDetails'
 
@@ -9,6 +9,8 @@ export function GigDetails() {
   const { gigId } = useParams()
   const navigate = useNavigate()
   const [selectedTab, setSelectedTab] = useState(1)
+ const reviewsTitle = useRef()
+ 
   const { gig, gigImgs, index, setIndex, setImg, isLoading } = useGigDetails(gigId)
   function getFileType(src) {
     const extension = src.split('.').pop().toLowerCase()
@@ -52,6 +54,13 @@ export function GigDetails() {
               {' '}
               <RatingByStars rate={gig.owner.rate} />
               {gig.owner.rate}
+              <span className='reviews-counter' onClick={()=>{reviewsTitle.current?.scrollIntoView(
+                {
+                 behavior:'smooth' 
+                }
+              )}}>
+                ({gig.reviews.length} reviews)
+              </span>
             </div>
           </div>
         </div>
@@ -161,7 +170,8 @@ export function GigDetails() {
             </ul>
           </div>
         </div>
-        <div className='reviews-title'>Reviews</div>
+        <div className='reviews-title' ref={reviewsTitle}>Reviews</div>
+        <span className='reviews-sub-title'><span>{gig.reviews.length} reviews for this Gig</span><span className='rate'><RatingByStars rate={gig.owner.rate}/>{gig.owner.rate}</span></span>
         <ReviewList reviews={gig.reviews} />
       </div>
       <aside>
