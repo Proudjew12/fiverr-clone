@@ -1,9 +1,9 @@
-import { gigService } from '@/services/leo.service.local.js'
 import { utilService } from '@/services/util.service'
 import demoData from '@/data/demo-data.json'
-import { useCallback, useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Swal from 'sweetalert2'
+import { useGigById } from '@/hooks/useGigById'
 
 const ORDERS_STORAGE_KEY = 'orders'
 const DEMO_CARD = demoData.payment.demoCard
@@ -11,7 +11,7 @@ const FALLBACK_THUMBS = demoData.fallbackThumbs
 
 export function PaymentPage() {
   const { gigId } = useParams()
-  const [gig, setGig] = useState(null)
+  const { gig, isLoading } = useGigById(gigId)
   const [form, setForm] = useState({
     cardNumber: '',
     expiry: '',
@@ -20,20 +20,6 @@ export function PaymentPage() {
     displayName: '',
     saveCard: true,
   })
-
-  const loadGig = useCallback(async () => {
-    try {
-      const data = await gigService.getById(gigId)
-      setGig(data)
-    } catch (err) {
-      console.error('Failed to load gig for payment', err)
-    }
-  }, [gigId])
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    if (gigId) loadGig()
-  }, [gigId, loadGig])
 
   const basePrice = Number(gig?.price || 165.09)
   const serviceFee = Number((basePrice * 0.125).toFixed(2))
@@ -54,7 +40,8 @@ export function PaymentPage() {
     return src
   }
 
-  if (!gig) return <div className="payment-loading">Loading...</div>
+  if (isLoading) return <div className="payment-loading">Loading...</div>
+  if (!gig) return null
 
   function handleFormChange(event) {
     const { name, value, type, checked } = event.target

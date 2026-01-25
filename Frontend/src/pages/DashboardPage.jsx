@@ -1,40 +1,18 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { utilService } from '@/services/util.service'
 import demoData from '@/data/demo-data.json'
+import { useDashboardLists } from '@/hooks/useDashboardLists'
 
 const PROFILE_IMAGE = '/assets/ProfileImgs/personOne.png'
-const ORDERS_STORAGE_KEY = 'orders'
 const FALLBACK_THUMBS = demoData.fallbackThumbs
-const WISHLIST_STORAGE_KEY = 'wishlist'
 
 export function DashboardPage() {
   const [searchParams, setSearchParams] = useSearchParams()
-  const userName = localStorage.getItem('userName') || 'ProudJew'
-  const [orders, setOrders] = useState(() => loadOrders())
-  const [wishlist, setWishlist] = useState(() => loadWishlist())
+  const userName = localStorage.getItem('userName') || 'LeoUser'
+  const { orders, wishlist, clearOrders, clearWishlist } = useDashboardLists()
   const emptyImage = useMemo(() => PROFILE_IMAGE, [])
   const activeTab = searchParams.get('tab') === 'wishlist' ? 'wishlist' : 'orders'
-
-  useEffect(() => {
-    function updateOrders() {
-      setOrders(loadOrders())
-    }
-
-    function updateWishlist() {
-      setWishlist(loadWishlist())
-    }
-
-    window.addEventListener('storage', updateOrders)
-    window.addEventListener('orders-updated', updateOrders)
-    window.addEventListener('wishlist-updated', updateWishlist)
-
-    return () => {
-      window.removeEventListener('storage', updateOrders)
-      window.removeEventListener('orders-updated', updateOrders)
-      window.removeEventListener('wishlist-updated', updateWishlist)
-    }
-  }, [])
 
   const formatMoney = (value) => `₪${Number(value).toFixed(2)}`
   function setTab(tab) {
@@ -46,12 +24,10 @@ export function DashboardPage() {
   }
   function onClearOrders() {
     clearOrders()
-    setOrders([])
   }
 
   function onClearWishlist() {
     clearWishlist()
-    setWishlist([])
   }
 
   return (
@@ -209,22 +185,4 @@ export function DashboardPage() {
       </main>
     </section>
   )
-}
-
-function loadOrders() {
-  return utilService.loadFromStorage(ORDERS_STORAGE_KEY, [])
-}
-
-function clearOrders() {
-  utilService.saveToStorage(ORDERS_STORAGE_KEY, [])
-  window.dispatchEvent(new CustomEvent('orders-updated'))
-}
-
-function loadWishlist() {
-  return utilService.loadFromStorage(WISHLIST_STORAGE_KEY, [])
-}
-
-function clearWishlist() {
-  utilService.saveToStorage(WISHLIST_STORAGE_KEY, [])
-  window.dispatchEvent(new CustomEvent('wishlist-updated'))
 }

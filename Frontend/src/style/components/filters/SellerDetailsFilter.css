@@ -10,12 +10,12 @@
 
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
-  z-index: 1;
+  z-index: 30;
   padding: 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 
-  top: 53px;
-  left: 198px;
+  top: calc(100% + 8px);
+  left: 0;
   
   h2{
     font-size: 1.15rem;

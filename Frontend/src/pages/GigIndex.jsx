@@ -1,95 +1,25 @@
 import { GigList } from '@/components/gig/GigList'
-import { gigService } from '@/services/leo.service.local.js'
-import { utilService } from '@/services/util.service'
-import { useEffect, useMemo, useState } from 'react'
 import { GigFilter } from '@/components/filter/GigFilter.jsx'
-import { useSearchParams } from 'react-router-dom'
 import { EmptyState } from '@/components/ui/EmptyState'
-import demoData from '@/data/demo-data.json'
+import { useGigFilters } from '@/hooks/useGigFilters'
+import { useGigSearchResults } from '@/hooks/useGigSearchResults'
 
 export function GigIndex() {
-  const [gigs, setGigs] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [page, setPage] = useState(1)
-  const [searchParams, setSearchParams] = useSearchParams()
+  const { filterBy, setFilter, handleFieldChange, sortValue, isSortOn, toggleSort, setSortDirection, clearFilters } =
+    useGigFilters()
   const isSignedIn = localStorage.getItem('isSignedIn') === 'true'
-  const userName = localStorage.getItem('userName') || 'ProudJew'
-  const pageSize = 8
+  const userName = localStorage.getItem('userName') || 'LeoUser'
 
-  const filterBy = useMemo(
-    () => ({
-      txt: searchParams.get('txt') || searchParams.get('q') || '',
-      minPrice: searchParams.get('minPrice') || '',
-      maxPrice: searchParams.get('maxPrice') || '',
-      sort: searchParams.get('sort') || '',
-      tags: searchParams.getAll('tags') || [],
-      topRated: searchParams.get('topRated') === 'true',
-      basic: searchParams.get('basic') === 'true',
-      level1: searchParams.get('level1') === 'true',
-      level2: searchParams.get('level2') === 'true',
-    }),
-    [searchParams]
-  )
+  const {
+    gigs,
+    isLoading,
+    setPage,
+    pageSize,
+    totalPages,
+    currentPage,
+    paginatedGigs,
+  } = useGigSearchResults({ filterBy, pageSize: 8 })
   const query = filterBy.txt
-  const totalPages = Math.max(1, Math.ceil(gigs.length / pageSize))
-  const currentPage = Math.min(page, totalPages)
-  const paginatedGigs = useMemo(() => {
-    const startIdx = (currentPage - 1) * pageSize
-    return gigs.slice(startIdx, startIdx + pageSize)
-  }, [gigs, currentPage, pageSize])
-
-  useEffect(() => {
-    let isMounted = true
-
-    async function loadGigs() {
-      try {
-        setIsLoading(true)
-        const data = await gigService.query({})
-        const demoGigs = buildDemoGigs(data, demoData.randomGig.videos)
-        const filteredGigs = gigService.filterGigs(demoGigs, filterBy)
-        if (isMounted) setGigs(filteredGigs)
-      } catch (err) {
-        console.error('err', err)
-        if (isMounted) setGigs([])
-      } finally {
-        if (isMounted) setIsLoading(false)
-      }
-    }
-
-    loadGigs()
-
-    return () => {
-      isMounted = false
-    }
-  }, [filterBy])
-
-  useEffect(() => {
-    setPage(1)
-  }, [searchParams])
-
-  useEffect(() => {
-    if (page > totalPages) setPage(totalPages)
-  }, [page, totalPages])
-
-  function onSetFilter(filterUpdate) {
-    setSearchParams((prevParams) => {
-      const newParams = new URLSearchParams(prevParams)
-
-      for (const field in filterUpdate) {
-        const value = filterUpdate[field]
-
-        if (value === '' || value === null || value === undefined || value === false) {
-          newParams.delete(field)
-        } else if (Array.isArray(value)) {
-          newParams.delete(field)
-          value.filter(Boolean).forEach((entry) => newParams.append(field, entry))
-        } else {
-          newParams.set(field, value)
-        }
-      }
-      return newParams
-    })
-  }
 
   return (
     <div className="main-layout-index">
@@ -121,7 +51,16 @@ export function GigIndex() {
             </header>
           )}
 
-          <GigFilter filterBy={filterBy} onSetFilter={onSetFilter} />
+          <GigFilter
+            filterBy={filterBy}
+            onSetFilter={setFilter}
+            onFieldChange={handleFieldChange}
+            sortValue={sortValue}
+            isSortOn={isSortOn}
+            onToggleSort={toggleSort}
+            onSortDirectionChange={setSortDirection}
+            onClearFilters={clearFilters}
+          />
 
           {isLoading && <div>Loading...</div>}
           {!isLoading && !paginatedGigs.length && <EmptyState />}
@@ -157,35 +96,4 @@ export function GigIndex() {
       <aside className="side-col right"></aside>
     </div>
   )
-}
-
-function buildDemoGigs(source = [], demoVideos = []) {
-  if (!source.length) return []
-  if (!demoVideos.length) return source
-
-  const categories = demoData.subHeader.categories || []
-  return demoVideos.map((videoSrc, idx) => {
-    const base = source[idx % source.length]
-    const owner = base.owner || {}
-    const fullname = utilService.pickRandom(demoData.randomGig.fullnames)
-    const rate =
-      Math.round((Math.random() * (5 - 3.8) + 3.8) * 10) / 10
-    const price = utilService.getRandomIntInclusive(20, 500)
-    const title = utilService.pickRandom(demoData.randomGig.titles)
-    const category = categories[idx % categories.length]
-    const tag = category?.tag
-    return {
-      ...base,
-      _id: `${base._id}-demo-${idx + 1}`,
-      title,
-      owner: {
-        ...owner,
-        fullname,
-        rate,
-      },
-      price,
-      tags: tag ? [tag] : base.tags || [],
-      videoUrls: [videoSrc],
-    }
-  })
 }

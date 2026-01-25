@@ -1,14 +1,12 @@
-import { useEffect, useRef } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { gigService } from '@/services/leo.service.local.js'
-import { utilService } from '@/services/util.service'
+import { useEffect } from 'react'
+import { useSearchForm } from '@/hooks/useSearchForm'
 
 export function SearchInput() {
-  const navigate = useNavigate()
-  const location = useLocation()
-  const longInputRef = useRef(null)
-  const shortInputRef = useRef(null)
-  const formKey = location.pathname
+  const { longInputRef, shortInputRef, formKey, onSubmit } = useSearchForm({
+    onBeforeNavigate: () => {
+      document.body.classList.remove('is-search-focused')
+    },
+  })
 
   useEffect(() => {
     return () => {
@@ -26,19 +24,6 @@ export function SearchInput() {
       const stillInSearch = active?.closest?.('.header-search')
       if (!stillInSearch) document.body.classList.remove('is-search-focused')
     }, 0)
-  }
-
-  function onSubmit(ev) {
-    ev.preventDefault()
-    const raw =
-      longInputRef.current?.value || shortInputRef.current?.value || ''
-    const trimmed = raw.trim()
-    if (!trimmed) return
-    document.body.classList.remove('is-search-focused')
-    const filterBy = gigService.getDefaultFilter()
-    filterBy.txt = trimmed
-    const queryStr = utilService.buildQueryParams(filterBy)
-    navigate(`/index?${queryStr}`)
   }
 
   return (

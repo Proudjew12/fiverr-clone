@@ -1,47 +1,12 @@
-import { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
 import { GigList } from '@/components/gig/GigList'
 import { EmptyState } from '@/components/ui/EmptyState'
-import { gigService } from '@/services/leo.service.local.js'
+import { useGigFilters } from '@/hooks/useGigFilters'
+import { useGigResults } from '@/hooks/useGigResults'
 
 export function SearchResultsPage() {
-  const [searchParams] = useSearchParams()
-  const query = searchParams.get('txt') || searchParams.get('q') || ''
-  const [gigs, setGigs] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    let isMounted = true
-
-    async function loadResults() {
-      try {
-        setIsLoading(true)
-        const filterBy = {
-          txt: query,
-          tags: searchParams.getAll('tags'),
-          minPrice: searchParams.get('minPrice'),
-          maxPrice: searchParams.get('maxPrice'),
-          topRated: searchParams.get('topRated') === 'true',
-          basic: searchParams.get('basic') === 'true',
-          level1: searchParams.get('level1') === 'true',
-          level2: searchParams.get('level2') === 'true',
-        }
-        const data = await gigService.query(filterBy)
-        if (isMounted) setGigs(data)
-      } catch (err) {
-        console.error('Failed to search gigs', err)
-        if (isMounted) setGigs([])
-      } finally {
-        if (isMounted) setIsLoading(false)
-      }
-    }
-
-    loadResults()
-
-    return () => {
-      isMounted = false
-    }
-  }, [query, searchParams])
+  const { filterBy } = useGigFilters()
+  const { gigs, isLoading } = useGigResults(filterBy)
+  const query = filterBy.txt
 
   const title = query ? (
     <>

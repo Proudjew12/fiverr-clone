@@ -1,26 +1,7 @@
-import { useRef } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { gigService } from '@/services/leo.service.local.js'
-import { utilService } from '@/services/util.service'
+import { useSearchForm } from '@/hooks/useSearchForm'
 
 export function SearchBar() {
-  const navigate = useNavigate()
-  const location = useLocation()
-  const longInputRef = useRef(null)
-  const shortInputRef = useRef(null)
-  const formKey = location.pathname
-
-  function onSubmit(ev) {
-    ev.preventDefault()
-    const raw =
-      longInputRef.current?.value || shortInputRef.current?.value || ''
-    const trimmed = raw.trim()
-    if (!trimmed) return
-    const filterBy = gigService.getDefaultFilter()
-    filterBy.txt = trimmed
-    const queryStr = utilService.buildQueryParams(filterBy)
-    navigate(`/index?${queryStr}`)
-  }
+  const { longInputRef, shortInputRef, formKey, onSubmit } = useSearchForm()
 
   return (
     <form key={formKey} className="search grid" onSubmit={onSubmit}>

@@ -15,6 +15,7 @@ export const gigService = {
   getDefaultFilter,
   createGigs,
   filterGigs,
+  buildFilterFromSearchParams,
 }
 
 async function query(filterBy = {}) {
@@ -99,6 +100,20 @@ function filterGigs(gigs = [], filterBy = {}) {
   }
 
   return filtered
+}
+
+function buildFilterFromSearchParams(searchParams) {
+  return {
+    txt: searchParams.get('txt') || searchParams.get('q') || '',
+    minPrice: searchParams.get('minPrice') || '',
+    maxPrice: searchParams.get('maxPrice') || '',
+    sort: searchParams.get('sort') || '',
+    tags: searchParams.getAll('tags') || [],
+    topRated: searchParams.get('topRated') === 'true',
+    basic: searchParams.get('basic') === 'true',
+    level1: searchParams.get('level1') === 'true',
+    level2: searchParams.get('level2') === 'true',
+  }
 }
 
 function getById(gigId) {

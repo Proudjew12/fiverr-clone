@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { utilService } from '@/services/util.service'
 
 import { LeoProDd } from '@/components/headerComponents/ProDd'
@@ -9,6 +9,7 @@ import { SearchInput } from '@/components/headerComponents/SearchInput'
 import { SvgIcon } from '@/components/svg/SvgIcon'
 import { useDropdown } from '@/hooks/useDropdown'
 import { useHeaderSearchObserver } from '@/hooks/useHeaderSearchObserver'
+import { useDashboardLists } from '@/hooks/useDashboardLists'
 import demoData from '@/data/demo-data.json'
 
 const DEFAULT_LOCALE = {
@@ -16,6 +17,7 @@ const DEFAULT_LOCALE = {
   currencyCode: 'USD',
 }
 const FALLBACK_THUMBS = demoData.fallbackThumbs
+const DEMO_USERNAMES = ['LeoUser', 'RandomPerson']
 
 export function AppHeader() {
   const { openDd, toggleDd, closeDd, rootRef, getOptionProps } = useDropdown()
@@ -23,33 +25,14 @@ export function AppHeader() {
   const [isSignedIn, setIsSignedIn] = useState(
     () => localStorage.getItem('isSignedIn') === 'true'
   )
-  const [orders, setOrders] = useState(() => getOrdersFromStorage())
-  const [wishlist, setWishlist] = useState(() => getWishlistFromStorage())
+  const { orders, wishlist } = useDashboardLists()
   const navigate = useNavigate()
-
-  useEffect(() => {
-    function updateOrders() {
-      setOrders(getOrdersFromStorage())
-    }
-    function updateWishlist() {
-      setWishlist(getWishlistFromStorage())
-    }
-
-    window.addEventListener('storage', updateOrders)
-    window.addEventListener('orders-updated', updateOrders)
-    window.addEventListener('wishlist-updated', updateWishlist)
-
-    return () => {
-      window.removeEventListener('storage', updateOrders)
-      window.removeEventListener('orders-updated', updateOrders)
-      window.removeEventListener('wishlist-updated', updateWishlist)
-    }
-  }, [])
 
   function handleSignIn() {
     setIsSignedIn(true)
     localStorage.setItem('isSignedIn', 'true')
-    localStorage.setItem('userName', 'ProudJew')
+    const name = DEMO_USERNAMES[Math.floor(Math.random() * DEMO_USERNAMES.length)]
+    localStorage.setItem('userName', name)
     closeDd()
     navigate('/index')
   }
@@ -369,11 +352,7 @@ function WishlistDropdown({ isOpen, onToggle, onClose, wishlist = [] }) {
               })}
             </ul>
           )}
-          <Link
-            to="/dashboard?tab=wishlist"
-            className="orders-dd-link"
-            onClick={onClose}
-          >
+          <Link to="/dashboard?tab=wishlist" className="orders-dd-link" onClick={onClose}>
             View wishlist
           </Link>
         </div>
@@ -395,13 +374,6 @@ function HeaderIconButtons() {
   )
 }
 
-function getOrdersFromStorage() {
-  return utilService.loadFromStorage('orders', [])
-}
-
-function getWishlistFromStorage() {
-  return utilService.loadFromStorage('wishlist', [])
-}
 
 function UserDropdown({ isOpen, onToggle, onClose, getOptionProps, onSignOut }) {
   return (
@@ -423,18 +395,18 @@ function UserDropdown({ isOpen, onToggle, onClose, getOptionProps, onSignOut }) 
       </button>
 
       {isOpen && (
-        <div className="nav-dd-panel nav-dd-panel-user" aria-label="User menu" role="menu">
+        <div
+          className="nav-dd-panel nav-dd-panel-user"
+          aria-label="User menu"
+          role="menu"
+        >
           <Link to="/dashboard" className="user-menu-item" onClick={onClose}>
             Dashboard
           </Link>
           <button type="button" className="user-menu-item" {...getOptionProps?.()}>
             Become a Seller
           </button>
-          <button
-            type="button"
-            className="user-menu-item"
-            onClick={onSignOut}
-          >
+          <button type="button" className="user-menu-item" onClick={onSignOut}>
             Sign out
           </button>
         </div>

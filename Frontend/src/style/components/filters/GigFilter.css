@@ -24,6 +24,7 @@
     padding: 10px 20px;
     max-height: 48px;
     max-width: 200px;
+    position: relative;
 
 
     font-weight: bold;

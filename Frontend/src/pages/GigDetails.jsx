@@ -1,36 +1,15 @@
 import { ReviewList } from '@/components/review/ReviewList'
 import { SvgIcon } from '@/components/svg/SvgIcon'
-import { gigService } from '@/services/leo.service.local.js'
 import { Loader } from 'lucide-react'
-import { useCallback, useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { useGigDetails } from '@/hooks/useGigDetails'
 
 export function GigDetails() {
   const { gigId } = useParams()
-  const [gig, setGig] = useState(null)
-  const [gigImgs, setGigImgs] = useState([])
   const navigate = useNavigate()
   const [selectedTab, setSelectedTab] = useState(1)
-  const [index, setIndex] = useState(0)
-  const loadGig = useCallback(async () => {
-    try {
-      const gig = await gigService.getById(gigId)
-      setGig(gig)
-      setGigImgs([...gig.videoUrls, ...gig.imgUrls])
-    } catch (error) {
-      console.log('There is no gig with id:', gigId, error)
-    }
-  }, [gigId])
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    if (gigId) loadGig()
-  }, [gigId, loadGig])
-  function setImg(diff) {
-    if (index + diff === gigImgs.length) setIndex(0)
-    else if (index + diff === -1) setIndex(gigImgs.length - 1)
-    else setIndex((index) => index + diff)
-  }
+  const { gig, gigImgs, index, setIndex, setImg, isLoading } = useGigDetails(gigId)
   function getFileType(src) {
     const extension = src.split('.').pop().toLowerCase()
 
@@ -40,7 +19,8 @@ export function GigDetails() {
     return 'unknown'
   }
 
-  if (!gig) return <Loader />
+  if (isLoading) return <Loader />
+  if (!gig) return null
   return (
     <section className="gig-details">
       <div className="main">

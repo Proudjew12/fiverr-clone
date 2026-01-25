@@ -1,15 +1,19 @@
 
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { SvgIcon } from '@/components/svg/SvgIcon'
 import demoData from '@/data/demo-data.json'
 import { utilService } from '@/services/util.service'
+import { useWishlist } from '@/hooks/useWishlist'
 
 export function GigPreview({ gig }) {
     const { title, price, owner, videoUrls, _id } = gig
     const vidRef = useRef(null)
-    const [isWishlisted, setIsWishlisted] = useState(() =>
-        isInWishlist(_id)
-    )
+    const { isWishlisted, toggleWishlist } = useWishlist({
+        gigId: _id,
+        title,
+        price,
+        videoUrls,
+    })
 
     const handleMouseEnter = () => {
         if (vidRef.current) vidRef.current.play()
@@ -31,13 +35,7 @@ export function GigPreview({ gig }) {
 
     function onToggleWishlist(event) {
         event.stopPropagation()
-        const next = toggleWishlist({
-            gigId: _id,
-            title,
-            price,
-            previewImg: getWishlistThumb(videoUrls),
-        })
-        setIsWishlisted(next)
+        toggleWishlist()
     }
 
     return (
@@ -107,21 +105,6 @@ export function GigPreview({ gig }) {
     )
 }
 
-const WISHLIST_STORAGE_KEY = 'wishlist'
-const FALLBACK_THUMBS = demoData.fallbackThumbs
-
-function getWishlistThumb(videoUrls = []) {
-    const src = Array.isArray(videoUrls) ? videoUrls[0] : videoUrls
-    if (!src || typeof src !== 'string') return utilService.pickRandom(FALLBACK_THUMBS)
-    const trimmed = src.trim()
-    if (!trimmed) return utilService.pickRandom(FALLBACK_THUMBS)
-    const ext = trimmed.split('.').pop().toLowerCase()
-    if (['mp4', 'webm', 'ogg'].includes(ext)) {
-        return utilService.pickRandom(FALLBACK_THUMBS)
-    }
-    return trimmed
-}
-
 function getVideoSrc(videoUrls) {
     if (Array.isArray(videoUrls)) {
         const src = videoUrls.find((item) => typeof item === 'string' && item.trim())
@@ -129,34 +112,4 @@ function getVideoSrc(videoUrls) {
     }
     if (typeof videoUrls === 'string' && videoUrls.trim()) return videoUrls.trim()
     return utilService.pickRandom(demoData.randomGig.videos)
-}
-
-function loadWishlist() {
-    return utilService.loadFromStorage(WISHLIST_STORAGE_KEY, [])
-}
-
-function isInWishlist(gigId) {
-    return loadWishlist().some((item) => item.gigId === gigId)
-}
-
-function toggleWishlist(item) {
-    const list = loadWishlist()
-    const exists = list.find((entry) => entry.gigId === item.gigId)
-    let next
-    if (exists) {
-        next = list.filter((entry) => entry.gigId !== item.gigId)
-    } else {
-        next = [
-            {
-                ...item,
-                id: utilService.makeId(),
-                createdAt: Date.now(),
-                status: 'saved',
-            },
-            ...list,
-        ]
-    }
-    utilService.saveToStorage(WISHLIST_STORAGE_KEY, next)
-    window.dispatchEvent(new CustomEvent('wishlist-updated'))
-    return !exists
 }

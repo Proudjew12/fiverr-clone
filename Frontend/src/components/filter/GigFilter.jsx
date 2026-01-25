@@ -1,51 +1,29 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { SellerDetailsFilter } from './SellerDetailsFilter.jsx'
-import { useSearchParams } from 'react-router-dom'
 import { BudgetFilter } from './BudgetFilter.jsx'
-import { gigService } from '@/services/leo.service.local.js'
 
-
-
-export function GigFilter({ filterBy, onSetFilter }) {
+export function GigFilter({
+  filterBy,
+  onSetFilter,
+  onFieldChange,
+  sortValue,
+  isSortOn,
+  onToggleSort,
+  onSortDirectionChange,
+  onClearFilters,
+}) {
   const [activeFilter, setActiveFilter] = useState(null)
-  const [searchParams] = useSearchParams()
-
-
-  useEffect(() => {
-  }, [searchParams])
 
   function onToggleFilter(filterName) {
     setActiveFilter((prevFilter) => (prevFilter === filterName ? null : filterName))
   }
-
-  function handleChange({ target }) {
-    let { value, name: field, type, checked } = target
-
-    value = type === 'checkbox' ? checked : type === 'number' ? +value : value
-
-
-    onSetFilter({ ...filterBy, [field]: value })
+  function handleChange(ev) {
+    onFieldChange(ev)
     setActiveFilter(null)
   }
 
-  const sortValue = searchParams.get('sort') || ''
-  const isSortOn = sortValue === 'price-asc' || sortValue === 'price-desc'
-
-  function onToggleSort(ev) {
-    const checked = ev.target.checked
-    const nextSort = checked ? sortValue || 'price-asc' : ''
-    onSetFilter({ ...filterBy, sort: nextSort })
-  }
-
-  function onSortDirectionChange(ev) {
-    onSetFilter({ ...filterBy, sort: ev.target.value })
-  }
-
-  function onClearFilters() {
-    onSetFilter({
-      ...gigService.getDefaultFilter(),
-      sort: false,
-    })
+  function handleClear() {
+    onClearFilters()
     setActiveFilter(null)
   }
 
@@ -103,7 +81,7 @@ export function GigFilter({ filterBy, onSetFilter }) {
             />
           )}
         </div>
-        <button type="button" className="clear-filters-btn" onClick={onClearFilters}>
+        <button type="button" className="clear-filters-btn" onClick={handleClear}>
           Clear
         </button>
       </div>
@@ -116,7 +94,7 @@ export function GigFilter({ filterBy, onSetFilter }) {
               type="checkbox"
               name="sort-toggle"
               checked={isSortOn}
-              onChange={onToggleSort}
+              onChange={(ev) => onToggleSort(ev.target.checked)}
             />
             <span className="slider"></span>
           </div>
@@ -124,7 +102,7 @@ export function GigFilter({ filterBy, onSetFilter }) {
             className="sort-select"
             name="sort"
             value={sortValue}
-            onChange={onSortDirectionChange}
+            onChange={(ev) => onSortDirectionChange(ev.target.value)}
             disabled={!isSortOn}
           >
             <option value="price-asc">Low to high</option>
