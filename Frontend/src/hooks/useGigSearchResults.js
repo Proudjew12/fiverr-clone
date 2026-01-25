@@ -1,7 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
 import { gigService } from '@/services/leo.service.local.js'
-import { utilService } from '@/services/util.service'
-import demoData from '@/data/demo-data.json'
 
 export function useGigSearchResults({ filterBy, pageSize = 8 } = {}) {
   const [gigs, setGigs] = useState([])
@@ -14,9 +12,7 @@ export function useGigSearchResults({ filterBy, pageSize = 8 } = {}) {
     async function loadGigs() {
       try {
         setIsLoading(true)
-        const data = await gigService.query({})
-        const demoGigs = buildDemoGigs(data, demoData.randomGig.videos)
-        const filteredGigs = gigService.filterGigs(demoGigs, filterBy)
+        const filteredGigs = await gigService.queryDemo(filterBy)
         if (isMounted) setGigs(filteredGigs)
       } catch (err) {
         console.error('err', err)
@@ -59,34 +55,4 @@ export function useGigSearchResults({ filterBy, pageSize = 8 } = {}) {
     currentPage,
     paginatedGigs,
   }
-}
-
-function buildDemoGigs(source = [], demoVideos = []) {
-  if (!source.length) return []
-  if (!demoVideos.length) return source
-
-  const categories = demoData.subHeader.categories || []
-  return demoVideos.map((videoSrc, idx) => {
-    const base = source[idx % source.length]
-    const owner = base.owner || {}
-    const fullname = utilService.pickRandom(demoData.randomGig.fullnames)
-    const rate = Math.round((Math.random() * (5 - 3.8) + 3.8) * 10) / 10
-    const price = utilService.getRandomIntInclusive(20, 500)
-    const title = utilService.pickRandom(demoData.randomGig.titles)
-    const category = categories[idx % categories.length]
-    const tag = category?.tag
-    return {
-      ...base,
-      _id: `${base._id}-demo-${idx + 1}`,
-      title,
-      owner: {
-        ...owner,
-        fullname,
-        rate,
-      },
-      price,
-      tags: tag ? [tag] : base.tags || [],
-      videoUrls: [videoSrc],
-    }
-  })
 }

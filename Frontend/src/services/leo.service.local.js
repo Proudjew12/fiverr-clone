@@ -1,5 +1,6 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
+import demoData from '@/data/demo-data.json'
 import gGigs from '../../data/gig.json'
 
 const STORAGE_KEY = 'gig_db'
@@ -8,7 +9,9 @@ createGigs()
 
 export const gigService = {
   query,
+  queryDemo,
   getById,
+  getDemoGigById,
   save,
   remove,
   getEmptyGig,
@@ -17,6 +20,8 @@ export const gigService = {
   filterGigs,
   buildFilterFromSearchParams,
 }
+
+let gDemoGigs = null
 
 async function query(filterBy = {}) {
   let gigs = await storageService.query(STORAGE_KEY)
@@ -40,6 +45,16 @@ async function query(filterBy = {}) {
       videoUrls: safeVideoUrls,
     }
   })
+}
+
+async function queryDemo(filterBy = {}) {
+  const gigs = await _getDemoGigs()
+  return filterGigs(gigs, filterBy)
+}
+
+async function getDemoGigById(gigId) {
+  const gigs = await _getDemoGigs()
+  return gigs.find((gig) => gig._id === gigId) || null
 }
 
 function filterGigs(gigs = [], filterBy = {}) {
@@ -114,6 +129,43 @@ function buildFilterFromSearchParams(searchParams) {
     level1: searchParams.get('level1') === 'true',
     level2: searchParams.get('level2') === 'true',
   }
+}
+
+async function _getDemoGigs() {
+  if (gDemoGigs) return gDemoGigs
+  const base = await storageService.query(STORAGE_KEY)
+  gDemoGigs = buildDemoGigs(base, demoData.randomGig.videos || [])
+  return gDemoGigs
+}
+
+function buildDemoGigs(source = [], demoVideos = []) {
+  if (!source.length) return []
+  if (!demoVideos.length) return source
+
+  const categories = demoData.subHeader.categories || []
+  return demoVideos.map((videoSrc, idx) => {
+    const base = source[idx % source.length]
+    const owner = base.owner || {}
+    const fullname = utilService.pickRandom(demoData.randomGig.fullnames)
+    const rate = Math.round((Math.random() * (5 - 3.8) + 3.8) * 10) / 10
+    const price = utilService.getRandomIntInclusive(20, 500)
+    const title = utilService.pickRandom(demoData.randomGig.titles)
+    const category = categories[idx % categories.length]
+    const tag = category?.tag
+    return {
+      ...base,
+      _id: `${base._id}-demo-${idx + 1}`,
+      title,
+      owner: {
+        ...owner,
+        fullname,
+        rate,
+      },
+      price,
+      tags: tag ? [tag] : base.tags || [],
+      videoUrls: [videoSrc],
+    }
+  })
 }
 
 function getById(gigId) {

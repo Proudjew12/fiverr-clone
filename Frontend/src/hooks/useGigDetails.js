@@ -10,7 +10,12 @@ export function useGigDetails(gigId) {
   const loadGig = useCallback(async () => {
     try {
       setIsLoading(true)
-      const data = await gigService.getById(gigId)
+      let data
+      try {
+        data = await gigService.getById(gigId)
+      } catch {
+        data = await gigService.getDemoGigById(gigId)
+      }
       setGig(data)
       setGigImgs([...(data?.videoUrls || []), ...(data?.imgUrls || [])])
     } catch (error) {
