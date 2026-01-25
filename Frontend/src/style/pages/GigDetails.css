@@ -51,10 +51,17 @@
   font-size: 1.125rem;
   margin-right: 8px;
 }
-.gig-details .main .name-rate-container .owner-details .level {
+.gig-details .main .level {
   padding: 0 6px;
   font-size: 1em;
   border-radius: 4px;
+  font-weight: 600;
+  display: flex;
+  gap: 4px;
+}
+.gig-details .main  .level .stars{
+  display: flex;
+  gap: 2px;
 }
 .gig-details .main .level.top-rated {
   background-color: #ffe0b3;
