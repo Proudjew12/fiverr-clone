@@ -22,6 +22,13 @@ export function GigPreview({ gig }) {
         }
     }
 
+    const handleLoadedData = () => {
+        if (vidRef.current) {
+            vidRef.current.pause()
+            vidRef.current.currentTime = 0
+        }
+    }
+
     function onToggleWishlist(event) {
         event.stopPropagation()
         const next = toggleWishlist({
@@ -58,12 +65,15 @@ export function GigPreview({ gig }) {
                     width="600"
                     muted
                     loop
+                    preload="metadata"
+                    playsInline
+                    onLoadedData={handleLoadedData}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                     className="gig-video"
                     style={{ cursor: 'pointer' }}
                 >
-                    <source src={videoUrls[0] || videoUrls} type="video/mp4" />
+                    <source src={getVideoSrc(videoUrls)} type="video/mp4" />
                 </video>
             </div>
 
@@ -102,12 +112,23 @@ const FALLBACK_THUMBS = demoData.fallbackThumbs
 
 function getWishlistThumb(videoUrls = []) {
     const src = Array.isArray(videoUrls) ? videoUrls[0] : videoUrls
-    if (!src) return utilService.pickRandom(FALLBACK_THUMBS)
-    const ext = String(src).split('.').pop().toLowerCase()
+    if (!src || typeof src !== 'string') return utilService.pickRandom(FALLBACK_THUMBS)
+    const trimmed = src.trim()
+    if (!trimmed) return utilService.pickRandom(FALLBACK_THUMBS)
+    const ext = trimmed.split('.').pop().toLowerCase()
     if (['mp4', 'webm', 'ogg'].includes(ext)) {
         return utilService.pickRandom(FALLBACK_THUMBS)
     }
-    return src
+    return trimmed
+}
+
+function getVideoSrc(videoUrls) {
+    if (Array.isArray(videoUrls)) {
+        const src = videoUrls.find((item) => typeof item === 'string' && item.trim())
+        if (src) return src
+    }
+    if (typeof videoUrls === 'string' && videoUrls.trim()) return videoUrls.trim()
+    return utilService.pickRandom(demoData.randomGig.videos)
 }
 
 function loadWishlist() {

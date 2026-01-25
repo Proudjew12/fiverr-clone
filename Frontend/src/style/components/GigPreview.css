@@ -11,6 +11,7 @@
 
     .card-media {
         position: relative;
+        background: #000;
     }
 
     video {

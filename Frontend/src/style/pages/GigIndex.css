@@ -45,3 +45,30 @@
 .main-layout-index .random-gig-btn:hover {
     cursor: pointer;
 }
+
+.gig-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 18px 0 30px;
+}
+
+.gig-pagination-btn {
+    border: 1px solid var(--clr-border);
+    border-radius: 999px;
+    padding: 8px 16px;
+    background: #fff;
+    font-weight: 600;
+    color: var(--clr-primary);
+    cursor: pointer;
+}
+
+.gig-pagination-btn:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.gig-pagination-meta {
+    font-weight: 600;
+    color: #555;
+}
