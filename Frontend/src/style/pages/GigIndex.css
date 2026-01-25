@@ -1,74 +1,81 @@
 .main-layout-index {
+  display: grid;
+  grid-template-columns: 1fr minmax(auto, 1400px) 1fr;
+  justify-items: center;
+  gap: 25px;
 
-    display: grid;
-    grid-template-columns: 1fr minmax(auto, 1400px) 1fr;
-    justify-items: center;
-    gap: 25px;
+  main {
+    width: 100%;
+  }
+}
 
-    main{
-        width: 100%;
-    }
+.main-layout-index .search-results-container {
+  padding-right: 18px;
+}
 
+.main-layout-index .gig-list {
+  width: calc(100% + 10px);
+  margin-right: -10px;
 }
 
 .welcome-banner {
-    grid-column: 1 / -1;
-    width: 100%;
-    margin: 6px 0 18px;
-    background: linear-gradient(90deg, #eef7d2 0%, #f4fbe3 48%, #ffffff 100%);
-    box-sizing: border-box;
+  grid-column: 1 / -1;
+  width: 100%;
+  margin: 6px 0 18px;
+  background: linear-gradient(90deg, #eef7d2 0%, #f4fbe3 48%, #ffffff 100%);
+  box-sizing: border-box;
 }
 
 .welcome-banner-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 44px 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 44px 32px;
 }
 
 .welcome-title {
-    font-size: 28px;
-    font-weight: 700;
-    color: #111;
-    margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+  margin: 0;
 }
 
 .main-layout-index .random-gig-btn {
-    border: 1px solid var(--clr-border);
-    border-radius: 6px;
-    padding: 6px 10px;
-    background: #fff;
-    font-weight: 600;
-    color: var(--clr-primary);
-    margin: 10px 0 18px;
+  border: 1px solid var(--clr-border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  background: #fff;
+  font-weight: 600;
+  color: var(--clr-primary);
+  margin: 10px 0 18px;
 }
 
 .main-layout-index .random-gig-btn:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .gig-pagination {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin: 18px 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 18px 0 30px;
 }
 
 .gig-pagination-btn {
-    border: 1px solid var(--clr-border);
-    border-radius: 999px;
-    padding: 8px 16px;
-    background: #fff;
-    font-weight: 600;
-    color: var(--clr-primary);
-    cursor: pointer;
+  border: 1px solid var(--clr-border);
+  border-radius: 999px;
+  padding: 8px 16px;
+  background: #fff;
+  font-weight: 600;
+  color: var(--clr-primary);
+  cursor: pointer;
 }
 
 .gig-pagination-btn:hover {
-    background: rgba(0, 0, 0, 0.04);
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .gig-pagination-meta {
-    font-weight: 600;
-    color: #555;
+  font-weight: 600;
+  color: #555;
 }

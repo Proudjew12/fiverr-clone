@@ -160,6 +160,7 @@
     background: #fff;
     font-weight: 600;
     color: #333;
+    min-width: 140px;
   }
 
   .sort-select:disabled {
