@@ -1,6 +1,3 @@
-import { GigList } from "@/components/gig/GigList";
-import { GigIndex } from "./GigIndex";
-
 export function AboutPage() {
   return (
     <section className="about-page">

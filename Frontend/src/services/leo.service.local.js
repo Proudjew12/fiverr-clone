@@ -31,8 +31,11 @@ async function query(filterBy = {}) {
     )
   }
 
-  if (filterBy.sort) {
-    gigs = gigs.sort((a, b) =>  a.price - b.price)
+  if (filterBy.sort === 'price-asc') {
+    gigs = gigs.sort((a, b) => a.price - b.price)
+  }
+  if (filterBy.sort === 'price-desc') {
+    gigs = gigs.sort((a, b) => b.price - a.price)
   }
 
   if (txt) {
@@ -54,6 +57,13 @@ async function query(filterBy = {}) {
     gigs = gigs.filter((gig) =>
       tags.every((tag) => (gig.tags || []).includes(tag))
     )
+  }
+
+  if (minPrice !== null) {
+    gigs = gigs.filter((gig) => {
+      const price = gig.price || 0
+      return price >= minPrice
+    })
   }
 
   if (maxPrice) {

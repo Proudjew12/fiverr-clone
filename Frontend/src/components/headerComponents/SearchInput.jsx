@@ -1,28 +1,20 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { gigService } from '@/services/leo.service.local.js'
 import { utilService } from '@/services/util.service'
 
 export function SearchInput() {
-  const [query, setQuery] = useState('')
   const navigate = useNavigate()
   const location = useLocation()
-  const prevPathRef = useRef(location.pathname)
+  const longInputRef = useRef(null)
+  const shortInputRef = useRef(null)
+  const formKey = location.pathname
 
   useEffect(() => {
     return () => {
       document.body.classList.remove('is-search-focused')
     }
   }, [])
-
-  useEffect(() => {
-    const prevPath = prevPathRef.current
-    const nextPath = location.pathname
-    if (prevPath !== nextPath && !nextPath.startsWith('/search')) {
-      setQuery('')
-    }
-    prevPathRef.current = nextPath
-  }, [location.pathname])
 
   function onFocusCapture() {
     document.body.classList.add('is-search-focused')
@@ -38,7 +30,9 @@ export function SearchInput() {
 
   function onSubmit(ev) {
     ev.preventDefault()
-    const trimmed = query.trim()
+    const raw =
+      longInputRef.current?.value || shortInputRef.current?.value || ''
+    const trimmed = raw.trim()
     if (!trimmed) return
     document.body.classList.remove('is-search-focused')
     const filterBy = gigService.getDefaultFilter()
@@ -49,29 +43,28 @@ export function SearchInput() {
 
   return (
     <form
+      key={formKey}
       className="search grid"
       onFocusCapture={onFocusCapture}
       onBlurCapture={onBlurCapture}
       onSubmit={onSubmit}
     >
       <input
+        ref={longInputRef}
         className="search-input search-input-long"
         type="search"
         autoComplete="off"
         placeholder="What service are you looking for today?"
         aria-label="Search services"
-        value={query}
-        onChange={(ev) => setQuery(ev.target.value)}
       />
 
       <input
+        ref={shortInputRef}
         className="search-input search-input-short"
         type="search"
         autoComplete="off"
         placeholder="Find services"
         aria-label="Search services"
-        value={query}
-        onChange={(ev) => setQuery(ev.target.value)}
       />
 
       <button className="search-btn grid place-center" type="submit" aria-label="Search">

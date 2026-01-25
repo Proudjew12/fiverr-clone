@@ -1,26 +1,20 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { gigService } from '@/services/leo.service.local.js'
 import { utilService } from '@/services/util.service'
 
 export function SearchBar() {
-  const [query, setQuery] = useState('')
   const navigate = useNavigate()
   const location = useLocation()
-  const prevPathRef = useRef(location.pathname)
-
-  useEffect(() => {
-    const prevPath = prevPathRef.current
-    const nextPath = location.pathname
-    if (prevPath.startsWith('/index') && !nextPath.startsWith('/index')) {
-      setQuery('')
-    }
-    prevPathRef.current = nextPath
-  }, [location.pathname])
+  const longInputRef = useRef(null)
+  const shortInputRef = useRef(null)
+  const formKey = location.pathname
 
   function onSubmit(ev) {
     ev.preventDefault()
-    const trimmed = query.trim()
+    const raw =
+      longInputRef.current?.value || shortInputRef.current?.value || ''
+    const trimmed = raw.trim()
     if (!trimmed) return
     const filterBy = gigService.getDefaultFilter()
     filterBy.txt = trimmed
@@ -29,25 +23,23 @@ export function SearchBar() {
   }
 
   return (
-    <form className="search grid" onSubmit={onSubmit}>
+    <form key={formKey} className="search grid" onSubmit={onSubmit}>
       <input
+        ref={longInputRef}
         className="search-input search-input-long"
         type="search"
         autoComplete="off"
         placeholder="What service are you looking for today?"
         aria-label="Search services"
-        value={query}
-        onChange={(ev) => setQuery(ev.target.value)}
       />
 
       <input
+        ref={shortInputRef}
         className="search-input search-input-short"
         type="search"
         autoComplete="off"
         placeholder="Find services"
         aria-label="Search services"
-        value={query}
-        onChange={(ev) => setQuery(ev.target.value)}
       />
 
       <button className="search-btn grid place-center" type="submit" aria-label="Search">

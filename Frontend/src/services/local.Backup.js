@@ -3,6 +3,11 @@ import { utilService } from './util.service.js'
 import gGigs from '../../data/gig.json'
 
 const STORAGE_KEY = 'gig_db'
+const userService = {
+  getLoggedinUser() {
+    return { _id: 'u0', fullname: 'Guest' }
+  },
+}
 
 createGigs()
 export const gigService = {

@@ -1,7 +1,7 @@
 import { gigService } from '@/services/leo.service.local.js'
 import { utilService } from '@/services/util.service'
 import demoData from '@/data/demo-data.json'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
@@ -21,18 +21,19 @@ export function PaymentPage() {
     saveCard: true,
   })
 
-  useEffect(() => {
-    if (gigId) loadGig()
-  }, [gigId])
-
-  async function loadGig() {
+  const loadGig = useCallback(async () => {
     try {
       const data = await gigService.getById(gigId)
       setGig(data)
     } catch (err) {
       console.error('Failed to load gig for payment', err)
     }
-  }
+  }, [gigId])
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (gigId) loadGig()
+  }, [gigId, loadGig])
 
   const basePrice = Number(gig?.price || 165.09)
   const serviceFee = Number((basePrice * 0.125).toFixed(2))

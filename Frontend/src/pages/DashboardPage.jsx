@@ -9,14 +9,12 @@ const FALLBACK_THUMBS = demoData.fallbackThumbs
 const WISHLIST_STORAGE_KEY = 'wishlist'
 
 export function DashboardPage() {
-  const [searchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams()
   const userName = localStorage.getItem('userName') || 'ProudJew'
   const [orders, setOrders] = useState(() => loadOrders())
   const [wishlist, setWishlist] = useState(() => loadWishlist())
-  const [activeTab, setActiveTab] = useState(
-    () => searchParams.get('tab') || 'orders'
-  )
   const emptyImage = useMemo(() => PROFILE_IMAGE, [])
+  const activeTab = searchParams.get('tab') === 'wishlist' ? 'wishlist' : 'orders'
 
   useEffect(() => {
     function updateOrders() {
@@ -38,14 +36,14 @@ export function DashboardPage() {
     }
   }, [])
 
-  useEffect(() => {
-    const nextTab = searchParams.get('tab')
-    if (nextTab === 'wishlist' || nextTab === 'orders') {
-      setActiveTab(nextTab)
-    }
-  }, [searchParams])
-
   const formatMoney = (value) => `₪${Number(value).toFixed(2)}`
+  function setTab(tab) {
+    setSearchParams((prevParams) => {
+      const nextParams = new URLSearchParams(prevParams)
+      nextParams.set('tab', tab)
+      return nextParams
+    })
+  }
   function onClearOrders() {
     clearOrders()
     setOrders([])
@@ -101,14 +99,14 @@ export function DashboardPage() {
             <button
               type="button"
               className={`dashboard-tab ${activeTab === 'orders' ? 'is-active' : ''}`}
-              onClick={() => setActiveTab('orders')}
+              onClick={() => setTab('orders')}
             >
               Manage Orders
             </button>
             <button
               type="button"
               className={`dashboard-tab ${activeTab === 'wishlist' ? 'is-active' : ''}`}
-              onClick={() => setActiveTab('wishlist')}
+              onClick={() => setTab('wishlist')}
             >
               Wishlist
             </button>

@@ -1,9 +1,5 @@
 import { SvgIcon } from '@/components/svg/SvgIcon'
-
-export const DEFAULT_LOCALE = {
-  langLabel: 'English',
-  currencyCode: 'USD',
-}
+import { DEFAULT_LOCALE } from './locale.constants'
 
 export function Locale({
   languageLabel = DEFAULT_LOCALE.langLabel,

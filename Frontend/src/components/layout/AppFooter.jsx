@@ -1,4 +1,4 @@
-import { DEFAULT_LOCALE } from '@/components/ui/Locale'
+import { DEFAULT_LOCALE } from '@/components/ui/locale.constants'
 import { SvgIcon } from '@/components/svg/SvgIcon'
 import { FOOTER_SOCIAL_LINKS } from '@/components/svg/svg.constants'
 import { LeoChange } from '@/components/headerComponents/LeoChange'

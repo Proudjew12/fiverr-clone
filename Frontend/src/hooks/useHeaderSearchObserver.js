@@ -9,23 +9,15 @@ export function useHeaderSearchObserver({
 } = {}) {
   const location = useLocation()
   const [showHeaderSearch, setShowHeaderSearch] = useState(true)
+  const canObserve = location.pathname === enabledOnPath && selector
 
   useEffect(() => {
-    if (location.pathname !== enabledOnPath) {
-      setShowHeaderSearch(true)
-      return
-    }
-
-    if (!selector) {
-      setShowHeaderSearch(true)
+    if (!canObserve) {
       return
     }
 
     const target = document.querySelector(selector)
-    if (!target) {
-      setShowHeaderSearch(true)
-      return
-    }
+    if (!target) return
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -36,7 +28,7 @@ export function useHeaderSearchObserver({
 
     observer.observe(target)
     return () => observer.disconnect()
-  }, [location.pathname, selector, enabledOnPath, rootMargin, threshold])
+  }, [canObserve, selector, rootMargin, threshold])
 
-  return showHeaderSearch
+  return canObserve ? showHeaderSearch : true
 }

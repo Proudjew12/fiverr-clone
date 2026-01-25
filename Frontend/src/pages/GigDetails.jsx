@@ -1,9 +1,8 @@
 import { ReviewList } from '@/components/review/ReviewList'
-import { ReviewPreview } from '@/components/review/ReviewPreview'
 import { SvgIcon } from '@/components/svg/SvgIcon'
 import { gigService } from '@/services/leo.service.local.js'
 import { Loader } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 export function GigDetails() {
@@ -13,11 +12,7 @@ export function GigDetails() {
   const navigate = useNavigate()
   const [selectedTab, setSelectedTab] = useState(1)
   const [index, setIndex] = useState(0)
-  useEffect(() => {
-    if (gigId) loadGig()
-  }, [gigId])
-
-  async function loadGig() {
+  const loadGig = useCallback(async () => {
     try {
       const gig = await gigService.getById(gigId)
       setGig(gig)
@@ -25,7 +20,12 @@ export function GigDetails() {
     } catch (error) {
       console.log('There is no gig with id:', gigId, error)
     }
-  }
+  }, [gigId])
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (gigId) loadGig()
+  }, [gigId, loadGig])
   function setImg(diff) {
     if (index + diff === gigImgs.length) setIndex(0)
     else if (index + diff === -1) setIndex(gigImgs.length - 1)

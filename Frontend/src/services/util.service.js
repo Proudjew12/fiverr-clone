@@ -208,16 +208,14 @@ function makeLorem(size = 100) {
 
 
 async function loadGigsFromFile() {
-    try {
-        const content = await readFile('../data/gig.json')
-       
-        const gigs = JSON.parse(content)
-        return gigs
-    } catch (err) {
-     
-        console.error('Had trouble loading gigs', err)
-        return []
-    }
+  try {
+    const res = await fetch('/data/gig.json')
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    return await res.json()
+  } catch (err) {
+    console.error('Had trouble loading gigs', err)
+    return []
+  }
 }
 
 async function addRandomGig() {
@@ -231,31 +229,21 @@ async function addRandomGig() {
 }
 
 
-function readJsonFile(path) {
-    const str = fs.readFileSync(path, 'utf8')
-    const json = JSON.parse(str)
-    return json
+function readJsonFile() {
+  throw new Error('readJsonFile is not available in the browser')
 }
 
 function writeJsonFile(path, data) {
-    return new Promise((resolve, reject) => {
-        const json = JSON.stringify(data, null, 2)
-        fs.writeFile(path, json, (err) => {
-            if (err) return reject(err)
-            resolve()
-        })
-    })
+  void path
+  void data
+  return Promise.reject(new Error('writeJsonFile is not available in the browser'))
 }
 
 
 async function saveGigsToFile(gigs) {
-    try {
-        await writeJsonFile('./data/gig.json', gigs)
-        console.log('Gigs saved successfully!')
-    } catch (err) {
-        console.error('Had trouble saving gigs', err)
-        throw err
-    }
+  console.warn('saveGigsToFile is not available in the browser', {
+    size: Array.isArray(gigs) ? gigs.length : 0,
+  })
 }
 
 // async function loadGigsFromFile() {
