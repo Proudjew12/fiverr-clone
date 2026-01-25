@@ -26,7 +26,7 @@
 .popular-viewport {
   position: relative;
   overflow: hidden;
-  padding: 0 56px;
+  padding: 0 56px 0 0;
 }
 
 .popular-viewport::before,
@@ -43,6 +43,7 @@
 
 .popular-viewport::before {
   left: 0;
+  width: 0;
 }
 
 .popular-viewport::after {

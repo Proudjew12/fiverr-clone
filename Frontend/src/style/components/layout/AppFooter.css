@@ -9,7 +9,8 @@
   display: block;
   height: 1px;
   background: #e4e5e7;
-  max-width: 1400px;
+  width: calc(100% - 48px);
+  max-width: calc(1400px - 48px);
   margin: 0 auto;
 }
 
@@ -120,4 +121,8 @@
   width: 20px;
   height: 20px;
   display: block;
+}
+
+.footer-accessibility {
+  margin-right: -10px;
 }

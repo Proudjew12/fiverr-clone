@@ -16,7 +16,7 @@
   max-width: 1400px;
   margin: 0 auto;
   height: 80px;
-  padding-inline: 32px;
+  padding-inline: 24px;
 }
 
 .header-left {
@@ -116,6 +116,7 @@
 
   transition: 0.2s;
   white-space: nowrap;
+  margin-right: 5px;
 }
 
 .join-btn:hover {
@@ -195,7 +196,9 @@
   display: grid;
   place-items: center;
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
 }
 
 .header-icon-btn svg {
@@ -217,7 +220,9 @@
   display: grid;
   place-items: center;
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
   padding: 0;
   line-height: 0;
 }
@@ -341,4 +346,27 @@
 
 .logo-header:hover {
   text-decoration: none;
+}
+
+/* Page-specific alignment */
+.app-header.is-home .app-header-inner {
+  max-width: 1280px;
+}
+
+.app-header.is-index .app-header-inner {
+  max-width: 1240px;
+}
+
+.app-header.is-home .logo-header {
+  margin-left: -50px;
+}
+
+.app-header.is-home .header-nav {
+  margin-right: -5px;
+}
+
+@media (min-width: 1280px) {
+  .app-header.is-home .app-header-inner {
+    padding-inline: 32px;
+  }
 }
