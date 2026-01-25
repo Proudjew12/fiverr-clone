@@ -140,30 +140,38 @@ export function GigDetails() {
               <div className="seller-name-rate">
                 <span className="fullname">{gig.owner.fullname}</span>
                 <span>Performance Marketer And Ad Creative Specialist</span>
-                <div className={'level ' + gig.owner.level.replace(/\s+/g, '-')}>
-                  {gig.owner.level === 'top rated'
-                    ? 'Top Rated'
-                    : gig.owner.level === '2'
-                      ? 'Level 2'
-                      : gig.owner.level === '1'
-                        ? 'Level 1'
-                        : ''}
-                  {gig.owner.level !== 'basic' ? (
-                    <div className="stars">
-                      <SvgIcon icon={'starBlack'} />
-                      <SvgIcon
-                        icon={gig.owner.level !== '1' ? 'starBlack' : 'starTranspet'}
-                      />
-                      <SvgIcon
-                        icon={
-                          gig.owner.level === 'top rated' ? 'starBlack' : 'starTranspet'
-                        }
-                      />
-                    </div>
-                  ) : (
-                    ''
-                  )}
+                <div className='rate-level-container'>
+                  <div className='rate'>
+                   <SvgIcon icon={'star'}/>
+                   {gig.owner.rate}
+                  </div>
+                  <div className={'level ' + gig.owner.level.replace(/\s+/g, '-')}>
+                    {gig.owner.level === 'top rated'
+                      ? 'Top Rated'
+                      : gig.owner.level === '2'
+                        ? 'Level 2'
+                        : gig.owner.level === '1'
+                          ? 'Level 1'
+                          : ''}
+                    {gig.owner.level !== 'basic' ? (
+                      <div className="stars">
+                        <SvgIcon icon={'starBlack'} />
+                        <SvgIcon
+                          icon={gig.owner.level !== '1' ? 'starBlack' : 'starTranspet'}
+                        />
+                        <SvgIcon
+                          icon={
+                            gig.owner.level === 'top rated' ? 'starBlack' : 'starTranspet'
+                          }
+                        />
+                      </div>
+                    ) : (
+                      ''
+                    )}
+                  </div>
                 </div>
+
+
               </div>
             </div>
             <button className="contact-btn">Contact me</button>
