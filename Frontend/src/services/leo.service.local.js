@@ -14,64 +14,13 @@ export const gigService = {
   getEmptyGig,
   getDefaultFilter,
   createGigs,
+  filterGigs,
 }
 
 async function query(filterBy = {}) {
   let gigs = await storageService.query(STORAGE_KEY)
 
-  const txt = String(filterBy.txt || '').trim().toLowerCase()
-  const tags = _normalizeTags(filterBy.tags)
-  const minPrice = _toNumberOrNull(filterBy.minPrice)
-  const maxPrice = _toNumberOrNull(filterBy.maxPrice)
-  const levelsToFilter = _getLevelsFilter(filterBy)
-
-  if (levelsToFilter.length) {
-    gigs = gigs.filter((gig) =>
-      levelsToFilter.includes(String(gig.owner?.level || '').toLowerCase())
-    )
-  }
-
-  if (filterBy.sort === 'price-asc') {
-    gigs = gigs.sort((a, b) => a.price - b.price)
-  }
-  if (filterBy.sort === 'price-desc') {
-    gigs = gigs.sort((a, b) => b.price - a.price)
-  }
-
-  if (txt) {
-    gigs = gigs.filter((gig) => {
-      const haystack = [
-        gig.title,
-        gig.description,
-        gig.owner?.fullname,
-        ...(gig.tags || []),
-      ]
-        .filter(Boolean)
-        .join(' ')
-        .toLowerCase()
-      return haystack.includes(txt)
-    })
-  }
-
-  if (tags.length) {
-    gigs = gigs.filter((gig) =>
-      tags.every((tag) => (gig.tags || []).includes(tag))
-    )
-  }
-
-  if (minPrice !== null) {
-    gigs = gigs.filter((gig) => {
-      const price = gig.price || 0
-      return price >= minPrice
-    })
-  }
-
-  if (maxPrice) {
-    gigs = gigs.filter((gig) => {
-      const price = gig.price || 0
-      return price <= maxPrice
-    })
-  }
+  gigs = filterGigs(gigs, filterBy)
 
   return gigs.map(({ _id, title, owner, description, price, videoUrls }) => {
     const safeOwner = owner || getEmptyGig().owner
@@ -90,6 +39,66 @@ async function query(filterBy = {}) {
       videoUrls: safeVideoUrls,
     }
   })
+}
+
+function filterGigs(gigs = [], filterBy = {}) {
+  let filtered = [...gigs]
+
+  const txt = String(filterBy.txt || '').trim().toLowerCase()
+  const tags = _normalizeTags(filterBy.tags)
+  const minPrice = _toNumberOrNull(filterBy.minPrice)
+  const maxPrice = _toNumberOrNull(filterBy.maxPrice)
+  const levelsToFilter = _getLevelsFilter(filterBy)
+
+  if (levelsToFilter.length) {
+    filtered = filtered.filter((gig) =>
+      levelsToFilter.includes(String(gig.owner?.level || '').toLowerCase())
+    )
+  }
+
+  if (txt) {
+    filtered = filtered.filter((gig) => {
+      const haystack = [
+        gig.title,
+        gig.description,
+        gig.owner?.fullname,
+        ...(gig.tags || []),
+      ]
+        .filter(Boolean)
+        .join(' ')
+        .toLowerCase()
+      return haystack.includes(txt)
+    })
+  }
+
+  if (tags.length) {
+    filtered = filtered.filter((gig) =>
+      tags.every((tag) => (gig.tags || []).includes(tag))
+    )
+  }
+
+  if (minPrice !== null) {
+    filtered = filtered.filter((gig) => {
+      const price = gig.price || 0
+      return price >= minPrice
+    })
+  }
+
+  if (maxPrice !== null) {
+    filtered = filtered.filter((gig) => {
+      const price = gig.price || 0
+      return price <= maxPrice
+    })
+  }
+
+  if (filterBy.sort === 'price-asc') {
+    filtered = filtered.sort((a, b) => (a.price || 0) - (b.price || 0))
+  }
+  if (filterBy.sort === 'price-desc') {
+    filtered = filtered.sort((a, b) => (b.price || 0) - (a.price || 0))
+  }
+
+  return filtered
 }
 
 function getById(gigId) {

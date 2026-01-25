@@ -46,7 +46,7 @@ export function GigIndex() {
         setIsLoading(true)
         const data = await gigService.query({})
         const demoGigs = buildDemoGigs(data, demoData.randomGig.videos)
-        const filteredGigs = applyDemoFilters(demoGigs, filterBy)
+        const filteredGigs = gigService.filterGigs(demoGigs, filterBy)
         if (isMounted) setGigs(filteredGigs)
       } catch (err) {
         console.error('err', err)
@@ -188,61 +188,4 @@ function buildDemoGigs(source = [], demoVideos = []) {
       videoUrls: [videoSrc],
     }
   })
-}
-
-function applyDemoFilters(gigs, filterBy) {
-  let filtered = [...gigs]
-  const txt = String(filterBy.txt || '').trim().toLowerCase()
-  const tags = Array.isArray(filterBy.tags) ? filterBy.tags.filter(Boolean) : []
-  const minPrice = filterBy.minPrice === '' ? null : Number(filterBy.minPrice)
-  const maxPrice = filterBy.maxPrice === '' ? null : Number(filterBy.maxPrice)
-  const levels = []
-  if (filterBy.topRated) levels.push('top rated')
-  if (filterBy.basic) levels.push('basic')
-  if (filterBy.level1) levels.push('1')
-  if (filterBy.level2) levels.push('2')
-
-  if (levels.length) {
-    filtered = filtered.filter((gig) =>
-      levels.includes(String(gig.owner?.level || '').toLowerCase())
-    )
-  }
-
-  if (txt) {
-    filtered = filtered.filter((gig) => {
-      const haystack = [
-        gig.title,
-        gig.description,
-        gig.owner?.fullname,
-        ...(gig.tags || []),
-      ]
-        .filter(Boolean)
-        .join(' ')
-        .toLowerCase()
-      return haystack.includes(txt)
-    })
-  }
-
-  if (tags.length) {
-    filtered = filtered.filter((gig) =>
-      tags.every((tag) => (gig.tags || []).includes(tag))
-    )
-  }
-
-  if (minPrice !== null && !Number.isNaN(minPrice)) {
-    filtered = filtered.filter((gig) => (gig.price || 0) >= minPrice)
-  }
-
-  if (maxPrice !== null && !Number.isNaN(maxPrice)) {
-    filtered = filtered.filter((gig) => (gig.price || 0) <= maxPrice)
-  }
-
-  if (filterBy.sort === 'price-asc') {
-    filtered = filtered.sort((a, b) => (a.price || 0) - (b.price || 0))
-  }
-  if (filterBy.sort === 'price-desc') {
-    filtered = filtered.sort((a, b) => (b.price || 0) - (a.price || 0))
-  }
-
-  return filtered
 }
