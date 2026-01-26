@@ -23,21 +23,23 @@
   grid-column: 1 / -1;
   width: 100%;
   margin: 6px 0 18px;
-  background: linear-gradient(90deg, #eef7d2 0%, #f4fbe3 48%, #ffffff 100%);
+  background: url('/assets/WelcomeUser/welcomeColor.svg') top center / cover no-repeat;
+  background-color: #f6fbef;
   box-sizing: border-box;
 }
 
 .welcome-banner-inner {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 44px 32px;
+  padding: 32px 32px 40px;
 }
 
 .welcome-title {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 700;
   color: #111;
   margin: 0;
+  line-height: 1.2;
 }
 
 .main-layout-index .random-gig-btn {
