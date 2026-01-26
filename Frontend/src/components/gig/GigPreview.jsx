@@ -8,6 +8,7 @@ import { useWishlist } from '@/hooks/useWishlist'
 export function GigPreview({ gig }) {
     const { title, price, owner, videoUrls, _id } = gig
     const vidRef = useRef(null)
+    const isSignedIn = localStorage.getItem('isSignedIn') === 'true'
     const { isWishlisted, toggleWishlist } = useWishlist({
         gigId: _id,
         title,
@@ -42,19 +43,21 @@ export function GigPreview({ gig }) {
         <article className="fiverr-gig-card">
 
             <div className="card-media">
-                <button
-                    type="button"
-                    className={`wishlist-btn ${isWishlisted ? 'is-active' : ''}`}
-                    aria-label={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
-                    onClick={onToggleWishlist}
-                >
-                    <SvgIcon
-                        icon="wishlistHeart"
-                        className="wishlist-icon"
-                        aria-hidden="true"
-                        filled={isWishlisted}
-                    />
-                </button>
+                {isSignedIn && (
+                    <button
+                        type="button"
+                        className={`wishlist-btn ${isWishlisted ? 'is-active' : ''}`}
+                        aria-label={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
+                        onClick={onToggleWishlist}
+                    >
+                        <SvgIcon
+                            icon="wishlistHeart"
+                            className="wishlist-icon"
+                            aria-hidden="true"
+                            filled={isWishlisted}
+                        />
+                    </button>
+                )}
 
                 <video
                     ref={vidRef}
