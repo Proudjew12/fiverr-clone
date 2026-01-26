@@ -86,33 +86,35 @@
     top: 12px;
     right: 12px;
     width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    background: rgba(0, 0, 0, 0.45);
+    height: 32px;
+    border-radius: 0;
+    border: 0;
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: transform 0.15s ease, background 0.2s ease;
+    transition: transform 0.15s ease;
     z-index: 2;
     padding: 0;
     line-height: 0;
 }
 
 .wishlist-btn:hover {
-    transform: scale(1.04);
-    background: rgba(0, 0, 0, 0.6);
+    transform: none;
 }
 
 .wishlist-btn.is-active {
-    background: rgba(17, 17, 17, 0.85);
+    background: transparent;
+}
+
+.wishlist-btn.is-active .wishlist-icon {
+    filter: none;
 }
 
 .wishlist-icon {
-    width: 18px;
-    height: 18px;
+    width: 34px;
+    height: 32px;
     display: block;
-    transform: translateX(1px);
     pointer-events: none;
 }

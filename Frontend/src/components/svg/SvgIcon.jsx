@@ -443,28 +443,25 @@ function _getIcon(icon, ctx) {
     ),
 
     wishlistHeart: (iconProps) => {
-      const {
-        filled = false,
-        fillColor = '#ffffff',
-        strokeColor = '#ffffff',
-        className: innerClassName,
-        ...rest
-      } = iconProps || {}
+      const { filled = false, className: innerClassName, ...rest } = iconProps || {}
       const finalClassName = innerClassName || className
 
       return (
         <svg
           className={finalClassName}
-          viewBox="0 0 24 24"
+          width="34"
+          height="32"
+          viewBox="0 0 34 32"
           aria-hidden="true"
           {...rest}
         >
-          <path
-            d="M12 20.8c-.3 0-.6-.1-.8-.3-2.2-1.9-6.7-5.6-8.5-8-1.6-2.1-1.2-5.2 1-6.8 2-1.4 4.7-.8 6.3 1 1.6-1.8 4.3-2.4 6.3-1 2.2 1.6 2.6 4.7 1 6.8-1.8 2.4-6.3 6.1-8.5 8-.2.2-.5.3-.8.3Z"
-            fill={filled ? fillColor : 'none'}
-            stroke={strokeColor}
-            strokeWidth="1.6"
-            strokeLinejoin="round"
+          <image
+            href="/assets/Heart/heart.svg"
+            x={filled ? -34 : 0}
+            y="0"
+            width="68"
+            height="32"
+            preserveAspectRatio="xMinYMin slice"
           />
         </svg>
       )

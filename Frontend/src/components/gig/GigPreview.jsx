@@ -53,8 +53,6 @@ export function GigPreview({ gig }) {
                         className="wishlist-icon"
                         aria-hidden="true"
                         filled={isWishlisted}
-                        fillColor="#ffffff"
-                        strokeColor="#ffffff"
                     />
                 </button>
 
