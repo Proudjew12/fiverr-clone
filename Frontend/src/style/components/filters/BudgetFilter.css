@@ -1,28 +1,26 @@
 .filter-budget {
-
     position: absolute;
-    top: 53px;
-    left: 378px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    z-index: 1;
-    padding: 20px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-
+    top: calc(100% + 8px);
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    z-index: 20;
+    padding: 14px 16px 12px;
+    min-width: 220px;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
 }
 
 .input-section {
-
-    padding: 0;
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
 .input-label {
-    font-size: 14px;
-    color: #717171;
-    font-weight: 500;
+    font-size: 13px;
+    color: #6b7280;
+    font-weight: 600;
 }
 
 
@@ -35,49 +33,48 @@
 .currency-symbol {
     position: absolute;
     left: 12px;
-    color: #222;
-    font-size: 16px;
+    color: #111827;
+    font-size: 14px;
     pointer-events: none;
 }
 
 .price-input {
     width: 100%;
-    padding: 12px 12px 12px 30px;
-    font-size: 16px;
-    border: 1px solid #b0b0b0;
-    border-radius: 8px;
+    padding: 10px 12px 10px 30px;
+    font-size: 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
     outline: none;
     transition: border-color 0.2s;
 }
 
 
 .price-input:focus {
-    border-color: #222;
-    border-width: 1.5px;
+    border-color: #111827;
 }
 
 .divider {
     height: 1px;
-    background-color: #eddddd;
+    background-color: #eef0f2;
     width: 100%;
-    margin-bottom: 16px;
+    margin: 12px 0 10px;
 }
-
 
 .actions-footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    padding: 0 20px 20px 20px;
+    gap: 12px;
+    padding: 0;
 }
 
 .btn-clear {
     background: none;
     border: none;
     text-decoration: underline;
-    color: #5e5e5e;
+    color: #6b7280;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 12px;
     cursor: pointer;
     padding: 0;
 }
@@ -87,12 +84,12 @@
 }
 
 .btn-apply {
-    background-color: #222;
+    background-color: #222325;
     color: white;
     border: none;
-    padding: 10px 24px;
+    padding: 8px 18px;
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
     cursor: pointer;
 }
