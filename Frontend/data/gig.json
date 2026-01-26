@@ -30,6 +30,36 @@
           "fullname": "user2",
           "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png"
         }
+      },
+      {
+        "id": "r102",
+        "txt": "Very professional editing and great communication throughout the project.",
+        "rate": 5,
+        "by": {
+          "_id": "u103",
+          "fullname": "Alex Morgan",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/2_creator who win .png"
+        }
+      },
+      {
+        "id": "r103",
+        "txt": "High-quality work delivered on time. The video looked cinematic and clean.",
+        "rate": 5,
+        "by": {
+          "_id": "u104",
+          "fullname": "Emily Stone",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/1e64d4de-db28-4e20-ac3c-73eca238da93.png"
+        }
+      },
+      {
+        "id": "r104",
+        "txt": "Great experience overall. The storytelling and transitions were excellent.",
+        "rate": 4,
+        "by": {
+          "_id": "u105",
+          "fullname": "Michael Lee",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/11e8d620-c81d-4c65-9560-e62255a7e88e.png"
+        }
       }
     ]
   },
@@ -62,7 +92,37 @@
         "by": {
           "_id": "u104",
           "fullname": "John Doe",
-          "imgUrl": "/assets/Popular-Services/Video-Editing/img/u104.jpg"
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/2fad7c21-59b3-45d3-bd17-ee191afe59a1.png"
+        }
+      },
+      {
+        "id": "rev202",
+        "txt": "Excellent communication and very professional editing. Highly recommended!",
+        "rate": 5,
+        "by": {
+          "_id": "u105",
+          "fullname": "Sarah Miller",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/32e077eb-3e59-4ede-aa8b-48ed8e968da0.jpg"
+        }
+      },
+      {
+        "id": "rev203",
+        "txt": "The motion graphics really upgraded my channel. Delivery was quick and clean.",
+        "rate": 5,
+        "by": {
+          "_id": "u106",
+          "fullname": "Daniel Ross",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/2_creator who win .png"
+        }
+      },
+      {
+        "id": "rev204",
+        "txt": "Great editing style and attention to detail. Will definitely order again.",
+        "rate": 4,
+        "by": {
+          "_id": "u107",
+          "fullname": "Olivia Brown",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/43aa8609-6a44-4bd1-a1a7-90c0fa6cff4e.jpg"
         }
       }
     ]
@@ -96,7 +156,37 @@
         "by": {
           "_id": "u106",
           "fullname": "Sarah Levi",
-          "imgUrl": "/assets/Popular-Services/Video-Editing/img/u106.jpg"
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/2dfa4b57-92a2-4576-b9ba-83602aadbebf.jpg"
+        }
+      },
+      {
+        "id": "rev302",
+        "txt": "The video felt like a real movie. Perfect pacing and beautiful colors.",
+        "rate": 5,
+        "by": {
+          "_id": "u107",
+          "fullname": "David Rosen",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/9fcb41bb-aa15-4d52-bd9e-cec1c2915781.jpg"
+        }
+      },
+      {
+        "id": "rev303",
+        "txt": "Very emotional and professionally edited. We couldn’t be happier.",
+        "rate": 5,
+        "by": {
+          "_id": "u108",
+          "fullname": "Noa Ben David",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/43aa8609-6a44-4bd1-a1a7-90c0fa6cff4e.jpg"
+        }
+      },
+      {
+        "id": "rev304",
+        "txt": "Outstanding color grading and storytelling. Highly recommended for weddings.",
+        "rate": 4,
+        "by": {
+          "_id": "u109",
+          "fullname": "Eitan Shahar",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/6d446992-fd6b-47df-a643-2107d86e79df.jpg"
         }
       }
     ]
@@ -122,7 +212,48 @@
     ],
     "tags": ["video editing", "tiktok", "reels"],
     "likedByUsers": ["influencer_1", "shop_owner"],
-    "reviews": []
+    "reviews": [
+      {
+        "id": "rev401",
+        "txt": "Super fast delivery and the edits were perfect for TikTok. Great pacing!",
+        "rate": 5,
+        "by": {
+          "_id": "u110",
+          "fullname": "Liam Parker",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/1bd2f0f0-602e-4bd7-9de8-d2f33f68d1aa.png"
+        }
+      },
+      {
+        "id": "rev402",
+        "txt": "The subtitles and cuts really boosted my engagement. Highly recommended.",
+        "rate": 5,
+        "by": {
+          "_id": "u111",
+          "fullname": "Emma Collins",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png"
+        }
+      },
+      {
+        "id": "rev403",
+        "txt": "Great understanding of trends and short-form style. Will order again.",
+        "rate": 5,
+        "by": {
+          "_id": "u112",
+          "fullname": "Noah Williams",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/6e0b1efe-a65c-4b64-b967-4a25072e6ead.png"
+        }
+      },
+      {
+        "id": "rev404",
+        "txt": "Clean edits and very responsive seller. Perfect for Reels and Shorts.",
+        "rate": 4,
+        "by": {
+          "_id": "u113",
+          "fullname": "Sophia Turner",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/4f9393a1-765e-495e-8281-98f8e47dfbbd.jpg"
+        }
+      }
+    ]
   },
   {
     "_id": "g105",
@@ -410,7 +541,4 @@
     "likedByUsers": ["podcaster_daily"],
     "reviews": []
   }
-
-
-
 ]
