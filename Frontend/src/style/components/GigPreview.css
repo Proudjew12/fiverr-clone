@@ -1,120 +1,116 @@
 .fiverr-gig-card {
+  width: 100%;
+  background: #fff;
+  cursor: pointer;
+  font-family: var(--font-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
-    width: 100%;
-    background: #fff;
-    cursor: pointer;
-    font-family: var(--font-primary);
+  .card-media {
+    position: relative;
+    background: #000;
+  }
+
+  video {
+    border-radius: 8px;
+    display: block;
+  }
+
+  .card-content {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 4px;
 
-    .card-media {
-        position: relative;
-        background: #000;
+    > * + * {
+      margin-top: 4px;
     }
 
-    video {
-        border-radius: 8px;
-        display: block;
-    }
+    .seller-row {
+      display: flex;
+      gap: 10px;
+      font-weight: bold;
+      font-size: 0.85rem;
+      justify-content: space-between;
 
-    .card-content {
+      .seller-avatar {
+        border-radius: 50%;
+      }
+      .mini-layout-seller {
         display: flex;
-        flex-direction: column;
-        gap: 6px;
+        gap: 0.7em;
+      }
 
-        > * + * {
-            margin-top: 6px;
-        }
+      img {
+        height: 24px;
+        width: 24px;
+      }
 
-        .seller-row {
-            display: flex;
-            gap: 10px;
-            font-weight: bold;
-            font-size: 0.85rem;
-            justify-content: space-between;
-            
-            .seller-avatar {
-                border-radius: 50%;
-                
-            }
-            .mini-layout-seller{
-                display: flex;
-                gap: 0.70em;
-            }
-
-            img {
-                height: 24px;
-                width: 24px;
-            }
-
-            :hover {
-                cursor: pointer;
-            }
-        }
-
-        .p {
-            font-weight: 5px;
-        }
-
-        .rating-row {
-            display: flex;
-            gap: 2.5px;
-            font-weight: bold;
-        }
-
-        .rating-row .count {
-            font-weight: 300;
-        }
-
-        .pricing-row .price-info {
-            display: flex;
-            gap: 3px;
-            font-weight: bold;
-
-            .tax-fees-note {
-                font-weight: lighter;
-            }
-        }
-
-
+      :hover {
+        cursor: pointer;
+      }
     }
+
+    .p {
+      font-weight: 5px;
+    }
+
+    .rating-row {
+      display: flex;
+      gap: 2.5px;
+      font-weight: bold;
+    }
+
+    .rating-row .count {
+      font-weight: 300;
+    }
+
+    .pricing-row .price-info {
+      display: flex;
+      gap: 1px;
+      font-weight: bold;
+
+      .tax-fees-note {
+        font-weight: lighter;
+      }
+    }
+  }
 }
 
 .wishlist-btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 34px;
-    height: 32px;
-    border-radius: 0;
-    border: 0;
-    background: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: transform 0.15s ease;
-    z-index: 2;
-    padding: 0;
-    line-height: 0;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 32px;
+  border-radius: 0;
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+  z-index: 2;
+  padding: 0;
+  line-height: 0;
 }
 
 .wishlist-btn:hover {
-    transform: none;
+  transform: none;
 }
 
 .wishlist-btn.is-active {
-    background: transparent;
+  background: transparent;
 }
 
 .wishlist-btn.is-active .wishlist-icon {
-    filter: none;
+  filter: none;
 }
 
 .wishlist-icon {
-    width: 34px;
-    height: 32px;
-    display: block;
-    pointer-events: none;
+  width: 34px;
+  height: 32px;
+  display: block;
+  pointer-events: none;
 }
