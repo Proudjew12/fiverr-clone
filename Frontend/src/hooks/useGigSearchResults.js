@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { gigService } from '@/services/leo.service.local.js'
 
-export function useGigSearchResults({ filterBy, pageSize = 8 } = {}) {
+export function useGigSearchResults({ filterBy, pageSize = 8, firstPageSize = 16 } = {}) {
   const [gigs, setGigs] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [page, setPage] = useState(1)
@@ -33,7 +33,10 @@ export function useGigSearchResults({ filterBy, pageSize = 8 } = {}) {
     setPage(1)
   }, [filterBy])
 
-  const totalPages = Math.max(1, Math.ceil(gigs.length / pageSize))
+  const totalPages = useMemo(() => {
+    if (gigs.length <= firstPageSize) return 1
+    return 1 + Math.ceil((gigs.length - firstPageSize) / pageSize)
+  }, [gigs.length, firstPageSize, pageSize])
   const currentPage = Math.min(page, totalPages)
 
   useEffect(() => {
@@ -41,16 +44,17 @@ export function useGigSearchResults({ filterBy, pageSize = 8 } = {}) {
   }, [page, totalPages])
 
   const paginatedGigs = useMemo(() => {
-    const startIdx = (currentPage - 1) * pageSize
+    if (currentPage === 1) return gigs.slice(0, firstPageSize)
+
+    const startIdx = firstPageSize + (currentPage - 2) * pageSize
     return gigs.slice(startIdx, startIdx + pageSize)
-  }, [gigs, currentPage, pageSize])
+  }, [gigs, currentPage, firstPageSize, pageSize])
 
   return {
     gigs,
     isLoading,
     page,
     setPage,
-    pageSize,
     totalPages,
     currentPage,
     paginatedGigs,
