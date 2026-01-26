@@ -9,6 +9,7 @@ export function GigPreview({ gig }) {
     const { title, price, owner, videoUrls, _id } = gig
     const vidRef = useRef(null)
     const isSignedIn = localStorage.getItem('isSignedIn') === 'true'
+    const isTopRated = owner?.level?.toLowerCase?.() === 'top rated'
     const { isWishlisted, toggleWishlist } = useWishlist({
         gigId: _id,
         title,
@@ -83,7 +84,18 @@ export function GigPreview({ gig }) {
                         <img className="seller-avatar" src={owner.imgUrl} alt={owner.fullname} />
                         <span className="seller-name">{owner.fullname}</span>
                     </div>
-                    <span className="seller-Level">Level {owner.level}</span>
+                    {isTopRated ? (
+                        <span className="seller-badge top-rated-badge">
+                            <span className="top-rated-label">Top Rated</span>
+                            <span className="top-rated-stars" aria-hidden="true">
+                                <SvgIcon icon="starBlack" />
+                                <SvgIcon icon="starBlack" />
+                                <SvgIcon icon="starBlack" />
+                            </span>
+                        </span>
+                    ) : (
+                        <span className="seller-Level">Level {owner.level}</span>
+                    )}
                 </div>
 
                 <p className="gig-title">{title}</p>

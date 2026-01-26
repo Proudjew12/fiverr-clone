@@ -32,6 +32,7 @@
       font-weight: bold;
       font-size: 0.85rem;
       justify-content: space-between;
+      align-items: center;
 
       .seller-avatar {
         border-radius: 50%;
@@ -41,14 +42,49 @@
         gap: 0.7em;
       }
 
-      img {
-        height: 24px;
-        width: 24px;
-      }
+        img {
+          height: 24px;
+          width: 24px;
+        }
 
       :hover {
         cursor: pointer;
       }
+    }
+
+    .seller-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      height: 20px;
+    }
+
+    .top-rated-badge {
+      background: #ffe6c7;
+      color: #5a3d0c;
+    }
+
+    .top-rated-label {
+      line-height: 1;
+    }
+
+    .top-rated-stars {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      color: currentColor;
+    }
+
+    .top-rated-stars svg {
+      width: 10px;
+      height: 10px;
+      display: block;
     }
 
     .p {
