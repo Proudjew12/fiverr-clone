@@ -26,7 +26,11 @@
 
 .header-nav {
   gap: 1px;
-  margin-right: -10px;
+  margin-right: -3px;
+}
+
+.header-nav.is-signed-out {
+  margin-left: -3px;
 }
 
 .nav-group {

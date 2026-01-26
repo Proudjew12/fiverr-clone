@@ -107,7 +107,12 @@ function HeaderRight({
   onSignOut,
 }) {
   return (
-    <nav className="header-nav flex items-center" aria-label="Header">
+    <nav
+      className={`header-nav flex items-center ${
+        isSignedIn ? 'is-signed-in' : 'is-signed-out'
+      }`}
+      aria-label="Header"
+    >
       <div className="nav-group nav-group-links flex items-center">
         <HeaderDropdowns
           openDd={openDd}
