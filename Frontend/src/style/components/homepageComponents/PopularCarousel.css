@@ -26,7 +26,7 @@
 .popular-viewport {
   position: relative;
   overflow: hidden;
-  padding: 0 56px 0 0;
+  padding: 0 40px 0 0;
 }
 
 .popular-viewport::before,
@@ -48,6 +48,7 @@
 
 .popular-viewport::after {
   right: 0;
+  width: 40px;
 }
 
 .popular-swiper {
@@ -119,8 +120,8 @@
   bottom: 0;
   margin: auto;
 
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: 999px;
 
   border: 0;
@@ -130,11 +131,10 @@
   z-index: 5;
 
   box-shadow:
-    rgba(0, 0, 0, 0.02) 0px 1.2px 1.92251px,
-    rgba(0, 0, 0, 0.04) 0px 2px 3.68135px,
-    rgba(0, 0, 0, 0.05) 0px 1px 5px;
+    0 12px 24px rgba(15, 23, 42, 0.12),
+    0 4px 8px rgba(15, 23, 42, 0.08);
 
-  color: #62646a;
+  color: #404145;
   transition:
     transform 120ms ease,
     opacity 120ms ease;
@@ -146,8 +146,8 @@
 }
 
 .popular-arrow.right {
-  right: 0;
-  transform: translateX(50%);
+  right: 8px;
+  transform: none;
 }
 
 .popular-arrow:hover {
@@ -159,12 +159,21 @@
 }
 
 .popular-arrow.right:hover {
-  --dx: 50%;
+  --dx: 0;
 }
 
 .popular-arrow.is-hidden {
   opacity: 0;
   pointer-events: none;
+}
+
+.popular-arrow-icon {
+  display: block;
+  fill: currentColor;
+}
+
+.popular-arrow-icon.is-left {
+  transform: rotate(180deg);
 }
 
 .popular-carousel .swiper {
