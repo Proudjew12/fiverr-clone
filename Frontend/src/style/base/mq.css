@@ -1120,9 +1120,9 @@
   }
 
   .gig-list {
-    grid-template-columns: repeat(auto-fit, minmax(clamp(220px, 24vw, 280px), clamp(220px, 24vw, 280px)));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 20px;
-    justify-content: start;
+    justify-content: stretch;
   }
 
   .gig-card-wrapper,
@@ -1157,9 +1157,9 @@
   }
 
   .gig-list {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 300px));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 24px;
-    justify-content: start;
+    justify-content: stretch;
   }
 
   .gig-card-wrapper,
@@ -1173,9 +1173,9 @@
    ========================= */
 @media (min-width: 1280px) and (max-width: 1919px) {
   .gig-list {
-    grid-template-columns: repeat(auto-fit, minmax(clamp(240px, 18vw, 320px), clamp(240px, 18vw, 320px)));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 22px;
-    justify-content: start;
+    justify-content: stretch;
   }
 
   .fiverr-gig-card .card-media {
@@ -1201,9 +1201,9 @@
   }
 
   .gig-list {
-    grid-template-columns: repeat(auto-fit, minmax(clamp(260px, 16vw, 360px), clamp(260px, 16vw, 360px)));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 28px;
-    justify-content: start;
+    justify-content: stretch;
   }
 
   .fiverr-gig-card .card-media {

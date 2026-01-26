@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { SellerDetailsFilter } from './SellerDetailsFilter.jsx'
 import { BudgetFilter } from './BudgetFilter.jsx'
+import { gigService } from '@/services/leo.service.local.js'
 
 export function GigFilter({
   filterBy,
@@ -12,7 +13,25 @@ export function GigFilter({
   onSortDirectionChange,
   onClearFilters,
 }) {
+  const defaultFilter = useMemo(() => gigService.getDefaultFilter(), [])
   const [activeFilter, setActiveFilter] = useState(null)
+
+  const hasActiveFilters = useMemo(() => {
+    if (!filterBy) return !!isSortOn
+
+    const hasValue = Object.keys(defaultFilter).some((key) => {
+      const value = filterBy[key]
+      const fallback = defaultFilter[key]
+
+      if (Array.isArray(value)) return value.length > 0
+      if (typeof value === 'string') return value.trim() !== '' && value !== fallback
+      if (typeof value === 'number') return value !== fallback && !Number.isNaN(value)
+      if (typeof value === 'boolean') return value !== fallback
+      return value !== null && value !== undefined && value !== fallback
+    })
+
+    return hasValue || isSortOn
+  }, [defaultFilter, filterBy, isSortOn])
 
   function onToggleFilter(filterName) {
     setActiveFilter((prevFilter) => (prevFilter === filterName ? null : filterName))
@@ -81,10 +100,13 @@ export function GigFilter({
             />
           )}
         </div>
+      </div>
+
+      {hasActiveFilters && (
         <button type="button" className="clear-filters-btn" onClick={handleClear}>
           Clear
         </button>
-      </div>
+      )}
 
       <label className="sort-filter">
         <span className="label-text">Price</span>

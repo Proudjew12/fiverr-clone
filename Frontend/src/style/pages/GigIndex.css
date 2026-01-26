@@ -10,12 +10,13 @@
 }
 
 .main-layout-index .search-results-container {
-  padding-right: 18px;
+  max-width: 1400px;
+  padding-inline: 24px;
 }
 
 .main-layout-index .gig-list {
-  width: calc(100% + 10px);
-  margin-right: -10px;
+  width: 100%;
+  margin-right: 0;
 }
 
 .welcome-banner {
