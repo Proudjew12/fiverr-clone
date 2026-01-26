@@ -4,13 +4,15 @@ import { Loader } from 'lucide-react'
 import { useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useGigDetails } from '@/hooks/useGigDetails'
+import { utilService } from '@/services/util.service'
+import { httpService } from '@/services/http.service'
 
 export function GigDetails() {
   const { gigId } = useParams()
   const navigate = useNavigate()
   const [selectedTab, setSelectedTab] = useState(1)
   const reviewsTitle = useRef()
-
+  const sellerTitle = useRef()
   const { gig, gigImgs, index, setIndex, setImg, isLoading } = useGigDetails(gigId)
   function getFileType(src) {
     const extension = src.split('.').pop().toLowerCase()
@@ -20,6 +22,7 @@ export function GigDetails() {
 
     return 'unknown'
   }
+  
 
   if (isLoading) return <Loader />
   if (!gig) return null
@@ -34,7 +37,11 @@ export function GigDetails() {
             </div>
             <div className="name-rate-container">
               <div className="owner-details">
-                <div className="fullname">{gig.owner.fullname}</div>{' '}
+                <div onClick={() => {
+                    sellerTitle.current?.scrollIntoView({
+                      behavior: 'smooth',
+                    })
+                  }} className="fullname">{gig.owner.fullname}</div>{' '}
                 <div className={'level ' + gig.owner.level.replace(/\s+/g, '-')}>
                   {gig.owner.level === 'top rated'
                     ? 'Top Rated'
@@ -132,7 +139,7 @@ export function GigDetails() {
             ))}
           </ul>
           <div className="about-the-seller">
-            <h2>Get to know {gig.owner.fullname}</h2>
+            <h2 className='seller-title' ref={sellerTitle}>Get to know {gig.owner.fullname}</h2>
             <div className="seller-stats">
               <div className="seller-img">
                 <img src={gig.owner.imgUrl} />
@@ -142,10 +149,10 @@ export function GigDetails() {
                 <span>Performance Marketer And Ad Creative Specialist</span>
                 <div className='rate-level-container'>
                   <div className='rate'>
-                   <SvgIcon icon={'star'}/>
-                   {gig.owner.rate}
+                    <SvgIcon icon={'star'} />
+                    {gig.owner.rate}
                   </div>
-                  <div className={'level ' + gig.owner.level.replace(/\s+/g, '-')}>
+                  <div className={(gig.owner.level === 'basic') ? 'hidden' : 'level ' + gig.owner.level.replace(/\s+/g, '-')}>
                     {gig.owner.level === 'top rated'
                       ? 'Top Rated'
                       : gig.owner.level === '2'

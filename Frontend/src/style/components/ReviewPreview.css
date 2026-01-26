@@ -20,10 +20,33 @@
   height: 100%;
   object-fit: cover;
 }
-.review-preview .user-container .fullname {
+.review-preview .user-container .user-details-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 48px;
+}
+.review-preview .user-container .user-details-container .fullname {
   color: #222325;
   font-size: 1rem;
   font-weight: 700;
+}
+.review-preview .user-container .user-details-container .user-nation{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  font-size: 0.75rem;
+  color: #74767e;
+  gap: 8px;
+}
+.review-preview .user-container .user-details-container .user-nation .img-container{
+  width: 16px;
+  height: 16px;
+}
+.review-preview .user-container .user-details-container .user-nation .img-container img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .review-preview .review-details {
   border-top: 1px solid #dadbdd;
