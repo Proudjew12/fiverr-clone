@@ -26,6 +26,7 @@
 
 .header-nav {
   gap: 1px;
+  margin-right: -10px;
 }
 
 .nav-group {
