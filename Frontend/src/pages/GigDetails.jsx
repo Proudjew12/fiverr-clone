@@ -12,6 +12,7 @@ export function GigDetails() {
   const { gigId } = useParams()
   const navigate = useNavigate()
   const [selectedTab, setSelectedTab] = useState(1)
+  const [filterBy, setFilterBy] = useState({})
   const reviewsTitle = useRef()
   const sellerTitle = useRef()
   const { gig, gigImgs, index, setIndex, setImg, isLoading } = useGigDetails(gigId)
@@ -23,8 +24,17 @@ export function GigDetails() {
 
     return 'unknown'
   }
-  
-
+  function onSetFilterBy(newFilterBy){
+   setFilterBy({...newFilterBy})
+  }
+  function getAvgRatingFromReviews(){
+    var sum = 0
+    gig.reviews.forEach(review => {
+      sum+=review.rate
+    });
+    const avg = sum/gig.reviews.length 
+    return Math.floor(avg * 10) / 10;
+  }
   if (isLoading) return <Loader />
   if (!gig) return null
   return (
@@ -70,8 +80,8 @@ export function GigDetails() {
               </div>
               <div className="rate">
                 {' '}
-                <RatingByStars rate={gig.owner.rate} />
-                {gig.owner.rate}
+                <RatingByStars rate={getAvgRatingFromReviews()} />
+                {getAvgRatingFromReviews()}
                 <span
                   className="reviews-counter"
                   onClick={() => {
@@ -214,12 +224,12 @@ export function GigDetails() {
           <span className="reviews-sub-title">
             <span>{gig.reviews.length} reviews for this Gig</span>
             <span className="rate">
-              <RatingByStars rate={gig.owner.rate} />
-              {gig.owner.rate}
+              <RatingByStars rate={getAvgRatingFromReviews()} />
+              {getAvgRatingFromReviews()}
             </span>
           </span>
-          <ReviewFilter reviews={gig.reviews}/>
-          <ReviewList reviews={gig.reviews} />
+          <ReviewFilter reviews={gig.reviews} filterBy={filterBy} onSetFilterBy={onSetFilterBy}/>
+          <ReviewList reviews={gig.reviews} filterBy={filterBy} />
         </div>
         <aside>
           <div className="call-to-action">

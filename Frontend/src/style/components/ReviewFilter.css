@@ -14,6 +14,7 @@
 .review-filter .review-stats .disable{
     cursor: default;
     color: #C5C6C9;
+    pointer-events: none;
 }
 .review-filter .review-stats li .rating-btn {
   font-size: 1rem;

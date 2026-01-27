@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export function ReviewFilter({reviews}){
+export function ReviewFilter({reviews,filterBy, onSetFilterBy}){
     const ratings = [5,4,3,2,1]
     const [selectedRating,setSelectedRating] = useState(null)
     function getPrecentOfRating(rating){
@@ -15,6 +15,7 @@ export function ReviewFilter({reviews}){
     function onSetSelectedRating(rating){
      if(rating === selectedRating) setSelectedRating(null)
      else setSelectedRating(rating)
+    onSetFilterBy({...filterBy,rating:rating})
     }
 return(
     <section className="review-filter">
