@@ -49,6 +49,7 @@
 @import './components/homepageComponents/PopularCarousel.css';
 @import './components/ReviewList.css';
 @import './components/ReviewPreview.css';
+@import './components/ReviewFilter.css';
 
 /* layout */
 @import './components/layout/AppHeader.css';

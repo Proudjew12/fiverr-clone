@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useGigDetails } from '@/hooks/useGigDetails'
 import { utilService } from '@/services/util.service'
 import { httpService } from '@/services/http.service'
+import { ReviewFilter } from '@/components/review/ReviewFiter'
 
 export function GigDetails() {
   const { gigId } = useParams()
@@ -217,6 +218,7 @@ export function GigDetails() {
               {gig.owner.rate}
             </span>
           </span>
+          <ReviewFilter reviews={gig.reviews}/>
           <ReviewList reviews={gig.reviews} />
         </div>
         <aside>

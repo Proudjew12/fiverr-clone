@@ -1,0 +1,58 @@
+.review-filter .review-stats {
+  display: grid;
+  gap: 4px;
+  padding: 0 8px;
+  padding-bottom: 24px;
+  max-width: 50%;
+  list-style: none;
+}
+.review-filter .review-stats li {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.review-filter .review-stats .disable{
+    cursor: default;
+    color: #C5C6C9;
+}
+.review-filter .review-stats li .rating-btn {
+  font-size: 1rem;
+  color: #222325;
+  padding: 6px;
+  font-weight: 600;
+  line-height: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.review-filter .review-stats li .rating-btn.clicked{
+    color: white;
+    background-color: #222325;
+}
+.review-filter .review-stats li .rating-btn:hover {
+  background-color: #e4e5e7;
+  color: #222325;
+}
+.review-filter .review-stats li .rating-span {
+  font-size: 1rem;
+  padding: 6px;
+  font-weight: 600;
+  line-height: 100%;
+  border-radius: 4px;
+}
+
+.review-filter .review-stats li .progress-bar-container {
+  background-color: #e4e5e7;
+  border-radius: 999px;
+  flex-grow: 1;
+  height: 8px;
+  margin: 10px 10px 6px 6px;
+  position: relative;
+}
+.review-filter .review-stats li .progress-bar-container .progress-bar{
+    background-color: #222325;
+    border-radius: 999px;
+    height: 100%;
+    z-index: 1;
+    position: absolute;
+    left: 0;
+}
