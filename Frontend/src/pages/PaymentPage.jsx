@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { useGigById } from '@/hooks/useGigById'
+import { orderService } from '@/services/order.service.remote'
 
 const ORDERS_STORAGE_KEY = 'orders'
 const DEMO_CARD = demoData.payment.demoCard
@@ -58,17 +59,16 @@ export function PaymentPage() {
   async function onConfirmPay() {
     const previewImg = utilService.pickRandom(FALLBACK_THUMBS)
     const order = {
-      id: utilService.makeId(),
       gigId,
       title: gig?.title || 'Gig',
       total,
       sellerName: gig?.owner?.fullname || 'Seller',
-      createdAt: Date.now(),
       status: 'approved',
       previewImg,
     }
-    const existing = utilService.loadFromStorage(ORDERS_STORAGE_KEY, [])
-    utilService.saveToStorage(ORDERS_STORAGE_KEY, [order, ...existing])
+  //  const existing = utilService.loadFromStorage(ORDERS_STORAGE_KEY, [])
+  //  utilService.saveToStorage(ORDERS_STORAGE_KEY, [order, ...existing])
+    orderService.save(order)
     window.dispatchEvent(new CustomEvent('orders-updated'))
 
     await Swal.fire({

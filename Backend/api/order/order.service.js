@@ -12,7 +12,7 @@ const COLLECTION_NAME = 'order'
 async function query() {
   try {
     const collection = await dbService.getCollection(COLLECTION_NAME)
-    return await collection.find({}).toArray()
+    return await collection.find().toArray()
   } catch (err) {
     loggerService.error('Cannot query orders', err)
     throw err
@@ -101,10 +101,11 @@ async function remove(id) {
 
 function _sanitizeorder(src) {
   return {
-    title: String(src?.title || '').trim(),
-    description: String(src?.description || '').trim(),
-    price: Number(src?.price || 0),
-    tags: Array.isArray(src?.tags) ? src.tags.filter(Boolean) : [],
-    imgUrl: String(src?.imgUrl || '').trim(),
-  }
+      gigId: String(src?.gigId || '').trim(),
+      title: String(src?.title || '').trim(),
+      total: Number(src?.total || 0),
+      sellerName: String(src?.sellerName || ''),
+      status: String(src?.status || ''),
+      previewImg: String(src?.previewImg || ''),
+    }
 }

@@ -3,7 +3,9 @@ import { loggerService } from "../../services/logger.service.js";
 
 export async function getOrders(req,res) {
  try {
-    const orders = orderService.query()
+    const orders = await orderService.query()
+    console.log('orders: ',orders);
+    
     res.json(orders)
  } catch (error) {
     loggerService.error('Failed to get orders',error)
@@ -13,7 +15,7 @@ export async function getOrders(req,res) {
 export async function getOrderById(req,res) {
 try {
   const {id} = req.params
-  const order = orderService.getById(id)  
+  const order = await orderService.getById(id)  
   res.json(order)
 } catch (error) {
   loggerService.info('Failed to find an order with id:',id,error)  

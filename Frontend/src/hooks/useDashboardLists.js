@@ -1,16 +1,22 @@
 import { useEffect, useState } from 'react'
-import { utilService } from '@/services/util.service'
+import { utilService } from '@/services/util.service.js'
+import { orderService } from '@/services/order.service.remote.js'
 
 const ORDERS_STORAGE_KEY = 'orders'
 const WISHLIST_STORAGE_KEY = 'wishlist'
 
 export function useDashboardLists() {
-  const [orders, setOrders] = useState(() => loadOrders())
+  const [orders, setOrders] = useState([])
   const [wishlist, setWishlist] = useState(() => loadWishlist())
 
   useEffect(() => {
+    async function load() {
+    const orders = await loadOrders()
+    setOrders(orders)
+  }
+  load()
     function updateOrders() {
-      setOrders(loadOrders())
+    //  setOrders(()=>await loadOrders())
     }
 
     function updateWishlist() {
@@ -48,8 +54,9 @@ export function useDashboardLists() {
   }
 }
 
-function loadOrders() {
-  return utilService.loadFromStorage(ORDERS_STORAGE_KEY, [])
+ function loadOrders() {
+  
+  return orderService.query()
 }
 
 function loadWishlist() {
