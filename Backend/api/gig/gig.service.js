@@ -16,7 +16,9 @@ async function query(filterBy = {}) {
   try {
     const collection = await dbService.getCollection(COLLECTION_NAME)
     const criteria = _buildCriteria(filterBy)
-    return await collection.find(criteria).toArray()
+    const gigs = await collection.find(criteria).toArray()
+    return gigs
+    
   } catch (err) {
     loggerService.error('Cannot query gigs', err)
     throw err
@@ -114,12 +116,21 @@ function _buildCriteria(filterBy) {
 
   const minPrice = filterBy.minPrice
   const maxPrice = filterBy.maxPrice
+  const {topRated,level1,level2,basic} = filterBy
   if (minPrice !== null || maxPrice !== null) {
     criteria.price = {}
     if (minPrice !== null) criteria.price.$gte = Number(minPrice)
       if (maxPrice !== null) criteria.price.$lte = Number(maxPrice)
+      
   }
-
+  const levels = []
+    if(topRated) levels.push('top rated')
+    if(level1) levels.push('1')
+    if(level2) levels.push('2')
+    if(basic) levels.push('basic')
+      console.log('levels: ',levels);
+      
+    if(levels.length>0) criteria['owner.level'] = { $in: levels }
   return criteria
 }
 

@@ -9,8 +9,14 @@ export async function getGigs(req, res) {
       tags: utilService.normalizeArrayQuery(req.query.tags),
       minPrice: utilService.toNumberOrNull(req.query.minPrice),
       maxPrice: utilService.toNumberOrNull(req.query.maxPrice),
+      sort: req.query.sort,
+      topRated: (req.query.topRated === 'true')? true : false,
+      basic: (req.query.basic === 'true')? true : false,
+      level1: (req.query.level1 === 'true')? true: false,
+      level2: (req.query.level2 === 'true')? true: false
     }
-
+    
+    
     const Gigs = await gigService.query(filterBy)
     res.json(Gigs)
   } catch (err) {

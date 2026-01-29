@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { gigService } from '@/services/leo.service.local.js'
+import { gigService } from '@/services/gig.service.remote.js'
 
 export function useGigSearchResults({ filterBy, pageSize = 8, firstPageSize = 16 } = {}) {
   const [gigs, setGigs] = useState([])
@@ -12,7 +12,7 @@ export function useGigSearchResults({ filterBy, pageSize = 8, firstPageSize = 16
     async function loadGigs() {
       try {
         setIsLoading(true)
-        const filteredGigs = await gigService.queryDemo(filterBy)
+        const filteredGigs = await gigService.query(filterBy)
         if (isMounted) setGigs(filteredGigs)
       } catch (err) {
         console.error('err', err)
