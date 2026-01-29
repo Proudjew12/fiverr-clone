@@ -1,8 +1,8 @@
 import { httpService } from './http.service'
 
-const BASE_URL = 'fiverr'
+const BASE_URL = 'gig'
 
-export const fiverrService = {
+export const GigService = {
   query,
   getById,
   save,
