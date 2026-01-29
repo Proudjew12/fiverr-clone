@@ -263,7 +263,7 @@ export function GigDetails() {
               <header>
                 <span className="title">
                   {' '}
-                  <span className="price">{gig.price * selectedTab}$</span> + taxes & fees
+                  <span className="price">{Number(gig.price * selectedTab).toFixed(2)}$</span> + taxes & fees
                 </span>
                 <br />
                 <span className="sub-title">
