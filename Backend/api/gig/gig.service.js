@@ -16,7 +16,11 @@ async function query(filterBy = {}) {
   try {
     const collection = await dbService.getCollection(COLLECTION_NAME)
     const criteria = _buildCriteria(filterBy)
-    const gigs = await collection.find(criteria).toArray()
+    var sort = {}
+    if(filterBy.sort){
+    sort = (filterBy.sort === 'price-asc')?{price:1}:{price:-1}
+    }
+    const gigs = await collection.find(criteria).sort(sort).toArray()
     return gigs
     
   } catch (err) {
