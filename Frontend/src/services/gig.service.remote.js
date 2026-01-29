@@ -2,7 +2,7 @@ import { httpService } from './http.service'
 
 const BASE_URL = 'gig'
 
-export const GigService = {
+export const gigService = {
   query,
   getById,
   save,
