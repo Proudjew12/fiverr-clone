@@ -1,7 +1,13 @@
 import { dbService } from "../../services/db.service.js";
 import { loggerService } from "../../services/logger.service.js";
 import { utilService } from "../../services/util.service.js";
-
+export const orderService={
+  query,
+  getById,
+  add,
+  update,
+  remove
+}
 const COLLECTION_NAME = 'order'
 async function query() {
   try {

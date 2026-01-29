@@ -81,7 +81,7 @@ export function GigDetails() {
               <div className="rate">
                 {' '}
                 <RatingByStars rate={getAvgRatingFromReviews()} />
-                {getAvgRatingFromReviews()}
+                {(getAvgRatingFromReviews())?getAvgRatingFromReviews():''}
                 <span
                   className="reviews-counter"
                   onClick={() => {
@@ -225,7 +225,7 @@ export function GigDetails() {
             <span>{gig.reviews.length} reviews for this Gig</span>
             <span className="rate">
               <RatingByStars rate={getAvgRatingFromReviews()} />
-              {getAvgRatingFromReviews()}
+              {(getAvgRatingFromReviews())?getAvgRatingFromReviews():''}
             </span>
           </span>
           <ReviewFilter reviews={gig.reviews} filterBy={filterBy} onSetFilterBy={onSetFilterBy}/>
