@@ -12,6 +12,7 @@ import { loggerService } from "./services/logger.service.js";
 import { dbService } from "./services/db.service.js";
 import { orderRoutes } from "./api/order/order.routes.js";
 import { userRoutes } from "./api/user/user.routes.js";
+import { authRoutes } from "./api/auth/auth.routes.js";
 
 const app = express();
 const httpServer = http.createServer(app);
@@ -44,7 +45,7 @@ app.get("/api/health", (req, res) => res.send({ ok: true }));
 app.use("/api/gig", gigRoutes);
 app.use("/api/order", orderRoutes)
 app.use('/api/user', userRoutes)
-
+app.use('/api/auth', authRoutes)
 // --------------------
 // 404
 // --------------------
