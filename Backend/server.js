@@ -11,6 +11,7 @@ import { gigRoutes } from "./api/gig/gig.routes.js";
 import { loggerService } from "./services/logger.service.js";
 import { dbService } from "./services/db.service.js";
 import { orderRoutes } from "./api/order/order.routes.js";
+import { userRoutes } from "./api/user/user.routes.js";
 
 const app = express();
 const httpServer = http.createServer(app);
@@ -42,6 +43,7 @@ app.use(loggerMiddleware);
 app.get("/api/health", (req, res) => res.send({ ok: true }));
 app.use("/api/gig", gigRoutes);
 app.use("/api/order", orderRoutes)
+app.use('/api/user', userRoutes)
 
 // --------------------
 // 404
