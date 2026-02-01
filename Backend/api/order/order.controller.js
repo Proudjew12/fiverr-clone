@@ -4,8 +4,6 @@ import { loggerService } from "../../services/logger.service.js";
 export async function getOrders(req,res) {
  try {
     const orders = await orderService.query()
-    console.log('orders: ',orders);
-    
     res.json(orders)
  } catch (error) {
     loggerService.error('Failed to get orders',error)

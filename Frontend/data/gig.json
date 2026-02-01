@@ -1,25 +1,30 @@
 [
   {
-    "_id": "g101",
-    "title": "I will design your logo",
-    "price": 12.16,
+    "title": "I will record a professional voice over",
+    "price": 198,
     "owner": {
       "_id": "u101",
-      "fullname": "Dudu Da",
+      "fullname": "Alice Cooper",
       "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
       "level": "top rated",
-      "rate": 5
+      "rate": 4.3
     },
     "daysToMake": 3,
     "description": "CINEMATIC VLOG, FAMILY & TRAVEL VIDEO EDITING\n\nIf you’re looking for professional, cinematic video editing like well-known travel YouTubers, you’re in the right place. I specialize in detail-oriented, storytelling-driven editing for travel videos, family memories, and vlogs.\n\nWhat you’ll get:\n• Strong storytelling flow\n• Professional color grading\n• Music synced perfectly to visuals\n• Dynamic, smooth transitions\n• Fast delivery\n• Copyright-free background music\n• 1080p & 4K video output\n• Optimized for YouTube, Facebook, and all social platforms\n\nWhy choose me?\nMy name is Sajid, and I’m an experienced video editor focused on making your content look polished, engaging, and on-brand. Simply send me your raw footage—I’ll handle the editing and branding so you can focus on creating. Repeat clients receive up to 20% discount.",
     "avgResponseTime": 1,
     "loc": "Ghana",
-    "imgUrls": ["/assets/Popular-Services/Video-Editing/video/ahitwsblrjquehepmyhn.mp4"],
-    "videoUrls": [
+    "imgUrls": [
       "/assets/Popular-Services/Video-Editing/video/ahitwsblrjquehepmyhn.mp4"
     ],
-    "tags": ["Arts And Crafts", "video editing"],
-    "likedByUsers": ["mini-user"],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid1.mp4"
+    ],
+    "tags": [
+      "trending"
+    ],
+    "likedByUsers": [
+      "mini-user"
+    ],
     "reviews": [
       {
         "id": "madeId",
@@ -64,26 +69,32 @@
     ]
   },
   {
-    "_id": "g102",
-    "title": "Professional YouTube Video Editing with Motion Graphics",
-    "price": 45.0,
+    "title": "I will translate english to hebrew",
+    "price": 139,
     "owner": {
       "_id": "u103",
-      "fullname": "Alice Cooper",
+      "fullname": "Mike Ross",
       "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
       "level": "top rated",
-      "rate": 5
+      "rate": 4
     },
     "daysToMake": 2,
     "description": "I will professionally edit your YouTube videos to make them engaging, clean, and visually impressive. This service is ideal for content creators who want to improve retention and present their content in a polished way. The editing includes precise cuts, smooth transitions, synced audio, and eye-catching motion graphics or animated text when needed. Every project is customized to match your channel’s style and audience, helping your videos stand out and look consistent across your brand.",
     "avgResponseTime": 2,
     "loc": "United States",
-    "imgUrls": ["/assets/Popular-Services/Video-Editing/img/video1.jpg"],
-    "videoUrls": [
-      "/assets/Popular-Services/Video-Editing/video/bffs0bahnbjj94eyfd32.mp4"
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/video1.jpg"
     ],
-    "tags": ["video editing", "youtube", "motion graphics"],
-    "likedByUsers": ["user5", "user10"],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid2.mp4"
+    ],
+    "tags": [
+      "graphics"
+    ],
+    "likedByUsers": [
+      "user5",
+      "user10"
+    ],
     "reviews": [
       {
         "id": "rev201",
@@ -128,26 +139,33 @@
     ]
   },
   {
-    "_id": "g103",
-    "title": "Cinematic Wedding Video Editing and Color Grading",
-    "price": 150.0,
+    "title": "I will design your unique logo",
+    "price": 151,
     "owner": {
       "_id": "u105",
-      "fullname": "Yossi Cohen",
+      "fullname": "Sarah Connor",
       "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
       "level": "top rated",
-      "rate": 5
+      "rate": 4
     },
     "daysToMake": 7,
     "description": "I will transform your raw wedding footage into a cinematic and emotional film that tells your unique story. This service focuses on professional storytelling, smooth pacing, and advanced color grading to achieve a high-end, movie-like look. Every important moment is carefully selected and edited to create a natural flow, supported by music and clean transitions. The final result is a timeless wedding video you will cherish for years, delivered in high resolution and premium quality.",
     "avgResponseTime": 5,
     "loc": "Israel",
-    "imgUrls": ["/assets/gigExampleImg/1[gig].jpg", "/assets/gigExampleImg/2[gig].jpg"],
-    "videoUrls": [
-      "/assets/Popular-Services/Video-Editing/video/blpwzqxpnlbcq1f5zhuh.mp4"
+    "imgUrls": [
+      "/assets/gigExampleImg/1[gig].jpg",
+      "/assets/gigExampleImg/2[gig].jpg"
     ],
-    "tags": ["video editing", "cinematic", "color grading"],
-    "likedByUsers": ["bride2026", "groom_a"],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid3.mp4"
+    ],
+    "tags": [
+      "programming"
+    ],
+    "likedByUsers": [
+      "bride2026",
+      "groom_a"
+    ],
     "reviews": [
       {
         "id": "rev301",
@@ -192,26 +210,32 @@
     ]
   },
   {
-    "_id": "g104",
-    "title": "Short-form Content for TikTok, Reels and Shorts",
-    "price": 25.0,
+    "title": "I will build your react website",
+    "price": 105,
     "owner": {
       "_id": "u107",
-      "fullname": "Daniella Art",
+      "fullname": "Sarah Connor",
       "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
       "level": "top rated",
-      "rate": 5
+      "rate": 4
     },
     "daysToMake": 1,
     "description": "I create fast-paced and engaging short-form videos optimized for TikTok, Instagram Reels, and YouTube Shorts. The editing style is designed to capture attention within seconds, using dynamic cuts, clear subtitles, and strong pacing. This service is perfect for creators and businesses looking to increase reach, engagement, and visibility on social media platforms. All videos are delivered in vertical format and tailored to current trends and platform algorithms.",
     "avgResponseTime": 1,
     "loc": "Ukraine",
-    "imgUrls": ["/assets/Popular-Services/Video-Editing/img/shorts.jpg"],
-    "videoUrls": [
-      "/assets/Popular-Services/Video-Editing/video/digjsvp1e9fiwfcxqmag.mp4"
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/shorts.jpg"
     ],
-    "tags": ["video editing", "tiktok", "reels"],
-    "likedByUsers": ["influencer_1", "shop_owner"],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid4.mp4"
+    ],
+    "tags": [
+      "marketing"
+    ],
+    "likedByUsers": [
+      "influencer_1",
+      "shop_owner"
+    ],
     "reviews": [
       {
         "id": "rev401",
@@ -256,26 +280,32 @@
     ]
   },
   {
-    "_id": "g105",
-    "title": "Expert Final Cut Pro Post-Production and Effects",
-    "price": 85.5,
+    "title": "I will translate english to hebrew",
+    "price": 92,
     "owner": {
       "_id": "u108",
-      "fullname": "Mark Tech",
+      "fullname": "Daniella Art",
       "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
       "level": "1",
-      "rate": 5
+      "rate": 3.8
     },
     "daysToMake": 4,
     "description": "Specialized in Final Cut Pro. I can handle complex multi-cam editing and advanced VFX.",
     "avgResponseTime": 3,
     "loc": "United Kingdom",
-    "imgUrls": ["/assets/Popular-Services/Video-Editing/img/fcp_edit.jpg"],
-    "videoUrls": [
-      "/assets/Popular-Services/Video-Editing/video/dtkfpyq0pgembhtglris.mp4"
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/fcp_edit.jpg"
     ],
-    "tags": ["video editing", "final cut pro", "post production"],
-    "likedByUsers": ["tech_guru", "filmmaker_99"],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid5.mp4"
+    ],
+    "tags": [
+      "video editing"
+    ],
+    "likedByUsers": [
+      "tech_guru",
+      "filmmaker_99"
+    ],
     "reviews": [
       {
         "id": "rev501",
@@ -290,15 +320,14 @@
     ]
   },
   {
-    "_id": "g106",
-    "title": "Dynamic Gaming Montage and Highlights Editing",
-    "price": 35.0,
+    "title": "I will build your react website",
+    "price": 238,
     "owner": {
       "_id": "u110",
-      "fullname": "Alex Chen",
+      "fullname": "Yossi Cohen",
       "imgUrl": "/assets/Popular-Services/Video-Editing/img/2aff3fb3-bdbd-495c-9aa3-d8e1be9cb2fa.png",
       "level": "1",
-      "rate": 4.7
+      "rate": 4.2
     },
     "daysToMake": 2,
     "description": "I will take your stream VODs or clips and turn them into an exciting, fast-paced montage with music sync and effects.",
@@ -309,22 +338,26 @@
       "/assets/Popular-Services/Video-Editing/img/6d446992-fd6b-47df-a643-2107d86e79df.jpg"
     ],
     "videoUrls": [
-      "/assets/Popular-Services/Video-Editing/video/dxqqy7tj1ccgckmlagwa.mp4"
+      "/assets/videosForGigDemo/gigVid6.mp4"
     ],
-    "tags": ["gaming", "montage", "video editing", "twitch"],
-    "likedByUsers": ["gamer_pro", "streamerX"],
+    "tags": [
+      "writing"
+    ],
+    "likedByUsers": [
+      "gamer_pro",
+      "streamerX"
+    ],
     "reviews": []
   },
   {
-    "_id": "g107",
-    "title": "High-End Corporate Interview and Testimonial Editing",
-    "price": 120.0,
+    "title": "I will build your react website",
+    "price": 189,
     "owner": {
       "_id": "u111",
-      "fullname": "Sarah Jenkins",
+      "fullname": "Jane Smith",
       "imgUrl": "/assets/Popular-Services/Video-Editing/img/4afd03f3-2e64-47f0-914d-6f5129c9510f.PNG",
       "level": "top rated",
-      "rate": 5
+      "rate": 4.3
     },
     "daysToMake": 5,
     "description": "Professional editing for corporate interviews. Includes color correction, audio cleaning, lower thirds, and branding integration.",
@@ -334,23 +367,25 @@
       "/assets/Popular-Services/Video-Editing/img/2dfa4b57-92a2-4576-b9ba-83602aadbebf.jpg"
     ],
     "videoUrls": [
-      "/assets/Popular-Services/Video-Editing/video/e8hgkgd4bio xrmshgpv2.mp4",
-      "/assets/Popular-Services/Video-Editing/video/ecmncdvurwaosxbcgzgp.mp4"
+      "/assets/videosForGigDemo/gigVid7.mp4"
     ],
-    "tags": ["corporate", "interview", "testimonials", "business"],
-    "likedByUsers": ["biz_owner_NYC"],
+    "tags": [
+      "music"
+    ],
+    "likedByUsers": [
+      "biz_owner_NYC"
+    ],
     "reviews": []
   },
   {
-    "_id": "g108",
-    "title": "Creative Music Video Production and VFX",
-    "price": 250.0,
+    "title": "I will record a professional voice over",
+    "price": 166,
     "owner": {
       "_id": "u112",
-      "fullname": "Marcus Thorne",
+      "fullname": "Jane Smith",
       "imgUrl": "/assets/Popular-Services/Video-Editing/img/11 Music Video Ideas to Take Your Music to the Next Level in..png",
       "level": "2",
-      "rate": 4.9
+      "rate": 4.3
     },
     "daysToMake": 10,
     "description": "Bring your song to life with a professionally edited music video. Specializing in trippy visuals, smooth transitions, and narrative flow.",
@@ -361,22 +396,25 @@
       "/assets/Popular-Services/Video-Editing/img/9b249995-f682-4947-8581-88e31580f93a.JPG"
     ],
     "videoUrls": [
-      "/assets/Popular-Services/Video-Editing/video/fi5hu5sxzpukadbdadph.mp4"
+      "/assets/videosForGigDemo/gigVid8.mp4"
     ],
-    "tags": ["music video", "vfx", "creative editing"],
-    "likedByUsers": ["band_member_1"],
+    "tags": [
+      "business"
+    ],
+    "likedByUsers": [
+      "band_member_1"
+    ],
     "reviews": []
   },
   {
-    "_id": "g109",
-    "title": "Real Estate Property Walkthrough Video Editing",
-    "price": 65.0,
+    "title": "I will write a killer blog post",
+    "price": 197,
     "owner": {
       "_id": "u113",
-      "fullname": "Elena Rodriguez",
+      "fullname": "Jane Smith",
       "imgUrl": "/assets/Popular-Services/Video-Editing/img/2fad7c21-59b3-45d3-bd17-ee191afe59a1.png",
       "level": "1",
-      "rate": 4.5
+      "rate": 3.9
     },
     "daysToMake": 3,
     "description": "Smooth, stabilized editing for real estate tours. I will add location callouts, background music, and color enhancement to sell the property.",
@@ -385,21 +423,26 @@
     "imgUrls": [
       "/assets/Popular-Services/Video-Editing/img/32e077eb-3e59-4ede-aa8b-48ed8e968da0.jpg"
     ],
-    "videoUrls": [],
-    "tags": ["real estate", "property", "walkthrough"],
-    "likedByUsers": ["realtor_jane"],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid9.mp4"
+    ],
+    "tags": [
+      "finance"
+    ],
+    "likedByUsers": [
+      "realtor_jane"
+    ],
     "reviews": []
   },
   {
-    "_id": "g110",
-    "title": "Documentary Style storytelling and Post-Production",
-    "price": 180.0,
+    "title": "I will write a killer blog post",
+    "price": 406,
     "owner": {
       "_id": "u114",
-      "fullname": "Kenji Sato",
+      "fullname": "Sarah Connor",
       "imgUrl": "/assets/Popular-Services/Video-Editing/img/43 VET gives advice to his 22 year old self.png",
       "level": "2",
-      "rate": 5
+      "rate": 4.9
     },
     "daysToMake": 14,
     "description": "I focus on narrative structure. I will take your interviews and B-roll and craft a compelling documentary story.",
@@ -410,22 +453,23 @@
       "/assets/Popular-Services/Video-Editing/img/06dcfd49-703a-44a7-9acf-a389b14d62f6.jpg"
     ],
     "videoUrls": [
-      "/assets/Popular-Services/Video-Editing/video/frygph9qxugik6lujrgo.mp4"
+      "/assets/videosForGigDemo/gigVid10.mp4"
     ],
-    "tags": ["documentary", "storytelling", "journalism"],
+    "tags": [
+      "ai"
+    ],
     "likedByUsers": [],
     "reviews": []
   },
   {
-    "_id": "g111",
-    "title": "Engaging Travel Vlog Editing for YouTube",
-    "price": 55.0,
+    "title": "I will do professional video editing",
+    "price": 354,
     "owner": {
       "_id": "u115",
-      "fullname": "Chloe Dubois",
+      "fullname": "Dudu Da",
       "imgUrl": "/assets/Popular-Services/Video-Editing/img/53b025a0-8671-47f0-beee-01175a419df8.jpg",
       "level": "basic",
-      "rate": 4.2
+      "rate": 4.7
     },
     "daysToMake": 4,
     "description": "Turn your vacation footage into an engaging vlog. I handle cutting dead air, adding cinematic sequences, music, and sound effects.",
@@ -435,22 +479,25 @@
       "/assets/Popular-Services/Video-Editing/img/1bd2f0f0-602e-4bd7-9de8-d2f33f68d1aa.png"
     ],
     "videoUrls": [
-      "/assets/Popular-Services/Video-Editing/video/g7z7tb3cb6ngowcyqnax.mp4"
+      "/assets/videosForGigDemo/gigVid11.mp4"
     ],
-    "tags": ["travel", "vlog", "youtube"],
-    "likedByUsers": ["travel_couple"],
+    "tags": [
+      "personal growth"
+    ],
+    "likedByUsers": [
+      "travel_couple"
+    ],
     "reviews": []
   },
   {
-    "_id": "g112",
-    "title": "Professional Color Grading and Correction Services",
-    "price": 95.0,
+    "title": "I will translate english to hebrew",
+    "price": 360,
     "owner": {
       "_id": "u116",
-      "fullname": "Igor V.",
+      "fullname": "Jane Smith",
       "imgUrl": "/assets/Popular-Services/Video-Editing/img/8eb271fe-5e78-4a39-a956-73416078b9ed.png",
       "level": "2",
-      "rate": 5
+      "rate": 4.6
     },
     "daysToMake": 3,
     "description": "Give your video a cinematic look. I specialize in color correction (fixing white balance/exposure) and creative color grading using DaVinci Resolve.",
@@ -461,22 +508,25 @@
       "/assets/Popular-Services/Video-Editing/img/7E8FCD91-BC4D-4C6B-B2BD-DE9643708A7D.jpeg"
     ],
     "videoUrls": [
-      "/assets/Popular-Services/Video-Editing/video/geovhjhu278xloqcmuxt.mp4"
+      "/assets/videosForGigDemo/gigVid12.mp4"
     ],
-    "tags": ["color grading", "davinci resolve", "cinematic"],
-    "likedByUsers": ["filmmaker_mike"],
+    "tags": [
+      "consulting"
+    ],
+    "likedByUsers": [
+      "filmmaker_mike"
+    ],
     "reviews": []
   },
   {
-    "_id": "g113",
-    "title": "Quick & Catchy Social Media Ads Editing (FB/IG)",
-    "price": 40.0,
+    "title": "I will translate english to hebrew",
+    "price": 335,
     "owner": {
       "_id": "u117",
-      "fullname": "Maria Garcia",
+      "fullname": "Dudu Da",
       "imgUrl": "/assets/Popular-Services/Video-Editing/img/8f1d4a42fd507fb4b340987e654ce7d2ee5adcc7.jpg",
       "level": "1",
-      "rate": 4.6
+      "rate": 4.7
     },
     "daysToMake": 2,
     "description": "I create short, attention-grabbing video ads designed to convert on Facebook and Instagram. Square or vertical formats available.",
@@ -486,22 +536,25 @@
       "/assets/Popular-Services/Video-Editing/img/9ed61bc6-f453-447c-b329-2b9ae27e1660.png"
     ],
     "videoUrls": [
-      "/assets/Popular-Services/Video-Editing/video/grho742jrvfyhqphjgvx.mp4"
+      "/assets/videosForGigDemo/gigVid13.mp4"
     ],
-    "tags": ["ads", "social media", "marketing"],
-    "likedByUsers": ["dropshipper_guy"],
+    "tags": [
+      "data"
+    ],
+    "likedByUsers": [
+      "dropshipper_guy"
+    ],
     "reviews": []
   },
   {
-    "_id": "g114",
-    "title": "Green Screen Removal and Chroma Key Composition",
-    "price": 75.0,
+    "title": "I will create short videos for tiktok",
+    "price": 148,
     "owner": {
       "_id": "u118",
-      "fullname": "David O'Connell",
+      "fullname": "Yossi Cohen",
       "imgUrl": "/assets/Popular-Services/Video-Editing/img/29f9d2bf-05a6-4fc3-95dd-f3ebbbc899c9.png",
       "level": "2",
-      "rate": 4.8
+      "rate": 4
     },
     "daysToMake": 4,
     "description": "Flawless green screen keying. I will remove your background and replace it with a professional virtual set or image of your choice.",
@@ -511,21 +564,24 @@
       "/assets/Popular-Services/Video-Editing/img/9fcb41bb-aa15-4d52-bd9e-cec1c2915781.jpg",
       "/assets/Popular-Services/Video-Editing/img/9ff2db89-9507-4c70-9b49-c93475551f11.png"
     ],
-    "videoUrls": [],
-    "tags": ["green screen", "vfx", "chroma key"],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid14.mp4"
+    ],
+    "tags": [
+      "photography"
+    ],
     "likedByUsers": [],
     "reviews": []
   },
   {
-    "_id": "g115",
-    "title": "Podcast Video Editing with Multi-Cam Sync",
-    "price": 110.0,
+    "title": "I will build your react website",
+    "price": 308,
     "owner": {
       "_id": "u119",
-      "fullname": "Aisha Patel",
+      "fullname": "Jane Smith",
       "imgUrl": "/assets/Popular-Services/Video-Editing/img/30ef42da5c48b888881f477cc42b9242ca74f21f.jpg",
       "level": "top rated",
-      "rate": 5
+      "rate": 4.7
     },
     "daysToMake": 5,
     "description": "I will edit your multi-camera video podcast. Includes syncing audio/video, switching angles actively, adding intro/outro, and basic audio mixing.",
@@ -535,10 +591,2422 @@
       "/assets/Popular-Services/Video-Editing/img/43aa8609-6a44-4bd1-a1a7-90c0fa6cff4e.jpg"
     ],
     "videoUrls": [
-      "/assets/Popular-Services/Video-Editing/video/gtwq8oinzfbqawco2bpe.mp4"
+      "/assets/videosForGigDemo/gigVid15.mp4"
     ],
-    "tags": ["podcast", "multi-cam", "audio editing"],
-    "likedByUsers": ["podcaster_daily"],
+    "tags": [
+      "trending"
+    ],
+    "likedByUsers": [
+      "podcaster_daily"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will write a killer blog post",
+    "price": 246,
+    "owner": {
+      "_id": "u101",
+      "fullname": "Alice Cooper",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
+      "level": "top rated",
+      "rate": 4.3
+    },
+    "daysToMake": 3,
+    "description": "CINEMATIC VLOG, FAMILY & TRAVEL VIDEO EDITING\n\nIf you’re looking for professional, cinematic video editing like well-known travel YouTubers, you’re in the right place. I specialize in detail-oriented, storytelling-driven editing for travel videos, family memories, and vlogs.\n\nWhat you’ll get:\n• Strong storytelling flow\n• Professional color grading\n• Music synced perfectly to visuals\n• Dynamic, smooth transitions\n• Fast delivery\n• Copyright-free background music\n• 1080p & 4K video output\n• Optimized for YouTube, Facebook, and all social platforms\n\nWhy choose me?\nMy name is Sajid, and I’m an experienced video editor focused on making your content look polished, engaging, and on-brand. Simply send me your raw footage—I’ll handle the editing and branding so you can focus on creating. Repeat clients receive up to 20% discount.",
+    "avgResponseTime": 1,
+    "loc": "Ghana",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/video/ahitwsblrjquehepmyhn.mp4"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid16.mp4"
+    ],
+    "tags": [
+      "graphics"
+    ],
+    "likedByUsers": [
+      "mini-user"
+    ],
+    "reviews": [
+      {
+        "id": "madeId",
+        "txt": "Did an amazing work",
+        "rate": 4,
+        "by": {
+          "_id": "u102",
+          "fullname": "user2",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png"
+        }
+      },
+      {
+        "id": "r102",
+        "txt": "Very professional editing and great communication throughout the project.",
+        "rate": 5,
+        "by": {
+          "_id": "u103",
+          "fullname": "Alex Morgan",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/2_creator who win .png"
+        }
+      },
+      {
+        "id": "r103",
+        "txt": "High-quality work delivered on time. The video looked cinematic and clean.",
+        "rate": 5,
+        "by": {
+          "_id": "u104",
+          "fullname": "Emily Stone",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/1e64d4de-db28-4e20-ac3c-73eca238da93.png"
+        }
+      },
+      {
+        "id": "r104",
+        "txt": "Great experience overall. The storytelling and transitions were excellent.",
+        "rate": 4,
+        "by": {
+          "_id": "u105",
+          "fullname": "Michael Lee",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/11e8d620-c81d-4c65-9560-e62255a7e88e.png"
+        }
+      }
+    ]
+  },
+  {
+    "title": "I will design your unique logo",
+    "price": 34,
+    "owner": {
+      "_id": "u103",
+      "fullname": "Mark Tech",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
+      "level": "top rated",
+      "rate": 4.6
+    },
+    "daysToMake": 2,
+    "description": "I will professionally edit your YouTube videos to make them engaging, clean, and visually impressive. This service is ideal for content creators who want to improve retention and present their content in a polished way. The editing includes precise cuts, smooth transitions, synced audio, and eye-catching motion graphics or animated text when needed. Every project is customized to match your channel’s style and audience, helping your videos stand out and look consistent across your brand.",
+    "avgResponseTime": 2,
+    "loc": "United States",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/video1.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid17.mp4"
+    ],
+    "tags": [
+      "programming"
+    ],
+    "likedByUsers": [
+      "user5",
+      "user10"
+    ],
+    "reviews": [
+      {
+        "id": "rev201",
+        "txt": "Fast and high quality!",
+        "rate": 5,
+        "by": {
+          "_id": "u104",
+          "fullname": "John Doe",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/2fad7c21-59b3-45d3-bd17-ee191afe59a1.png"
+        }
+      },
+      {
+        "id": "rev202",
+        "txt": "Excellent communication and very professional editing. Highly recommended!",
+        "rate": 5,
+        "by": {
+          "_id": "u105",
+          "fullname": "Sarah Miller",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/32e077eb-3e59-4ede-aa8b-48ed8e968da0.jpg"
+        }
+      },
+      {
+        "id": "rev203",
+        "txt": "The motion graphics really upgraded my channel. Delivery was quick and clean.",
+        "rate": 5,
+        "by": {
+          "_id": "u106",
+          "fullname": "Daniel Ross",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/2_creator who win .png"
+        }
+      },
+      {
+        "id": "rev204",
+        "txt": "Great editing style and attention to detail. Will definitely order again.",
+        "rate": 4,
+        "by": {
+          "_id": "u107",
+          "fullname": "Olivia Brown",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/43aa8609-6a44-4bd1-a1a7-90c0fa6cff4e.jpg"
+        }
+      }
+    ]
+  },
+  {
+    "title": "I will design your unique logo",
+    "price": 270,
+    "owner": {
+      "_id": "u105",
+      "fullname": "Dudu Da",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
+      "level": "top rated",
+      "rate": 4.8
+    },
+    "daysToMake": 7,
+    "description": "I will transform your raw wedding footage into a cinematic and emotional film that tells your unique story. This service focuses on professional storytelling, smooth pacing, and advanced color grading to achieve a high-end, movie-like look. Every important moment is carefully selected and edited to create a natural flow, supported by music and clean transitions. The final result is a timeless wedding video you will cherish for years, delivered in high resolution and premium quality.",
+    "avgResponseTime": 5,
+    "loc": "Israel",
+    "imgUrls": [
+      "/assets/gigExampleImg/1[gig].jpg",
+      "/assets/gigExampleImg/2[gig].jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid18.mp4"
+    ],
+    "tags": [
+      "marketing"
+    ],
+    "likedByUsers": [
+      "bride2026",
+      "groom_a"
+    ],
+    "reviews": [
+      {
+        "id": "rev301",
+        "txt": "Amazing work, brought us to tears!",
+        "rate": 5,
+        "by": {
+          "_id": "u106",
+          "fullname": "Sarah Levi",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/2dfa4b57-92a2-4576-b9ba-83602aadbebf.jpg"
+        }
+      },
+      {
+        "id": "rev302",
+        "txt": "The video felt like a real movie. Perfect pacing and beautiful colors.",
+        "rate": 5,
+        "by": {
+          "_id": "u107",
+          "fullname": "David Rosen",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/9fcb41bb-aa15-4d52-bd9e-cec1c2915781.jpg"
+        }
+      },
+      {
+        "id": "rev303",
+        "txt": "Very emotional and professionally edited. We couldn’t be happier.",
+        "rate": 5,
+        "by": {
+          "_id": "u108",
+          "fullname": "Noa Ben David",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/43aa8609-6a44-4bd1-a1a7-90c0fa6cff4e.jpg"
+        }
+      },
+      {
+        "id": "rev304",
+        "txt": "Outstanding color grading and storytelling. Highly recommended for weddings.",
+        "rate": 4,
+        "by": {
+          "_id": "u109",
+          "fullname": "Eitan Shahar",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/6d446992-fd6b-47df-a643-2107d86e79df.jpg"
+        }
+      }
+    ]
+  },
+  {
+    "title": "I will design your unique logo",
+    "price": 224,
+    "owner": {
+      "_id": "u107",
+      "fullname": "John Doe",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
+      "level": "top rated",
+      "rate": 4.9
+    },
+    "daysToMake": 1,
+    "description": "I create fast-paced and engaging short-form videos optimized for TikTok, Instagram Reels, and YouTube Shorts. The editing style is designed to capture attention within seconds, using dynamic cuts, clear subtitles, and strong pacing. This service is perfect for creators and businesses looking to increase reach, engagement, and visibility on social media platforms. All videos are delivered in vertical format and tailored to current trends and platform algorithms.",
+    "avgResponseTime": 1,
+    "loc": "Ukraine",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/shorts.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid19.mp4"
+    ],
+    "tags": [
+      "video editing"
+    ],
+    "likedByUsers": [
+      "influencer_1",
+      "shop_owner"
+    ],
+    "reviews": [
+      {
+        "id": "rev401",
+        "txt": "Super fast delivery and the edits were perfect for TikTok. Great pacing!",
+        "rate": 5,
+        "by": {
+          "_id": "u110",
+          "fullname": "Liam Parker",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/1bd2f0f0-602e-4bd7-9de8-d2f33f68d1aa.png"
+        }
+      },
+      {
+        "id": "rev402",
+        "txt": "The subtitles and cuts really boosted my engagement. Highly recommended.",
+        "rate": 5,
+        "by": {
+          "_id": "u111",
+          "fullname": "Emma Collins",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png"
+        }
+      },
+      {
+        "id": "rev403",
+        "txt": "Great understanding of trends and short-form style. Will order again.",
+        "rate": 5,
+        "by": {
+          "_id": "u112",
+          "fullname": "Noah Williams",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/6e0b1efe-a65c-4b64-b967-4a25072e6ead.png"
+        }
+      },
+      {
+        "id": "rev404",
+        "txt": "Clean edits and very responsive seller. Perfect for Reels and Shorts.",
+        "rate": 4,
+        "by": {
+          "_id": "u113",
+          "fullname": "Sophia Turner",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/4f9393a1-765e-495e-8281-98f8e47dfbbd.jpg"
+        }
+      }
+    ]
+  },
+  {
+    "title": "I will do professional video editing",
+    "price": 167,
+    "owner": {
+      "_id": "u108",
+      "fullname": "Alice Cooper",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
+      "level": "1",
+      "rate": 4.3
+    },
+    "daysToMake": 4,
+    "description": "Specialized in Final Cut Pro. I can handle complex multi-cam editing and advanced VFX.",
+    "avgResponseTime": 3,
+    "loc": "United Kingdom",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/fcp_edit.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid20.mp4"
+    ],
+    "tags": [
+      "writing"
+    ],
+    "likedByUsers": [
+      "tech_guru",
+      "filmmaker_99"
+    ],
+    "reviews": [
+      {
+        "id": "rev501",
+        "txt": "A true professional. Knows FCP inside out.",
+        "rate": 5,
+        "by": {
+          "_id": "u109",
+          "fullname": "Kevin B.",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/u109.jpg"
+        }
+      }
+    ]
+  },
+  {
+    "title": "I will create short videos for tiktok",
+    "price": 328,
+    "owner": {
+      "_id": "u110",
+      "fullname": "Mike Ross",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/2aff3fb3-bdbd-495c-9aa3-d8e1be9cb2fa.png",
+      "level": "1",
+      "rate": 3.9
+    },
+    "daysToMake": 2,
+    "description": "I will take your stream VODs or clips and turn them into an exciting, fast-paced montage with music sync and effects.",
+    "avgResponseTime": 1,
+    "loc": "South Korea",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/3d28b23b-29f5-48c5-a9a5-02d0a6a3ce15.jpeg",
+      "/assets/Popular-Services/Video-Editing/img/6d446992-fd6b-47df-a643-2107d86e79df.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid21.mp4"
+    ],
+    "tags": [
+      "music"
+    ],
+    "likedByUsers": [
+      "gamer_pro",
+      "streamerX"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will design your unique logo",
+    "price": 117,
+    "owner": {
+      "_id": "u111",
+      "fullname": "Dudu Da",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/4afd03f3-2e64-47f0-914d-6f5129c9510f.PNG",
+      "level": "top rated",
+      "rate": 4.5
+    },
+    "daysToMake": 5,
+    "description": "Professional editing for corporate interviews. Includes color correction, audio cleaning, lower thirds, and branding integration.",
+    "avgResponseTime": 4,
+    "loc": "Canada",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/2dfa4b57-92a2-4576-b9ba-83602aadbebf.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid22.mp4"
+    ],
+    "tags": [
+      "business"
+    ],
+    "likedByUsers": [
+      "biz_owner_NYC"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will build your react website",
+    "price": 39,
+    "owner": {
+      "_id": "u112",
+      "fullname": "Jane Smith",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/11 Music Video Ideas to Take Your Music to the Next Level in..png",
+      "level": "2",
+      "rate": 4.3
+    },
+    "daysToMake": 10,
+    "description": "Bring your song to life with a professionally edited music video. Specializing in trippy visuals, smooth transitions, and narrative flow.",
+    "avgResponseTime": 6,
+    "loc": "UK",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/8b1f73ef-c8a8-4342-85f4-da67c86ee783.png",
+      "/assets/Popular-Services/Video-Editing/img/9b249995-f682-4947-8581-88e31580f93a.JPG"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid23.mp4"
+    ],
+    "tags": [
+      "finance"
+    ],
+    "likedByUsers": [
+      "band_member_1"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will design your unique logo",
+    "price": 272,
+    "owner": {
+      "_id": "u113",
+      "fullname": "Alice Cooper",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/2fad7c21-59b3-45d3-bd17-ee191afe59a1.png",
+      "level": "1",
+      "rate": 3.8
+    },
+    "daysToMake": 3,
+    "description": "Smooth, stabilized editing for real estate tours. I will add location callouts, background music, and color enhancement to sell the property.",
+    "avgResponseTime": 2,
+    "loc": "Spain",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/32e077eb-3e59-4ede-aa8b-48ed8e968da0.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid24.mp4"
+    ],
+    "tags": [
+      "ai"
+    ],
+    "likedByUsers": [
+      "realtor_jane"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will translate english to hebrew",
+    "price": 104,
+    "owner": {
+      "_id": "u114",
+      "fullname": "Dudu Da",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/43 VET gives advice to his 22 year old self.png",
+      "level": "2",
+      "rate": 4
+    },
+    "daysToMake": 14,
+    "description": "I focus on narrative structure. I will take your interviews and B-roll and craft a compelling documentary story.",
+    "avgResponseTime": 8,
+    "loc": "Japan",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/4e04730c300ee10ffaf6a5f525c09a599b2f4cce.png",
+      "/assets/Popular-Services/Video-Editing/img/06dcfd49-703a-44a7-9acf-a389b14d62f6.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid25.mp4"
+    ],
+    "tags": [
+      "personal growth"
+    ],
+    "likedByUsers": [],
+    "reviews": []
+  },
+  {
+    "title": "I will do professional video editing",
+    "price": 148,
+    "owner": {
+      "_id": "u115",
+      "fullname": "Alice Cooper",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/53b025a0-8671-47f0-beee-01175a419df8.jpg",
+      "level": "basic",
+      "rate": 3.8
+    },
+    "daysToMake": 4,
+    "description": "Turn your vacation footage into an engaging vlog. I handle cutting dead air, adding cinematic sequences, music, and sound effects.",
+    "avgResponseTime": 3,
+    "loc": "France",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/1bd2f0f0-602e-4bd7-9de8-d2f33f68d1aa.png"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid26.mp4"
+    ],
+    "tags": [
+      "consulting"
+    ],
+    "likedByUsers": [
+      "travel_couple"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will create short videos for tiktok",
+    "price": 496,
+    "owner": {
+      "_id": "u116",
+      "fullname": "Mark Tech",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/8eb271fe-5e78-4a39-a956-73416078b9ed.png",
+      "level": "2",
+      "rate": 4.1
+    },
+    "daysToMake": 3,
+    "description": "Give your video a cinematic look. I specialize in color correction (fixing white balance/exposure) and creative color grading using DaVinci Resolve.",
+    "avgResponseTime": 2,
+    "loc": "Ukraine",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/6e0b1efe-a65c-4b64-b967-4a25072e6ead.png",
+      "/assets/Popular-Services/Video-Editing/img/7E8FCD91-BC4D-4C6B-B2BD-DE9643708A7D.jpeg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid27.mp4"
+    ],
+    "tags": [
+      "data"
+    ],
+    "likedByUsers": [
+      "filmmaker_mike"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will write a killer blog post",
+    "price": 283,
+    "owner": {
+      "_id": "u117",
+      "fullname": "Jane Smith",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/8f1d4a42fd507fb4b340987e654ce7d2ee5adcc7.jpg",
+      "level": "1",
+      "rate": 3.9
+    },
+    "daysToMake": 2,
+    "description": "I create short, attention-grabbing video ads designed to convert on Facebook and Instagram. Square or vertical formats available.",
+    "avgResponseTime": 1,
+    "loc": "USA",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/9ed61bc6-f453-447c-b329-2b9ae27e1660.png"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid28.mp4"
+    ],
+    "tags": [
+      "photography"
+    ],
+    "likedByUsers": [
+      "dropshipper_guy"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will do professional video editing",
+    "price": 204,
+    "owner": {
+      "_id": "u118",
+      "fullname": "Alice Cooper",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/29f9d2bf-05a6-4fc3-95dd-f3ebbbc899c9.png",
+      "level": "2",
+      "rate": 4.6
+    },
+    "daysToMake": 4,
+    "description": "Flawless green screen keying. I will remove your background and replace it with a professional virtual set or image of your choice.",
+    "avgResponseTime": 3,
+    "loc": "Ireland",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/9fcb41bb-aa15-4d52-bd9e-cec1c2915781.jpg",
+      "/assets/Popular-Services/Video-Editing/img/9ff2db89-9507-4c70-9b49-c93475551f11.png"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid29.mp4"
+    ],
+    "tags": [
+      "trending"
+    ],
+    "likedByUsers": [],
+    "reviews": []
+  },
+  {
+    "title": "I will translate english to hebrew",
+    "price": 368,
+    "owner": {
+      "_id": "u119",
+      "fullname": "Jane Smith",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/30ef42da5c48b888881f477cc42b9242ca74f21f.jpg",
+      "level": "top rated",
+      "rate": 4.2
+    },
+    "daysToMake": 5,
+    "description": "I will edit your multi-camera video podcast. Includes syncing audio/video, switching angles actively, adding intro/outro, and basic audio mixing.",
+    "avgResponseTime": 4,
+    "loc": "India",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/43aa8609-6a44-4bd1-a1a7-90c0fa6cff4e.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid30.mp4"
+    ],
+    "tags": [
+      "graphics"
+    ],
+    "likedByUsers": [
+      "podcaster_daily"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will create short videos for tiktok",
+    "price": 302,
+    "owner": {
+      "_id": "u101",
+      "fullname": "Sarah Connor",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
+      "level": "top rated",
+      "rate": 4.4
+    },
+    "daysToMake": 3,
+    "description": "CINEMATIC VLOG, FAMILY & TRAVEL VIDEO EDITING\n\nIf you’re looking for professional, cinematic video editing like well-known travel YouTubers, you’re in the right place. I specialize in detail-oriented, storytelling-driven editing for travel videos, family memories, and vlogs.\n\nWhat you’ll get:\n• Strong storytelling flow\n• Professional color grading\n• Music synced perfectly to visuals\n• Dynamic, smooth transitions\n• Fast delivery\n• Copyright-free background music\n• 1080p & 4K video output\n• Optimized for YouTube, Facebook, and all social platforms\n\nWhy choose me?\nMy name is Sajid, and I’m an experienced video editor focused on making your content look polished, engaging, and on-brand. Simply send me your raw footage—I’ll handle the editing and branding so you can focus on creating. Repeat clients receive up to 20% discount.",
+    "avgResponseTime": 1,
+    "loc": "Ghana",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/video/ahitwsblrjquehepmyhn.mp4"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid31.mp4"
+    ],
+    "tags": [
+      "programming"
+    ],
+    "likedByUsers": [
+      "mini-user"
+    ],
+    "reviews": [
+      {
+        "id": "madeId",
+        "txt": "Did an amazing work",
+        "rate": 4,
+        "by": {
+          "_id": "u102",
+          "fullname": "user2",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png"
+        }
+      },
+      {
+        "id": "r102",
+        "txt": "Very professional editing and great communication throughout the project.",
+        "rate": 5,
+        "by": {
+          "_id": "u103",
+          "fullname": "Alex Morgan",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/2_creator who win .png"
+        }
+      },
+      {
+        "id": "r103",
+        "txt": "High-quality work delivered on time. The video looked cinematic and clean.",
+        "rate": 5,
+        "by": {
+          "_id": "u104",
+          "fullname": "Emily Stone",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/1e64d4de-db28-4e20-ac3c-73eca238da93.png"
+        }
+      },
+      {
+        "id": "r104",
+        "txt": "Great experience overall. The storytelling and transitions were excellent.",
+        "rate": 4,
+        "by": {
+          "_id": "u105",
+          "fullname": "Michael Lee",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/11e8d620-c81d-4c65-9560-e62255a7e88e.png"
+        }
+      }
+    ]
+  },
+  {
+    "title": "I will create short videos for tiktok",
+    "price": 178,
+    "owner": {
+      "_id": "u103",
+      "fullname": "Daniella Art",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
+      "level": "top rated",
+      "rate": 4.8
+    },
+    "daysToMake": 2,
+    "description": "I will professionally edit your YouTube videos to make them engaging, clean, and visually impressive. This service is ideal for content creators who want to improve retention and present their content in a polished way. The editing includes precise cuts, smooth transitions, synced audio, and eye-catching motion graphics or animated text when needed. Every project is customized to match your channel’s style and audience, helping your videos stand out and look consistent across your brand.",
+    "avgResponseTime": 2,
+    "loc": "United States",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/video1.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid32.mp4"
+    ],
+    "tags": [
+      "marketing"
+    ],
+    "likedByUsers": [
+      "user5",
+      "user10"
+    ],
+    "reviews": [
+      {
+        "id": "rev201",
+        "txt": "Fast and high quality!",
+        "rate": 5,
+        "by": {
+          "_id": "u104",
+          "fullname": "John Doe",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/2fad7c21-59b3-45d3-bd17-ee191afe59a1.png"
+        }
+      },
+      {
+        "id": "rev202",
+        "txt": "Excellent communication and very professional editing. Highly recommended!",
+        "rate": 5,
+        "by": {
+          "_id": "u105",
+          "fullname": "Sarah Miller",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/32e077eb-3e59-4ede-aa8b-48ed8e968da0.jpg"
+        }
+      },
+      {
+        "id": "rev203",
+        "txt": "The motion graphics really upgraded my channel. Delivery was quick and clean.",
+        "rate": 5,
+        "by": {
+          "_id": "u106",
+          "fullname": "Daniel Ross",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/2_creator who win .png"
+        }
+      },
+      {
+        "id": "rev204",
+        "txt": "Great editing style and attention to detail. Will definitely order again.",
+        "rate": 4,
+        "by": {
+          "_id": "u107",
+          "fullname": "Olivia Brown",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/43aa8609-6a44-4bd1-a1a7-90c0fa6cff4e.jpg"
+        }
+      }
+    ]
+  },
+  {
+    "title": "I will translate english to hebrew",
+    "price": 464,
+    "owner": {
+      "_id": "u105",
+      "fullname": "Mike Ross",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
+      "level": "top rated",
+      "rate": 4.2
+    },
+    "daysToMake": 7,
+    "description": "I will transform your raw wedding footage into a cinematic and emotional film that tells your unique story. This service focuses on professional storytelling, smooth pacing, and advanced color grading to achieve a high-end, movie-like look. Every important moment is carefully selected and edited to create a natural flow, supported by music and clean transitions. The final result is a timeless wedding video you will cherish for years, delivered in high resolution and premium quality.",
+    "avgResponseTime": 5,
+    "loc": "Israel",
+    "imgUrls": [
+      "/assets/gigExampleImg/1[gig].jpg",
+      "/assets/gigExampleImg/2[gig].jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid33.mp4"
+    ],
+    "tags": [
+      "video editing"
+    ],
+    "likedByUsers": [
+      "bride2026",
+      "groom_a"
+    ],
+    "reviews": [
+      {
+        "id": "rev301",
+        "txt": "Amazing work, brought us to tears!",
+        "rate": 5,
+        "by": {
+          "_id": "u106",
+          "fullname": "Sarah Levi",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/2dfa4b57-92a2-4576-b9ba-83602aadbebf.jpg"
+        }
+      },
+      {
+        "id": "rev302",
+        "txt": "The video felt like a real movie. Perfect pacing and beautiful colors.",
+        "rate": 5,
+        "by": {
+          "_id": "u107",
+          "fullname": "David Rosen",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/9fcb41bb-aa15-4d52-bd9e-cec1c2915781.jpg"
+        }
+      },
+      {
+        "id": "rev303",
+        "txt": "Very emotional and professionally edited. We couldn’t be happier.",
+        "rate": 5,
+        "by": {
+          "_id": "u108",
+          "fullname": "Noa Ben David",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/43aa8609-6a44-4bd1-a1a7-90c0fa6cff4e.jpg"
+        }
+      },
+      {
+        "id": "rev304",
+        "txt": "Outstanding color grading and storytelling. Highly recommended for weddings.",
+        "rate": 4,
+        "by": {
+          "_id": "u109",
+          "fullname": "Eitan Shahar",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/6d446992-fd6b-47df-a643-2107d86e79df.jpg"
+        }
+      }
+    ]
+  },
+  {
+    "title": "I will do professional video editing",
+    "price": 108,
+    "owner": {
+      "_id": "u107",
+      "fullname": "Yossi Cohen",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
+      "level": "top rated",
+      "rate": 4.5
+    },
+    "daysToMake": 1,
+    "description": "I create fast-paced and engaging short-form videos optimized for TikTok, Instagram Reels, and YouTube Shorts. The editing style is designed to capture attention within seconds, using dynamic cuts, clear subtitles, and strong pacing. This service is perfect for creators and businesses looking to increase reach, engagement, and visibility on social media platforms. All videos are delivered in vertical format and tailored to current trends and platform algorithms.",
+    "avgResponseTime": 1,
+    "loc": "Ukraine",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/shorts.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid34.mp4"
+    ],
+    "tags": [
+      "writing"
+    ],
+    "likedByUsers": [
+      "influencer_1",
+      "shop_owner"
+    ],
+    "reviews": [
+      {
+        "id": "rev401",
+        "txt": "Super fast delivery and the edits were perfect for TikTok. Great pacing!",
+        "rate": 5,
+        "by": {
+          "_id": "u110",
+          "fullname": "Liam Parker",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/1bd2f0f0-602e-4bd7-9de8-d2f33f68d1aa.png"
+        }
+      },
+      {
+        "id": "rev402",
+        "txt": "The subtitles and cuts really boosted my engagement. Highly recommended.",
+        "rate": 5,
+        "by": {
+          "_id": "u111",
+          "fullname": "Emma Collins",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png"
+        }
+      },
+      {
+        "id": "rev403",
+        "txt": "Great understanding of trends and short-form style. Will order again.",
+        "rate": 5,
+        "by": {
+          "_id": "u112",
+          "fullname": "Noah Williams",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/6e0b1efe-a65c-4b64-b967-4a25072e6ead.png"
+        }
+      },
+      {
+        "id": "rev404",
+        "txt": "Clean edits and very responsive seller. Perfect for Reels and Shorts.",
+        "rate": 4,
+        "by": {
+          "_id": "u113",
+          "fullname": "Sophia Turner",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/4f9393a1-765e-495e-8281-98f8e47dfbbd.jpg"
+        }
+      }
+    ]
+  },
+  {
+    "title": "I will create short videos for tiktok",
+    "price": 396,
+    "owner": {
+      "_id": "u108",
+      "fullname": "Jane Smith",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
+      "level": "1",
+      "rate": 4.9
+    },
+    "daysToMake": 4,
+    "description": "Specialized in Final Cut Pro. I can handle complex multi-cam editing and advanced VFX.",
+    "avgResponseTime": 3,
+    "loc": "United Kingdom",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/fcp_edit.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid35.mp4"
+    ],
+    "tags": [
+      "music"
+    ],
+    "likedByUsers": [
+      "tech_guru",
+      "filmmaker_99"
+    ],
+    "reviews": [
+      {
+        "id": "rev501",
+        "txt": "A true professional. Knows FCP inside out.",
+        "rate": 5,
+        "by": {
+          "_id": "u109",
+          "fullname": "Kevin B.",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/u109.jpg"
+        }
+      }
+    ]
+  },
+  {
+    "title": "I will write a killer blog post",
+    "price": 307,
+    "owner": {
+      "_id": "u110",
+      "fullname": "Dudu Da",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/2aff3fb3-bdbd-495c-9aa3-d8e1be9cb2fa.png",
+      "level": "1",
+      "rate": 4.3
+    },
+    "daysToMake": 2,
+    "description": "I will take your stream VODs or clips and turn them into an exciting, fast-paced montage with music sync and effects.",
+    "avgResponseTime": 1,
+    "loc": "South Korea",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/3d28b23b-29f5-48c5-a9a5-02d0a6a3ce15.jpeg",
+      "/assets/Popular-Services/Video-Editing/img/6d446992-fd6b-47df-a643-2107d86e79df.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid36.mp4"
+    ],
+    "tags": [
+      "business"
+    ],
+    "likedByUsers": [
+      "gamer_pro",
+      "streamerX"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will create short videos for tiktok",
+    "price": 335,
+    "owner": {
+      "_id": "u111",
+      "fullname": "John Doe",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/4afd03f3-2e64-47f0-914d-6f5129c9510f.PNG",
+      "level": "top rated",
+      "rate": 4.7
+    },
+    "daysToMake": 5,
+    "description": "Professional editing for corporate interviews. Includes color correction, audio cleaning, lower thirds, and branding integration.",
+    "avgResponseTime": 4,
+    "loc": "Canada",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/2dfa4b57-92a2-4576-b9ba-83602aadbebf.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid37.mp4"
+    ],
+    "tags": [
+      "finance"
+    ],
+    "likedByUsers": [
+      "biz_owner_NYC"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will record a professional voice over",
+    "price": 146,
+    "owner": {
+      "_id": "u112",
+      "fullname": "John Doe",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/11 Music Video Ideas to Take Your Music to the Next Level in..png",
+      "level": "2",
+      "rate": 4.1
+    },
+    "daysToMake": 10,
+    "description": "Bring your song to life with a professionally edited music video. Specializing in trippy visuals, smooth transitions, and narrative flow.",
+    "avgResponseTime": 6,
+    "loc": "UK",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/8b1f73ef-c8a8-4342-85f4-da67c86ee783.png",
+      "/assets/Popular-Services/Video-Editing/img/9b249995-f682-4947-8581-88e31580f93a.JPG"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid38.mp4"
+    ],
+    "tags": [
+      "ai"
+    ],
+    "likedByUsers": [
+      "band_member_1"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will build your react website",
+    "price": 493,
+    "owner": {
+      "_id": "u113",
+      "fullname": "Daniella Art",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/2fad7c21-59b3-45d3-bd17-ee191afe59a1.png",
+      "level": "1",
+      "rate": 4.8
+    },
+    "daysToMake": 3,
+    "description": "Smooth, stabilized editing for real estate tours. I will add location callouts, background music, and color enhancement to sell the property.",
+    "avgResponseTime": 2,
+    "loc": "Spain",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/32e077eb-3e59-4ede-aa8b-48ed8e968da0.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid39.mp4"
+    ],
+    "tags": [
+      "personal growth"
+    ],
+    "likedByUsers": [
+      "realtor_jane"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will translate english to hebrew",
+    "price": 202,
+    "owner": {
+      "_id": "u114",
+      "fullname": "Daniella Art",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/43 VET gives advice to his 22 year old self.png",
+      "level": "2",
+      "rate": 3.9
+    },
+    "daysToMake": 14,
+    "description": "I focus on narrative structure. I will take your interviews and B-roll and craft a compelling documentary story.",
+    "avgResponseTime": 8,
+    "loc": "Japan",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/4e04730c300ee10ffaf6a5f525c09a599b2f4cce.png",
+      "/assets/Popular-Services/Video-Editing/img/06dcfd49-703a-44a7-9acf-a389b14d62f6.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid40.mp4"
+    ],
+    "tags": [
+      "consulting"
+    ],
+    "likedByUsers": [],
+    "reviews": []
+  },
+  {
+    "title": "I will create short videos for tiktok",
+    "price": 387,
+    "owner": {
+      "_id": "u115",
+      "fullname": "John Doe",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/53b025a0-8671-47f0-beee-01175a419df8.jpg",
+      "level": "basic",
+      "rate": 4.4
+    },
+    "daysToMake": 4,
+    "description": "Turn your vacation footage into an engaging vlog. I handle cutting dead air, adding cinematic sequences, music, and sound effects.",
+    "avgResponseTime": 3,
+    "loc": "France",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/1bd2f0f0-602e-4bd7-9de8-d2f33f68d1aa.png"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid41.mp4"
+    ],
+    "tags": [
+      "data"
+    ],
+    "likedByUsers": [
+      "travel_couple"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will record a professional voice over",
+    "price": 232,
+    "owner": {
+      "_id": "u116",
+      "fullname": "Daniella Art",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/8eb271fe-5e78-4a39-a956-73416078b9ed.png",
+      "level": "2",
+      "rate": 4.2
+    },
+    "daysToMake": 3,
+    "description": "Give your video a cinematic look. I specialize in color correction (fixing white balance/exposure) and creative color grading using DaVinci Resolve.",
+    "avgResponseTime": 2,
+    "loc": "Ukraine",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/6e0b1efe-a65c-4b64-b967-4a25072e6ead.png",
+      "/assets/Popular-Services/Video-Editing/img/7E8FCD91-BC4D-4C6B-B2BD-DE9643708A7D.jpeg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid42.mp4"
+    ],
+    "tags": [
+      "photography"
+    ],
+    "likedByUsers": [
+      "filmmaker_mike"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will design your unique logo",
+    "price": 436,
+    "owner": {
+      "_id": "u117",
+      "fullname": "Mark Tech",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/8f1d4a42fd507fb4b340987e654ce7d2ee5adcc7.jpg",
+      "level": "1",
+      "rate": 4.3
+    },
+    "daysToMake": 2,
+    "description": "I create short, attention-grabbing video ads designed to convert on Facebook and Instagram. Square or vertical formats available.",
+    "avgResponseTime": 1,
+    "loc": "USA",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/9ed61bc6-f453-447c-b329-2b9ae27e1660.png"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid43.mp4"
+    ],
+    "tags": [
+      "trending"
+    ],
+    "likedByUsers": [
+      "dropshipper_guy"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will design your unique logo",
+    "price": 240,
+    "owner": {
+      "_id": "u118",
+      "fullname": "Daniella Art",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/29f9d2bf-05a6-4fc3-95dd-f3ebbbc899c9.png",
+      "level": "2",
+      "rate": 4.4
+    },
+    "daysToMake": 4,
+    "description": "Flawless green screen keying. I will remove your background and replace it with a professional virtual set or image of your choice.",
+    "avgResponseTime": 3,
+    "loc": "Ireland",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/9fcb41bb-aa15-4d52-bd9e-cec1c2915781.jpg",
+      "/assets/Popular-Services/Video-Editing/img/9ff2db89-9507-4c70-9b49-c93475551f11.png"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid44.mp4"
+    ],
+    "tags": [
+      "graphics"
+    ],
+    "likedByUsers": [],
+    "reviews": []
+  },
+  {
+    "title": "I will create short videos for tiktok",
+    "price": 114,
+    "owner": {
+      "_id": "u119",
+      "fullname": "Mark Tech",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/30ef42da5c48b888881f477cc42b9242ca74f21f.jpg",
+      "level": "top rated",
+      "rate": 4.6
+    },
+    "daysToMake": 5,
+    "description": "I will edit your multi-camera video podcast. Includes syncing audio/video, switching angles actively, adding intro/outro, and basic audio mixing.",
+    "avgResponseTime": 4,
+    "loc": "India",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/43aa8609-6a44-4bd1-a1a7-90c0fa6cff4e.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid45.mp4"
+    ],
+    "tags": [
+      "programming"
+    ],
+    "likedByUsers": [
+      "podcaster_daily"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will record a professional voice over",
+    "price": 131,
+    "owner": {
+      "_id": "u101",
+      "fullname": "Yossi Cohen",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
+      "level": "top rated",
+      "rate": 4.2
+    },
+    "daysToMake": 3,
+    "description": "CINEMATIC VLOG, FAMILY & TRAVEL VIDEO EDITING\n\nIf you’re looking for professional, cinematic video editing like well-known travel YouTubers, you’re in the right place. I specialize in detail-oriented, storytelling-driven editing for travel videos, family memories, and vlogs.\n\nWhat you’ll get:\n• Strong storytelling flow\n• Professional color grading\n• Music synced perfectly to visuals\n• Dynamic, smooth transitions\n• Fast delivery\n• Copyright-free background music\n• 1080p & 4K video output\n• Optimized for YouTube, Facebook, and all social platforms\n\nWhy choose me?\nMy name is Sajid, and I’m an experienced video editor focused on making your content look polished, engaging, and on-brand. Simply send me your raw footage—I’ll handle the editing and branding so you can focus on creating. Repeat clients receive up to 20% discount.",
+    "avgResponseTime": 1,
+    "loc": "Ghana",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/video/ahitwsblrjquehepmyhn.mp4"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid46.mp4"
+    ],
+    "tags": [
+      "marketing"
+    ],
+    "likedByUsers": [
+      "mini-user"
+    ],
+    "reviews": [
+      {
+        "id": "madeId",
+        "txt": "Did an amazing work",
+        "rate": 4,
+        "by": {
+          "_id": "u102",
+          "fullname": "user2",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png"
+        }
+      },
+      {
+        "id": "r102",
+        "txt": "Very professional editing and great communication throughout the project.",
+        "rate": 5,
+        "by": {
+          "_id": "u103",
+          "fullname": "Alex Morgan",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/2_creator who win .png"
+        }
+      },
+      {
+        "id": "r103",
+        "txt": "High-quality work delivered on time. The video looked cinematic and clean.",
+        "rate": 5,
+        "by": {
+          "_id": "u104",
+          "fullname": "Emily Stone",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/1e64d4de-db28-4e20-ac3c-73eca238da93.png"
+        }
+      },
+      {
+        "id": "r104",
+        "txt": "Great experience overall. The storytelling and transitions were excellent.",
+        "rate": 4,
+        "by": {
+          "_id": "u105",
+          "fullname": "Michael Lee",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/11e8d620-c81d-4c65-9560-e62255a7e88e.png"
+        }
+      }
+    ]
+  },
+  {
+    "title": "I will do professional video editing",
+    "price": 386,
+    "owner": {
+      "_id": "u103",
+      "fullname": "Sarah Connor",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
+      "level": "top rated",
+      "rate": 4.6
+    },
+    "daysToMake": 2,
+    "description": "I will professionally edit your YouTube videos to make them engaging, clean, and visually impressive. This service is ideal for content creators who want to improve retention and present their content in a polished way. The editing includes precise cuts, smooth transitions, synced audio, and eye-catching motion graphics or animated text when needed. Every project is customized to match your channel’s style and audience, helping your videos stand out and look consistent across your brand.",
+    "avgResponseTime": 2,
+    "loc": "United States",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/video1.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid47.mp4"
+    ],
+    "tags": [
+      "video editing"
+    ],
+    "likedByUsers": [
+      "user5",
+      "user10"
+    ],
+    "reviews": [
+      {
+        "id": "rev201",
+        "txt": "Fast and high quality!",
+        "rate": 5,
+        "by": {
+          "_id": "u104",
+          "fullname": "John Doe",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/2fad7c21-59b3-45d3-bd17-ee191afe59a1.png"
+        }
+      },
+      {
+        "id": "rev202",
+        "txt": "Excellent communication and very professional editing. Highly recommended!",
+        "rate": 5,
+        "by": {
+          "_id": "u105",
+          "fullname": "Sarah Miller",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/32e077eb-3e59-4ede-aa8b-48ed8e968da0.jpg"
+        }
+      },
+      {
+        "id": "rev203",
+        "txt": "The motion graphics really upgraded my channel. Delivery was quick and clean.",
+        "rate": 5,
+        "by": {
+          "_id": "u106",
+          "fullname": "Daniel Ross",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/2_creator who win .png"
+        }
+      },
+      {
+        "id": "rev204",
+        "txt": "Great editing style and attention to detail. Will definitely order again.",
+        "rate": 4,
+        "by": {
+          "_id": "u107",
+          "fullname": "Olivia Brown",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/43aa8609-6a44-4bd1-a1a7-90c0fa6cff4e.jpg"
+        }
+      }
+    ]
+  },
+  {
+    "title": "I will do professional video editing",
+    "price": 196,
+    "owner": {
+      "_id": "u105",
+      "fullname": "Mike Ross",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
+      "level": "top rated",
+      "rate": 4.4
+    },
+    "daysToMake": 7,
+    "description": "I will transform your raw wedding footage into a cinematic and emotional film that tells your unique story. This service focuses on professional storytelling, smooth pacing, and advanced color grading to achieve a high-end, movie-like look. Every important moment is carefully selected and edited to create a natural flow, supported by music and clean transitions. The final result is a timeless wedding video you will cherish for years, delivered in high resolution and premium quality.",
+    "avgResponseTime": 5,
+    "loc": "Israel",
+    "imgUrls": [
+      "/assets/gigExampleImg/1[gig].jpg",
+      "/assets/gigExampleImg/2[gig].jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid48.mp4"
+    ],
+    "tags": [
+      "writing"
+    ],
+    "likedByUsers": [
+      "bride2026",
+      "groom_a"
+    ],
+    "reviews": [
+      {
+        "id": "rev301",
+        "txt": "Amazing work, brought us to tears!",
+        "rate": 5,
+        "by": {
+          "_id": "u106",
+          "fullname": "Sarah Levi",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/2dfa4b57-92a2-4576-b9ba-83602aadbebf.jpg"
+        }
+      },
+      {
+        "id": "rev302",
+        "txt": "The video felt like a real movie. Perfect pacing and beautiful colors.",
+        "rate": 5,
+        "by": {
+          "_id": "u107",
+          "fullname": "David Rosen",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/9fcb41bb-aa15-4d52-bd9e-cec1c2915781.jpg"
+        }
+      },
+      {
+        "id": "rev303",
+        "txt": "Very emotional and professionally edited. We couldn’t be happier.",
+        "rate": 5,
+        "by": {
+          "_id": "u108",
+          "fullname": "Noa Ben David",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/43aa8609-6a44-4bd1-a1a7-90c0fa6cff4e.jpg"
+        }
+      },
+      {
+        "id": "rev304",
+        "txt": "Outstanding color grading and storytelling. Highly recommended for weddings.",
+        "rate": 4,
+        "by": {
+          "_id": "u109",
+          "fullname": "Eitan Shahar",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/6d446992-fd6b-47df-a643-2107d86e79df.jpg"
+        }
+      }
+    ]
+  },
+  {
+    "title": "I will design your unique logo",
+    "price": 490,
+    "owner": {
+      "_id": "u107",
+      "fullname": "Mark Tech",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
+      "level": "top rated",
+      "rate": 4.9
+    },
+    "daysToMake": 1,
+    "description": "I create fast-paced and engaging short-form videos optimized for TikTok, Instagram Reels, and YouTube Shorts. The editing style is designed to capture attention within seconds, using dynamic cuts, clear subtitles, and strong pacing. This service is perfect for creators and businesses looking to increase reach, engagement, and visibility on social media platforms. All videos are delivered in vertical format and tailored to current trends and platform algorithms.",
+    "avgResponseTime": 1,
+    "loc": "Ukraine",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/shorts.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid49.mp4"
+    ],
+    "tags": [
+      "music"
+    ],
+    "likedByUsers": [
+      "influencer_1",
+      "shop_owner"
+    ],
+    "reviews": [
+      {
+        "id": "rev401",
+        "txt": "Super fast delivery and the edits were perfect for TikTok. Great pacing!",
+        "rate": 5,
+        "by": {
+          "_id": "u110",
+          "fullname": "Liam Parker",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/1bd2f0f0-602e-4bd7-9de8-d2f33f68d1aa.png"
+        }
+      },
+      {
+        "id": "rev402",
+        "txt": "The subtitles and cuts really boosted my engagement. Highly recommended.",
+        "rate": 5,
+        "by": {
+          "_id": "u111",
+          "fullname": "Emma Collins",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png"
+        }
+      },
+      {
+        "id": "rev403",
+        "txt": "Great understanding of trends and short-form style. Will order again.",
+        "rate": 5,
+        "by": {
+          "_id": "u112",
+          "fullname": "Noah Williams",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/6e0b1efe-a65c-4b64-b967-4a25072e6ead.png"
+        }
+      },
+      {
+        "id": "rev404",
+        "txt": "Clean edits and very responsive seller. Perfect for Reels and Shorts.",
+        "rate": 4,
+        "by": {
+          "_id": "u113",
+          "fullname": "Sophia Turner",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/4f9393a1-765e-495e-8281-98f8e47dfbbd.jpg"
+        }
+      }
+    ]
+  },
+  {
+    "title": "I will record a professional voice over",
+    "price": 229,
+    "owner": {
+      "_id": "u108",
+      "fullname": "Jane Smith",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
+      "level": "1",
+      "rate": 4
+    },
+    "daysToMake": 4,
+    "description": "Specialized in Final Cut Pro. I can handle complex multi-cam editing and advanced VFX.",
+    "avgResponseTime": 3,
+    "loc": "United Kingdom",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/fcp_edit.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid50.mp4"
+    ],
+    "tags": [
+      "business"
+    ],
+    "likedByUsers": [
+      "tech_guru",
+      "filmmaker_99"
+    ],
+    "reviews": [
+      {
+        "id": "rev501",
+        "txt": "A true professional. Knows FCP inside out.",
+        "rate": 5,
+        "by": {
+          "_id": "u109",
+          "fullname": "Kevin B.",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/u109.jpg"
+        }
+      }
+    ]
+  },
+  {
+    "title": "I will build your react website",
+    "price": 76,
+    "owner": {
+      "_id": "u110",
+      "fullname": "Mike Ross",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/2aff3fb3-bdbd-495c-9aa3-d8e1be9cb2fa.png",
+      "level": "1",
+      "rate": 3.9
+    },
+    "daysToMake": 2,
+    "description": "I will take your stream VODs or clips and turn them into an exciting, fast-paced montage with music sync and effects.",
+    "avgResponseTime": 1,
+    "loc": "South Korea",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/3d28b23b-29f5-48c5-a9a5-02d0a6a3ce15.jpeg",
+      "/assets/Popular-Services/Video-Editing/img/6d446992-fd6b-47df-a643-2107d86e79df.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid51.mp4"
+    ],
+    "tags": [
+      "finance"
+    ],
+    "likedByUsers": [
+      "gamer_pro",
+      "streamerX"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will design your unique logo",
+    "price": 112,
+    "owner": {
+      "_id": "u111",
+      "fullname": "Daniella Art",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/4afd03f3-2e64-47f0-914d-6f5129c9510f.PNG",
+      "level": "top rated",
+      "rate": 4.8
+    },
+    "daysToMake": 5,
+    "description": "Professional editing for corporate interviews. Includes color correction, audio cleaning, lower thirds, and branding integration.",
+    "avgResponseTime": 4,
+    "loc": "Canada",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/2dfa4b57-92a2-4576-b9ba-83602aadbebf.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid52.mp4"
+    ],
+    "tags": [
+      "ai"
+    ],
+    "likedByUsers": [
+      "biz_owner_NYC"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will create short videos for tiktok",
+    "price": 379,
+    "owner": {
+      "_id": "u112",
+      "fullname": "Mike Ross",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/11 Music Video Ideas to Take Your Music to the Next Level in..png",
+      "level": "2",
+      "rate": 3.9
+    },
+    "daysToMake": 10,
+    "description": "Bring your song to life with a professionally edited music video. Specializing in trippy visuals, smooth transitions, and narrative flow.",
+    "avgResponseTime": 6,
+    "loc": "UK",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/8b1f73ef-c8a8-4342-85f4-da67c86ee783.png",
+      "/assets/Popular-Services/Video-Editing/img/9b249995-f682-4947-8581-88e31580f93a.JPG"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid53.mp4"
+    ],
+    "tags": [
+      "personal growth"
+    ],
+    "likedByUsers": [
+      "band_member_1"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will write a killer blog post",
+    "price": 209,
+    "owner": {
+      "_id": "u113",
+      "fullname": "John Doe",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/2fad7c21-59b3-45d3-bd17-ee191afe59a1.png",
+      "level": "1",
+      "rate": 3.9
+    },
+    "daysToMake": 3,
+    "description": "Smooth, stabilized editing for real estate tours. I will add location callouts, background music, and color enhancement to sell the property.",
+    "avgResponseTime": 2,
+    "loc": "Spain",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/32e077eb-3e59-4ede-aa8b-48ed8e968da0.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid54.mp4"
+    ],
+    "tags": [
+      "consulting"
+    ],
+    "likedByUsers": [
+      "realtor_jane"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will create short videos for tiktok",
+    "price": 392,
+    "owner": {
+      "_id": "u114",
+      "fullname": "Daniella Art",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/43 VET gives advice to his 22 year old self.png",
+      "level": "2",
+      "rate": 4.3
+    },
+    "daysToMake": 14,
+    "description": "I focus on narrative structure. I will take your interviews and B-roll and craft a compelling documentary story.",
+    "avgResponseTime": 8,
+    "loc": "Japan",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/4e04730c300ee10ffaf6a5f525c09a599b2f4cce.png",
+      "/assets/Popular-Services/Video-Editing/img/06dcfd49-703a-44a7-9acf-a389b14d62f6.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid55.mp4"
+    ],
+    "tags": [
+      "data"
+    ],
+    "likedByUsers": [],
+    "reviews": []
+  },
+  {
+    "title": "I will record a professional voice over",
+    "price": 107,
+    "owner": {
+      "_id": "u115",
+      "fullname": "Dudu Da",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/53b025a0-8671-47f0-beee-01175a419df8.jpg",
+      "level": "basic",
+      "rate": 4.7
+    },
+    "daysToMake": 4,
+    "description": "Turn your vacation footage into an engaging vlog. I handle cutting dead air, adding cinematic sequences, music, and sound effects.",
+    "avgResponseTime": 3,
+    "loc": "France",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/1bd2f0f0-602e-4bd7-9de8-d2f33f68d1aa.png"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid56.mp4"
+    ],
+    "tags": [
+      "photography"
+    ],
+    "likedByUsers": [
+      "travel_couple"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will design your unique logo",
+    "price": 70,
+    "owner": {
+      "_id": "u116",
+      "fullname": "Mark Tech",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/8eb271fe-5e78-4a39-a956-73416078b9ed.png",
+      "level": "2",
+      "rate": 4.1
+    },
+    "daysToMake": 3,
+    "description": "Give your video a cinematic look. I specialize in color correction (fixing white balance/exposure) and creative color grading using DaVinci Resolve.",
+    "avgResponseTime": 2,
+    "loc": "Ukraine",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/6e0b1efe-a65c-4b64-b967-4a25072e6ead.png",
+      "/assets/Popular-Services/Video-Editing/img/7E8FCD91-BC4D-4C6B-B2BD-DE9643708A7D.jpeg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid57.mp4"
+    ],
+    "tags": [
+      "trending"
+    ],
+    "likedByUsers": [
+      "filmmaker_mike"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will create short videos for tiktok",
+    "price": 239,
+    "owner": {
+      "_id": "u117",
+      "fullname": "Mark Tech",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/8f1d4a42fd507fb4b340987e654ce7d2ee5adcc7.jpg",
+      "level": "1",
+      "rate": 4.2
+    },
+    "daysToMake": 2,
+    "description": "I create short, attention-grabbing video ads designed to convert on Facebook and Instagram. Square or vertical formats available.",
+    "avgResponseTime": 1,
+    "loc": "USA",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/9ed61bc6-f453-447c-b329-2b9ae27e1660.png"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid58.mp4"
+    ],
+    "tags": [
+      "graphics"
+    ],
+    "likedByUsers": [
+      "dropshipper_guy"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will design your unique logo",
+    "price": 456,
+    "owner": {
+      "_id": "u118",
+      "fullname": "Mark Tech",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/29f9d2bf-05a6-4fc3-95dd-f3ebbbc899c9.png",
+      "level": "2",
+      "rate": 4.3
+    },
+    "daysToMake": 4,
+    "description": "Flawless green screen keying. I will remove your background and replace it with a professional virtual set or image of your choice.",
+    "avgResponseTime": 3,
+    "loc": "Ireland",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/9fcb41bb-aa15-4d52-bd9e-cec1c2915781.jpg",
+      "/assets/Popular-Services/Video-Editing/img/9ff2db89-9507-4c70-9b49-c93475551f11.png"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid59.mp4"
+    ],
+    "tags": [
+      "programming"
+    ],
+    "likedByUsers": [],
+    "reviews": []
+  },
+  {
+    "title": "I will design your unique logo",
+    "price": 86,
+    "owner": {
+      "_id": "u119",
+      "fullname": "Sarah Connor",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/30ef42da5c48b888881f477cc42b9242ca74f21f.jpg",
+      "level": "top rated",
+      "rate": 4.8
+    },
+    "daysToMake": 5,
+    "description": "I will edit your multi-camera video podcast. Includes syncing audio/video, switching angles actively, adding intro/outro, and basic audio mixing.",
+    "avgResponseTime": 4,
+    "loc": "India",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/43aa8609-6a44-4bd1-a1a7-90c0fa6cff4e.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid60.mp4"
+    ],
+    "tags": [
+      "marketing"
+    ],
+    "likedByUsers": [
+      "podcaster_daily"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will design your unique logo",
+    "price": 322,
+    "owner": {
+      "_id": "u101",
+      "fullname": "John Doe",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
+      "level": "top rated",
+      "rate": 4.9
+    },
+    "daysToMake": 3,
+    "description": "CINEMATIC VLOG, FAMILY & TRAVEL VIDEO EDITING\n\nIf you’re looking for professional, cinematic video editing like well-known travel YouTubers, you’re in the right place. I specialize in detail-oriented, storytelling-driven editing for travel videos, family memories, and vlogs.\n\nWhat you’ll get:\n• Strong storytelling flow\n• Professional color grading\n• Music synced perfectly to visuals\n• Dynamic, smooth transitions\n• Fast delivery\n• Copyright-free background music\n• 1080p & 4K video output\n• Optimized for YouTube, Facebook, and all social platforms\n\nWhy choose me?\nMy name is Sajid, and I’m an experienced video editor focused on making your content look polished, engaging, and on-brand. Simply send me your raw footage—I’ll handle the editing and branding so you can focus on creating. Repeat clients receive up to 20% discount.",
+    "avgResponseTime": 1,
+    "loc": "Ghana",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/video/ahitwsblrjquehepmyhn.mp4"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid61.mp4"
+    ],
+    "tags": [
+      "video editing"
+    ],
+    "likedByUsers": [
+      "mini-user"
+    ],
+    "reviews": [
+      {
+        "id": "madeId",
+        "txt": "Did an amazing work",
+        "rate": 4,
+        "by": {
+          "_id": "u102",
+          "fullname": "user2",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png"
+        }
+      },
+      {
+        "id": "r102",
+        "txt": "Very professional editing and great communication throughout the project.",
+        "rate": 5,
+        "by": {
+          "_id": "u103",
+          "fullname": "Alex Morgan",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/2_creator who win .png"
+        }
+      },
+      {
+        "id": "r103",
+        "txt": "High-quality work delivered on time. The video looked cinematic and clean.",
+        "rate": 5,
+        "by": {
+          "_id": "u104",
+          "fullname": "Emily Stone",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/1e64d4de-db28-4e20-ac3c-73eca238da93.png"
+        }
+      },
+      {
+        "id": "r104",
+        "txt": "Great experience overall. The storytelling and transitions were excellent.",
+        "rate": 4,
+        "by": {
+          "_id": "u105",
+          "fullname": "Michael Lee",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/11e8d620-c81d-4c65-9560-e62255a7e88e.png"
+        }
+      }
+    ]
+  },
+  {
+    "title": "I will translate english to hebrew",
+    "price": 303,
+    "owner": {
+      "_id": "u103",
+      "fullname": "Mike Ross",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
+      "level": "top rated",
+      "rate": 4.2
+    },
+    "daysToMake": 2,
+    "description": "I will professionally edit your YouTube videos to make them engaging, clean, and visually impressive. This service is ideal for content creators who want to improve retention and present their content in a polished way. The editing includes precise cuts, smooth transitions, synced audio, and eye-catching motion graphics or animated text when needed. Every project is customized to match your channel’s style and audience, helping your videos stand out and look consistent across your brand.",
+    "avgResponseTime": 2,
+    "loc": "United States",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/video1.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid62.mp4"
+    ],
+    "tags": [
+      "writing"
+    ],
+    "likedByUsers": [
+      "user5",
+      "user10"
+    ],
+    "reviews": [
+      {
+        "id": "rev201",
+        "txt": "Fast and high quality!",
+        "rate": 5,
+        "by": {
+          "_id": "u104",
+          "fullname": "John Doe",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/2fad7c21-59b3-45d3-bd17-ee191afe59a1.png"
+        }
+      },
+      {
+        "id": "rev202",
+        "txt": "Excellent communication and very professional editing. Highly recommended!",
+        "rate": 5,
+        "by": {
+          "_id": "u105",
+          "fullname": "Sarah Miller",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/32e077eb-3e59-4ede-aa8b-48ed8e968da0.jpg"
+        }
+      },
+      {
+        "id": "rev203",
+        "txt": "The motion graphics really upgraded my channel. Delivery was quick and clean.",
+        "rate": 5,
+        "by": {
+          "_id": "u106",
+          "fullname": "Daniel Ross",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/2_creator who win .png"
+        }
+      },
+      {
+        "id": "rev204",
+        "txt": "Great editing style and attention to detail. Will definitely order again.",
+        "rate": 4,
+        "by": {
+          "_id": "u107",
+          "fullname": "Olivia Brown",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/43aa8609-6a44-4bd1-a1a7-90c0fa6cff4e.jpg"
+        }
+      }
+    ]
+  },
+  {
+    "title": "I will translate english to hebrew",
+    "price": 216,
+    "owner": {
+      "_id": "u105",
+      "fullname": "Mark Tech",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
+      "level": "top rated",
+      "rate": 4.7
+    },
+    "daysToMake": 7,
+    "description": "I will transform your raw wedding footage into a cinematic and emotional film that tells your unique story. This service focuses on professional storytelling, smooth pacing, and advanced color grading to achieve a high-end, movie-like look. Every important moment is carefully selected and edited to create a natural flow, supported by music and clean transitions. The final result is a timeless wedding video you will cherish for years, delivered in high resolution and premium quality.",
+    "avgResponseTime": 5,
+    "loc": "Israel",
+    "imgUrls": [
+      "/assets/gigExampleImg/1[gig].jpg",
+      "/assets/gigExampleImg/2[gig].jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid63.mp4"
+    ],
+    "tags": [
+      "music"
+    ],
+    "likedByUsers": [
+      "bride2026",
+      "groom_a"
+    ],
+    "reviews": [
+      {
+        "id": "rev301",
+        "txt": "Amazing work, brought us to tears!",
+        "rate": 5,
+        "by": {
+          "_id": "u106",
+          "fullname": "Sarah Levi",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/2dfa4b57-92a2-4576-b9ba-83602aadbebf.jpg"
+        }
+      },
+      {
+        "id": "rev302",
+        "txt": "The video felt like a real movie. Perfect pacing and beautiful colors.",
+        "rate": 5,
+        "by": {
+          "_id": "u107",
+          "fullname": "David Rosen",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/9fcb41bb-aa15-4d52-bd9e-cec1c2915781.jpg"
+        }
+      },
+      {
+        "id": "rev303",
+        "txt": "Very emotional and professionally edited. We couldn’t be happier.",
+        "rate": 5,
+        "by": {
+          "_id": "u108",
+          "fullname": "Noa Ben David",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/43aa8609-6a44-4bd1-a1a7-90c0fa6cff4e.jpg"
+        }
+      },
+      {
+        "id": "rev304",
+        "txt": "Outstanding color grading and storytelling. Highly recommended for weddings.",
+        "rate": 4,
+        "by": {
+          "_id": "u109",
+          "fullname": "Eitan Shahar",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/6d446992-fd6b-47df-a643-2107d86e79df.jpg"
+        }
+      }
+    ]
+  },
+  {
+    "title": "I will record a professional voice over",
+    "price": 351,
+    "owner": {
+      "_id": "u107",
+      "fullname": "Mike Ross",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
+      "level": "top rated",
+      "rate": 4.8
+    },
+    "daysToMake": 1,
+    "description": "I create fast-paced and engaging short-form videos optimized for TikTok, Instagram Reels, and YouTube Shorts. The editing style is designed to capture attention within seconds, using dynamic cuts, clear subtitles, and strong pacing. This service is perfect for creators and businesses looking to increase reach, engagement, and visibility on social media platforms. All videos are delivered in vertical format and tailored to current trends and platform algorithms.",
+    "avgResponseTime": 1,
+    "loc": "Ukraine",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/shorts.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid64.mp4"
+    ],
+    "tags": [
+      "business"
+    ],
+    "likedByUsers": [
+      "influencer_1",
+      "shop_owner"
+    ],
+    "reviews": [
+      {
+        "id": "rev401",
+        "txt": "Super fast delivery and the edits were perfect for TikTok. Great pacing!",
+        "rate": 5,
+        "by": {
+          "_id": "u110",
+          "fullname": "Liam Parker",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/1bd2f0f0-602e-4bd7-9de8-d2f33f68d1aa.png"
+        }
+      },
+      {
+        "id": "rev402",
+        "txt": "The subtitles and cuts really boosted my engagement. Highly recommended.",
+        "rate": 5,
+        "by": {
+          "_id": "u111",
+          "fullname": "Emma Collins",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png"
+        }
+      },
+      {
+        "id": "rev403",
+        "txt": "Great understanding of trends and short-form style. Will order again.",
+        "rate": 5,
+        "by": {
+          "_id": "u112",
+          "fullname": "Noah Williams",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/6e0b1efe-a65c-4b64-b967-4a25072e6ead.png"
+        }
+      },
+      {
+        "id": "rev404",
+        "txt": "Clean edits and very responsive seller. Perfect for Reels and Shorts.",
+        "rate": 4,
+        "by": {
+          "_id": "u113",
+          "fullname": "Sophia Turner",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/4f9393a1-765e-495e-8281-98f8e47dfbbd.jpg"
+        }
+      }
+    ]
+  },
+  {
+    "title": "I will write a killer blog post",
+    "price": 32,
+    "owner": {
+      "_id": "u108",
+      "fullname": "Sarah Connor",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
+      "level": "1",
+      "rate": 4.6
+    },
+    "daysToMake": 4,
+    "description": "Specialized in Final Cut Pro. I can handle complex multi-cam editing and advanced VFX.",
+    "avgResponseTime": 3,
+    "loc": "United Kingdom",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/fcp_edit.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid65.mp4"
+    ],
+    "tags": [
+      "finance"
+    ],
+    "likedByUsers": [
+      "tech_guru",
+      "filmmaker_99"
+    ],
+    "reviews": [
+      {
+        "id": "rev501",
+        "txt": "A true professional. Knows FCP inside out.",
+        "rate": 5,
+        "by": {
+          "_id": "u109",
+          "fullname": "Kevin B.",
+          "imgUrl": "/assets/Popular-Services/Video-Editing/img/u109.jpg"
+        }
+      }
+    ]
+  },
+  {
+    "title": "I will record a professional voice over",
+    "price": 431,
+    "owner": {
+      "_id": "u110",
+      "fullname": "Dudu Da",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/2aff3fb3-bdbd-495c-9aa3-d8e1be9cb2fa.png",
+      "level": "1",
+      "rate": 4.9
+    },
+    "daysToMake": 2,
+    "description": "I will take your stream VODs or clips and turn them into an exciting, fast-paced montage with music sync and effects.",
+    "avgResponseTime": 1,
+    "loc": "South Korea",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/3d28b23b-29f5-48c5-a9a5-02d0a6a3ce15.jpeg",
+      "/assets/Popular-Services/Video-Editing/img/6d446992-fd6b-47df-a643-2107d86e79df.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid66.mp4"
+    ],
+    "tags": [
+      "ai"
+    ],
+    "likedByUsers": [
+      "gamer_pro",
+      "streamerX"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will create short videos for tiktok",
+    "price": 475,
+    "owner": {
+      "_id": "u111",
+      "fullname": "John Doe",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/4afd03f3-2e64-47f0-914d-6f5129c9510f.PNG",
+      "level": "top rated",
+      "rate": 4.1
+    },
+    "daysToMake": 5,
+    "description": "Professional editing for corporate interviews. Includes color correction, audio cleaning, lower thirds, and branding integration.",
+    "avgResponseTime": 4,
+    "loc": "Canada",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/2dfa4b57-92a2-4576-b9ba-83602aadbebf.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid67.mp4"
+    ],
+    "tags": [
+      "personal growth"
+    ],
+    "likedByUsers": [
+      "biz_owner_NYC"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will do professional video editing",
+    "price": 66,
+    "owner": {
+      "_id": "u112",
+      "fullname": "Dudu Da",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/11 Music Video Ideas to Take Your Music to the Next Level in..png",
+      "level": "2",
+      "rate": 3.9
+    },
+    "daysToMake": 10,
+    "description": "Bring your song to life with a professionally edited music video. Specializing in trippy visuals, smooth transitions, and narrative flow.",
+    "avgResponseTime": 6,
+    "loc": "UK",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/8b1f73ef-c8a8-4342-85f4-da67c86ee783.png",
+      "/assets/Popular-Services/Video-Editing/img/9b249995-f682-4947-8581-88e31580f93a.JPG"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid68.mp4"
+    ],
+    "tags": [
+      "consulting"
+    ],
+    "likedByUsers": [
+      "band_member_1"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will record a professional voice over",
+    "price": 391,
+    "owner": {
+      "_id": "u113",
+      "fullname": "John Doe",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/2fad7c21-59b3-45d3-bd17-ee191afe59a1.png",
+      "level": "1",
+      "rate": 4.9
+    },
+    "daysToMake": 3,
+    "description": "Smooth, stabilized editing for real estate tours. I will add location callouts, background music, and color enhancement to sell the property.",
+    "avgResponseTime": 2,
+    "loc": "Spain",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/32e077eb-3e59-4ede-aa8b-48ed8e968da0.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid69.mp4"
+    ],
+    "tags": [
+      "data"
+    ],
+    "likedByUsers": [
+      "realtor_jane"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will write a killer blog post",
+    "price": 464,
+    "owner": {
+      "_id": "u114",
+      "fullname": "Daniella Art",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/43 VET gives advice to his 22 year old self.png",
+      "level": "2",
+      "rate": 4.2
+    },
+    "daysToMake": 14,
+    "description": "I focus on narrative structure. I will take your interviews and B-roll and craft a compelling documentary story.",
+    "avgResponseTime": 8,
+    "loc": "Japan",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/4e04730c300ee10ffaf6a5f525c09a599b2f4cce.png",
+      "/assets/Popular-Services/Video-Editing/img/06dcfd49-703a-44a7-9acf-a389b14d62f6.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid70.mp4"
+    ],
+    "tags": [
+      "photography"
+    ],
+    "likedByUsers": [],
+    "reviews": []
+  },
+  {
+    "title": "I will design your unique logo",
+    "price": 462,
+    "owner": {
+      "_id": "u115",
+      "fullname": "Mike Ross",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/53b025a0-8671-47f0-beee-01175a419df8.jpg",
+      "level": "basic",
+      "rate": 5
+    },
+    "daysToMake": 4,
+    "description": "Turn your vacation footage into an engaging vlog. I handle cutting dead air, adding cinematic sequences, music, and sound effects.",
+    "avgResponseTime": 3,
+    "loc": "France",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/1bd2f0f0-602e-4bd7-9de8-d2f33f68d1aa.png"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid71.mp4"
+    ],
+    "tags": [
+      "trending"
+    ],
+    "likedByUsers": [
+      "travel_couple"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will translate english to hebrew",
+    "price": 32,
+    "owner": {
+      "_id": "u116",
+      "fullname": "Alice Cooper",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/8eb271fe-5e78-4a39-a956-73416078b9ed.png",
+      "level": "2",
+      "rate": 4.5
+    },
+    "daysToMake": 3,
+    "description": "Give your video a cinematic look. I specialize in color correction (fixing white balance/exposure) and creative color grading using DaVinci Resolve.",
+    "avgResponseTime": 2,
+    "loc": "Ukraine",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/6e0b1efe-a65c-4b64-b967-4a25072e6ead.png",
+      "/assets/Popular-Services/Video-Editing/img/7E8FCD91-BC4D-4C6B-B2BD-DE9643708A7D.jpeg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid72.mp4"
+    ],
+    "tags": [
+      "graphics"
+    ],
+    "likedByUsers": [
+      "filmmaker_mike"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will translate english to hebrew",
+    "price": 171,
+    "owner": {
+      "_id": "u117",
+      "fullname": "John Doe",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/8f1d4a42fd507fb4b340987e654ce7d2ee5adcc7.jpg",
+      "level": "1",
+      "rate": 4.1
+    },
+    "daysToMake": 2,
+    "description": "I create short, attention-grabbing video ads designed to convert on Facebook and Instagram. Square or vertical formats available.",
+    "avgResponseTime": 1,
+    "loc": "USA",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/9ed61bc6-f453-447c-b329-2b9ae27e1660.png"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid73.mp4"
+    ],
+    "tags": [
+      "programming"
+    ],
+    "likedByUsers": [
+      "dropshipper_guy"
+    ],
+    "reviews": []
+  },
+  {
+    "title": "I will create short videos for tiktok",
+    "price": 462,
+    "owner": {
+      "_id": "u118",
+      "fullname": "Daniella Art",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/29f9d2bf-05a6-4fc3-95dd-f3ebbbc899c9.png",
+      "level": "2",
+      "rate": 4.1
+    },
+    "daysToMake": 4,
+    "description": "Flawless green screen keying. I will remove your background and replace it with a professional virtual set or image of your choice.",
+    "avgResponseTime": 3,
+    "loc": "Ireland",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/9fcb41bb-aa15-4d52-bd9e-cec1c2915781.jpg",
+      "/assets/Popular-Services/Video-Editing/img/9ff2db89-9507-4c70-9b49-c93475551f11.png"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid74.mp4"
+    ],
+    "tags": [
+      "marketing"
+    ],
+    "likedByUsers": [],
+    "reviews": []
+  },
+  {
+    "title": "I will build your react website",
+    "price": 296,
+    "owner": {
+      "_id": "u119",
+      "fullname": "Alice Cooper",
+      "imgUrl": "/assets/Popular-Services/Video-Editing/img/30ef42da5c48b888881f477cc42b9242ca74f21f.jpg",
+      "level": "top rated",
+      "rate": 4.1
+    },
+    "daysToMake": 5,
+    "description": "I will edit your multi-camera video podcast. Includes syncing audio/video, switching angles actively, adding intro/outro, and basic audio mixing.",
+    "avgResponseTime": 4,
+    "loc": "India",
+    "imgUrls": [
+      "/assets/Popular-Services/Video-Editing/img/43aa8609-6a44-4bd1-a1a7-90c0fa6cff4e.jpg"
+    ],
+    "videoUrls": [
+      "/assets/videosForGigDemo/gigVid75.mp4"
+    ],
+    "tags": [
+      "video editing"
+    ],
+    "likedByUsers": [
+      "podcaster_daily"
+    ],
     "reviews": []
   }
 ]

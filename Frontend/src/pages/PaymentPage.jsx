@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { useGigById } from '@/hooks/useGigById'
-import { orderService } from '@/services/order.service.remote'
+import { orderService } from '@/services/order.service.remote.js'
 
 const ORDERS_STORAGE_KEY = 'orders'
 const DEMO_CARD = demoData.payment.demoCard

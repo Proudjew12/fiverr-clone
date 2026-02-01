@@ -117,6 +117,7 @@ function _buildCriteria(filterBy) {
   let tags = filterBy.tags
   if (typeof tags === 'string') tags = [tags]
   tags = Array.isArray(filterBy.tags) ? filterBy.tags.filter(Boolean) : []
+
   if (tags.length) criteria.tags = { $all: tags } // AND logic
 
   const minPrice = filterBy.minPrice
