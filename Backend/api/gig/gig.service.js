@@ -114,8 +114,9 @@ function _buildCriteria(filterBy) {
 
   const txt = String(filterBy.txt || '').trim()
   if (txt) criteria.title = { $regex: txt, $options: 'i' }
-
-  const tags = Array.isArray(filterBy.tags) ? filterBy.tags.filter(Boolean) : []
+  let tags = filterBy.tags
+  if (typeof tags === 'string') tags = [tags]
+  tags = Array.isArray(filterBy.tags) ? filterBy.tags.filter(Boolean) : []
   if (tags.length) criteria.tags = { $all: tags } // AND logic
 
   const minPrice = filterBy.minPrice
@@ -132,9 +133,9 @@ function _buildCriteria(filterBy) {
     if(level1) levels.push('1')
     if(level2) levels.push('2')
     if(basic) levels.push('basic')
-      console.log('levels: ',levels);
       
     if(levels.length>0) criteria['owner.level'] = { $in: levels }
+    
   return criteria
 }
 

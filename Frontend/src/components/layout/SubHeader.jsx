@@ -4,7 +4,7 @@ import { Mousewheel } from 'swiper/modules'
 import { useNavigate } from 'react-router-dom'
 import { useSwiperNav } from '@/hooks/useSwiperNav'
 import { SvgIcon } from '@/components/svg/SvgIcon'
-import { gigService } from '@/services/leo.service.local.js'
+import { gigService } from '@/services/gig.service.remote.js'
 import { utilService } from '@/services/util.service'
 import demoData from '@/data/demo-data.json'
 
