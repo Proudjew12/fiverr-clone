@@ -1,4 +1,5 @@
 import { useSearchForm } from '@/hooks/useSearchForm'
+import { SvgIcon } from '@/components/svg/SvgIcon'
 
 export function SearchBar() {
   const { longInputRef, shortInputRef, formKey, onSubmit } = useSearchForm()
@@ -10,7 +11,7 @@ export function SearchBar() {
         className="search-input search-input-long"
         type="search"
         autoComplete="off"
-        placeholder="What service are you looking for today?"
+        placeholder="Search for any service..."
         aria-label="Search services"
       />
 
@@ -19,17 +20,12 @@ export function SearchBar() {
         className="search-input search-input-short"
         type="search"
         autoComplete="off"
-        placeholder="Find services"
+        placeholder="Search"
         aria-label="Search services"
       />
 
       <button className="search-btn grid place-center" type="submit" aria-label="Search">
-        <img
-          className="search-icon"
-          src="/assets/HeaderIcons/5[H].svg"
-          alt=""
-          draggable="false"
-        />
+        <SvgIcon icon="heroSearch" className="search-icon" aria-hidden="true" />
       </button>
     </form>
   )

@@ -13,10 +13,10 @@
   --hero-title-size: clamp(46px, 5.4vw, 68px);
   --hero-top-pad: clamp(140px, 12vw, 176px);
   --hero-bottom-pad: clamp(20px, 3vw, 24px);
-  --hero-search-height: clamp(52px, 5vw, 60px);
+  --hero-search-height: clamp(50px, 4.6vw, 58px);
   --hero-chip-font: clamp(13px, 1.2vw, 15px);
-  --hero-chip-pad-y: clamp(6px, 1.2vw, 8px);
-  --hero-chip-pad-x: clamp(10px, 1.6vw, 16px);
+  --hero-chip-pad-y: clamp(8px, 1.4vw, 10px);
+  --hero-chip-pad-x: clamp(14px, 2vw, 20px);
 
   --category-min: 124px;
   --category-height: clamp(116px, 10vw, 124px);

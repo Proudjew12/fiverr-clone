@@ -402,6 +402,66 @@ function _getIcon(icon, ctx) {
         />
       </svg>
     ),
+    heroTrustedMeta: (
+      <img
+        src="/assets/heroSvg/meta.svg"
+        alt=""
+        draggable="false"
+        loading="lazy"
+        {...props}
+        className={className}
+      />
+    ),
+    heroTrustedGoogle: (
+      <img
+        src="/assets/heroSvg/google.svg"
+        alt=""
+        draggable="false"
+        loading="lazy"
+        {...props}
+        className={className}
+      />
+    ),
+    heroTrustedNetflix: (
+      <img
+        src="/assets/heroSvg/netflix.svg"
+        alt=""
+        draggable="false"
+        loading="lazy"
+        {...props}
+        className={className}
+      />
+    ),
+    heroTrustedPG: (
+      <img
+        src="/assets/heroSvg/p-and-g.svg"
+        alt=""
+        draggable="false"
+        loading="lazy"
+        {...props}
+        className={className}
+      />
+    ),
+    heroTrustedPayPal: (
+      <img
+        src="/assets/heroSvg/paypal.svg"
+        alt=""
+        draggable="false"
+        loading="lazy"
+        {...props}
+        className={className}
+      />
+    ),
+    heroTrustedPayoneer: (
+      <img
+        src="/assets/heroSvg/payoneer.svg"
+        alt=""
+        draggable="false"
+        loading="lazy"
+        {...props}
+        className={className}
+      />
+    ),
     proHireIcon: (
       <img
         src="/assets/HeaderIcons/1[H].png"

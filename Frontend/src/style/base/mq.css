@@ -164,7 +164,7 @@
     --hero-title-size: 34px;
     --hero-top-pad: 110px;
     --hero-bottom-pad: 24px;
-    --hero-search-height: 44px;
+    --hero-search-height: 50px;
     --hero-chip-font: 13px;
     --category-min: 110px;
     --category-height: 92px;
@@ -187,25 +187,21 @@
   }
 
   .home-hero-search .search-input {
-    padding-inline-end: 52px;
+    padding-inline-end: 48px;
     font-size: 16px;
   }
 
-  .home-hero-search .search-btn {
-    width: 38px;
-    height: 38px;
-  }
-
   .home-hero-chips {
-    grid-template-columns: 1fr;
+    flex-wrap: nowrap;
+    gap: 12px;
     width: 100%;
   }
 
   .home-hero-chip {
-    width: 100%;
-    justify-content: space-between;
-    white-space: normal;
-    padding: 6px 8px;
+    flex: 0 0 auto;
+    justify-content: center;
+    white-space: nowrap;
+    padding: 10px 18px;
   }
 
   .popular {
@@ -706,7 +702,7 @@
     --section-gap: 28px;
     --hero-title-size: 48px;
     --hero-top-pad: 160px;
-    --hero-search-height: 56px;
+    --hero-search-height: 50px;
     --category-min: 170px;
     --category-height: 118px;
     --popular-title-size: 38px;
@@ -811,7 +807,7 @@
   }
 
   .home-hero-chips {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    flex-wrap: wrap;
     width: 100%;
   }
 
@@ -1101,11 +1097,10 @@
   }
 
   .home-hero-chips {
-    display: grid;
-    grid-template-columns: repeat(5, max-content);
-    column-gap: 12px;
-    row-gap: 0;
-    width: min(1100px, 100%);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    width: min(1180px, 100%);
   }
 
 }
@@ -1152,7 +1147,7 @@
   .search-results-container,
   .footer-inner,
   .sub-footer-inner {
-    max-width: 1400px;
+    max-width: 1536px;
     margin-inline: auto;
   }
 
@@ -1228,11 +1223,10 @@
   }
 
   .home-hero-chips {
-    display: grid;
-    grid-template-columns: repeat(5, max-content);
-    column-gap: 14px;
-    row-gap: 0;
-    width: min(1100px, 100%);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    width: min(1180px, 100%);
   }
 
   .home-categories-row {

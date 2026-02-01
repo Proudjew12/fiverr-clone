@@ -4,6 +4,15 @@ import demoData from '@/data/demo-data.json'
 
 const { heroChips: HERO_CHIPS, trustedBy: TRUSTED_BY } = demoData.home
 
+const TRUSTED_BY_ICONS = {
+  Meta: 'heroTrustedMeta',
+  Google: 'heroTrustedGoogle',
+  Netflix: 'heroTrustedNetflix',
+  'P&G': 'heroTrustedPG',
+  PayPal: 'heroTrustedPayPal',
+  Payoneer: 'heroTrustedPayoneer',
+}
+
 export function HomeHero() {
   function onChipClick(ev) {
     ev.preventDefault()
@@ -18,10 +27,12 @@ export function HomeHero() {
       <div className="home-hero-overlay" aria-hidden="true" />
 
       <div className="home-hero-inner">
-        <div className="home-hero-content grid">
+        <div className="home-hero-content">
           <h1 className="home-hero-title">
-            Our freelancers <br />
-            will take it from here
+            <span className="home-hero-title-text">
+              Our freelancers <br />
+              will take it from here
+            </span>
           </h1>
 
           <div className="home-hero-search" role="search">
@@ -36,22 +47,28 @@ export function HomeHero() {
                 className="home-hero-chip flex"
                 onClick={onChipClick}
               >
-                {label}
+                <span className="home-hero-chip-label">{label}</span>
                 <span className="hero-arrow-right flex" aria-hidden="true">
                   <SvgIcon icon="arrowRight" />
                 </span>
               </button>
             ))}
           </div>
+        </div>
 
-          <div className="home-hero-trusted flex">
-            <span className="home-hero-trustedLabel">Trusted by:</span>
+        <div className="home-hero-trusted">
+          <span className="home-hero-trustedLabel">Trusted by:</span>
 
-            <div className="home-hero-trustedLogos flex">
-              {TRUSTED_BY.map((name) => (
-                <span key={name}>{name}</span>
-              ))}
-            </div>
+          <div className="home-hero-trustedLogos">
+            {TRUSTED_BY.map((name) => {
+              const icon = TRUSTED_BY_ICONS[name]
+              const iconClassName = `home-hero-trustedIcon${name === 'Google' ? ' home-hero-trustedIcon--google' : ''}`
+              return (
+                <span key={name} className="home-hero-trustedLogo" aria-label={name}>
+                  {icon ? <SvgIcon icon={icon} className={iconClassName} /> : name}
+                </span>
+              )
+            })}
           </div>
         </div>
       </div>
