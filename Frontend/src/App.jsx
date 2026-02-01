@@ -18,7 +18,7 @@ function App() {
           {/* <Route path="/search" element={<SearchResultsPage />} /> */}
           <Route path="/about" element={<AboutPage />} />
           <Route path='/gig/:gigId' element={<GigDetails/>}/>
-          <Route path="/gig/:gigId/payment" element={<PaymentPage />} />
+          <Route path="/gig/:gigId/payment/:price" element={<PaymentPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
         </Route>
       </Routes>

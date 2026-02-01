@@ -320,7 +320,7 @@ export function GigDetails() {
               <footer>
                 <button
                   className="continue-btn"
-                  onClick={() => navigate(`/gig/${gigId}/payment`)}
+                  onClick={() => navigate(`/gig/${gigId}/payment/${Number(gig.price * selectedTab).toFixed(2)}`)}
                 >
                   Continue{' '}
                   <span>

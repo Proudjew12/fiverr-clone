@@ -11,7 +11,7 @@ const DEMO_CARD = demoData.payment.demoCard
 const FALLBACK_THUMBS = demoData.fallbackThumbs
 
 export function PaymentPage() {
-  const { gigId } = useParams()
+  const { gigId , price } = useParams()
   const { gig, isLoading } = useGigById(gigId)
   const [form, setForm] = useState({
     cardNumber: '',
@@ -22,7 +22,7 @@ export function PaymentPage() {
     saveCard: true,
   })
 
-  const basePrice = Number(gig?.price || 165.09)
+  const basePrice = Number(price || 165.09)
   const serviceFee = Number((basePrice * 0.125).toFixed(2))
   const subTotal = Number((basePrice + serviceFee).toFixed(2))
   const vat = Number((subTotal * 0.18).toFixed(2))
