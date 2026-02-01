@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { gigService } from '@/services/leo.service.local.js'
+import { gigService } from '@/services/gig.service.remote.js'
 
 export function useGigFilters() {
   const [searchParams, setSearchParams] = useSearchParams()

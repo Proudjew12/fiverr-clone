@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { SellerDetailsFilter } from './SellerDetailsFilter.jsx'
 import { BudgetFilter } from './BudgetFilter.jsx'
-import { gigService } from '@/services/leo.service.local.js'
+import { gigService } from '@/services/gig.service.remote.js'
 
 export function GigFilter({
   filterBy,

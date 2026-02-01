@@ -292,7 +292,7 @@ function OrdersDropdown({ isOpen, onToggle, onClose, orders }) {
                 const thumbSrc =
                   order.previewImg || utilService.pickRandom(FALLBACK_THUMBS)
                 return (
-                  <li key={order.id} className="orders-dd-item">
+                  <li key={order._id} className="orders-dd-item">
                     <img className="orders-dd-thumb" src={thumbSrc} alt="" />
                     <div className="orders-dd-content">
                       <Link

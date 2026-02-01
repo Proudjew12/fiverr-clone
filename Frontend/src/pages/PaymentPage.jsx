@@ -4,13 +4,14 @@ import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { useGigById } from '@/hooks/useGigById'
+import { orderService } from '@/services/order.service.remote.js'
 
 const ORDERS_STORAGE_KEY = 'orders'
 const DEMO_CARD = demoData.payment.demoCard
 const FALLBACK_THUMBS = demoData.fallbackThumbs
 
 export function PaymentPage() {
-  const { gigId } = useParams()
+  const { gigId , price } = useParams()
   const { gig, isLoading } = useGigById(gigId)
   const [form, setForm] = useState({
     cardNumber: '',
@@ -21,7 +22,7 @@ export function PaymentPage() {
     saveCard: true,
   })
 
-  const basePrice = Number(gig?.price || 165.09)
+  const basePrice = Number(price || 165.09)
   const serviceFee = Number((basePrice * 0.125).toFixed(2))
   const subTotal = Number((basePrice + serviceFee).toFixed(2))
   const vat = Number((subTotal * 0.18).toFixed(2))
@@ -58,17 +59,16 @@ export function PaymentPage() {
   async function onConfirmPay() {
     const previewImg = utilService.pickRandom(FALLBACK_THUMBS)
     const order = {
-      id: utilService.makeId(),
       gigId,
       title: gig?.title || 'Gig',
       total,
       sellerName: gig?.owner?.fullname || 'Seller',
-      createdAt: Date.now(),
       status: 'approved',
       previewImg,
     }
-    const existing = utilService.loadFromStorage(ORDERS_STORAGE_KEY, [])
-    utilService.saveToStorage(ORDERS_STORAGE_KEY, [order, ...existing])
+  //  const existing = utilService.loadFromStorage(ORDERS_STORAGE_KEY, [])
+  //  utilService.saveToStorage(ORDERS_STORAGE_KEY, [order, ...existing])
+    orderService.save(order)
     window.dispatchEvent(new CustomEvent('orders-updated'))
 
     await Swal.fire({

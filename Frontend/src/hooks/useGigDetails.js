@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { gigService } from '@/services/leo.service.local.js'
+import { gigService } from '@/services/gig.service.remote.js'
 
 export function useGigDetails(gigId) {
   const [gig, setGig] = useState(null)
@@ -13,6 +13,7 @@ export function useGigDetails(gigId) {
       let data
       try {
         data = await gigService.getById(gigId)
+        
       } catch {
         data = await gigService.getDemoGigById(gigId)
       }

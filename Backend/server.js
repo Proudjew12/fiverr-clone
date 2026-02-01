@@ -7,9 +7,12 @@ import cookieParser from "cookie-parser";
 
 import { config } from "./config/index.js";
 import { loggerMiddleware } from "./middlewares/logger.middleware.js";
-import { fiverrRoutes } from "./api/fiverr/fiverr.routes.js";
+import { gigRoutes } from "./api/gig/gig.routes.js";
 import { loggerService } from "./services/logger.service.js";
 import { dbService } from "./services/db.service.js";
+import { orderRoutes } from "./api/order/order.routes.js";
+import { userRoutes } from "./api/user/user.routes.js";
+import { authRoutes } from "./api/auth/auth.routes.js";
 
 const app = express();
 const httpServer = http.createServer(app);
@@ -39,8 +42,10 @@ app.use(loggerMiddleware);
 // Routes
 // --------------------
 app.get("/api/health", (req, res) => res.send({ ok: true }));
-app.use("/api/fiverr", fiverrRoutes);
-
+app.use("/api/gig", gigRoutes);
+app.use("/api/order", orderRoutes)
+app.use('/api/user', userRoutes)
+app.use('/api/auth', authRoutes)
 // --------------------
 // 404
 // --------------------

@@ -3,6 +3,7 @@ import { GigFilter } from '@/components/filter/GigFilter.jsx'
 import { EmptyState } from '@/components/ui/EmptyState'
 import { useGigFilters } from '@/hooks/useGigFilters'
 import { useGigSearchResults } from '@/hooks/useGigSearchResults'
+import { gigService } from '@/services/gig.service.remote.js'
 
 export function GigIndex() {
   const { filterBy, setFilter, handleFieldChange, sortValue, isSortOn, toggleSort, setSortDirection, clearFilters } =
@@ -13,7 +14,8 @@ export function GigIndex() {
   const { gigs, isLoading, setPage, totalPages, currentPage, paginatedGigs } =
     useGigSearchResults({ filterBy, pageSize: 8, firstPageSize: 16 })
   const query = filterBy.txt
-
+  
+  
   return (
     <div className="main-layout-index">
       {isSignedIn && (

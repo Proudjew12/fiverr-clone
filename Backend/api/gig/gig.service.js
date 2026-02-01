@@ -2,9 +2,9 @@ import { dbService } from '../../services/db.service.js'
 import { loggerService } from '../../services/logger.service.js'
 import { utilService } from '../../services/util.service.js'
 
-const COLLECTION_NAME = 'fiverr'
+const COLLECTION_NAME = 'gig'
 
-export const fiverrService = {
+export const gigService = {
   query,
   getById,
   add,
@@ -16,9 +16,15 @@ async function query(filterBy = {}) {
   try {
     const collection = await dbService.getCollection(COLLECTION_NAME)
     const criteria = _buildCriteria(filterBy)
-    return await collection.find(criteria).toArray()
+    var sort = {}
+    if(filterBy.sort){
+    sort = (filterBy.sort === 'price-asc')?{price:1}:{price:-1}
+    }
+    const gigs = await collection.find(criteria).sort(sort).toArray()
+    return gigs
+    
   } catch (err) {
-    loggerService.error('Cannot query fiverrs', err)
+    loggerService.error('Cannot query gigs', err)
     throw err
   }
 }
@@ -27,61 +33,61 @@ async function getById(id) {
   try {
     const collection = await dbService.getCollection(COLLECTION_NAME)
     const _id = utilService.toObjectId(id)
-    const fiverr = await collection.findOne({ _id })
-    if (!fiverr) {
-      const err = new Error('Fiverr not found')
+    const gig = await collection.findOne({ _id })
+    if (!gig) {
+      const err = new Error('gig not found')
       err.status = 404
       throw err
     }
-    return fiverr
+    return gig
   } catch (err) {
-    loggerService.error('Cannot get fiverr', err)
+    loggerService.error('Cannot get gig', err)
     throw err
   }
 }
 
-async function add(fiverrToSave) {
+async function add(gigToSave) {
   try {
     const collection = await dbService.getCollection(COLLECTION_NAME)
 
-    const fiverr = _sanitizeFiverr(fiverrToSave)
-    fiverr.createdAt = Date.now()
-    fiverr.updatedAt = Date.now()
+    const gig = _sanitizegig(gigToSave)
+    gig.createdAt = Date.now()
+    gig.updatedAt = Date.now()
 
-    const res = await collection.insertOne(fiverr)
-    return { ...fiverr, _id: res.insertedId }
+    const res = await collection.insertOne(gig)
+    return { ...gig, _id: res.insertedId }
   } catch (err) {
-    loggerService.error('Cannot add fiverr', err)
+    loggerService.error('Cannot add gig', err)
     throw err
   }
 }
 
-async function update(fiverrToSave) {
+async function update(gigToSave) {
   try {
     const collection = await dbService.getCollection(COLLECTION_NAME)
 
-    if (!fiverrToSave?._id) {
+    if (!gigToSave?._id) {
       const err = new Error('Missing _id')
       err.status = 400
       throw err
     }
 
-    const _id = utilService.toObjectId(fiverrToSave._id)
+    const _id = utilService.toObjectId(gigToSave._id)
 
-    const fiverr = _sanitizeFiverr(fiverrToSave)
-    delete fiverr._id
-    fiverr.updatedAt = Date.now()
+    const gig = _sanitizegig(gigToSave)
+    delete gig._id
+    gig.updatedAt = Date.now()
 
-    const res = await collection.updateOne({ _id }, { $set: fiverr })
+    const res = await collection.updateOne({ _id }, { $set: gig })
     if (!res.matchedCount) {
-      const err = new Error('Fiverr not found')
+      const err = new Error('gig not found')
       err.status = 404
       throw err
     }
 
-    return { ...fiverrToSave, ...fiverr, _id }
+    return { ...gigToSave, ...gig, _id }
   } catch (err) {
-    loggerService.error('Cannot update fiverr', err)
+    loggerService.error('Cannot update gig', err)
     throw err
   }
 }
@@ -93,12 +99,12 @@ async function remove(id) {
 
     const res = await collection.deleteOne({ _id })
     if (!res.deletedCount) {
-      const err = new Error('Fiverr not found')
+      const err = new Error('gig not found')
       err.status = 404
       throw err
     }
   } catch (err) {
-    loggerService.error('Cannot remove fiverr', err)
+    loggerService.error('Cannot remove gig', err)
     throw err
   }
 }
@@ -108,22 +114,33 @@ function _buildCriteria(filterBy) {
 
   const txt = String(filterBy.txt || '').trim()
   if (txt) criteria.title = { $regex: txt, $options: 'i' }
+  let tags = filterBy.tags
+  if (typeof tags === 'string') tags = [tags]
+  tags = Array.isArray(filterBy.tags) ? filterBy.tags.filter(Boolean) : []
 
-  const tags = Array.isArray(filterBy.tags) ? filterBy.tags.filter(Boolean) : []
   if (tags.length) criteria.tags = { $all: tags } // AND logic
 
   const minPrice = filterBy.minPrice
   const maxPrice = filterBy.maxPrice
+  const {topRated,level1,level2,basic} = filterBy
   if (minPrice !== null || maxPrice !== null) {
     criteria.price = {}
     if (minPrice !== null) criteria.price.$gte = Number(minPrice)
       if (maxPrice !== null) criteria.price.$lte = Number(maxPrice)
+      
   }
-
+  const levels = []
+    if(topRated) levels.push('top rated')
+    if(level1) levels.push('1')
+    if(level2) levels.push('2')
+    if(basic) levels.push('basic')
+      
+    if(levels.length>0) criteria['owner.level'] = { $in: levels }
+    
   return criteria
 }
 
-function _sanitizeFiverr(src) {
+function _sanitizegig(src) {
   return {
     title: String(src?.title || '').trim(),
     description: String(src?.description || '').trim(),

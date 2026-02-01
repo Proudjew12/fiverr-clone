@@ -115,7 +115,7 @@ export function DashboardPage() {
                   const thumbSrc =
                     order.previewImg || utilService.pickRandom(FALLBACK_THUMBS)
                   return (
-                    <li key={order.id} className="orders-row">
+                    <li key={order._id} className="orders-row">
                       <div className="orders-cell">
                         <div className="orders-title-row">
                           <img className="orders-thumb" src={thumbSrc} alt="" />
