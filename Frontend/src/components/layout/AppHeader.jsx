@@ -171,10 +171,6 @@ function HeaderDropdowns({ openDd, onToggleDd, onCloseDd, isSignedIn }) {
 function HeaderActions({ onSignIn }) {
   return (
     <>
-      <button type="button" className="header-link header-link-green">
-        Become a Seller
-      </button>
-
       <button type="button" className="header-link header-link-green" onClick={onSignIn}>
         Sign in
       </button>
