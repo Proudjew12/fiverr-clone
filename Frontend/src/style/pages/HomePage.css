@@ -23,7 +23,7 @@
 
   --popular-title-size: clamp(32px, 4vw, 48px);
   --popular-card-width: clamp(180px, 16vw, 188px);
-  --popular-card-height: clamp(220px, 20vw, 235px);
+  --popular-card-height: clamp(238px, 21.6vw, 254px);
   --popular-media-height: clamp(130px, 14vw, 140px);
 }
 

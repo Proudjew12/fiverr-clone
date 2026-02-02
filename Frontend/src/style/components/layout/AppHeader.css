@@ -16,7 +16,8 @@
   max-width: 1536px;
   margin: 0 auto;
   height: 80px;
-  padding-inline: 65px;
+  padding-left: 65px;
+  padding-right: 85px;
 }
 
 .header-left {
@@ -26,11 +27,11 @@
 
 .header-nav {
   gap: 1px;
-  margin-right: -3px;
+  margin-right: 0;
 }
 
 .header-nav.is-signed-out {
-  margin-left: -3px;
+  margin-left: 0;
 }
 
 .nav-group {
