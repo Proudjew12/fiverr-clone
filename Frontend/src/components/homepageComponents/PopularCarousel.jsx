@@ -65,7 +65,7 @@ export function PopularCarousel() {
               onSwiper={onSwiper}
               onSlideChange={onSlideChange}
               slidesPerView="auto"
-              spaceBetween={16}
+              spaceBetween={35}
               grabCursor
               mousewheel={{ forceToAxis: true }}
             >

@@ -9,15 +9,15 @@
   display: block;
   height: 1px;
   background: #e4e5e7;
-  width: calc(100% - 48px);
-  max-width: calc(1400px - 48px);
+  width: calc(100% - 130px);
+  max-width: calc(1536px - 130px);
   margin: 0 auto;
 }
 
 .footer-inner {
-  max-width: 1400px;
+  max-width: 1536px;
   margin: 0 auto;
-  padding: 16px 24px;
+  padding: 16px 65px;
   grid-template-columns: auto 1fr;
 }
 

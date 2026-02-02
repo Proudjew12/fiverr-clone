@@ -5,9 +5,9 @@
 }
 
 .sub-footer-inner {
-  max-width: 1400px;
+  max-width: 1536px;
   margin: 0 auto;
-  padding: 28px 24px 32px;
+  padding: 28px 65px 32px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 24px;

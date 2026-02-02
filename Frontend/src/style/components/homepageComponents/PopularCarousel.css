@@ -4,16 +4,16 @@
 }
 
 .popular-inner {
-  max-width: var(--page-max-width);
+  max-width: 1536px;
   margin: 0 auto;
-  padding: 0 var(--page-padding);
+  padding: 0 65px;
 }
 
 .popular-title {
   margin: 0 0 24px;
   color: #404145;
   font-family: var(--font-primary);
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -1.44px;
   font-size: var(--popular-title-size);
   line-height: 1.05;
@@ -74,7 +74,7 @@
 
   box-shadow: rgba(0, 0, 0, 0.13) 0 3px 10px;
 
-  transform: translateY(0);
+  transform: scale(1.05);
   transition:
     transform 140ms ease,
     box-shadow 140ms ease;

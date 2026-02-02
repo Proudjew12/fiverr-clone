@@ -13,10 +13,10 @@
 .app-header-inner {
   box-sizing: border-box;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1536px;
   margin: 0 auto;
   height: 80px;
-  padding-inline: 24px;
+  padding-inline: 65px;
 }
 
 .header-left {
