@@ -6,6 +6,7 @@ import { LeoProDd } from '@/components/headerComponents/ProDd'
 import { LeoChange } from '@/components/headerComponents/LeoChange'
 import { ExploreDd } from '@/components/headerComponents/ExploreDd'
 import { SearchInput } from '@/components/headerComponents/SearchInput'
+import { JoinModal } from '@/components/headerComponents/JoinModal'
 import { SvgIcon } from '@/components/svg/SvgIcon'
 import { useDropdown } from '@/hooks/useDropdown'
 import { useHeaderSearchObserver } from '@/hooks/useHeaderSearchObserver'
@@ -194,9 +195,11 @@ function HeaderActions({ onSignIn }) {
 
 function JoinButton() {
   return (
-    <button type="button" className="join-btn grid place-center">
-      Join
-    </button>
+    <JoinModal>
+      <button type="button" className="join-btn grid place-center" aria-haspopup="dialog">
+        Join
+      </button>
+    </JoinModal>
   )
 }
 

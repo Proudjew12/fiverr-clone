@@ -97,7 +97,7 @@
   border: 1px solid transparent;
   cursor: pointer;
 
-  background: #27272a;
+  background: #212121;
   color: #fff;
   z-index: 3;
   display: flex;
@@ -112,8 +112,8 @@
 }
 
 .home-hero-search .search-icon {
-  width: 18px;
-  height: 18px;
+  width: calc(18px - 0.1rem);
+  height: calc(18px - 0.3rem);
   display: block;
   max-width: none;
   max-height: none;
