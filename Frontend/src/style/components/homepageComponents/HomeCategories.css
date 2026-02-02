@@ -11,24 +11,33 @@
 
 .home-categories-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(var(--category-min), 1fr));
-  gap: clamp(12px, 2vw, 20px);
+  grid-auto-flow: column;
+  grid-auto-columns: 128px;
+  grid-template-columns: none;
+  gap: 16px;
   overflow: visible;
-  padding: 6px 0 14px;
+  padding: 12px;
+  justify-content: center;
+  justify-items: center;
 }
 
 .home-category-card {
-  width: 100%;
-  min-height: var(--category-height);
+  width: 128px;
+  min-height: 128px;
+  height: 128px;
 
-  gap: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0;
 
-  padding: clamp(14px, 2vw, 18px) clamp(12px, 2vw, 16px);
-  border-radius: 14px;
+  padding: 16px 12px;
+  border-radius: 16px;
 
   background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 
   color: #222325;
   text-decoration: none;
@@ -57,19 +66,23 @@
 }
 
 .home-category-icon {
-  width: clamp(22px, 3vw, 28px);
-  height: clamp(22px, 3vw, 28px);
+  width: auto;
+  height: auto;
   color: #222325;
+  border-radius: 16px;
+  box-shadow: none;
 }
 
 .home-category-icon img {
   display: block;
+  width: 32px;
+  height: 32px;
   border-radius: 8px;
 }
 
 .home-category-title {
-  font-size: clamp(12px, 1.6vw, 14px);
-  line-height: 1.25;
+  font-size: 0.875rem;
+  line-height: 1.5;
   font-weight: 600;
   letter-spacing: -0.01em;
   white-space: pre-line;

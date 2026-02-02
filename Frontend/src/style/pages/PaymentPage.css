@@ -369,27 +369,3 @@
   text-align: center;
   color: var(--clr-muted);
 }
-
-@media (max-width: 1024px) {
-  .payment-container {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .payment-summary {
-    position: static;
-  }
-
-  .trust-row {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 640px) {
-  .order-card {
-    grid-template-columns: 1fr;
-  }
-
-  .input-row {
-    grid-template-columns: 1fr;
-  }
-}

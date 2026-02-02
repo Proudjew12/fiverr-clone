@@ -356,6 +356,7 @@
 /* Page-specific alignment */
 .app-header.is-home .app-header-inner {
   max-width: 1280px;
+  padding-inline: 32px;
 }
 
 .app-header.is-index .app-header-inner {
@@ -368,10 +369,4 @@
 
 .app-header.is-home .header-nav {
   margin-right: -5px;
-}
-
-@media (min-width: 1280px) {
-  .app-header.is-home .app-header-inner {
-    padding-inline: 32px;
-  }
 }

@@ -18,8 +18,8 @@
   --hero-chip-pad-y: clamp(8px, 1.4vw, 10px);
   --hero-chip-pad-x: clamp(14px, 2vw, 20px);
 
-  --category-min: 124px;
-  --category-height: clamp(116px, 10vw, 124px);
+  --category-min: 140px;
+  --category-height: 140px;
 
   --popular-title-size: clamp(32px, 4vw, 48px);
   --popular-card-width: clamp(180px, 16vw, 188px);

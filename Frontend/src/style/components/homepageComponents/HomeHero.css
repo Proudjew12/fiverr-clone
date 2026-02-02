@@ -8,7 +8,7 @@
   height: 100%;
   box-sizing: border-box;
 
-  padding: 80px 32px 32px;
+  padding: 176px 64px 32px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -124,13 +124,12 @@
 /* CHIPS */
 .home-hero-chips {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 16px;
   width: 100%;
   max-width: 1180px;
   align-items: center;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: visible;
 }
 
 .home-hero-chip {
@@ -192,14 +191,14 @@
 
 /* TRUSTED BY */
 .home-hero-trusted {
-  margin-top: 12px;
-  gap: 12px;
-  align-items: flex-start;
-  flex-direction: column;
+  margin-top: 6rem;
+  gap: 56px;
+  align-items: center;
+  flex-direction: row;
   color: #fff;
   width: 100%;
-  display: none;
-  justify-content: flex-start;
+  display: flex;
+  justify-content: space-between;
 }
 
 .home-hero-trustedLabel {
@@ -229,60 +228,4 @@
 
 .home-hero-trustedIcon--google {
   height: 17px;
-}
-
-@media (min-width: 640px) {
-  .home-hero-inner {
-    padding-top: 160px;
-    padding-inline: 40px;
-  }
-
-  .home-hero-content {
-    max-width: 512px;
-  }
-
-  .home-hero-chips {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-  }
-
-  .home-hero-trusted {
-    margin-top: 6rem;
-    display: flex;
-  }
-}
-
-@media (min-width: 1024px) {
-  .home-hero-inner {
-    padding-top: 128px;
-    padding-inline: 48px;
-  }
-
-  .home-hero-content {
-    max-width: 672px;
-  }
-
-  .home-hero-trusted {
-    flex-direction: row;
-    gap: 56px;
-    align-items: center;
-    justify-content: space-between;
-  }
-}
-
-@media (min-width: 1280px) {
-  .home-hero-inner {
-    padding-top: 176px;
-    padding-inline: 56px;
-  }
-
-  .home-hero-content {
-    max-width: 100%;
-  }
-}
-
-@media (min-width: 1536px) {
-  .home-hero-inner {
-    padding-inline: 64px;
-  }
 }
