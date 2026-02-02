@@ -49,7 +49,15 @@ export function AppHeader() {
     <header ref={rootRef} className="app-header">
       <div className="app-header-row">
         <div className="app-header-inner flex items-center justify-between">
-          <HeaderLeft showSearch={showHeaderSearch} />
+          <HeaderLeft
+            showSearch={showHeaderSearch}
+          />
+          <HeaderMiddle
+            openDd={openDd}
+            onToggleDd={toggleDd}
+            onCloseDd={closeDd}
+            isSignedIn={isSignedIn}
+          />
           <HeaderRight
             openDd={openDd}
             onToggleDd={toggleDd}
@@ -91,6 +99,19 @@ function Logo() {
   )
 }
 
+function HeaderMiddle({ openDd, onToggleDd, onCloseDd, isSignedIn }) {
+  return (
+    <div className="header-mid flex items-center">
+      <HeaderDropdowns
+        openDd={openDd}
+        onToggleDd={onToggleDd}
+        onCloseDd={onCloseDd}
+        isSignedIn={isSignedIn}
+      />
+    </div>
+  )
+}
+
 /* =========================
    Right side
    ========================= */
@@ -114,13 +135,6 @@ function HeaderRight({
       aria-label="Header"
     >
       <div className="nav-group nav-group-links flex items-center">
-        <HeaderDropdowns
-          openDd={openDd}
-          onToggleDd={onToggleDd}
-          onCloseDd={onCloseDd}
-          isSignedIn={isSignedIn}
-        />
-
         {!isSignedIn && (
           <LanguageCurrencyButton
             langLabel={DEFAULT_LOCALE.langLabel}
