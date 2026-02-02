@@ -87,7 +87,9 @@ export function PopularCarousel() {
                     </h3>
 
                     <div
-                      className="popular-card-media flex flex-col justify-center"
+                      className={`popular-card-media flex flex-col justify-center ${
+                        s.icon === 'popularCarousel1' ? 'popular-card-media--framed' : ''
+                      }`}
                       aria-hidden="true"
                     >
                       <SvgIcon icon={s.icon} />

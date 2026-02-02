@@ -38,14 +38,17 @@
 
   transition:
     background 140ms ease,
-    transform 140ms ease,
-    box-shadow 140ms ease;
+    box-shadow 140ms ease,
+    border-color 140ms ease;
 }
 
 .home-category-card:hover {
-  background: #eafff2;
-  transform: translateY(-1px);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(180, 255, 214, 0.75) 0%, rgba(234, 255, 242, 0.85) 52%, #ffffff 100%);
+  border-color: #d4f7e4;
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.12),
+    0 0 24px rgba(16, 185, 129, 0.12);
 }
 
 .home-category-card:focus-visible {
@@ -57,6 +60,11 @@
   width: clamp(22px, 3vw, 28px);
   height: clamp(22px, 3vw, 28px);
   color: #222325;
+}
+
+.home-category-icon img {
+  display: block;
+  border-radius: 8px;
 }
 
 .home-category-title {
