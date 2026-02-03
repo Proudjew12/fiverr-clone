@@ -174,3 +174,19 @@
     width: 22px;
   }
 }
+
+.main-layout.is-index .gig-filter {
+  grid-template-rows: auto auto;
+  row-gap: 10px;
+}
+
+.main-layout.is-index .gig-filter .clear-filters-btn {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: start;
+  margin-left: 0;
+}
+
+.main-layout.is-index .gig-filter .sort-filter {
+  grid-row: 1;
+}

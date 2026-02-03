@@ -4,9 +4,8 @@
   right: 0;
 
   z-index: 2000;
-}
 
-.nav-dd-panel-explore {
+
   width: 320px;
 
   background: var(--clr-surface);
@@ -15,6 +14,8 @@
   box-shadow: var(--shadow-card);
   padding: 10px;
 }
+
+
 
 .nav-dd-item {
   display: block;

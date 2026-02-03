@@ -3,6 +3,19 @@ import { SellerDetailsFilter } from './SellerDetailsFilter.jsx'
 import { BudgetFilter } from './BudgetFilter.jsx'
 import { gigService } from '@/services/gig.service.remote.js'
 
+const SERVICE_OPTIONS = [
+  { label: 'Web Builder', value: 'react' },
+  { label: 'Ad & Social', value: 'tiktok' },
+  { label: 'Video Editing', value: 'video-editing' },
+  { label: 'Logo Maker', value: 'logo-design' },
+]
+
+const DELIVERY_OPTIONS = [
+  { label: '24 Hours', value: '24h' },
+  { label: '3 Days', value: '3d' },
+  { label: '7 Days', value: '7d' },
+]
+
 export function GigFilter({
   filterBy,
   onSetFilter,
@@ -12,6 +25,8 @@ export function GigFilter({
   onToggleSort,
   onSortDirectionChange,
   onClearFilters,
+  tagCounts,
+  sellerCounts,
 }) {
   const defaultFilter = useMemo(() => gigService.getDefaultFilter(), [])
   const [activeFilter, setActiveFilter] = useState(null)
@@ -46,21 +61,24 @@ export function GigFilter({
     setActiveFilter(null)
   }
 
-
   return (
     <section className="gig-filter ">
       <div className="dropdown">
-
-        <div className="filter-dropdown" onClick={() => onToggleFilter('service_options')}>
+        <div
+          className="filter-dropdown"
+          onClick={() => onToggleFilter('service_options')}
+        >
           <span>Service options</span>
           <span className="drop-arrow">⌃</span>
           {activeFilter === 'service_options' && (
             <FilterDropDown
-
-              handleChange={handleChange}
+              title="Service options"
+              field="tags"
+              options={SERVICE_OPTIONS}
               filterBy={filterBy}
               onSetFilter={onSetFilter}
-              filterName={'Service options'}
+              counts={tagCounts}
+              className="dropdown-container--service"
             />
           )}
         </div>
@@ -68,35 +86,25 @@ export function GigFilter({
           <span>Seller details</span>
           <span className="drop-arrow">⌃</span>
           {activeFilter === 'seller_details' && (
-            <SellerDetailsFilter
-
-              handleChange={handleChange}
-              filterBy={filterBy}
-              onSetFilter={onSetFilter}
-
-            />
+            <SellerDetailsFilter handleChange={handleChange} counts={sellerCounts} />
           )}
         </div>
         <div className="filter-dropdown" onClick={() => onToggleFilter('budget')}>
           <span>Budget</span>
           <span className="drop-arrow">⌃</span>
-          {activeFilter === 'budget' && (
-            <BudgetFilter
-
-              handleChange={handleChange}
-            />
-          )}
+          {activeFilter === 'budget' && <BudgetFilter handleChange={handleChange} />}
         </div>
         <div className="filter-dropdown" onClick={() => onToggleFilter('delivery_time')}>
           <span>Delivery time</span>
           <span className="drop-arrow">⌃</span>
           {activeFilter === 'delivery_time' && (
             <FilterDropDown
-
-              handleChange={handleChange}
+              title="Delivery time"
+              field="deliveryTime"
+              options={DELIVERY_OPTIONS}
               filterBy={filterBy}
               onSetFilter={onSetFilter}
-
+              className="dropdown-container--delivery"
             />
           )}
         </div>
@@ -132,9 +140,52 @@ export function GigFilter({
           </select>
         </div>
       </label>
+    </section>
+  )
+}
 
+function FilterDropDown({ field, options, filterBy, onSetFilter, counts, className }) {
+  const fieldValue = filterBy?.[field]
+  const isArrayField = Array.isArray(fieldValue)
+  const selectedValues = new Set(
+    isArrayField ? fieldValue : fieldValue ? [fieldValue] : []
+  )
 
+  function onToggleValue(value) {
+    if (isArrayField) {
+      const nextValues = new Set(selectedValues)
+      if (nextValues.has(value)) nextValues.delete(value)
+      else nextValues.add(value)
+      onSetFilter({ ...filterBy, [field]: Array.from(nextValues) })
+      return
+    }
 
-    </section >
+    const nextValue = selectedValues.has(value) ? '' : value
+    onSetFilter({ ...filterBy, [field]: nextValue })
+  }
+
+  return (
+    <div
+      className={`dropdown-container ${className || ''}`}
+      onClick={(ev) => ev.stopPropagation()}
+    >
+      <div className="checks-container">
+        {options.map((option) => (
+          <label key={option.value} className="check-filter">
+            <input
+              type="checkbox"
+              checked={selectedValues.has(option.value)}
+              onChange={() => onToggleValue(option.value)}
+            />
+            <span className="check-text">
+              <span className="check-label">{option.label}</span>
+              {counts && (
+                <span className="filter-count">({counts[option.value] || 0})</span>
+              )}
+            </span>
+          </label>
+        ))}
+      </div>
+    </div>
   )
 }

@@ -39,6 +39,10 @@
   margin-left: 0;
 }
 
+.header-nav.is-signed-in .nav-dd-user {
+  margin-right: -14px;
+}
+
 .nav-group {
   gap: 1px;
 }
@@ -369,10 +373,48 @@
   max-width: 1240px;
 }
 
+.main-layout.is-index .app-header-inner {
+  max-width: 1395px;
+  padding-inline: 65px;
+}
+
+.main-layout.is-details .app-header-inner {
+  max-width: 1395px;
+  padding-inline: 65px;
+}
+
+.main-layout.is-dashboard .app-header-inner {
+  max-width: 1395px;
+  padding-inline: 65px;
+}
+
+.main-layout.is-index .join-btn {
+  margin-right: -3px;
+}
+
+.main-layout.is-details .join-btn {
+  margin-right: -3px;
+}
+
+.main-layout.is-dashboard .join-btn {
+  margin-right: -3px;
+}
+
 .app-header.is-home .logo-header {
   margin-left: -50px;
 }
 
+.main-layout.is-index .logo-header {
+  margin-left: -6px;
+}
+
+.main-layout.is-details .logo-header {
+  margin-left: -6px;
+}
+
+.main-layout.is-dashboard .logo-header {
+  margin-left: -6px;
+}
 .app-header.is-home .header-nav {
   margin-right: -5px;
 }

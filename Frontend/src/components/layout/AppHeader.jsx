@@ -26,6 +26,9 @@ export function AppHeader() {
   const [isSignedIn, setIsSignedIn] = useState(
     () => localStorage.getItem('isSignedIn') === 'true'
   )
+  const [isSeller, setIsSeller] = useState(
+    () => localStorage.getItem('isSeller') === 'true'
+  )
   const { orders, wishlist } = useDashboardLists()
   const navigate = useNavigate()
 
@@ -42,8 +45,18 @@ export function AppHeader() {
     setIsSignedIn(false)
     localStorage.removeItem('isSignedIn')
     localStorage.removeItem('userName')
+    localStorage.removeItem('isSeller')
+    setIsSeller(false)
     closeDd()
     navigate('/')
+  }
+
+  function handleToggleSeller() {
+    setIsSeller((prev) => {
+      const next = !prev
+      localStorage.setItem('isSeller', String(next))
+      return next
+    })
   }
 
   return (
@@ -69,6 +82,8 @@ export function AppHeader() {
             isSignedIn={isSignedIn}
             onSignIn={handleSignIn}
             onSignOut={handleSignOut}
+            isSeller={isSeller}
+            onToggleSeller={handleToggleSeller}
           />
         </div>
       </div>
@@ -127,6 +142,8 @@ function HeaderRight({
   isSignedIn,
   onSignIn,
   onSignOut,
+  isSeller,
+  onToggleSeller,
 }) {
   return (
     <nav
@@ -152,6 +169,8 @@ function HeaderRight({
             orders={orders}
             wishlist={wishlist}
             onSignOut={onSignOut}
+            isSeller={isSeller}
+            onToggleSeller={onToggleSeller}
           />
         ) : (
           <HeaderActions onSignIn={onSignIn} />
@@ -211,21 +230,26 @@ function SignedInActions({
   orders,
   wishlist,
   onSignOut,
+  isSeller,
+  onToggleSeller,
 }) {
   return (
     <>
       <HeaderIconButtons />
-      <WishlistDropdown
-        isOpen={openDd === 'wishlist'}
-        onToggle={() => onToggleDd('wishlist')}
-        onClose={onCloseDd}
-        wishlist={wishlist}
-      />
+      {!isSeller && (
+        <WishlistDropdown
+          isOpen={openDd === 'wishlist'}
+          onToggle={() => onToggleDd('wishlist')}
+          onClose={onCloseDd}
+          wishlist={wishlist}
+        />
+      )}
       <OrdersDropdown
         isOpen={openDd === 'orders'}
         onToggle={() => onToggleDd('orders')}
         onClose={onCloseDd}
         orders={orders}
+        isSeller={isSeller}
       />
       <UserDropdown
         isOpen={openDd === 'user'}
@@ -233,6 +257,8 @@ function SignedInActions({
         onClose={onCloseDd}
         getOptionProps={getOptionProps}
         onSignOut={onSignOut}
+        isSeller={isSeller}
+        onToggleSeller={onToggleSeller}
       />
     </>
   )
@@ -280,7 +306,11 @@ function ProDropdown({ isOpen, onToggle, onClose }) {
   )
 }
 
-function OrdersDropdown({ isOpen, onToggle, onClose, orders }) {
+function OrdersDropdown({ isOpen, onToggle, onClose, orders, isSeller }) {
+  const label = isSeller ? 'Requests' : 'Orders'
+  const emptyLabel = isSeller ? 'No requests yet' : 'No orders yet'
+  const viewLabel = isSeller ? 'View all requests' : 'View all orders'
+
   return (
     <div className="nav-dd">
       <button
@@ -290,15 +320,15 @@ function OrdersDropdown({ isOpen, onToggle, onClose, orders }) {
         aria-haspopup="dialog"
         onClick={onToggle}
       >
-        Orders
+        {label}
         <span className={`nav-arrow-down ${isOpen ? 'is-open' : ''}`} aria-hidden="true">
           <SvgIcon icon="chevronDown" />
         </span>
       </button>
 
       {isOpen && (
-        <div className="nav-dd-panel nav-dd-panel-orders" aria-label="Orders">
-          {!orders.length && <div className="orders-dd-empty">No orders yet</div>}
+        <div className="nav-dd-panel nav-dd-panel-orders" aria-label={label}>
+          {!orders.length && <div className="orders-dd-empty">{emptyLabel}</div>}
           {!!orders.length && (
             <ul className="orders-dd-list">
               {orders.slice(0, 3).map((order) => {
@@ -322,7 +352,7 @@ function OrdersDropdown({ isOpen, onToggle, onClose, orders }) {
             </ul>
           )}
           <Link to="/dashboard?tab=orders" className="orders-dd-link" onClick={onClose}>
-            View all orders
+            {viewLabel}
           </Link>
         </div>
       )}
@@ -393,7 +423,15 @@ function HeaderIconButtons() {
 }
 
 
-function UserDropdown({ isOpen, onToggle, onClose, getOptionProps, onSignOut }) {
+function UserDropdown({
+  isOpen,
+  onToggle,
+  onClose,
+  getOptionProps,
+  onSignOut,
+  isSeller,
+  onToggleSeller,
+}) {
   return (
     <div className="nav-dd nav-dd-user">
       <button
@@ -421,8 +459,15 @@ function UserDropdown({ isOpen, onToggle, onClose, getOptionProps, onSignOut }) 
           <Link to="/dashboard" className="user-menu-item" onClick={onClose}>
             Dashboard
           </Link>
-          <button type="button" className="user-menu-item" {...getOptionProps?.()}>
-            Become a Seller
+          <button
+            type="button"
+            className="user-menu-item"
+            onClick={() => {
+              onToggleSeller()
+              onClose()
+            }}
+          >
+            {isSeller ? 'Become a Customer' : 'Become a Seller'}
           </button>
           <button type="button" className="user-menu-item" onClick={onSignOut}>
             Sign out

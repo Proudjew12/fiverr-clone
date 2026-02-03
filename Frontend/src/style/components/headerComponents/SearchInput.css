@@ -103,7 +103,9 @@
 
 .app-header {
   position: relative;
-  z-index: 1000;
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* above overlay */
 }
 
 body.is-search-focused::before {
@@ -113,10 +115,4 @@ body.is-search-focused::before {
   background: rgba(0, 0, 0, 0.35);
   z-index: 900; /* below header */
   pointer-events: none;
-}
-
-.app-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000; /* above overlay */
 }

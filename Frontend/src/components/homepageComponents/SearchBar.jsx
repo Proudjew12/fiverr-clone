@@ -5,10 +5,10 @@ export function SearchBar() {
   const { longInputRef, shortInputRef, formKey, onSubmit } = useSearchForm()
 
   return (
-    <form key={formKey} className="search grid" onSubmit={onSubmit}>
+    <form key={formKey} className="home-hero-search-form" onSubmit={onSubmit}>
       <input
         ref={longInputRef}
-        className="search-input search-input-long"
+        className="home-hero-search-input home-hero-search-input-long"
         type="search"
         autoComplete="off"
         placeholder="Search for any service..."
@@ -17,15 +17,15 @@ export function SearchBar() {
 
       <input
         ref={shortInputRef}
-        className="search-input search-input-short"
+        className="home-hero-search-input home-hero-search-input-short"
         type="search"
         autoComplete="off"
         placeholder="Search"
         aria-label="Search services"
       />
 
-      <button className="search-btn grid place-center" type="submit" aria-label="Search">
-        <SvgIcon icon="heroSearch" className="search-icon" aria-hidden="true" />
+      <button className="home-hero-search-btn" type="submit" aria-label="Search">
+        <SvgIcon icon="heroSearch" className="home-hero-search-icon" aria-hidden="true" />
       </button>
     </form>
   )

@@ -22,8 +22,8 @@
 .welcome-banner {
   grid-column: 1 / -1;
   width: 100%;
-  margin: 6px 0 18px;
-  background: url('/assets/WelcomeUser/welcomeColor.svg') top center / cover no-repeat;
+  margin: -40px 0 18px;
+  background: url('/assets/WelcomeUser/welcomeColor.png') top center / cover no-repeat;
   background-color: #f6fbef;
   box-sizing: border-box;
 }
@@ -32,6 +32,14 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 32px 32px 40px;
+}
+
+.main-layout.is-index .main-layout-index .search-results-container {
+  padding-inline: 65px;
+}
+
+.main-layout.is-index .welcome-banner-inner {
+  padding-inline: 65px;
 }
 
 .welcome-title {

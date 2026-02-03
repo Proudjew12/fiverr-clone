@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { GigList } from '@/components/gig/GigList'
 import { GigFilter } from '@/components/filter/GigFilter.jsx'
 import { EmptyState } from '@/components/ui/EmptyState'
@@ -14,6 +15,29 @@ export function GigIndex() {
   const { gigs, isLoading, setPage, totalPages, currentPage, paginatedGigs } =
     useGigSearchResults({ filterBy, pageSize: 8, firstPageSize: 16 })
   const query = filterBy.txt
+  
+  const tagCounts = useMemo(() => {
+    const counts = {}
+    for (const gig of gigs || []) {
+      for (const tag of gig?.tags || []) {
+        counts[tag] = (counts[tag] || 0) + 1
+      }
+    }
+    return counts
+  }, [gigs])
+
+  const sellerCounts = useMemo(() => {
+    const counts = { topRated: 0, level2: 0, level1: 0, basic: 0 }
+    for (const gig of gigs || []) {
+      const level = String(gig?.owner?.level || '').toLowerCase()
+      if (!level) continue
+      if (level.includes('top rated')) counts.topRated += 1
+      else if (level === '2' || level.includes('level 2')) counts.level2 += 1
+      else if (level === '1' || level.includes('level 1')) counts.level1 += 1
+      else if (level.includes('basic')) counts.basic += 1
+    }
+    return counts
+  }, [gigs])
   
   
   return (
@@ -55,6 +79,8 @@ export function GigIndex() {
             onToggleSort={toggleSort}
             onSortDirectionChange={setSortDirection}
             onClearFilters={clearFilters}
+            tagCounts={tagCounts}
+            sellerCounts={sellerCounts}
           />
 
           {isLoading && <div>Loading...</div>}

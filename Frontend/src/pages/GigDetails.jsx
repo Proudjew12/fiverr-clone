@@ -1,7 +1,7 @@
 import { ReviewList } from '@/components/review/ReviewList'
 import { SvgIcon } from '@/components/svg/SvgIcon'
 import { Loader } from 'lucide-react'
-import { useRef, useState } from 'react'
+import { Fragment, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useGigDetails } from '@/hooks/useGigDetails.js'
 import { utilService } from '@/services/util.service'
@@ -16,6 +16,37 @@ export function GigDetails() {
   const reviewsTitle = useRef()
   const sellerTitle = useRef()
   const { gig, gigImgs, index, setIndex, setImg, isLoading } = useGigDetails(gigId)
+  const isSignedIn = localStorage.getItem('isSignedIn') === 'true'
+
+  const tagToTypeLabel = {
+    react: 'Web Build',
+    'video-editing': 'Video Editing',
+    'logo-design': 'Logo Maker',
+    tiktok: 'Ad & Social',
+    writing: 'Writing',
+    'voice-over': 'Voice Over',
+    translation: 'Translation',
+  }
+
+  const tagToCategoryLabel = {
+    react: 'Programming & Tech',
+    'video-editing': 'Video & Animation',
+    'logo-design': 'Graphics & Design',
+    tiktok: 'Digital Marketing',
+    writing: 'Writing & Translation',
+    'voice-over': 'Music & Audio',
+    translation: 'Writing & Translation',
+  }
+
+  function toTitleCase(value) {
+    if (!value) return ''
+    return value
+      .replace(/[-_]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .replace(/\b\w/g, (char) => char.toUpperCase())
+  }
+
   function getFileType(src) {
     const extension = src.split('.').pop().toLowerCase()
 
@@ -37,10 +68,53 @@ export function GigDetails() {
   }
   if (isLoading) return <Loader />
   if (!gig) return null
+
+  const primaryTag = gig?.tags?.[0] || ''
+  const typeLabel = tagToTypeLabel[primaryTag] || toTitleCase(primaryTag) || 'Gig'
+  const homeTarget = isSignedIn ? '/index' : '/'
+
   return (
     <div className="main-layout-details">
       <section className="gig-details">
         <div className="main">
+          <div className="gig-breadcrumb" aria-label="Breadcrumb">
+            {[
+              {
+                key: 'home',
+                node: (
+                  <button
+                    type="button"
+                    className="breadcrumb-home"
+                    onClick={() => navigate(homeTarget)}
+                    aria-label="Go to home"
+                  >
+                    <SvgIcon icon="home" className="breadcrumb-home-icon" />
+                  </button>
+                ),
+              },
+              {
+                key: 'explore',
+                node: (
+                  <button
+                    type="button"
+                    className="breadcrumb-link"
+                    onClick={() => navigate('/index')}
+                  >
+                    Explore
+                  </button>
+                ),
+              },
+              {
+                key: 'type',
+                node: <span className="breadcrumb-type">{typeLabel}</span>,
+              },
+            ].map((item, idx) => (
+              <Fragment key={item.key}>
+                {idx > 0 && <span className="breadcrumb-sep">/</span>}
+                {item.node}
+              </Fragment>
+            ))}
+          </div>
           <h1>{gig.title}</h1>
           <div className="owner-container">
             <div className="profile-img-container">

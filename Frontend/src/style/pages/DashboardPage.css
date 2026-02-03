@@ -46,6 +46,30 @@
   margin: 0;
 }
 
+.profile-rating {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  color: #404145;
+}
+
+.profile-stars {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.profile-stars svg {
+  width: 14px;
+  height: 14px;
+  color: #ffb33e;
+}
+
+.profile-rating-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #404145;
+}
+
 .dashboard-main {
   display: grid;
   gap: 20px;
@@ -135,6 +159,11 @@
   align-items: center;
 }
 
+.orders-table--seller .orders-head,
+.orders-table--seller .orders-row {
+  grid-template-columns: 1fr 120px 160px;
+}
+
 .orders-head {
   font-weight: 700;
   color: var(--clr-muted);
@@ -197,6 +226,55 @@
 .orders-status.wishlist-status {
   background: #eef2ff;
   color: #3949ab;
+}
+
+.request-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+.request-action {
+  border: 1px solid var(--clr-border);
+  background: #fff;
+  color: #222325;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.request-action.accept {
+  background: #e8f7ef;
+  color: #1c7c54;
+  border-color: #c9eddc;
+}
+
+.request-action.reject {
+  background: #fdecec;
+  color: #b42318;
+  border-color: #f5c2c2;
+}
+
+.request-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+
+.request-status.accepted {
+  background: #e8f7ef;
+  color: #1c7c54;
+}
+
+.request-status.declined {
+  background: #fdecec;
+  color: #b42318;
 }
 .orders-empty {
   display: grid;

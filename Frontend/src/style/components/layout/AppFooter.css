@@ -21,6 +21,33 @@
   grid-template-columns: auto 1fr;
 }
 
+.main-layout.is-index .app-footer::before {
+  max-width: calc(1400px - 130px);
+}
+
+.main-layout.is-details .app-footer::before {
+  max-width: calc(1400px - 130px);
+}
+
+.main-layout.is-dashboard .app-footer::before {
+  max-width: calc(1400px - 130px);
+}
+
+.main-layout.is-index .footer-inner {
+  max-width: 1400px;
+  padding-inline: 65px;
+}
+
+.main-layout.is-details .footer-inner {
+  max-width: 1400px;
+  padding-inline: 65px;
+}
+
+.main-layout.is-dashboard .footer-inner {
+  max-width: 1400px;
+  padding-inline: 65px;
+}
+
 .footer-brand {
   grid-auto-flow: column;
   gap: 16px;

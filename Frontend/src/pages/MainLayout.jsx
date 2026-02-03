@@ -8,9 +8,17 @@ export function MainLayout() {
   const location = useLocation()
   const isPaymentPage = location.pathname.includes('/payment')
   const showSubHeader = location.pathname !== '/' && !isPaymentPage
+  const isIndexPage = location.pathname === '/index'
+  const isDetailsPage = location.pathname.startsWith('/gig')
+  const isDashboardPage = location.pathname.startsWith('/dashboard')
 
   return (
-    <div className="main-layout">
+    <div
+      className={`main-layout ${isIndexPage ? 'is-index' : ''} ${
+        isDetailsPage ? 'is-details' : ''
+      } ${isDashboardPage ? 'is-dashboard' : ''
+      }`}
+    >
       {!isPaymentPage && <AppHeader />}
       {showSubHeader && <SubHeader />}
 

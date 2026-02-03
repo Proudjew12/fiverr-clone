@@ -13,6 +13,21 @@
   gap: 24px;
 }
 
+.main-layout.is-index .sub-footer-inner {
+  max-width: 1400px;
+  padding-inline: 65px;
+}
+
+.main-layout.is-details .sub-footer-inner {
+  max-width: 1400px;
+  padding-inline: 65px;
+}
+
+.main-layout.is-dashboard .sub-footer-inner {
+  max-width: 1400px;
+  padding-inline: 65px;
+}
+
 .sub-footer-title {
   font-size: calc(14px * 1.1);
   font-weight: 700;
