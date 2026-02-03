@@ -45,6 +45,16 @@ export function ReviewPreview({ review }) {
             <p className="review-txt">
                {review.txt}
             </p>
+            <div className="review-price-duration">
+               <div className="price">
+               <p className="number">${utilService.getRandomIntInclusive(100,300)+'-'+utilService.getRandomIntInclusive(300,500)}</p>
+               <p>Price</p>
+               </div>
+               <div className="duration">
+               <p className="number">{utilService.getRandomIntInclusive(1,2)+'-'+utilService.getRandomIntInclusive(3,4)} days</p>
+               <p>Duration</p>
+               </div>
+            </div>
          </div>
       </section>
    )
