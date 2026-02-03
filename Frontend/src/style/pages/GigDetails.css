@@ -497,6 +497,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  margin-bottom: 24px;
 }
 .gig-details aside .call-to-action .package-content footer .continue-btn:hover {
   background: #404145;

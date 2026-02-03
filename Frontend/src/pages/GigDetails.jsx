@@ -266,7 +266,7 @@ export function GigDetails() {
 
               </div>
             </div>
-            <button className="contact-btn">Contact me</button>
+            
             <div className="seller-details">
               <ul>
                 <li>
@@ -401,12 +401,7 @@ export function GigDetails() {
                     <SvgIcon icon={'rightArrow'} />
                   </span>
                 </button>
-                <button className="contact-btn">
-                  Contact me
-                  <div>
-                    <SvgIcon icon={'downArrow'} />
-                  </div>
-                </button>
+                
               </footer>
             </div>
           </div>
