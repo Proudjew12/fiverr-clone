@@ -82,24 +82,74 @@
   "subHeader": {
     "categories": [
       {
-        "key": "web-builder",
-        "label": "Web Builder",
-        "tag": "web-builder"
-      },
-      {
-        "key": "video-editing",
-        "label": "Video Editing",
+        "key": "trending",
+        "label": "Trending 🔥",
         "tag": "video-editing"
       },
       {
-        "key": "shopify",
-        "label": "Shopify",
+        "key": "graphics",
+        "label": "Graphics & Design",
         "tag": "shopify"
       },
       {
-        "key": "ad-social",
-        "label": "Ad & Social",
+        "key": "tech",
+        "label": "Programming & Tech",
+        "tag": "web-builder"
+      },
+      {
+        "key": "marketing",
+        "label": "Digital Marketing",
         "tag": "ad-social"
+      },
+      {
+        "key": "video",
+        "label": "Video & Animation",
+        "tag": "video-editing"
+      },
+      {
+        "key": "writing",
+        "label": "Writing & Translation",
+        "tag": "ad-social"
+      },
+      {
+        "key": "music",
+        "label": "Music & Audio",
+        "tag": "video-editing"
+      },
+      {
+        "key": "business",
+        "label": "Business",
+        "tag": "shopify"
+      },
+      {
+        "key": "finance",
+        "label": "Finance",
+        "tag": "shopify"
+      },
+      {
+        "key": "ai",
+        "label": "AI Services",
+        "tag": "web-builder"
+      },
+      {
+        "key": "lifestyle",
+        "label": "Personal Growth",
+        "tag": "ad-social"
+      },
+      {
+        "key": "consulting",
+        "label": "Consulting",
+        "tag": "shopify"
+      },
+      {
+        "key": "data",
+        "label": "Data",
+        "tag": "web-builder"
+      },
+      {
+        "key": "photo",
+        "label": "Photography",
+        "tag": "video-editing"
       }
     ]
   },
