@@ -6,7 +6,7 @@ export async function getGigs(req, res) {
   try {
     const filterBy = {
       txt: req.query.txt || '',
-      tags: utilService.normalizeArrayQuery(req.query['tags[]']),
+      tags: utilService.normalizeArrayQuery(req.query.tags || req.query['tags[]']),
       minPrice: utilService.toNumberOrNull(req.query.minPrice),
       maxPrice: utilService.toNumberOrNull(req.query.maxPrice),
       sort: req.query.sort,

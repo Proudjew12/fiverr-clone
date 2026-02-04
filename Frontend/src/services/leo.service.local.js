@@ -89,7 +89,7 @@ function filterGigs(gigs = [], filterBy = {}) {
 
   if (tags.length) {
     filtered = filtered.filter((gig) =>
-      tags.every((tag) => (gig.tags || []).includes(tag))
+      tags.some((tag) => (gig.tags || []).includes(tag))
     )
   }
 

@@ -118,7 +118,7 @@ function _buildCriteria(filterBy) {
   if (typeof tags === 'string') tags = [tags]
   tags = Array.isArray(filterBy.tags) ? filterBy.tags.filter(Boolean) : []
 
-  if (tags.length) criteria.tags = { $all: tags } // AND logic
+  if (tags.length) criteria.tags = { $in: tags } // OR logic
 
   const minPrice = filterBy.minPrice
   const maxPrice = filterBy.maxPrice
@@ -147,5 +147,19 @@ function _sanitizegig(src) {
     price: Number(src?.price || 0),
     tags: Array.isArray(src?.tags) ? src.tags.filter(Boolean) : [],
     imgUrl: String(src?.imgUrl || '').trim(),
+    imgUrls: Array.isArray(src?.imgUrls) ? src.imgUrls.filter(Boolean) : [],
+    videoUrls: Array.isArray(src?.videoUrls) ? src.videoUrls.filter(Boolean) : [],
+    daysToMake: Number(src?.daysToMake || 0),
+    avgResponseTime: Number(src?.avgResponseTime || 0),
+    loc: String(src?.loc || '').trim(),
+    owner: {
+      _id: String(src?.owner?._id || '').trim(),
+      fullname: String(src?.owner?.fullname || '').trim(),
+      imgUrl: String(src?.owner?.imgUrl || '').trim(),
+      level: String(src?.owner?.level || '').trim(),
+      rate: Number(src?.owner?.rate || 0),
+    },
+    reviews: Array.isArray(src?.reviews) ? src.reviews : [],
+    likedByUsers: Array.isArray(src?.likedByUsers) ? src.likedByUsers : [],
   }
 }

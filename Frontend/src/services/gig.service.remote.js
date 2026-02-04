@@ -12,7 +12,8 @@ export const gigService = {
   remove,
   getEmptyItem,
   getDefaultFilter,
-  buildFilterFromSearchParams
+  buildFilterFromSearchParams,
+  buildSearchParamsFromFilter,
 }
 
 
@@ -71,4 +72,42 @@ function buildFilterFromSearchParams(searchParams) {
     level1: searchParams.get('level1') === 'true',
     level2: searchParams.get('level2') === 'true',
   }
+}
+
+function buildSearchParamsFromFilter(filterBy = {}) {
+  const params = new URLSearchParams()
+  const {
+    txt,
+    tags,
+    minPrice,
+    maxPrice,
+    sort,
+    deliveryTime,
+    topRated,
+    basic,
+    level1,
+    level2,
+  } = filterBy
+
+  if (txt) params.set('txt', txt)
+  if (minPrice !== null && minPrice !== undefined && minPrice !== '') {
+    params.set('minPrice', minPrice)
+  }
+  if (maxPrice !== null && maxPrice !== undefined && maxPrice !== '') {
+    params.set('maxPrice', maxPrice)
+  }
+  if (sort) params.set('sort', sort)
+  if (deliveryTime) params.set('deliveryTime', deliveryTime)
+  if (topRated) params.set('topRated', 'true')
+  if (basic) params.set('basic', 'true')
+  if (level1) params.set('level1', 'true')
+  if (level2) params.set('level2', 'true')
+
+  if (Array.isArray(tags)) {
+    tags.filter(Boolean).forEach((tag) => params.append('tags', tag))
+  } else if (typeof tags === 'string' && tags) {
+    params.append('tags', tags)
+  }
+
+  return params
 }

@@ -9,6 +9,7 @@ export function GigPreview({ gig }) {
     const { title, price, owner, videoUrls, _id } = gig
     const vidRef = useRef(null)
     const isSignedIn = localStorage.getItem('isSignedIn') === 'true'
+    const isSeller = localStorage.getItem('isSeller') === 'true'
     const isTopRated = owner?.level?.toLowerCase?.() === 'top rated'
     const { isWishlisted, toggleWishlist } = useWishlist({
         gigId: _id,
@@ -44,7 +45,7 @@ export function GigPreview({ gig }) {
         <article className="fiverr-gig-card">
 
             <div className="card-media">
-                {isSignedIn && (
+                {isSignedIn && !isSeller && (
                     <button
                         type="button"
                         className={`wishlist-btn ${isWishlisted ? 'is-active' : ''}`}

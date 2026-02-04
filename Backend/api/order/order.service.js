@@ -6,13 +6,15 @@ export const orderService={
   getById,
   add,
   update,
-  remove
+  remove,
+  removeMany
 }
 const COLLECTION_NAME = 'order'
-async function query() {
+async function query(filterBy = {}) {
   try {
     const collection = await dbService.getCollection(COLLECTION_NAME)
-    return await collection.find().toArray()
+    const criteria = _buildCriteria(filterBy)
+    return await collection.find(criteria).toArray()
   } catch (err) {
     loggerService.error('Cannot query orders', err)
     throw err
@@ -99,13 +101,32 @@ async function remove(id) {
   }
 }
 
+async function removeMany(filterBy = {}) {
+  try {
+    const collection = await dbService.getCollection(COLLECTION_NAME)
+    const criteria = _buildCriteria(filterBy)
+    return await collection.deleteMany(criteria)
+  } catch (err) {
+    loggerService.error('Cannot remove orders', err)
+    throw err
+  }
+}
+
 function _sanitizeorder(src) {
   return {
       gigId: String(src?.gigId || '').trim(),
       title: String(src?.title || '').trim(),
       total: Number(src?.total || 0),
       sellerName: String(src?.sellerName || ''),
+      buyerName: String(src?.buyerName || ''),
       status: String(src?.status || ''),
       previewImg: String(src?.previewImg || ''),
     }
+}
+
+function _buildCriteria(filterBy = {}) {
+  const criteria = {}
+  if (filterBy.buyerName) criteria.buyerName = filterBy.buyerName
+  if (filterBy.sellerName) criteria.sellerName = filterBy.sellerName
+  return criteria
 }

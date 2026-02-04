@@ -1,6 +1,8 @@
 import { SvgIcon } from '@/components/svg/SvgIcon'
 import { SearchBar } from '@/components/homepageComponents/SearchBar'
 import demoData from '@/data/demo-data.json'
+import { useNavigate } from 'react-router-dom'
+import { gigService } from '@/services/gig.service.remote.js'
 
 const { heroChips: HERO_CHIPS, trustedBy: TRUSTED_BY } = demoData.home
 
@@ -14,8 +16,25 @@ const TRUSTED_BY_ICONS = {
 }
 
 export function HomeHero() {
-  function onChipClick(ev) {
-    ev.preventDefault()
+  const navigate = useNavigate()
+
+  const chipFilters = {
+    'Web Builder': { tag: 'web-builder' },
+    'Video Editing': { tag: 'video-editing' },
+    Shopify: { tag: 'shopify' },
+    'Ad & Social': { tag: 'ad-social' },
+  }
+
+  function navigateWithFilter({ tag, txt }) {
+    const base = gigService.getDefaultFilter()
+    const filterBy = {
+      ...base,
+      txt: txt || '',
+      tags: tag ? [tag] : [],
+    }
+    const params = gigService.buildSearchParamsFromFilter(filterBy)
+    const search = params.toString()
+    navigate(search ? `/index?${search}` : '/index')
   }
 
   return (
@@ -45,7 +64,7 @@ export function HomeHero() {
                 key={label}
                 type="button"
                 className="home-hero-chip flex"
-                onClick={onChipClick}
+                onClick={() => navigateWithFilter(chipFilters[label] || { txt: label })}
               >
                 <span className="home-hero-chip-label">{label}</span>
                 <span className="hero-arrow-right flex" aria-hidden="true">

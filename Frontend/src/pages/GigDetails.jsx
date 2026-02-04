@@ -17,25 +17,20 @@ export function GigDetails() {
   const sellerTitle = useRef()
   const { gig, gigImgs, index, setIndex, setImg, isLoading } = useGigDetails(gigId)
   const isSignedIn = localStorage.getItem('isSignedIn') === 'true'
+  const isSeller = localStorage.getItem('isSeller') === 'true'
 
   const tagToTypeLabel = {
-    react: 'Web Build',
+    'web-builder': 'Web Builder',
     'video-editing': 'Video Editing',
-    'logo-design': 'Logo Maker',
-    tiktok: 'Ad & Social',
-    writing: 'Writing',
-    'voice-over': 'Voice Over',
-    translation: 'Translation',
+    shopify: 'Shopify',
+    'ad-social': 'Ad & Social',
   }
 
   const tagToCategoryLabel = {
-    react: 'Programming & Tech',
-    'video-editing': 'Video & Animation',
-    'logo-design': 'Graphics & Design',
-    tiktok: 'Digital Marketing',
-    writing: 'Writing & Translation',
-    'voice-over': 'Music & Audio',
-    translation: 'Writing & Translation',
+    'web-builder': 'Web Builder',
+    'video-editing': 'Video Editing',
+    shopify: 'Shopify',
+    'ad-social': 'Ad & Social',
   }
 
   function toTitleCase(value) {
@@ -392,15 +387,25 @@ export function GigDetails() {
                 </ul>
               </main>
               <footer>
-                <button
-                  className="continue-btn"
-                  onClick={() => navigate(`/gig/${gigId}/payment/${Number(gig.price * selectedTab).toFixed(2)}`)}
-                >
-                  Continue{' '}
-                  <span>
-                    <SvgIcon icon={'rightArrow'} />
-                  </span>
-                </button>
+                {isSeller ? (
+                  <button className="continue-btn is-disabled" disabled>
+                    You're a seller yourself
+                  </button>
+                ) : (
+                  <button
+                    className="continue-btn"
+                    onClick={() =>
+                      navigate(
+                        `/gig/${gigId}/payment/${Number(gig.price * selectedTab).toFixed(2)}`
+                      )
+                    }
+                  >
+                    Continue{' '}
+                    <span>
+                      <SvgIcon icon={'rightArrow'} />
+                    </span>
+                  </button>
+                )}
                 
               </footer>
             </div>

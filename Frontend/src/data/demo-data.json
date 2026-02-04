@@ -1,9 +1,9 @@
 {
   "fallbackThumbs": [
-    "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
-    "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
-    "/assets/gigExampleImg/1[gig].jpg",
-    "/assets/gigExampleImg/1[gig].jpg"
+    "/assets/OfficalGigDemoData/Services/WebBuilder/Img/[WB][IMG]1.webp",
+    "/assets/OfficalGigDemoData/Services/WebBuilder/Img/[WB][IMG]12.webp",
+    "/assets/OfficalGigDemoData/Services/WebBuilder/Img/[WB][IMG]16.jpg",
+    "/assets/OfficalGigDemoData/Services/WebBuilder/Img/[WB][IMG]10.jpg"
   ],
   "payment": {
     "demoCard": {
@@ -17,182 +17,254 @@
   },
   "home": {
     "heroChips": [
-      "Website Development",
-      "Architecture & Interior Design",
-      "UGC Videos",
+      "Web Builder",
       "Video Editing",
-      "Book Publishing"
+      "Shopify",
+      "Ad & Social"
     ],
-    "trustedBy": ["Meta", "Google", "Netflix", "P&G", "PayPal", "Payoneer"],
+    "trustedBy": [
+      "Meta",
+      "Google",
+      "Netflix",
+      "P&G",
+      "PayPal",
+      "Payoneer"
+    ],
     "categories": [
-      { "key": "programming", "label": "Programming\n& Tech", "icon": "Programming" },
-      { "key": "graphics", "label": "Graphics &\nDesign", "icon": "Graphics" },
-      { "key": "marketing", "label": "Digital\nMarketing", "icon": "Marketing" },
-      { "key": "writing", "label": "Writing &\nTranslation", "icon": "Writing" },
-      { "key": "video", "label": "Video &\nAnimation", "icon": "Video" },
-      { "key": "ai", "label": "AI Services", "icon": "AI" },
-      { "key": "music", "label": "Music & Audio", "icon": "Music" },
-      { "key": "business", "label": "Business", "icon": "Business" },
-      { "key": "consulting", "label": "Consulting", "icon": "Consulting" }
+      {
+        "key": "web-builder",
+        "label": "Web\nBuilder",
+        "icon": "Programming"
+      },
+      {
+        "key": "video-editing",
+        "label": "Video\nEditing",
+        "icon": "Video"
+      },
+      {
+        "key": "shopify",
+        "label": "Shopify",
+        "icon": "Business"
+      },
+      {
+        "key": "ad-social",
+        "label": "Ad &\nSocial",
+        "icon": "Marketing"
+      }
     ],
     "popularServices": [
-      { "key": "vibe-coding", "title": "Vibe Coding", "bg": "#003912", "icon": "popularCarousel1" },
-      { "key": "website-dev", "title": "Website\nDevelopment", "bg": "#003912", "icon": "popularCarousel2" },
-      { "key": "video-editing", "title": "Video Editing", "bg": "#003912", "icon": "popularCarousel3" },
-      { "key": "software-dev", "title": "Software\nDevelopment", "bg": "#003912", "icon": "popularCarousel4" },
-      { "key": "book-publishing", "title": "Book Publishing", "bg": "#003912", "icon": "popularCarousel5" },
-      { "key": "arch-interior", "title": "Architecture &\nInterior Design", "bg": "#003912", "icon": "popularCarousel6" },
-      { "key": "logo-design", "title": "Logo Design", "bg": "#003912", "icon": "popularCarousel7" },
-      { "key": "web-design", "title": "Website Design", "bg": "#003912", "icon": "popularCarousel8" }
+      {
+        "key": "web-builder",
+        "title": "Web\nBuilder",
+        "bg": "#003912",
+        "icon": "popularCarousel2"
+      },
+      {
+        "key": "video-editing",
+        "title": "Video Editing",
+        "bg": "#003912",
+        "icon": "popularCarousel3"
+      },
+      {
+        "key": "shopify",
+        "title": "Shopify",
+        "bg": "#003912",
+        "icon": "popularCarousel7"
+      },
+      {
+        "key": "ad-social",
+        "title": "Ad & Social",
+        "bg": "#003912",
+        "icon": "popularCarousel6"
+      }
     ]
   },
   "subHeader": {
     "categories": [
-      { "key": "trending", "label": "Trending 🔥", "tag": "trending" },
-      { "key": "graphics", "label": "Graphics & Design", "tag": "graphics" },
-      { "key": "tech", "label": "Programming & Tech", "tag": "programming" },
-      { "key": "marketing", "label": "Digital Marketing", "tag": "marketing" },
-      { "key": "video", "label": "Video & Animation", "tag": "video editing" },
-      { "key": "writing", "label": "Writing & Translation", "tag": "writing" },
-      { "key": "music", "label": "Music & Audio", "tag": "music" },
-      { "key": "business", "label": "Business", "tag": "business" },
-      { "key": "finance", "label": "Finance", "tag": "finance" },
-      { "key": "ai", "label": "AI Services", "tag": "ai" },
-      { "key": "lifestyle", "label": "Personal Growth", "tag": "personal growth" },
-      { "key": "consulting", "label": "Consulting", "tag": "consulting" },
-      { "key": "data", "label": "Data", "tag": "data" },
-      { "key": "photo", "label": "Photography", "tag": "photography" }
+      {
+        "key": "web-builder",
+        "label": "Web Builder",
+        "tag": "web-builder"
+      },
+      {
+        "key": "video-editing",
+        "label": "Video Editing",
+        "tag": "video-editing"
+      },
+      {
+        "key": "shopify",
+        "label": "Shopify",
+        "tag": "shopify"
+      },
+      {
+        "key": "ad-social",
+        "label": "Ad & Social",
+        "tag": "ad-social"
+      }
     ]
   },
   "subFooter": {
     "columns": [
       {
         "title": "Categories",
-        "items": ["Graphics & Design", "Programming & Tech", "Digital Marketing", "Video & Animation"]
+        "items": [
+          "Graphics & Design",
+          "Programming & Tech",
+          "Digital Marketing",
+          "Video & Animation"
+        ]
       },
       {
         "title": "For Clients",
-        "items": ["Customer Success Stories"]
+        "items": [
+          "Customer Success Stories"
+        ]
       },
       {
         "title": "For Freelancers",
-        "items": ["Become a Freelancer"]
+        "items": [
+          "Become a Freelancer"
+        ]
       },
       {
         "title": "Business Solutions",
-        "items": ["Strategy & Roadmaps"]
+        "items": [
+          "Strategy & Roadmaps"
+        ]
       },
       {
         "title": "Company",
-        "items": ["About Leo", "Contact Us"]
+        "items": [
+          "About Leo",
+          "Contact Us"
+        ]
       }
     ]
   },
   "randomGig": {
     "titles": [
-      "I will design your unique logo",
-      "I will do professional video editing",
-      "I will write a killer blog post",
-      "I will build your react website",
-      "I will create short videos for tiktok",
-      "I will record a professional voice over",
-      "I will translate english to hebrew"
+      "I will build a clean web builder landing page",
+      "I will craft a Shopify store that converts",
+      "I will edit your video with clean cuts",
+      "I will design ad creatives for social media",
+      "I will build a high-converting website with mobile polish and UX strategy",
+      "I will deliver cinematic video editing with sound design and pacing",
+      "I will optimize your Shopify theme with custom sections and apps",
+      "I will create a social ad set with hooks, captions, and multiple variations"
     ],
     "fullnames": [
-      "John Doe",
-      "Jane Smith",
-      "Dudu Da",
-      "Alice Cooper",
-      "Yossi Cohen",
-      "Daniella Art",
-      "Mark Tech",
-      "Sarah Connor",
-      "Mike Ross"
+      "Ava Brooks",
+      "Liam Carter",
+      "Mia Collins",
+      "Noah Wright",
+      "Sofia Reed",
+      "Ethan Hayes",
+      "Isabella Cole",
+      "Lucas Foster",
+      "Amelia Gray",
+      "Logan Price",
+      "Harper Stone",
+      "Mason Ward",
+      "Ella Hart",
+      "James Cooper",
+      "Chloe Bennett",
+      "Benjamin Scott",
+      "Scarlett Rivera",
+      "Henry Morgan",
+      "Lily Sanders",
+      "Jack Parker",
+      "Grace Mitchell",
+      "Daniel Brooks",
+      "Zoey James",
+      "Owen Peterson",
+      "Nora Wood",
+      "Caleb Evans",
+      "Aria Sullivan",
+      "Wyatt Hughes",
+      "Avery Powell",
+      "Levi Bennett",
+      "Madison Ross",
+      "Isaac Perry",
+      "Stella Long",
+      "Sebastian Diaz",
+      "Hannah Ruiz",
+      "Julian Kim",
+      "Victoria Brooks",
+      "Samuel Lee",
+      "Layla Adams",
+      "Gabriel Flores",
+      "Riley Turner",
+      "Nathan Cook",
+      "Zoe Hill",
+      "Eli Green",
+      "Paisley Ward",
+      "Leo Morales",
+      "Addison Price",
+      "Andrew Cox",
+      "Lucy Baker",
+      "David Torres",
+      "Maya Rivera",
+      "Carter Young",
+      "Naomi King",
+      "Mateo Allen",
+      "Eva Morris",
+      "Josiah Foster",
+      "Kylie Simmons",
+      "Hudson Barnes",
+      "Piper Powell",
+      "Asher Coleman",
+      "Eleanor Grant",
+      "Ryan Collins",
+      "Ruby Diaz"
     ],
-    "levels": ["basic", "level 1", "level 2", "top rated", "pro"],
-    "tags": ["logo-design", "video-editing", "writing", "react", "tiktok", "voice-over", "translation"],
+    "levels": [
+      "basic",
+      "level 1",
+      "level 2",
+      "top rated",
+      "pro"
+    ],
+    "tags": [
+      "web-builder",
+      "video-editing",
+      "shopify",
+      "ad-social"
+    ],
     "videos": [
-      "/assets/videosForGigDemo/gigVid1.mp4",
-      "/assets/videosForGigDemo/gigVid2.mp4",
-      "/assets/videosForGigDemo/gigVid3.mp4",
-      "/assets/videosForGigDemo/gigVid4.mp4",
-      "/assets/videosForGigDemo/gigVid5.mp4",
-      "/assets/videosForGigDemo/gigVid6.mp4",
-      "/assets/videosForGigDemo/gigVid7.mp4",
-      "/assets/videosForGigDemo/gigVid8.mp4",
-      "/assets/videosForGigDemo/gigVid9.mp4",
-      "/assets/videosForGigDemo/gigVid10.mp4",
-      "/assets/videosForGigDemo/gigVid11.mp4",
-      "/assets/videosForGigDemo/gigVid12.mp4",
-      "/assets/videosForGigDemo/gigVid13.mp4",
-      "/assets/videosForGigDemo/gigVid14.mp4",
-      "/assets/videosForGigDemo/gigVid15.mp4",
-      "/assets/videosForGigDemo/gigVid16.mp4",
-      "/assets/videosForGigDemo/gigVid17.mp4",
-      "/assets/videosForGigDemo/gigVid18.mp4",
-      "/assets/videosForGigDemo/gigVid19.mp4",
-      "/assets/videosForGigDemo/gigVid20.mp4",
-      "/assets/videosForGigDemo/gigVid21.mp4",
-      "/assets/videosForGigDemo/gigVid22.mp4",
-      "/assets/videosForGigDemo/gigVid23.mp4",
-      "/assets/videosForGigDemo/gigVid24.mp4",
-      "/assets/videosForGigDemo/gigVid25.mp4",
-      "/assets/videosForGigDemo/gigVid26.mp4",
-      "/assets/videosForGigDemo/gigVid27.mp4",
-      "/assets/videosForGigDemo/gigVid28.mp4",
-      "/assets/videosForGigDemo/gigVid29.mp4",
-      "/assets/videosForGigDemo/gigVid30.mp4",
-      "/assets/videosForGigDemo/gigVid31.mp4",
-      "/assets/videosForGigDemo/gigVid32.mp4",
-      "/assets/videosForGigDemo/gigVid33.mp4",
-      "/assets/videosForGigDemo/gigVid34.mp4",
-      "/assets/videosForGigDemo/gigVid35.mp4",
-      "/assets/videosForGigDemo/gigVid36.mp4",
-      "/assets/videosForGigDemo/gigVid37.mp4",
-      "/assets/videosForGigDemo/gigVid38.mp4",
-      "/assets/videosForGigDemo/gigVid39.mp4",
-      "/assets/videosForGigDemo/gigVid40.mp4",
-      "/assets/videosForGigDemo/gigVid41.mp4",
-      "/assets/videosForGigDemo/gigVid42.mp4",
-      "/assets/videosForGigDemo/gigVid43.mp4",
-      "/assets/videosForGigDemo/gigVid44.mp4",
-      "/assets/videosForGigDemo/gigVid45.mp4",
-      "/assets/videosForGigDemo/gigVid46.mp4",
-      "/assets/videosForGigDemo/gigVid47.mp4",
-      "/assets/videosForGigDemo/gigVid48.mp4",
-      "/assets/videosForGigDemo/gigVid49.mp4",
-      "/assets/videosForGigDemo/gigVid50.mp4",
-      "/assets/videosForGigDemo/gigVid51.mp4",
-      "/assets/videosForGigDemo/gigVid52.mp4",
-      "/assets/videosForGigDemo/gigVid53.mp4",
-      "/assets/videosForGigDemo/gigVid54.mp4",
-      "/assets/videosForGigDemo/gigVid55.mp4",
-      "/assets/videosForGigDemo/gigVid56.mp4",
-      "/assets/videosForGigDemo/gigVid57.mp4",
-      "/assets/videosForGigDemo/gigVid58.mp4",
-      "/assets/videosForGigDemo/gigVid59.mp4",
-      "/assets/videosForGigDemo/gigVid60.mp4",
-      "/assets/videosForGigDemo/gigVid61.mp4",
-      "/assets/videosForGigDemo/gigVid62.mp4",
-      "/assets/videosForGigDemo/gigVid63.mp4",
-      "/assets/videosForGigDemo/gigVid64.mp4",
-      "/assets/videosForGigDemo/gigVid65.mp4",
-      "/assets/videosForGigDemo/gigVid66.mp4",
-      "/assets/videosForGigDemo/gigVid67.mp4",
-      "/assets/videosForGigDemo/gigVid68.mp4",
-      "/assets/videosForGigDemo/gigVid69.mp4",
-      "/assets/videosForGigDemo/gigVid70.mp4",
-      "/assets/videosForGigDemo/gigVid71.mp4",
-      "/assets/videosForGigDemo/gigVid72.mp4",
-      "/assets/videosForGigDemo/gigVid73.mp4",
-      "/assets/videosForGigDemo/gigVid74.mp4",
-      "/assets/videosForGigDemo/gigVid75.mp4"
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Videos/[WB][VID]1.mp4",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Videos/[WB][VID]10.mp4",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Videos/[WB][VID]11.mp4",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Videos/[WB][VID]12.mp4",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Videos/[WB][VID]13.mp4",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Videos/[WB][VID]14.mp4",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Videos/[WB][VID]15.mp4",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Videos/[WB][VID]16.mp4",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Videos/[WB][VID]17.mp4",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Videos/[WB][VID]18.mp4",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Videos/[WB][VID]19.mp4",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Videos/[WB][VID]2.mp4",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Videos/[WB][VID]20.mp4",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Videos/[WB][VID]21.mp4",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Videos/[WB][VID]22.mp4",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Videos/[WB][VID]23.mp4",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Videos/[WB][VID]24.mp4",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Videos/[WB][VID]25.mp4",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Videos/[WB][VID]26.mp4",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Videos/[WB][VID]3.mp4"
     ],
     "images": [
-      "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
-      "/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png",
-      "/assets/gigExampleImg/1[gig].jpg",
-      "/assets/gigExampleImg/1[gig].jpg"
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Img/[WB][IMG]1.webp",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Img/[WB][IMG]12.webp",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Img/[WB][IMG]16.jpg",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Img/[WB][IMG]10.jpg",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Img/[WB][IMG]13.jpg",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Img/[WB][IMG]17.webp",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Img/[WB][IMG]11.jpg",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Img/[WB][IMG]14.jpg",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Img/[WB][IMG]18.jpg",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Img/[WB][IMG]12.webp",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Img/[WB][IMG]15.jpg",
+      "/assets/OfficalGigDemoData/Services/WebBuilder/Img/[WB][IMG]19.webp"
     ],
     "loremWords": [
       "The sky",

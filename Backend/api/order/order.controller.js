@@ -3,7 +3,7 @@ import { loggerService } from "../../services/logger.service.js";
 
 export async function getOrders(req,res) {
  try {
-    const orders = await orderService.query()
+    const orders = await orderService.query(req.query)
     res.json(orders)
  } catch (error) {
     loggerService.error('Failed to get orders',error)
@@ -38,6 +38,16 @@ export async function removeOrder(req,res) {
      loggerService.error('Failed to remove order', err)
      res.status(err.status || 500).send({ error: err.message || 'Failed to remove order' })
    }   
+}
+
+export async function clearOrders(req,res) {
+  try {
+    const result = await orderService.removeMany(req.query)
+    res.send({ ok: true, removed: result.deletedCount || 0 })
+  } catch (err) {
+    loggerService.error('Failed to clear orders', err)
+    res.status(err.status || 500).send({ error: err.message || 'Failed to clear orders' })
+  }
 }
 export async function updateOrder(req,res) {
 try {

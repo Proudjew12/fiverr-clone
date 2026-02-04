@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { utilService } from '@/services/util.service'
 
@@ -18,7 +18,8 @@ const DEFAULT_LOCALE = {
   currencyCode: 'USD',
 }
 const FALLBACK_THUMBS = demoData.fallbackThumbs
-const DEMO_USERNAMES = ['LeoUser', 'RandomPerson']
+const CUSTOMER_NAME = 'Wilson Gray'
+const SELLER_NAME = 'Harrison Parker'
 
 export function AppHeader() {
   const { openDd, toggleDd, closeDd, rootRef, getOptionProps } = useDropdown()
@@ -29,14 +30,22 @@ export function AppHeader() {
   const [isSeller, setIsSeller] = useState(
     () => localStorage.getItem('isSeller') === 'true'
   )
-  const { orders, wishlist } = useDashboardLists()
+  const storedName = localStorage.getItem('userName')
+  const fallbackName = isSeller ? SELLER_NAME : CUSTOMER_NAME
+  const userName = storedName && storedName !== 'LeoUser' ? storedName : fallbackName
+  if (!storedName || storedName === 'LeoUser') {
+    localStorage.setItem('userName', fallbackName)
+  }
+  const { orders, wishlist } = useDashboardLists({ buyerName: userName, isSeller })
   const navigate = useNavigate()
+  const location = useLocation()
 
   function handleSignIn() {
     setIsSignedIn(true)
+    setIsSeller(false)
     localStorage.setItem('isSignedIn', 'true')
-    const name = DEMO_USERNAMES[Math.floor(Math.random() * DEMO_USERNAMES.length)]
-    localStorage.setItem('userName', name)
+    localStorage.setItem('userName', CUSTOMER_NAME)
+    localStorage.setItem('isSeller', 'false')
     closeDd()
     navigate('/index')
   }
@@ -55,6 +64,12 @@ export function AppHeader() {
     setIsSeller((prev) => {
       const next = !prev
       localStorage.setItem('isSeller', String(next))
+      localStorage.setItem('userName', next ? SELLER_NAME : CUSTOMER_NAME)
+      if (location.pathname.startsWith('/dashboard')) {
+        window.location.assign(next ? '/dashboard/seller' : '/dashboard/customer')
+      } else {
+        window.location.reload()
+      }
       return next
     })
   }
@@ -63,9 +78,7 @@ export function AppHeader() {
     <header ref={rootRef} className="app-header">
       <div className="app-header-row">
         <div className="app-header-inner flex items-center justify-between">
-          <HeaderLeft
-            showSearch={showHeaderSearch}
-          />
+          <HeaderLeft showSearch={showHeaderSearch} />
           <HeaderMiddle
             openDd={openDd}
             onToggleDd={toggleDd}
@@ -145,6 +158,7 @@ function HeaderRight({
   isSeller,
   onToggleSeller,
 }) {
+  const dashboardLink = isSeller ? '/dashboard/seller' : '/dashboard/customer'
   return (
     <nav
       className={`header-nav flex items-center ${
@@ -171,6 +185,7 @@ function HeaderRight({
             onSignOut={onSignOut}
             isSeller={isSeller}
             onToggleSeller={onToggleSeller}
+            dashboardLink={dashboardLink}
           />
         ) : (
           <HeaderActions onSignIn={onSignIn} />
@@ -232,6 +247,7 @@ function SignedInActions({
   onSignOut,
   isSeller,
   onToggleSeller,
+  dashboardLink,
 }) {
   return (
     <>
@@ -250,6 +266,7 @@ function SignedInActions({
         onClose={onCloseDd}
         orders={orders}
         isSeller={isSeller}
+        dashboardLink={dashboardLink}
       />
       <UserDropdown
         isOpen={openDd === 'user'}
@@ -259,6 +276,7 @@ function SignedInActions({
         onSignOut={onSignOut}
         isSeller={isSeller}
         onToggleSeller={onToggleSeller}
+        dashboardLink={dashboardLink}
       />
     </>
   )
@@ -306,7 +324,14 @@ function ProDropdown({ isOpen, onToggle, onClose }) {
   )
 }
 
-function OrdersDropdown({ isOpen, onToggle, onClose, orders, isSeller }) {
+function OrdersDropdown({
+  isOpen,
+  onToggle,
+  onClose,
+  orders,
+  isSeller,
+  dashboardLink,
+}) {
   const label = isSeller ? 'Requests' : 'Orders'
   const emptyLabel = isSeller ? 'No requests yet' : 'No orders yet'
   const viewLabel = isSeller ? 'View all requests' : 'View all orders'
@@ -351,7 +376,11 @@ function OrdersDropdown({ isOpen, onToggle, onClose, orders, isSeller }) {
               })}
             </ul>
           )}
-          <Link to="/dashboard?tab=orders" className="orders-dd-link" onClick={onClose}>
+          <Link
+            to={`${dashboardLink}?tab=orders`}
+            className="orders-dd-link"
+            onClick={onClose}
+          >
             {viewLabel}
           </Link>
         </div>
@@ -384,7 +413,7 @@ function WishlistDropdown({ isOpen, onToggle, onClose, wishlist = [] }) {
                 const thumbSrc =
                   item.previewImg || utilService.pickRandom(FALLBACK_THUMBS)
                 return (
-                  <li key={item.id} className="orders-dd-item">
+                  <li key={item._id || item.id} className="orders-dd-item">
                     <img className="orders-dd-thumb" src={thumbSrc} alt="" />
                     <div className="orders-dd-content">
                       <Link
@@ -400,7 +429,11 @@ function WishlistDropdown({ isOpen, onToggle, onClose, wishlist = [] }) {
               })}
             </ul>
           )}
-          <Link to="/dashboard?tab=wishlist" className="orders-dd-link" onClick={onClose}>
+          <Link
+            to="/dashboard/customer?tab=wishlist"
+            className="orders-dd-link"
+            onClick={onClose}
+          >
             View wishlist
           </Link>
         </div>
@@ -422,15 +455,14 @@ function HeaderIconButtons() {
   )
 }
 
-
 function UserDropdown({
   isOpen,
   onToggle,
   onClose,
-  getOptionProps,
   onSignOut,
   isSeller,
   onToggleSeller,
+  dashboardLink,
 }) {
   return (
     <div className="nav-dd nav-dd-user">
@@ -456,7 +488,7 @@ function UserDropdown({
           aria-label="User menu"
           role="menu"
         >
-          <Link to="/dashboard" className="user-menu-item" onClick={onClose}>
+          <Link to={dashboardLink} className="user-menu-item" onClick={onClose}>
             Dashboard
           </Link>
           <button

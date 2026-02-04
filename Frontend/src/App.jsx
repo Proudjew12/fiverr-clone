@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { MainLayout } from './pages/MainLayout.jsx'
 import { HomePage } from './pages/HomePage.jsx'
 // import { SearchResultsPage } from './pages/SearchResultsPage.jsx'
@@ -19,7 +19,8 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path='/gig/:gigId' element={<GigDetails/>}/>
           <Route path="/gig/:gigId/payment/:price" element={<PaymentPage />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/dashboard" element={<Navigate to="/dashboard/customer" replace />} />
+          <Route path="/dashboard/:role" element={<DashboardPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

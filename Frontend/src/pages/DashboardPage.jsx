@@ -1,23 +1,30 @@
-import { useMemo, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { Link, useSearchParams, useParams } from 'react-router-dom'
 import { utilService } from '@/services/util.service'
 import demoData from '@/data/demo-data.json'
 import { useDashboardLists } from '@/hooks/useDashboardLists'
 import { SvgIcon } from '@/components/svg/SvgIcon'
 
-const PROFILE_IMAGE = '/assets/ProfileImgs/personOne.png'
+const SELLER_IMAGE = '/assets/ProfileImgs/PersonOne.png'
+const CUSTOMER_IMAGE = '/assets/ProfileImgs/PersonTwo.png'
 const FALLBACK_THUMBS = demoData.fallbackThumbs
 
 export function DashboardPage() {
   const [searchParams, setSearchParams] = useSearchParams()
-  const userName = localStorage.getItem('userName') || 'LeoUser'
-  const isSeller = localStorage.getItem('isSeller') === 'true'
-  const { orders, wishlist, clearOrders, clearWishlist } = useDashboardLists()
-  const emptyImage = useMemo(() => PROFILE_IMAGE, [])
+  const { role } = useParams()
+  const isSeller = role === 'seller'
+  const userName = isSeller ? 'Harrison Parker' : 'Wilson Gray'
+  const { orders, wishlist, clearOrders, clearWishlist } = useDashboardLists({
+    buyerName: userName,
+    isSeller,
+  })
+  const emptyImage = useMemo(() => (isSeller ? SELLER_IMAGE : CUSTOMER_IMAGE), [isSeller])
   const activeTab =
     isSeller ? 'orders' : searchParams.get('tab') === 'wishlist' ? 'wishlist' : 'orders'
 
   const [requestStates, setRequestStates] = useState({})
+  const [openRequestMenuId, setOpenRequestMenuId] = useState(null)
+  const requestMenuRef = useRef(null)
   const formatMoney = (value) => `₪${Number(value).toFixed(2)}`
   function setTab(tab) {
     setSearchParams((prevParams) => {
@@ -34,8 +41,49 @@ export function DashboardPage() {
     clearWishlist()
   }
 
+  useEffect(() => {
+    localStorage.setItem('isSeller', String(isSeller))
+  }, [isSeller])
+
+  useEffect(() => {
+    function handleOutsideClick(ev) {
+      if (!requestMenuRef.current) return
+      if (!requestMenuRef.current.contains(ev.target)) {
+        setOpenRequestMenuId(null)
+      }
+    }
+
+    function handleEscape(ev) {
+      if (ev.key === 'Escape') setOpenRequestMenuId(null)
+    }
+
+    document.addEventListener('mousedown', handleOutsideClick)
+    document.addEventListener('keydown', handleEscape)
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick)
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [])
+
   function onUpdateRequest(id, status) {
     setRequestStates((prev) => ({ ...prev, [id]: status }))
+    setOpenRequestMenuId(null)
+  }
+
+  function getRandomOrderDate(seed) {
+    const base = String(seed || '') || Math.random().toString(36)
+    let hash = 0
+    for (let i = 0; i < base.length; i++) {
+      hash = (hash * 31 + base.charCodeAt(i)) >>> 0
+    }
+    const start = new Date(2025, 0, 1).getTime()
+    const end = new Date(2026, 11, 31).getTime()
+    const dayMs = 24 * 60 * 60 * 1000
+    const rangeDays = Math.floor((end - start) / dayMs)
+    const offsetDays = hash % rangeDays
+    const date = new Date(start + offsetDays * dayMs)
+    return date.toLocaleDateString()
   }
 
   return (
@@ -44,7 +92,7 @@ export function DashboardPage() {
         <div className="dashboard-card profile-card">
           <img className="profile-avatar" src={emptyImage} alt={`${userName} avatar`} />
           <h2 className="profile-name">{userName}</h2>
-          <p className="profile-role">{isSeller ? 'Seller' : 'Buyer'}</p>
+          <p className="profile-role">{isSeller ? 'Seller' : 'Customer'}</p>
           {isSeller && (
             <div className="profile-rating">
               <div className="profile-stars" aria-label="Seller rating">
@@ -133,7 +181,7 @@ export function DashboardPage() {
                 <h3>{isSeller ? 'No requests yet' : 'No orders yet'}</h3>
                 <p>
                   {isSeller
-                    ? 'When a buyer sends a request, it will show up here.'
+                    ? 'When a customer sends a request, it will show up here.'
                     : 'When you place an order, it will show up here.'}
                 </p>
               </div>
@@ -148,7 +196,7 @@ export function DashboardPage() {
                 <span>{isSeller ? 'Action' : 'Status'}</span>
               </div>
               <ul className="orders-list">
-                {orders.map((order) => {
+                {(isSeller ? orders.slice(0, 3) : orders).map((order) => {
                   const thumbSrc =
                     order.previewImg || utilService.pickRandom(FALLBACK_THUMBS)
                   return (
@@ -160,35 +208,77 @@ export function DashboardPage() {
                             {order.title}
                           </Link>
                         </div>
-                        <div className="orders-meta">
-                          {new Date(order.createdAt).toLocaleDateString()}
-                        </div>
+                      <div className="orders-meta">
+                        {getRandomOrderDate(order._id)}
+                      </div>
                       </div>
                       <div className="orders-cell">{formatMoney(order.total)}</div>
                       <div className="orders-cell">
                         {isSeller ? (
                           requestStates[order._id] ? (
-                            <span className={`request-status ${requestStates[order._id]}`}>
+                            <span
+                              className={`request-status ${requestStates[order._id]}`}
+                              aria-label={
+                                requestStates[order._id] === 'accepted'
+                                  ? 'Accepted'
+                                  : requestStates[order._id] === 'declined'
+                                    ? 'Declined'
+                                    : 'Asked customer'
+                              }
+                              title={
+                                requestStates[order._id] === 'accepted'
+                                  ? 'Accepted'
+                                  : requestStates[order._id] === 'declined'
+                                    ? 'Declined'
+                                    : 'Asked customer'
+                              }
+                            >
                               {requestStates[order._id] === 'accepted'
-                                ? 'Accepted'
-                                : 'Declined'}
+                                ? '✓'
+                                : requestStates[order._id] === 'declined'
+                                  ? '✕'
+                                  : '?'}
                             </span>
                           ) : (
-                            <div className="request-actions">
+                            <div className="request-actions" ref={requestMenuRef}>
                               <button
                                 type="button"
-                                className="request-action accept"
-                                onClick={() => onUpdateRequest(order._id, 'accepted')}
+                                className="request-menu-btn"
+                                aria-haspopup="menu"
+                                aria-expanded={openRequestMenuId === order._id}
+                                onClick={() =>
+                                  setOpenRequestMenuId((prev) =>
+                                    prev === order._id ? null : order._id
+                                  )
+                                }
                               >
-                                Accept
+                                <span aria-hidden="true">⋯</span>
                               </button>
-                              <button
-                                type="button"
-                                className="request-action reject"
-                                onClick={() => onUpdateRequest(order._id, 'declined')}
-                              >
-                                Decline
-                              </button>
+                              {openRequestMenuId === order._id && (
+                                <div className="request-menu" role="menu">
+                                  <button
+                                    type="button"
+                                    className="request-menu-item"
+                                    onClick={() => onUpdateRequest(order._id, 'accepted')}
+                                  >
+                                    Accept
+                                  </button>
+                                  <button
+                                    type="button"
+                                    className="request-menu-item"
+                                    onClick={() => onUpdateRequest(order._id, 'declined')}
+                                  >
+                                    Decline
+                                  </button>
+                                  <button
+                                    type="button"
+                                    className="request-menu-item"
+                                    onClick={() => onUpdateRequest(order._id, 'ask')}
+                                  >
+                                    Ask the Customer
+                                  </button>
+                                </div>
+                              )}
                             </div>
                           )
                         ) : (
@@ -223,7 +313,7 @@ export function DashboardPage() {
                   const thumbSrc =
                     item.previewImg || utilService.pickRandom(FALLBACK_THUMBS)
                   return (
-                    <li key={item.id} className="orders-row">
+                    <li key={item._id || item.id} className="orders-row">
                       <div className="orders-cell">
                         <div className="orders-title-row">
                           <img className="orders-thumb" src={thumbSrc} alt="" />
@@ -231,9 +321,7 @@ export function DashboardPage() {
                             {item.title}
                           </Link>
                         </div>
-                        <div className="orders-meta">
-                          {new Date(item.createdAt).toLocaleDateString()}
-                        </div>
+                        <div className="orders-meta">{getRandomOrderDate(item._id)}</div>
                       </div>
                       <div className="orders-cell">{formatMoney(item.price)}</div>
                       <div className="orders-cell">

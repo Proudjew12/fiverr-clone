@@ -1,13 +1,13 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { SellerDetailsFilter } from './SellerDetailsFilter.jsx'
 import { BudgetFilter } from './BudgetFilter.jsx'
 import { gigService } from '@/services/gig.service.remote.js'
 
 const SERVICE_OPTIONS = [
-  { label: 'Web Builder', value: 'react' },
-  { label: 'Ad & Social', value: 'tiktok' },
+  { label: 'Web Builder', value: 'web-builder' },
+  { label: 'Ad & Social', value: 'ad-social' },
   { label: 'Video Editing', value: 'video-editing' },
-  { label: 'Logo Maker', value: 'logo-design' },
+  { label: 'Shopify', value: 'shopify' },
 ]
 
 const DELIVERY_OPTIONS = [
@@ -30,6 +30,28 @@ export function GigFilter({
 }) {
   const defaultFilter = useMemo(() => gigService.getDefaultFilter(), [])
   const [activeFilter, setActiveFilter] = useState(null)
+  const filterRef = useRef(null)
+
+  useEffect(() => {
+    function handleOutsideClick(ev) {
+      if (!filterRef.current) return
+      if (!filterRef.current.contains(ev.target)) {
+        setActiveFilter(null)
+      }
+    }
+
+    function handleEscape(ev) {
+      if (ev.key === 'Escape') setActiveFilter(null)
+    }
+
+    document.addEventListener('mousedown', handleOutsideClick)
+    document.addEventListener('keydown', handleEscape)
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick)
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [])
 
   const hasActiveFilters = useMemo(() => {
     if (!filterBy) return !!isSortOn
@@ -62,7 +84,7 @@ export function GigFilter({
   }
 
   return (
-    <section className="gig-filter ">
+    <section ref={filterRef} className="gig-filter ">
       <div className="dropdown">
         <div
           className="filter-dropdown"

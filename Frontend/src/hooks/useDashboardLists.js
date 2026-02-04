@@ -1,48 +1,58 @@
 import { useEffect, useState } from 'react'
-import { utilService } from '@/services/util.service.js'
 import { orderService } from '@/services/order.service.remote.js'
+import { wishlistService } from '@/services/wishlist.service.remote.js'
 
-const ORDERS_STORAGE_KEY = 'orders'
-const WISHLIST_STORAGE_KEY = 'wishlist'
-
-export function useDashboardLists() {
+export function useDashboardLists({ buyerName, isSeller } = {}) {
   const [orders, setOrders] = useState([])
-  const [wishlist, setWishlist] = useState(() => loadWishlist())
+  const [wishlist, setWishlist] = useState([])
 
   useEffect(() => {
+    let isMounted = true
+
     async function load() {
-    const orders = await loadOrders()
-    setOrders(orders)
-  }
-  load()
-    function updateOrders() {
-    //  setOrders(()=>await loadOrders())
+      const orderParams = isSeller ? {} : buyerName ? { buyerName } : {}
+      const orders = await orderService.query(orderParams)
+      if (!isMounted) return
+      setOrders(orders)
+
+      if (!isSeller) {
+        const wishParams = buyerName ? { buyerName } : {}
+        const wishlist = await wishlistService.query(wishParams)
+        if (!isMounted) return
+        setWishlist(wishlist)
+      } else {
+        setWishlist([])
+      }
     }
 
-    function updateWishlist() {
-      setWishlist(loadWishlist())
+    function onOrdersUpdated() {
+      load()
     }
 
-    window.addEventListener('storage', updateOrders)
-    window.addEventListener('orders-updated', updateOrders)
-    window.addEventListener('wishlist-updated', updateWishlist)
+    function onWishlistUpdated() {
+      load()
+    }
+
+    load()
+    window.addEventListener('orders-updated', onOrdersUpdated)
+    window.addEventListener('wishlist-updated', onWishlistUpdated)
 
     return () => {
-      window.removeEventListener('storage', updateOrders)
-      window.removeEventListener('orders-updated', updateOrders)
-      window.removeEventListener('wishlist-updated', updateWishlist)
+      isMounted = false
+      window.removeEventListener('orders-updated', onOrdersUpdated)
+      window.removeEventListener('wishlist-updated', onWishlistUpdated)
     }
-  }, [])
+  }, [buyerName, isSeller])
 
-  function clearOrders() {
-    utilService.saveToStorage(ORDERS_STORAGE_KEY, [])
-    window.dispatchEvent(new CustomEvent('orders-updated'))
+  async function clearOrders() {
+    const params = isSeller ? {} : buyerName ? { buyerName } : {}
+    await orderService.clear(params)
     setOrders([])
   }
 
-  function clearWishlist() {
-    utilService.saveToStorage(WISHLIST_STORAGE_KEY, [])
-    window.dispatchEvent(new CustomEvent('wishlist-updated'))
+  async function clearWishlist() {
+    const params = buyerName ? { buyerName } : {}
+    await wishlistService.clear(params)
     setWishlist([])
   }
 
@@ -52,13 +62,4 @@ export function useDashboardLists() {
     clearOrders,
     clearWishlist,
   }
-}
-
- function loadOrders() {
-  
-  return orderService.query()
-}
-
-function loadWishlist() {
-  return utilService.loadFromStorage(WISHLIST_STORAGE_KEY, [])
 }

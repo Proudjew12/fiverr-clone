@@ -6,7 +6,6 @@ import Swal from 'sweetalert2'
 import { useGigById } from '@/hooks/useGigById'
 import { orderService } from '@/services/order.service.remote.js'
 
-const ORDERS_STORAGE_KEY = 'orders'
 const DEMO_CARD = demoData.payment.demoCard
 const FALLBACK_THUMBS = demoData.fallbackThumbs
 
@@ -57,18 +56,18 @@ export function PaymentPage() {
   }
 
   async function onConfirmPay() {
+    const buyerName = localStorage.getItem('userName') || 'Wilson Gray'
     const previewImg = utilService.pickRandom(FALLBACK_THUMBS)
     const order = {
       gigId,
       title: gig?.title || 'Gig',
       total,
       sellerName: gig?.owner?.fullname || 'Seller',
+      buyerName,
       status: 'approved',
       previewImg,
     }
-  //  const existing = utilService.loadFromStorage(ORDERS_STORAGE_KEY, [])
-  //  utilService.saveToStorage(ORDERS_STORAGE_KEY, [order, ...existing])
-    orderService.save(order)
+    await orderService.save(order)
     window.dispatchEvent(new CustomEvent('orders-updated'))
 
     await Swal.fire({
@@ -77,7 +76,7 @@ export function PaymentPage() {
       icon: 'success',
       confirmButtonText: 'OK',
     })
-    window.location.assign('/dashboard')
+    window.location.assign('/dashboard/customer')
   }
 
   return (

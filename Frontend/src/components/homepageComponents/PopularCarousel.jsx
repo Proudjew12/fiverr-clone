@@ -5,15 +5,34 @@ import { Mousewheel } from 'swiper/modules'
 import { useSwiperNav } from '@/hooks/useSwiperNav'
 import { SvgIcon } from '@/components/svg/SvgIcon'
 import demoData from '@/data/demo-data.json'
+import { useNavigate } from 'react-router-dom'
+import { gigService } from '@/services/gig.service.remote.js'
 
 const popularServices = demoData.home.popularServices
 
 export function PopularCarousel() {
   const { onSwiper, onSlideChange, slidePrev, slideNext, isBeginning, isEnd } =
     useSwiperNav()
+  const navigate = useNavigate()
 
-  function onCardClick(ev) {
-    ev.preventDefault()
+  const serviceFilters = {
+    'web-builder': { tag: 'web-builder' },
+    'video-editing': { tag: 'video-editing' },
+    shopify: { tag: 'shopify' },
+    'ad-social': { tag: 'ad-social' },
+  }
+
+  function onCardClick(service) {
+    const filter = serviceFilters[service.key] || { txt: service.title.replace(/\n/g, ' ') }
+    const base = gigService.getDefaultFilter()
+    const filterBy = {
+      ...base,
+      txt: filter.txt || '',
+      tags: filter.tag ? [filter.tag] : [],
+    }
+    const params = gigService.buildSearchParamsFromFilter(filterBy)
+    const search = params.toString()
+    navigate(search ? `/index?${search}` : '/index')
   }
 
   return (
@@ -75,7 +94,7 @@ export function PopularCarousel() {
                     type="button"
                     className="popular-card flex flex-col justify-between"
                     style={{ background: s.bg }}
-                    onClick={onCardClick}
+                    onClick={() => onCardClick(s)}
                   >
                     <h3 className="popular-card-title">
                       {s.title.split('\n').map((line, i) => (

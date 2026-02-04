@@ -499,6 +499,14 @@
   position: relative;
   margin-bottom: 24px;
 }
+.gig-details aside .call-to-action .package-content footer .continue-btn.is-disabled {
+  background: #e4e5e7;
+  color: #74767e;
+  cursor: not-allowed;
+}
+.gig-details aside .call-to-action .package-content footer .continue-btn.is-disabled:hover {
+  background: #e4e5e7;
+}
 .gig-details aside .call-to-action .package-content footer .continue-btn:hover {
   background: #404145;
 }
