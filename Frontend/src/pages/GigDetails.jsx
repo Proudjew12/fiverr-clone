@@ -11,6 +11,9 @@ import { ReviewFilter } from '@/components/review/ReviewFiter'
 export function GigDetails() {
   const { gigId } = useParams()
   const navigate = useNavigate()
+  function handleLoginPrompt() {
+    window.dispatchEvent(new CustomEvent('highlight-signin'))
+  }
   const [selectedTab, setSelectedTab] = useState(1)
   const [filterBy, setFilterBy] = useState({})
   const reviewsTitle = useRef()
@@ -64,6 +67,7 @@ export function GigDetails() {
   if (isLoading) return <Loader />
   if (!gig) return null
 
+  const ownerLevel = String(gig?.owner?.level || '').toLowerCase()
   const primaryTag = gig?.tags?.[0] || ''
   const typeLabel = tagToTypeLabel[primaryTag] || toTitleCase(primaryTag) || 'Gig'
   const homeTarget = isSignedIn ? '/index' : '/'
@@ -123,22 +127,24 @@ export function GigDetails() {
                     })
                   }} className="fullname">{gig.owner.fullname}</div>{' '}
                 <div className={'level ' + gig.owner.level.replace(/\s+/g, '-')}>
-                  {gig.owner.level === 'top rated'
+                  {ownerLevel === 'top rated'
                     ? 'Top Rated'
-                    : gig.owner.level === '2'
+                    : ownerLevel === '2'
                       ? 'Level 2'
-                      : gig.owner.level === '1'
+                      : ownerLevel === '1'
                         ? 'Level 1'
+                        : ownerLevel === 'basic'
+                          ? 'New'
                         : ''}
-                  {gig.owner.level !== 'basic' ? (
+                  {ownerLevel !== 'basic' ? (
                     <div className="stars">
                       <SvgIcon icon={'starBlack'} />
                       <SvgIcon
-                        icon={gig.owner.level !== '1' ? 'starBlack' : 'starTranspet'}
+                        icon={ownerLevel !== '1' ? 'starBlack' : 'starTranspet'}
                       />
                       <SvgIcon
                         icon={
-                          gig.owner.level === 'top rated' ? 'starBlack' : 'starTranspet'
+                          ownerLevel === 'top rated' ? 'starBlack' : 'starTranspet'
                         }
                       />
                     </div>
@@ -232,23 +238,25 @@ export function GigDetails() {
                     <SvgIcon icon={'star'} />
                     {gig.owner.rate}
                   </div>
-                  <div className={(gig.owner.level === 'basic') ? 'hidden' : 'level ' + gig.owner.level.replace(/\s+/g, '-')}>
-                    {gig.owner.level === 'top rated'
+                  <div className={(ownerLevel === 'basic') ? 'hidden' : 'level ' + gig.owner.level.replace(/\s+/g, '-')}>
+                    {ownerLevel === 'top rated'
                       ? 'Top Rated'
-                      : gig.owner.level === '2'
+                      : ownerLevel === '2'
                         ? 'Level 2'
-                        : gig.owner.level === '1'
+                        : ownerLevel === '1'
                           ? 'Level 1'
+                          : ownerLevel === 'basic'
+                            ? 'New'
                           : ''}
-                    {gig.owner.level !== 'basic' ? (
+                    {ownerLevel !== 'basic' ? (
                       <div className="stars">
                         <SvgIcon icon={'starBlack'} />
                         <SvgIcon
-                          icon={gig.owner.level !== '1' ? 'starBlack' : 'starTranspet'}
+                          icon={ownerLevel !== '1' ? 'starBlack' : 'starTranspet'}
                         />
                         <SvgIcon
                           icon={
-                            gig.owner.level === 'top rated' ? 'starBlack' : 'starTranspet'
+                            ownerLevel === 'top rated' ? 'starBlack' : 'starTranspet'
                           }
                         />
                       </div>
@@ -390,6 +398,15 @@ export function GigDetails() {
                 {isSeller ? (
                   <button className="continue-btn is-disabled" disabled>
                     You're a seller yourself
+                  </button>
+                ) : !isSignedIn ? (
+                  <button
+                    type="button"
+                    className="continue-btn is-disabled"
+                    aria-disabled="true"
+                    onClick={handleLoginPrompt}
+                  >
+                    Please login first
                   </button>
                 ) : (
                   <button

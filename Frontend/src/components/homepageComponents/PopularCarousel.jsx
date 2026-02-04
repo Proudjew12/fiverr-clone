@@ -16,10 +16,14 @@ export function PopularCarousel() {
   const navigate = useNavigate()
 
   const serviceFilters = {
-    'web-builder': { tag: 'web-builder' },
+    'vibe-coding': { tag: 'web-builder' },
+    'website-dev': { tag: 'web-builder' },
     'video-editing': { tag: 'video-editing' },
-    shopify: { tag: 'shopify' },
-    'ad-social': { tag: 'ad-social' },
+    'software-dev': { tag: 'web-builder' },
+    'book-publishing': { tag: 'shopify' },
+    'arch-interior': { tag: 'shopify' },
+    'logo-design': { tag: 'shopify' },
+    'web-design': { tag: 'web-builder' },
   }
 
   function onCardClick(service) {

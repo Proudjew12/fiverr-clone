@@ -17,10 +17,11 @@
   },
   "home": {
     "heroChips": [
-      "Web Builder",
+      "Website Development",
+      "Architecture & Interior Design",
+      "UGC Videos",
       "Video Editing",
-      "Shopify",
-      "Ad & Social"
+      "Book Publishing"
     ],
     "trustedBy": [
       "Meta",
@@ -32,30 +33,61 @@
     ],
     "categories": [
       {
-        "key": "web-builder",
-        "label": "Web\nBuilder",
+        "key": "programming",
+        "label": "Programming\n& Tech",
         "icon": "Programming"
       },
       {
-        "key": "video-editing",
-        "label": "Video\nEditing",
+        "key": "graphics",
+        "label": "Graphics &\nDesign",
+        "icon": "Graphics"
+      },
+      {
+        "key": "marketing",
+        "label": "Digital\nMarketing",
+        "icon": "Marketing"
+      },
+      {
+        "key": "writing",
+        "label": "Writing &\nTranslation",
+        "icon": "Writing"
+      },
+      {
+        "key": "video",
+        "label": "Video &\nAnimation",
         "icon": "Video"
       },
       {
-        "key": "shopify",
-        "label": "Shopify",
+        "key": "ai",
+        "label": "AI Services",
+        "icon": "AI"
+      },
+      {
+        "key": "music",
+        "label": "Music & Audio",
+        "icon": "Music"
+      },
+      {
+        "key": "business",
+        "label": "Business",
         "icon": "Business"
       },
       {
-        "key": "ad-social",
-        "label": "Ad &\nSocial",
-        "icon": "Marketing"
+        "key": "consulting",
+        "label": "Consulting",
+        "icon": "Consulting"
       }
     ],
     "popularServices": [
       {
-        "key": "web-builder",
-        "title": "Web\nBuilder",
+        "key": "vibe-coding",
+        "title": "Vibe Coding",
+        "bg": "#003912",
+        "icon": "popularCarousel1"
+      },
+      {
+        "key": "website-dev",
+        "title": "Website\nDevelopment",
         "bg": "#003912",
         "icon": "popularCarousel2"
       },
@@ -66,16 +98,34 @@
         "icon": "popularCarousel3"
       },
       {
-        "key": "shopify",
-        "title": "Shopify",
+        "key": "software-dev",
+        "title": "Software\nDevelopment",
+        "bg": "#003912",
+        "icon": "popularCarousel4"
+      },
+      {
+        "key": "book-publishing",
+        "title": "Book Publishing",
+        "bg": "#003912",
+        "icon": "popularCarousel5"
+      },
+      {
+        "key": "arch-interior",
+        "title": "Architecture &\nInterior Design",
+        "bg": "#003912",
+        "icon": "popularCarousel6"
+      },
+      {
+        "key": "logo-design",
+        "title": "Logo Design",
         "bg": "#003912",
         "icon": "popularCarousel7"
       },
       {
-        "key": "ad-social",
-        "title": "Ad & Social",
+        "key": "web-design",
+        "title": "Website Design",
         "bg": "#003912",
-        "icon": "popularCarousel6"
+        "icon": "popularCarousel8"
       }
     ]
   },

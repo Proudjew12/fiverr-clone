@@ -21,6 +21,10 @@ export function PaymentPage() {
     saveCard: true,
   })
 
+  const rawLevel = gig?.owner?.level ?? 2
+  const ownerLevel = String(rawLevel).toLowerCase()
+  const sellerLevelLabel = ownerLevel.includes('basic') ? 'New' : `Level ${rawLevel}`
+
   const basePrice = Number(price || 165.09)
   const serviceFee = Number((basePrice * 0.125).toFixed(2))
   const subTotal = Number((basePrice + serviceFee).toFixed(2))
@@ -118,7 +122,7 @@ export function PaymentPage() {
                 />
                 <span className="seller-name">{gig.owner?.fullname}</span>
                 <span className="seller-rating">★ {gig.owner?.rate || 4.8}</span>
-                <span className="seller-level">Level {gig.owner?.level || 2}</span>
+                <span className="seller-level">{sellerLevelLabel}</span>
               </div>
             </div>
           </article>

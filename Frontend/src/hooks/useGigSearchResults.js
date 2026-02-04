@@ -33,10 +33,15 @@ export function useGigSearchResults({ filterBy, pageSize = 8, firstPageSize = 16
     setPage(1)
   }, [filterBy])
 
+  const { firstPageGigs, remainingGigs } = useMemo(
+    () => buildFeaturedPages(gigs, firstPageSize, 4),
+    [gigs, firstPageSize]
+  )
+
   const totalPages = useMemo(() => {
-    if (gigs.length <= firstPageSize) return 1
-    return 1 + Math.ceil((gigs.length - firstPageSize) / pageSize)
-  }, [gigs.length, firstPageSize, pageSize])
+    if (!remainingGigs.length) return 1
+    return 1 + Math.ceil(remainingGigs.length / pageSize)
+  }, [remainingGigs.length, pageSize])
   const currentPage = Math.min(page, totalPages)
 
   useEffect(() => {
@@ -44,11 +49,10 @@ export function useGigSearchResults({ filterBy, pageSize = 8, firstPageSize = 16
   }, [page, totalPages])
 
   const paginatedGigs = useMemo(() => {
-    if (currentPage === 1) return gigs.slice(0, firstPageSize)
-
-    const startIdx = firstPageSize + (currentPage - 2) * pageSize
-    return gigs.slice(startIdx, startIdx + pageSize)
-  }, [gigs, currentPage, firstPageSize, pageSize])
+    if (currentPage === 1) return firstPageGigs
+    const startIdx = (currentPage - 2) * pageSize
+    return remainingGigs.slice(startIdx, startIdx + pageSize)
+  }, [currentPage, firstPageGigs, remainingGigs, pageSize])
 
   return {
     gigs,
@@ -59,4 +63,28 @@ export function useGigSearchResults({ filterBy, pageSize = 8, firstPageSize = 16
     currentPage,
     paginatedGigs,
   }
+}
+
+function buildFeaturedPages(gigs = [], firstPageSize, maxFeatured = 4) {
+  if (!Array.isArray(gigs) || !gigs.length) {
+    return { firstPageGigs: [], remainingGigs: [] }
+  }
+  const topRated = []
+  const others = []
+  for (const gig of gigs) {
+    const level = String(gig?.owner?.level || '').toLowerCase()
+    if (level === 'top rated') topRated.push(gig)
+    else others.push(gig)
+  }
+  if (!topRated.length) {
+    return {
+      firstPageGigs: gigs.slice(0, firstPageSize),
+      remainingGigs: gigs.slice(firstPageSize),
+    }
+  }
+  const featured = topRated.slice(0, maxFeatured)
+  const needed = Math.max(firstPageSize - featured.length, 0)
+  const firstPageGigs = [...featured, ...others.slice(0, needed)]
+  const remainingGigs = [...others.slice(needed), ...topRated.slice(maxFeatured)]
+  return { firstPageGigs, remainingGigs }
 }

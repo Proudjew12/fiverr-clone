@@ -10,7 +10,12 @@ export function GigPreview({ gig }) {
     const vidRef = useRef(null)
     const isSignedIn = localStorage.getItem('isSignedIn') === 'true'
     const isSeller = localStorage.getItem('isSeller') === 'true'
-    const isTopRated = owner?.level?.toLowerCase?.() === 'top rated'
+    const ownerLevel = String(owner?.level || '').toLowerCase()
+    const isTopRated = ownerLevel === 'top rated'
+    const isLevel2 = ownerLevel === '2' || ownerLevel.includes('level 2')
+    const isLevel1 = ownerLevel === '1' || ownerLevel.includes('level 1')
+    const isBasic = ownerLevel.includes('basic')
+    const levelGems = isLevel2 ? 2 : isLevel1 ? 1 : 0
     const { isWishlisted, toggleWishlist } = useWishlist({
         gigId: _id,
         title,
@@ -94,8 +99,26 @@ export function GigPreview({ gig }) {
                                 <SvgIcon icon="starBlack" />
                             </span>
                         </span>
+                    ) : isLevel1 || isLevel2 ? (
+                        <span className="seller-level-badge">
+                            <span className="seller-level-text">
+                                {isLevel2 ? 'Level 2' : 'Level 1'}
+                            </span>
+                            <span className="seller-level-gems" aria-hidden="true">
+                                {Array.from({ length: 3 }).map((_, idx) => (
+                                    <span
+                                        key={idx}
+                                        className={`gem ${idx < levelGems ? 'is-on' : ''}`}
+                                    >
+                                        {idx < levelGems ? '◆' : '◇'}
+                                    </span>
+                                ))}
+                            </span>
+                        </span>
                     ) : (
-                        <span className="seller-Level">Level {owner.level}</span>
+                        <span className="seller-Level">
+                            {isBasic ? 'New' : `Level ${owner.level}`}
+                        </span>
                     )}
                 </div>
 

@@ -42,16 +42,18 @@
 
       .seller-avatar {
         border-radius: 50%;
+        object-fit: cover;
+        object-position: 50% calc(50% + 0.1rem);
       }
       .mini-layout-seller {
         display: flex;
         gap: 0.7em;
       }
 
-        img {
-          height: 24px;
-          width: 24px;
-        }
+      img {
+        height: 24px;
+        width: 24px;
+      }
 
       :hover {
         cursor: pointer;
@@ -91,6 +93,42 @@
       width: 10px;
       height: 10px;
       display: block;
+    }
+
+    .seller-level-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #62646a;
+      white-space: nowrap;
+      flex-wrap: nowrap;
+    }
+
+    .seller-level-text {
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+
+    .seller-level-gems {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      font-size: 0.66rem;
+      line-height: 1;
+      flex-shrink: 0;
+      transform: translateY(-0.05rem);
+    }
+
+    .seller-level-gems .gem {
+      color: #c5c7cc;
+    }
+
+    .seller-level-gems .gem.is-on {
+      color: #222325;
     }
 
     .p {

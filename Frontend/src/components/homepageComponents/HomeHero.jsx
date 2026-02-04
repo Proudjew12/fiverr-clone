@@ -19,10 +19,11 @@ export function HomeHero() {
   const navigate = useNavigate()
 
   const chipFilters = {
-    'Web Builder': { tag: 'web-builder' },
+    'Website Development': { tag: 'web-builder' },
+    'Architecture & Interior Design': { tag: 'shopify' },
+    'UGC Videos': { tag: 'ad-social' },
     'Video Editing': { tag: 'video-editing' },
-    Shopify: { tag: 'shopify' },
-    'Ad & Social': { tag: 'ad-social' },
+    'Book Publishing': { tag: 'shopify' },
   }
 
   function navigateWithFilter({ tag, txt }) {

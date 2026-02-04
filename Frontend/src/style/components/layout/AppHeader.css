@@ -84,6 +84,11 @@
   text-decoration: none;
 }
 
+.header-link-green.is-glow {
+  color: #1dbf73;
+  box-shadow: 0 0 0 3px rgba(29, 191, 115, 0.25);
+}
+
 .globe {
   width: 16px;
   height: 16px;

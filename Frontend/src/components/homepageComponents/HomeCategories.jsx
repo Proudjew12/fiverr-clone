@@ -9,10 +9,15 @@ export function HomeCategories({ onCategoryClick }) {
   const navigate = useNavigate()
 
   const categoryFilters = {
-    'web-builder': { tag: 'web-builder' },
-    'video-editing': { tag: 'video-editing' },
-    shopify: { tag: 'shopify' },
-    'ad-social': { tag: 'ad-social' },
+    programming: { tag: 'web-builder' },
+    graphics: { tag: 'shopify' },
+    marketing: { tag: 'ad-social' },
+    writing: { tag: 'ad-social' },
+    video: { tag: 'video-editing' },
+    ai: { tag: 'web-builder' },
+    music: { tag: 'video-editing' },
+    business: { tag: 'shopify' },
+    consulting: { tag: 'shopify' },
   }
 
   function handleCategoryClick(cat) {

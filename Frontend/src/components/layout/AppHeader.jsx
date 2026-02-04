@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { utilService } from '@/services/util.service'
 
 import { LeoProDd } from '@/components/headerComponents/ProDd'
@@ -30,6 +30,7 @@ export function AppHeader() {
   const [isSeller, setIsSeller] = useState(
     () => localStorage.getItem('isSeller') === 'true'
   )
+  const [signInGlow, setSignInGlow] = useState(false)
   const storedName = localStorage.getItem('userName')
   const fallbackName = isSeller ? SELLER_NAME : CUSTOMER_NAME
   const userName = storedName && storedName !== 'LeoUser' ? storedName : fallbackName
@@ -39,6 +40,16 @@ export function AppHeader() {
   const { orders, wishlist } = useDashboardLists({ buyerName: userName, isSeller })
   const navigate = useNavigate()
   const location = useLocation()
+
+  useEffect(() => {
+    function handleGlow() {
+      setSignInGlow(true)
+      setTimeout(() => setSignInGlow(false), 1200)
+    }
+
+    window.addEventListener('highlight-signin', handleGlow)
+    return () => window.removeEventListener('highlight-signin', handleGlow)
+  }, [])
 
   function handleSignIn() {
     setIsSignedIn(true)
@@ -97,6 +108,7 @@ export function AppHeader() {
             onSignOut={handleSignOut}
             isSeller={isSeller}
             onToggleSeller={handleToggleSeller}
+            signInGlow={signInGlow}
           />
         </div>
       </div>
@@ -157,6 +169,7 @@ function HeaderRight({
   onSignOut,
   isSeller,
   onToggleSeller,
+  signInGlow,
 }) {
   const dashboardLink = isSeller ? '/dashboard/seller' : '/dashboard/customer'
   return (
@@ -188,7 +201,7 @@ function HeaderRight({
             dashboardLink={dashboardLink}
           />
         ) : (
-          <HeaderActions onSignIn={onSignIn} />
+          <HeaderActions onSignIn={onSignIn} glow={signInGlow} />
         )}
       </div>
 
@@ -217,10 +230,14 @@ function HeaderDropdowns({ openDd, onToggleDd, onCloseDd, isSignedIn }) {
   )
 }
 
-function HeaderActions({ onSignIn }) {
+function HeaderActions({ onSignIn, glow }) {
   return (
     <>
-      <button type="button" className="header-link header-link-green" onClick={onSignIn}>
+      <button
+        type="button"
+        className={`header-link header-link-green ${glow ? 'is-glow' : ''}`}
+        onClick={onSignIn}
+      >
         Sign in
       </button>
     </>
