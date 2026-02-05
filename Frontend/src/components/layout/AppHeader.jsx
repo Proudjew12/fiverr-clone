@@ -12,6 +12,7 @@ import { useDropdown } from '@/hooks/useDropdown'
 import { useHeaderSearchObserver } from '@/hooks/useHeaderSearchObserver'
 import { useDashboardLists } from '@/hooks/useDashboardLists'
 import demoData from '@/data/demo-data.json'
+import { SOCKET_EMIT_SEND_MSG, SOCKET_EMIT_SET_TOPIC, SOCKET_EVENT_MSG_SENT, socketService } from '@/services/socket.service.js'
 
 const DEFAULT_LOCALE = {
   langLabel: 'English',
@@ -47,10 +48,12 @@ export function AppHeader() {
       setSignInGlow(true)
       setTimeout(() => setSignInGlow(false), 1200)
     }
-
     window.addEventListener('highlight-signin', handleGlow)
-    return () => window.removeEventListener('highlight-signin', handleGlow)
+    return () => {
+      window.removeEventListener('highlight-signin', handleGlow)
+    }
   }, [])
+
 
   function handleSignIn() {
     setIsSignedIn(true)
@@ -175,9 +178,8 @@ function HeaderRight({
   const dashboardLink = isSeller ? '/dashboard/seller' : '/dashboard/customer'
   return (
     <nav
-      className={`header-nav flex items-center ${
-        isSignedIn ? 'is-signed-in' : 'is-signed-out'
-      }`}
+      className={`header-nav flex items-center ${isSignedIn ? 'is-signed-in' : 'is-signed-out'
+        }`}
       aria-label="Header"
     >
       <div className="nav-group nav-group-links flex items-center">
@@ -492,7 +494,10 @@ function HeaderIconButtons({ isSeller, openDd, onToggleDd, onCloseDd }) {
     saveInbox([])
     setActiveChat(null)
   }
-
+  function handleSendFromCostumer(message) {
+    if (!message) return
+    saveInbox([message, ...sellerInbox])
+  }
   useEffect(() => {
     if (!isSeller) return
     loadInbox()
@@ -501,9 +506,12 @@ function HeaderIconButtons({ isSeller, openDd, onToggleDd, onCloseDd }) {
     }
     window.addEventListener('seller-inbox-updated', handleInboxUpdate)
     window.addEventListener('storage', handleInboxUpdate)
+
+
     return () => {
       window.removeEventListener('seller-inbox-updated', handleInboxUpdate)
       window.removeEventListener('storage', handleInboxUpdate)
+
     }
   }, [isSeller])
 
@@ -583,18 +591,26 @@ function HeaderIconButtons({ isSeller, openDd, onToggleDd, onCloseDd }) {
       unread: false,
       from: 'seller',
     }
-    saveInbox([entry, ...sellerInbox])
+    socketService.emit(SOCKET_EMIT_SEND_MSG,entry)
     setChatInput('')
   }
-
+  function handleMessage(entry) {
+    if (!entry) return
+    saveInbox([entry, ...sellerInbox])
+  }
   useEffect(() => {
     if (!activeChat) return
     if (!sellerInbox.length) return
+    socketService.emit(SOCKET_EMIT_SET_TOPIC, 'chat')
+    socketService.on(SOCKET_EVENT_MSG_SENT, handleSendFromCostumer)
     const exists = sellerInbox.some((message) => {
       const key = `${message.gigId || 'gig'}-${message.customerName || 'customer'}`
       return key === activeChat.key
     })
     if (!exists) setActiveChat(null)
+    return () => {
+      socketService.off(SOCKET_EVENT_MSG_SENT, handleSendFromCostumer)
+    }
   }, [sellerInbox, activeChat])
   return (
     <div className="header-icon-group">
@@ -634,9 +650,8 @@ function HeaderIconButtons({ isSeller, openDd, onToggleDd, onCloseDd }) {
                   <button
                     type="button"
                     key={conversation.key}
-                    className={`messages-item ${
-                      conversation.unreadCount ? 'is-unread' : ''
-                    }`}
+                    className={`messages-item ${conversation.unreadCount ? 'is-unread' : ''
+                      }`}
                     onClick={() => openConversation(conversation)}
                   >
                     <div className="messages-avatar">
@@ -691,9 +706,8 @@ function HeaderIconButtons({ isSeller, openDd, onToggleDd, onCloseDd }) {
             {activeMessages.map((message) => (
               <div
                 key={message.id}
-                className={`seller-chat-bubble ${
-                  message.from === 'seller' ? 'is-seller' : 'is-customer'
-                }`}
+                className={`seller-chat-bubble ${message.from === 'seller' ? 'is-seller' : 'is-customer'
+                  }`}
               >
                 {message.text}
               </div>

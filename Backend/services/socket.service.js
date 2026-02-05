@@ -32,6 +32,11 @@ export function setupSocketAPI(http) {
           loggerService.info(`gig-order from socket [id: ${socket.id}],  order ${order}`)  
           gIo.to('seller').emit('ordered-gig',order)
         })
+
+        socket.on('send-msg', msg => {
+         loggerService.info(`send-msg from [id: ${socket.id}], msg `,msg)   
+         gIo.to('chat').emit('msg-sent',msg)
+        })
     })
 }
 
