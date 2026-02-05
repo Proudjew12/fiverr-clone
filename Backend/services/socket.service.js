@@ -1,4 +1,4 @@
-import {loggerService} from './loggerService.service.js'
+import {loggerService} from './logger.service.js'
 import {Server} from 'socket.io'
 
 var gIo = null

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { orderService } from '@/services/order.service.remote.js'
 import { wishlistService } from '@/services/wishlist.service.remote.js'
+import { SOCKET_EVENT_ORDER_GIG, socketService } from '@/services/socket.service.js'
 
 export function useDashboardLists({ buyerName, isSeller } = {}) {
   const [orders, setOrders] = useState([])
@@ -8,13 +9,19 @@ export function useDashboardLists({ buyerName, isSeller } = {}) {
 
   useEffect(() => {
     let isMounted = true
+    socketService.emit('set-topic', 'seller')
+    socketService.on(SOCKET_EVENT_ORDER_GIG,onOrderReceived)
 
+    function onOrderReceived(order) {
+    setOrders(prevOrders => [...prevOrders, order])
+  }
     async function load() {
       const orderParams = isSeller ? {} : buyerName ? { buyerName } : {}
       const orders = await orderService.query(orderParams)
+      
       if (!isMounted) return
       setOrders(orders)
-
+      
       if (!isSeller) {
         const wishParams = buyerName ? { buyerName } : {}
         const wishlist = await wishlistService.query(wishParams)
@@ -41,6 +48,7 @@ export function useDashboardLists({ buyerName, isSeller } = {}) {
       isMounted = false
       window.removeEventListener('orders-updated', onOrdersUpdated)
       window.removeEventListener('wishlist-updated', onWishlistUpdated)
+      socketService.off(SOCKET_EVENT_ORDER_GIG,onOrderReceived)
     }
   }, [buyerName, isSeller])
 

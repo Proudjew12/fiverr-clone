@@ -14,10 +14,11 @@ import { orderRoutes } from "./api/order/order.routes.js";
 import { userRoutes } from "./api/user/user.routes.js";
 import { wishlistRoutes } from "./api/wishlist/wishlist.routes.js";
 import { authRoutes } from "./api/auth/auth.routes.js";
+import { setupSocketAPI } from "./services/socket.service.js";
 
 const app = express();
 const httpServer = http.createServer(app);
-
+setupSocketAPI(httpServer)
 // --------------------
 // Middleware
 // --------------------
