@@ -17,16 +17,6 @@ export function setupSocketAPI(http) {
             loggerService.info(`Socket disconnected [id: ${socket.id}]`)
         })
 
-        socket.on('set-user-socket', userId => {
-            loggerService.info(`Setting socket.userId = ${userId} for socket [id: ${socket.id}]`)
-            socket.userId = userId
-        })
-
-        socket.on('unset-user-socket', () => {
-            loggerService.info(`Removing socket.userId for socket [id: ${socket.id}]`)
-            delete socket.userId
-        })
-
         socket.on('set-topic', topic => {
             if (socket.myTopic === topic) return
             if (socket.myTopic) {
@@ -40,7 +30,7 @@ export function setupSocketAPI(http) {
 
         socket.on('gig-order',order => {
           loggerService.info(`gig-order from socket [id: ${socket.id}],  order ${order}`)  
-          gIo.to('seller').emit('gig-order',order)
+          gIo.to('seller').emit('ordered-gig',order)
         })
     })
 }
