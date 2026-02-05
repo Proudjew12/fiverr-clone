@@ -144,6 +144,7 @@ function _sanitizegig(src) {
   return {
     title: String(src?.title || '').trim(),
     description: String(src?.description || '').trim(),
+    descriptionHtml: String(src?.descriptionHtml || '').trim(),
     price: Number(src?.price || 0),
     tags: Array.isArray(src?.tags) ? src.tags.filter(Boolean) : [],
     imgUrl: String(src?.imgUrl || '').trim(),

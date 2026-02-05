@@ -6,7 +6,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useGigDetails } from '@/hooks/useGigDetails.js'
 import { utilService } from '@/services/util.service'
 import { httpService } from '@/services/http.service'
-import { ReviewFilter } from '@/components/review/ReviewFiter'
 
 export function GigDetails() {
   const { gigId } = useParams()
@@ -19,9 +18,6 @@ export function GigDetails() {
   const reviewsTitle = useRef()
   const sellerTitle = useRef()
   const { gig, gigImgs, index, setIndex, setImg, isLoading } = useGigDetails(gigId)
-  const isSignedIn = localStorage.getItem('isSignedIn') === 'true'
-  const isSeller = localStorage.getItem('isSeller') === 'true'
-
   const tagToTypeLabel = {
     'web-builder': 'Web Builder',
     'video-editing': 'Video Editing',
@@ -56,16 +52,25 @@ export function GigDetails() {
   function onSetFilterBy(newFilterBy){
    setFilterBy({...newFilterBy})
   }
-  function getAvgRatingFromReviews(){
-    var sum = 0
-    gig.reviews.forEach(review => {
-      sum+=review.rate
-    });
-    const avg = sum/gig.reviews.length 
-    return Math.floor(avg * 10) / 10;
+  function getAvgRatingFromReviews(reviews = []) {
+    if (!reviews.length) return 0
+    const sum = reviews.reduce((acc, review) => acc + (review?.rate || 0), 0)
+    const avg = sum / reviews.length
+    return Math.floor(avg * 10) / 10
   }
   if (isLoading) return <Loader />
   if (!gig) return null
+
+  const isSignedIn = localStorage.getItem('isSignedIn') === 'true'
+  const isSeller = localStorage.getItem('isSeller') === 'true'
+  const isStefan = gig?.owner?.fullname?.toLowerCase?.().includes('stefan')
+  const stefanReviewCount = gig?.reviews?.length || 0
+  const reviewTotal = gig?.reviews?.length || 0
+  const ratingCounts = [5, 4, 3, 2, 1].map((score) =>
+    gig?.reviews?.filter((review) => Math.round(review.rate) === score).length || 0
+  )
+  const ratingAverage = getAvgRatingFromReviews(gig?.reviews || [])
+  const ratingPercent = (count) => (reviewTotal ? (count / reviewTotal) * 100 : 0)
 
   const ownerLevel = String(gig?.owner?.level || '').toLowerCase()
   const primaryTag = gig?.tags?.[0] || ''
@@ -216,7 +221,14 @@ export function GigDetails() {
           </div>
           <h2>About this gig</h2>
           <div className="description-container">
-            <p>{gig.description}</p>
+            {gig.descriptionHtml ? (
+              <div
+                className="rich-description"
+                dangerouslySetInnerHTML={{ __html: gig.descriptionHtml }}
+              />
+            ) : (
+              <p>{gig.description}</p>
+            )}
           </div>
           <p className="type">Type</p>
           <ul className="tags">
@@ -226,86 +238,221 @@ export function GigDetails() {
           </ul>
           <div className="about-the-seller">
             <h2 className='seller-title' ref={sellerTitle}>Get to know {gig.owner.fullname}</h2>
-            <div className="seller-stats">
-              <div className="seller-img">
-                <img src={gig.owner.imgUrl} />
-              </div>
-              <div className="seller-name-rate">
-                <span className="fullname">{gig.owner.fullname}</span>
-                <span>Performance Marketer And Ad Creative Specialist</span>
-                <div className='rate-level-container'>
-                  <div className='rate'>
-                    <SvgIcon icon={'star'} />
-                    {gig.owner.rate}
+            {isStefan ? (
+              <div className="stefan-profile">
+                <div className="stefan-header">
+                  <div className="stefan-avatar">
+                    <img src={gig.owner.imgUrl} alt={gig.owner.fullname} />
                   </div>
-                  <div className={(ownerLevel === 'basic') ? 'hidden' : 'level ' + gig.owner.level.replace(/\s+/g, '-')}>
-                    {ownerLevel === 'top rated'
-                      ? 'Top Rated'
-                      : ownerLevel === '2'
-                        ? 'Level 2'
-                        : ownerLevel === '1'
-                          ? 'Level 1'
-                          : ownerLevel === 'basic'
-                            ? 'New'
-                          : ''}
-                    {ownerLevel !== 'basic' ? (
-                      <div className="stars">
-                        <SvgIcon icon={'starBlack'} />
-                        <SvgIcon
-                          icon={ownerLevel !== '1' ? 'starBlack' : 'starTranspet'}
-                        />
-                        <SvgIcon
-                          icon={
-                            ownerLevel === 'top rated' ? 'starBlack' : 'starTranspet'
-                          }
-                        />
-                      </div>
-                    ) : (
-                      ''
-                    )}
+                  <div className="stefan-meta">
+                    <div className="stefan-name-row">
+                      <span className="stefan-name">Stefan G.</span>
+                      <span className="stefan-online">
+                        <span className="dot" />
+                        Online
+                      </span>
+                    </div>
+                    <div className="stefan-role">
+                      Performance Marketer And Ad Creative Specialist
+                    </div>
+                    <div className="stefan-rating-row">
+                      <span className="stefan-rating">
+                        <SvgIcon icon={'star'} />
+                        {gig.owner.rate}
+                        <span className="stefan-reviews">({stefanReviewCount})</span>
+                      </span>
+                      <span className="stefan-divider">|</span>
+                      <span className="stefan-toprated">
+                        Top Rated
+                        <span className="stefan-toprated-stars">
+                          <SvgIcon icon={'starBlack'} />
+                          <SvgIcon icon={'starBlack'} />
+                          <SvgIcon icon={'starBlack'} />
+                        </span>
+                      </span>
+                    </div>
                   </div>
                 </div>
+                <div className="stefan-actions">
+                  <button className="stefan-contact-btn">Contact me</button>
+                </div>
 
-
+                <div className="stefan-card">
+                  <p>
+                    Stefan G. is part of the Leo Pro catalog and has been
+                    hand-picked by a dedicated Leo Pro team for their skills and
+                    expertise.
+                  </p>
+                  <div className="stefan-vetted">
+                    <p className="stefan-vetted-title">Vetted for</p>
+                    <p className="stefan-vetted-item">✓ Social Media Videos</p>
+                  </div>
+                  <div className="stefan-grid">
+                    <div>
+                      <span>From</span>
+                      <strong>Serbia</strong>
+                    </div>
+                    <div>
+                      <span>Member since</span>
+                      <strong>Jan 2023</strong>
+                    </div>
+                    <div>
+                      <span>Avg. response time</span>
+                      <strong>1 hour</strong>
+                    </div>
+                    <div>
+                      <span>Last delivery</span>
+                      <strong>about 12 hours</strong>
+                    </div>
+                    <div>
+                      <span>Languages</span>
+                      <strong>English, Serbian</strong>
+                    </div>
+                  </div>
+                  <div className="stefan-bio">
+                    <p>Hi, I'm Stefan.</p>
+                    <p>
+                      I have 8+ years of experience in content creation and over
+                      3 years in digital marketing, specializing in high-converting
+                      ad creatives and profitable growth strategies.
+                    </p>
+                    <p>
+                      I've worked with world-class brands and produced 1000+ ad
+                      creatives that helped generate $10M+ in profitable revenue.
+                    </p>
+                    <p>
+                      Now, I help eCommerce brands, agencies, and coaching
+                      businesses create scroll-stopping ads and scale with FB/IG
+                      ads.
+                    </p>
+                    <p>Message me now to get started.</p>
+                  </div>
+                </div>
               </div>
-            </div>
-            
-            <div className="seller-details">
-              <ul>
-                <li>
-                  From: <br />
-                  <strong>{gig.loc}</strong>
-                </li>
-                <li>
-                  Avg. respone time: <br />
-                  <strong>{gig.avgResponseTime} hours</strong>
-                </li>
-                <li>
-                  Languages: <br />
-                  <strong>English, German</strong>
-                </li>
-                <li>
-                  Member since: <br />
-                  <strong>Jan 2023</strong>
-                </li>
-                <li>
-                  Last Delivery: <br />
-                  <strong>18 hours</strong>
-                </li>
-              </ul>
-            </div>
+            ) : (
+              <>
+                <div className="seller-stats">
+                  <div className="seller-img">
+                    <img src={gig.owner.imgUrl} />
+                  </div>
+                  <div className="seller-name-rate">
+                    <span className="fullname">{gig.owner.fullname}</span>
+                    <span>Performance Marketer And Ad Creative Specialist</span>
+                    <div className='rate-level-container'>
+                      <div className='rate'>
+                        <SvgIcon icon={'star'} />
+                        {gig.owner.rate}
+                      </div>
+                      <div className={(ownerLevel === 'basic') ? 'hidden' : 'level ' + gig.owner.level.replace(/\s+/g, '-')}>
+                        {ownerLevel === 'top rated'
+                          ? 'Top Rated'
+                          : ownerLevel === '2'
+                            ? 'Level 2'
+                            : ownerLevel === '1'
+                              ? 'Level 1'
+                              : ownerLevel === 'basic'
+                                ? 'New'
+                              : ''}
+                        {ownerLevel !== 'basic' ? (
+                          <div className="stars">
+                            <SvgIcon icon={'starBlack'} />
+                            <SvgIcon
+                              icon={ownerLevel !== '1' ? 'starBlack' : 'starTranspet'}
+                            />
+                            <SvgIcon
+                              icon={
+                                ownerLevel === 'top rated' ? 'starBlack' : 'starTranspet'
+                              }
+                            />
+                          </div>
+                        ) : (
+                          ''
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="seller-details">
+                  <ul>
+                    <li>
+                      From: <br />
+                      <strong>{gig.loc}</strong>
+                    </li>
+                    <li>
+                      Avg. respone time: <br />
+                      <strong>{gig.avgResponseTime} hours</strong>
+                    </li>
+                    <li>
+                      Languages: <br />
+                      <strong>English, German</strong>
+                    </li>
+                    <li>
+                      Member since: <br />
+                      <strong>Jan 2023</strong>
+                    </li>
+                    <li>
+                      Last Delivery: <br />
+                      <strong>18 hours</strong>
+                    </li>
+                  </ul>
+                </div>
+              </>
+            )}
           </div>
           <div className="reviews-title" ref={reviewsTitle}>
             Reviews
           </div>
-          <span className="reviews-sub-title">
-            <span>{gig.reviews.length} reviews for this Gig</span>
-            <span className="rate">
-              <RatingByStars rate={getAvgRatingFromReviews()} />
-              {(getAvgRatingFromReviews())?getAvgRatingFromReviews():''}
-            </span>
-          </span>
-          <ReviewFilter reviews={gig.reviews} filterBy={filterBy} onSetFilterBy={onSetFilterBy}/>
+          <div className="reviews-summary">
+            <div className="reviews-summary-header">
+              <span>{reviewTotal} reviews for this Gig</span>
+              <span className="summary-rating">
+                <RatingByStars rate={ratingAverage} />
+                {ratingAverage ? ratingAverage : ''}
+              </span>
+            </div>
+            <div className="reviews-summary-grid">
+              <div className="reviews-breakdown">
+                {[5, 4, 3, 2, 1].map((score, idx) => (
+                  <button
+                    key={score}
+                    type="button"
+                    className={`breakdown-row ${
+                      filterBy?.rating === score ? 'is-active' : ''
+                    }`}
+                    onClick={() =>
+                      onSetFilterBy(
+                        filterBy?.rating === score ? {} : { ...filterBy, rating: score }
+                      )
+                    }
+                  >
+                    <span className="breakdown-label">{score} Stars</span>
+                    <span className="breakdown-bar">
+                      <span
+                        className="breakdown-fill"
+                        style={{ width: `${ratingPercent(ratingCounts[idx])}%` }}
+                      />
+                    </span>
+                    <span className="breakdown-count">({ratingCounts[idx]})</span>
+                  </button>
+                ))}
+              </div>
+              <div className="reviews-rating-breakdown">
+                <div className="breakdown-title">Rating Breakdown</div>
+                <div className="rating-breakdown-row">
+                  <span>Seller communication level</span>
+                  <span className="rating-score">★ {ratingAverage || 0}</span>
+                </div>
+                <div className="rating-breakdown-row">
+                  <span>Quality of delivery</span>
+                  <span className="rating-score">★ {ratingAverage || 0}</span>
+                </div>
+                <div className="rating-breakdown-row">
+                  <span>Value of delivery</span>
+                  <span className="rating-score">★ {ratingAverage || 0}</span>
+                </div>
+              </div>
+            </div>
+          </div>
           <ReviewList reviews={gig.reviews} filterBy={filterBy} />
         </div>
         <aside>

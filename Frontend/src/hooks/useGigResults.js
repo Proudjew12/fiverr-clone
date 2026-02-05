@@ -41,6 +41,7 @@ function prioritizeTopRated(gigs = [], maxFeatured = 4) {
     if (level === 'top rated') topRated.push(gig)
     else others.push(gig)
   }
+  topRated.sort((a, b) => (b?.createdAt || 0) - (a?.createdAt || 0))
   if (!topRated.length) return gigs
   const featured = topRated.slice(0, maxFeatured)
   const rest = topRated.slice(maxFeatured)

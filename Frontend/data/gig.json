@@ -1,5 +1,129 @@
 [
   {
+    "_id": "g117",
+    "title": "I will edit your video with cinematic cuts, motion graphics, and pro color grading",
+    "price": 189,
+    "owner": {
+      "_id": "u117",
+      "fullname": "Stefan Miller",
+      "imgUrl": "/assets/OfficalGigDemoData/Main/Stef_Miller_Main/ProfileImg/ProfileVE.jpeg",
+      "level": "top rated",
+      "rate": 5
+    },
+    "daysToMake": 2,
+    "description": "Video Editing service focused on clean pacing, cinematic cuts, smooth transitions, and professional color grading. Includes audio cleanup, caption-ready edits, and delivery optimized for YouTube, TikTok, or ads. You'll get a polished, ready-to-publish video with consistent branding and motion graphics when needed.",
+    "avgResponseTime": 1,
+    "loc": "United States",
+    "imgUrl": "/assets/OfficalGigDemoData/Main/Stef_Miller_Main/GigImgOrVideo/ImgVE1.jpg",
+    "imgUrls": [
+      "/assets/OfficalGigDemoData/Main/Stef_Miller_Main/GigImgOrVideo/ImgVE1.jpg",
+      "/assets/OfficalGigDemoData/Main/Stef_Miller_Main/GigImgOrVideo/ImgVE2.png",
+      "/assets/OfficalGigDemoData/Main/Stef_Miller_Main/GigImgOrVideo/ImgVE3.png"
+    ],
+    "videoUrls": [
+      "/assets/OfficalGigDemoData/Main/Stef_Miller_Main/GigImgOrVideo/VideoVE.mp4"
+    ],
+    "tags": [
+      "video-editing"
+    ],
+    "likedByUsers": [],
+    "reviews": [
+      {
+        "id": "r117-1",
+        "txt": "I really enjoyed working with Stefan. His experience in creating strong DTC ads actually works and the hook strategy was spot on. Thank you so much for your work \u2014 I'm looking forward to building with you even further.",
+        "rate": 5,
+        "by": {
+          "_id": "u301",
+          "fullname": "Praise Ehwu",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]41.png"
+        }
+      },
+      {
+        "id": "r117-2",
+        "txt": "This is my second time working with Stefan and it won't be my last. He is very creative and responsive to the minor edits I requested. His communication skills are just as good as his creative skills!",
+        "rate": 5,
+        "by": {
+          "_id": "u302",
+          "fullname": "Konraad V",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]12.png"
+        }
+      },
+      {
+        "id": "r117-3",
+        "txt": "Perfect color grade and audio polish. The final export looks premium and consistent with our brand. Stefan also made smart pacing tweaks that made the ad feel much more dynamic.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u303",
+          "fullname": "Maya Chen",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]33.png"
+        }
+      },
+      {
+        "id": "r117-4",
+        "txt": "Great communication and clear edits. Our CTR improved right away and the creative felt much more polished. He even suggested a better opening hook that performed better.",
+        "rate": 5,
+        "by": {
+          "_id": "u304",
+          "fullname": "Liam Carter",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]7.png"
+        }
+      },
+      {
+        "id": "r117-5",
+        "txt": "He refined our raw footage into a conversion-first ad and made it feel high-end. The pacing, captions, and transitions were clean and the end result matched our brand perfectly.",
+        "rate": 5,
+        "by": {
+          "_id": "u305",
+          "fullname": "Nora Silva",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]55.png"
+        }
+      },
+      {
+        "id": "r117-6",
+        "txt": "Hooks were strong and the cut was tight. Exactly what we asked for, but even better. He delivered quickly and was super easy to work with.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u306",
+          "fullname": "Priya Menon",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]22.png"
+        }
+      },
+      {
+        "id": "r117-7",
+        "txt": "Professional, on time, and the ad looks top-tier. Our team loved the structure and the messaging flow. We will definitely order again for the next campaign.",
+        "rate": 5,
+        "by": {
+          "_id": "u307",
+          "fullname": "Ethan Brooks",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]69.png"
+        }
+      },
+      {
+        "id": "r117-8",
+        "txt": "Strong narrative flow and polished transitions. Great creative sense and excellent attention to detail. The final cut kept viewers engaged to the end.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u308",
+          "fullname": "Ahmed Hassan",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]2.png"
+        }
+      },
+      {
+        "id": "r117-9",
+        "txt": "Best editing experience we have had on Leo. The ad performed immediately and the creative quality was top notch. Results speak for themselves.",
+        "rate": 5,
+        "by": {
+          "_id": "u309",
+          "fullname": "Sofia Rossi",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]73.png"
+        }
+      }
+    ],
+    "createdAt": 1770242806332,
+    "updatedAt": 1770242806332,
+    "descriptionHtml": "<p><span class=\"highlight\">Stop wasting</span> your time and money searching for a <em>perfect video editor</em>. You won't find one because video editors focus on only one thing \u2013 <strong>editing videos!</strong> But when you're running a business, your ads don't just need to look nice, they need to <span class=\"highlight\">SELL!</span></p>\n<p><span class=\"highlight\">Hi, I'm Stefan</span> and this is where my gig comes in. I'm not just going to edit best ads on Leo, but I'm going to do so following a <span class=\"highlight\">conversion-first approach!</span> Meaning that I prioritize <strong>performance</strong> over anything else.</p>\n<p class=\"section-title\"><span class=\"highlight\">Here's how the gig works:</span></p>\n<ul>\n  <li>Message me to discuss your project (and place an order)</li>\n  <li>Send the footage and fill in the requirements</li>\n  <li>Take a rest while we finish your ad in <strong>24 hours*</strong></li>\n  <li>Enjoy up to 3 highly-optimized versions of your ad (with different hooks)</li>\n</ul>\n<p class=\"section-title\"><span class=\"highlight\">Why us?</span></p>\n<ul>\n  <li>Over 8 years in the industry</li>\n  <li>Helped 500+ clients achieve <strong>ACTUAL results</strong></li>\n  <li>Our proven UGC editing formula guarantees more conversions</li>\n  <li>Express delivery time</li>\n</ul>\n<p>As you can see, our service is unlike anything else Leo has to offer.</p>\n<p><span class=\"highlight\">Don't hesitate and save your spot while it's available.</span></p>\n<p class=\"note\"><em>*Due to high demand, 24-hour delivery is only available as an extra.</em></p>\n<p class=\"note\"><span class=\"highlight\">IMPORTANT: Prices will be going up to $250 for the Basic package and $375 for the Standard package SOON!</span></p>"
+  },
+  {
     "_id": "g1",
     "title": "I will build a clean Web Builder landing page",
     "price": 120,
@@ -176,7 +300,7 @@
       },
       {
         "id": "r3-3",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u205",
@@ -229,7 +353,7 @@
       },
       {
         "id": "r4-2",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u205",
@@ -282,7 +406,7 @@
     "reviews": [
       {
         "id": "r5-1",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u205",
@@ -554,7 +678,7 @@
       },
       {
         "id": "r9-3",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u211",
@@ -607,7 +731,7 @@
       },
       {
         "id": "r10-2",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u211",
@@ -660,7 +784,7 @@
     "reviews": [
       {
         "id": "r11-1",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u211",
@@ -932,7 +1056,7 @@
       },
       {
         "id": "r15-3",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u217",
@@ -985,7 +1109,7 @@
       },
       {
         "id": "r16-2",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u217",
@@ -1038,7 +1162,7 @@
     "reviews": [
       {
         "id": "r17-1",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u217",
@@ -1310,7 +1434,7 @@
       },
       {
         "id": "r21-3",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u223",
@@ -1363,7 +1487,7 @@
       },
       {
         "id": "r22-2",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u223",
@@ -1416,7 +1540,7 @@
     "reviews": [
       {
         "id": "r23-1",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u223",
@@ -1688,7 +1812,7 @@
       },
       {
         "id": "r27-3",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u229",
@@ -1741,7 +1865,7 @@
       },
       {
         "id": "r28-2",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u229",
@@ -1794,7 +1918,7 @@
     "reviews": [
       {
         "id": "r29-1",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u229",
@@ -2066,7 +2190,7 @@
       },
       {
         "id": "r33-3",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u235",
@@ -2119,7 +2243,7 @@
       },
       {
         "id": "r34-2",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u235",
@@ -2172,7 +2296,7 @@
     "reviews": [
       {
         "id": "r35-1",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u235",
@@ -2444,7 +2568,7 @@
       },
       {
         "id": "r39-3",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u241",
@@ -2497,7 +2621,7 @@
       },
       {
         "id": "r40-2",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u241",
@@ -2550,7 +2674,7 @@
     "reviews": [
       {
         "id": "r41-1",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u241",
@@ -2822,7 +2946,7 @@
       },
       {
         "id": "r45-3",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u247",
@@ -2875,7 +2999,7 @@
       },
       {
         "id": "r46-2",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u247",
@@ -2928,7 +3052,7 @@
     "reviews": [
       {
         "id": "r47-1",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u247",
@@ -3200,7 +3324,7 @@
       },
       {
         "id": "r51-3",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u253",
@@ -3253,7 +3377,7 @@
       },
       {
         "id": "r52-2",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u253",
@@ -3306,7 +3430,7 @@
     "reviews": [
       {
         "id": "r53-1",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u253",
@@ -3578,7 +3702,7 @@
       },
       {
         "id": "r57-3",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u259",
@@ -3631,7 +3755,7 @@
       },
       {
         "id": "r58-2",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u259",
@@ -3684,7 +3808,7 @@
     "reviews": [
       {
         "id": "r59-1",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u259",
@@ -3956,7 +4080,7 @@
       },
       {
         "id": "r63-3",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u265",
@@ -4009,7 +4133,7 @@
       },
       {
         "id": "r64-2",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u265",
@@ -4062,7 +4186,7 @@
     "reviews": [
       {
         "id": "r65-1",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u265",
@@ -4334,7 +4458,7 @@
       },
       {
         "id": "r69-3",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u271",
@@ -4387,7 +4511,7 @@
       },
       {
         "id": "r70-2",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u271",
@@ -4440,7 +4564,7 @@
     "reviews": [
       {
         "id": "r71-1",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u271",
@@ -4712,7 +4836,7 @@
       },
       {
         "id": "r75-3",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u277",
@@ -4765,7 +4889,7 @@
       },
       {
         "id": "r76-2",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u277",
@@ -4818,7 +4942,7 @@
     "reviews": [
       {
         "id": "r77-1",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u277",
@@ -5090,7 +5214,7 @@
       },
       {
         "id": "r81-3",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u283",
@@ -5143,7 +5267,7 @@
       },
       {
         "id": "r82-2",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u283",
@@ -5196,7 +5320,7 @@
     "reviews": [
       {
         "id": "r83-1",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u283",
@@ -5468,7 +5592,7 @@
       },
       {
         "id": "r87-3",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u289",
@@ -5521,7 +5645,7 @@
       },
       {
         "id": "r88-2",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u289",
@@ -5574,7 +5698,7 @@
     "reviews": [
       {
         "id": "r89-1",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u289",
@@ -5846,7 +5970,7 @@
       },
       {
         "id": "r93-3",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u295",
@@ -5899,7 +6023,7 @@
       },
       {
         "id": "r94-2",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u295",
@@ -5952,7 +6076,7 @@
     "reviews": [
       {
         "id": "r95-1",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u295",
@@ -6224,7 +6348,7 @@
       },
       {
         "id": "r99-3",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u301",
@@ -6277,7 +6401,7 @@
       },
       {
         "id": "r100-2",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u301",
@@ -6330,7 +6454,7 @@
     "reviews": [
       {
         "id": "r101-1",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u301",
@@ -6602,7 +6726,7 @@
       },
       {
         "id": "r105-3",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u307",
@@ -6655,7 +6779,7 @@
       },
       {
         "id": "r106-2",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u307",
@@ -6708,7 +6832,7 @@
     "reviews": [
       {
         "id": "r107-1",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u307",
@@ -6980,7 +7104,7 @@
       },
       {
         "id": "r111-3",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u313",
@@ -7033,7 +7157,7 @@
       },
       {
         "id": "r112-2",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u313",
@@ -7086,7 +7210,7 @@
     "reviews": [
       {
         "id": "r113-1",
-        "txt": "Amazing results — exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u313",
