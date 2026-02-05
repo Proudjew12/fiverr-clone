@@ -1,60 +1,38 @@
 import { SvgIcon } from '@/components/svg/SvgIcon'
-import demoData from '@/data/demo-data.json'
 import { useNavigate } from 'react-router-dom'
-import { gigService } from '@/services/gig.service.remote.js'
+import { gigService, categoryFilters, categories } from '@/services/gig.service.remote.js'
 
-const categories = demoData.home.categories
-
-export function HomeCategories({ onCategoryClick }) {
+export function HomeCategories() {
   const navigate = useNavigate()
 
-  const categoryFilters = {
-    programming: { tag: 'web-builder' },
-    graphics: { tag: 'shopify' },
-    marketing: { tag: 'ad-social' },
-    writing: { tag: 'ad-social' },
-    video: { tag: 'video-editing' },
-    ai: { tag: 'web-builder' },
-    music: { tag: 'video-editing' },
-    business: { tag: 'shopify' },
-    consulting: { tag: 'shopify' },
-  }
-
   function handleCategoryClick(cat) {
-    onCategoryClick?.(cat)
-    const filter = categoryFilters[cat.key] || { txt: cat.label.replace(/\s+/g, ' ') }
-    const base = gigService.getDefaultFilter()
+    const filter = categoryFilters[cat.key] || {
+      txt: cat.label.replace(/\s+/g, ' '),
+    }
+    const baseFilter = gigService.getDefaultFilter()
     const filterBy = {
-      ...base,
+      ...baseFilter,
       txt: filter.txt || '',
       tags: filter.tag ? [filter.tag] : [],
     }
     const params = gigService.buildSearchParamsFromFilter(filterBy)
     const search = params.toString()
-    navigate(search ? `/index?${search}` : '/index')
+    navigate(`/index?${search || ''}`)
   }
 
   return (
-    <section className="home-categories" aria-label="Browse categories">
-      <div className="home-categories-inner">
-        <div className="home-categories-row flex" role="list">
-          {categories.map((cat) => (
-            <button
-              key={cat.key}
-              type="button"
-              className="home-category-card grid"
-              role="listitem"
-              onClick={() => handleCategoryClick(cat)}
-            >
-              <span className="home-category-icon grid place-center" aria-hidden="true">
-                <SvgIcon icon={cat.icon} />
-              </span>
+    <section className="home-categories">
+      {categories.map((cat) => (
+        <button
+          key={cat.key}
+          className="home-category-card grid"
+          onClick={() => handleCategoryClick(cat)}
+        >
+          <SvgIcon icon={cat.icon} />
 
-              <span className="home-category-title">{cat.label}</span>
-            </button>
-          ))}
-        </div>
-      </div>
+          <span className="home-category-title">{cat.label}</span>
+        </button>
+      ))}
     </section>
   )
 }

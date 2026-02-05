@@ -1,6 +1,7 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { httpService } from './http.service.js'
+import demoData from '@/data/demo-data.json'
 
 const BASE_URL = 'gig'
 
@@ -14,6 +15,20 @@ export const gigService = {
   getDefaultFilter,
   buildFilterFromSearchParams,
   buildSearchParamsFromFilter,
+}
+
+export const categories = demoData.home.categories
+
+export const categoryFilters = {
+  programming: { tag: 'web-builder' },
+  graphics: { tag: 'shopify' },
+  marketing: { tag: 'ad-social' },
+  writing: { tag: 'ad-social' },
+  video: { tag: 'video-editing' },
+  ai: { tag: 'web-builder' },
+  music: { tag: 'video-editing' },
+  business: { tag: 'shopify' },
+  consulting: { tag: 'shopify' },
 }
 
 

@@ -1,7 +1,7 @@
 import { ReviewList } from '@/components/review/ReviewList'
 import { SvgIcon } from '@/components/svg/SvgIcon'
 import { Loader } from 'lucide-react'
-import { Fragment, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useGigDetails } from '@/hooks/useGigDetails.js'
 import { utilService } from '@/services/util.service'
@@ -13,6 +13,13 @@ export function GigDetails() {
   function handleLoginPrompt() {
     window.dispatchEvent(new CustomEvent('highlight-signin'))
   }
+  const [isChatOpen, setIsChatOpen] = useState(false)
+  const [isChatMinimized, setIsChatMinimized] = useState(false)
+  const [chatMessages, setChatMessages] = useState([])
+  const [chatInput, setChatInput] = useState('')
+  const chatThreadRef = useRef(null)
+  const chatInputRef = useRef(null)
+  const fileInputRef = useRef(null)
   const [selectedTab, setSelectedTab] = useState(1)
   const [filterBy, setFilterBy] = useState({})
   const reviewsTitle = useRef()
@@ -31,6 +38,65 @@ export function GigDetails() {
     shopify: 'Shopify',
     'ad-social': 'Ad & Social',
   }
+
+  function getTimeLabel() {
+    try {
+      return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    } catch {
+      return '19:47'
+    }
+  }
+
+  function handleSuggestionClick(text) {
+    setChatMessages((prev) => [
+      ...prev,
+      { id: `${Date.now()}-${prev.length}`, text },
+    ])
+  }
+
+  function handleSendMessage() {
+    const text = chatInput.trim()
+    if (!text) return
+    setChatMessages((prev) => [
+      ...prev,
+      { id: `${Date.now()}-${prev.length}`, text },
+    ])
+    setChatInput('')
+  }
+
+  function handleEmojiClick() {
+    const emoji = '😊'
+    setChatInput((prev) => `${prev}${emoji}`)
+    if (chatInputRef.current) {
+      chatInputRef.current.focus()
+    }
+  }
+
+  function handleAttachClick() {
+    fileInputRef.current?.click()
+  }
+
+  function handleFileChange(event) {
+    const file = event.target.files?.[0]
+    if (!file) return
+    setChatMessages((prev) => [
+      ...prev,
+      { id: `${Date.now()}-${prev.length}`, text: `Attachment: ${file.name}` },
+    ])
+    event.target.value = ''
+  }
+
+  function handleChatKeyDown(event) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault()
+      handleSendMessage()
+    }
+  }
+
+  useEffect(() => {
+    if (!chatThreadRef.current) return
+    chatThreadRef.current.scrollTop = chatThreadRef.current.scrollHeight
+  }, [chatMessages.length, isChatOpen, isChatMinimized])
 
   function toTitleCase(value) {
     if (!value) return ''
@@ -274,7 +340,22 @@ export function GigDetails() {
                   </div>
                 </div>
                 <div className="stefan-actions">
-                  <button className="stefan-contact-btn">Contact me</button>
+                  <button
+                    className="stefan-contact-btn"
+                    type="button"
+                    onClick={() => {
+                      if (!isSignedIn) {
+                        handleLoginPrompt()
+                        return
+                      }
+                      if (isSeller) return
+                      setIsChatOpen(true)
+                    }}
+                    disabled={!isSignedIn || isSeller}
+                    aria-disabled={!isSignedIn || isSeller}
+                  >
+                    Contact me
+                  </button>
                 </div>
 
                 <div className="stefan-card">
@@ -455,6 +536,146 @@ export function GigDetails() {
           </div>
           <ReviewList reviews={gig.reviews} filterBy={filterBy} />
         </div>
+        {isStefan && isChatOpen && (
+          <div
+            className={`stefan-chat-widget ${isChatMinimized ? 'is-minimized' : ''}`}
+            role="dialog"
+            aria-label="Message Stefan G"
+          >
+            {!isChatMinimized && (
+              <>
+                <div className="stefan-chat-top">
+                  <span>
+                    It&apos;s {getTimeLabel()} for Stefan G. It might take some time to get a response
+                  </span>
+                </div>
+                <div className="stefan-chat-header">
+                  <div className="stefan-chat-avatar">
+                    <img src={gig.owner.imgUrl} alt={gig.owner.fullname} />
+                  </div>
+                  <div className="stefan-chat-meta">
+                    <div className="stefan-chat-title">Message Stefan G</div>
+                    <div className="stefan-chat-subtitle">
+                      Away · Avg. response time: 1 Hour
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    className="stefan-chat-close"
+                    onClick={() => setIsChatMinimized(true)}
+                    aria-label="Minimize chat"
+                  >
+                    ×
+                  </button>
+                </div>
+              </>
+            )}
+            {!isChatMinimized && (
+              <>
+                <div className="stefan-chat-body">
+              {chatMessages.length === 0 && (
+                <p className="stefan-chat-hint">
+                  Ask Stefan G a question or share your project details (requirements, timeline,
+                  budget, etc.)
+                </p>
+              )}
+              <div className="stefan-chat-thread" ref={chatThreadRef}>
+                {chatMessages.map((message) => (
+                  <div key={message.id} className="stefan-chat-bubble is-user">
+                    {message.text}
+                  </div>
+                ))}
+              </div>
+              {chatMessages.length === 0 && (
+                <div className="stefan-chat-suggestions">
+                  <button
+                    type="button"
+                    onClick={() => handleSuggestionClick('Hey Stefan, can you edit my ads?')}
+                  >
+                    Hey Stefan, can you edit my ads?
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      handleSuggestionClick('Can you help improve my hooks and pacing?')
+                    }
+                  >
+                    Can you help improve my hooks and pacing?
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      handleSuggestionClick('I have a project ready. What do you need?')
+                    }
+                  >
+                    I have a project ready. What do you need?
+                  </button>
+                </div>
+              )}
+              <textarea
+                className="stefan-chat-input"
+                rows="3"
+                maxLength={2500}
+                placeholder="Type your message..."
+                value={chatInput}
+                onChange={(event) => setChatInput(event.target.value)}
+                onKeyDown={handleChatKeyDown}
+                ref={chatInputRef}
+              />
+              <div className="stefan-chat-count">{chatInput.length}/2500</div>
+            </div>
+            <div className="stefan-chat-footer">
+              <div className="stefan-chat-actions">
+                <button
+                  type="button"
+                  className="icon-btn icon-emoji"
+                  aria-label="Emoji"
+                  onClick={handleEmojiClick}
+                >
+                  ☺
+                </button>
+                <button
+                  type="button"
+                  className="icon-btn icon-attach"
+                  aria-label="Attach"
+                  onClick={handleAttachClick}
+                >
+                  📎
+                </button>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  className="chat-file-input"
+                  onChange={handleFileChange}
+                />
+              </div>
+              <button
+                type="button"
+                className={`stefan-chat-send ${chatInput.trim() ? 'is-active' : ''}`}
+                disabled={!chatInput.trim()}
+                onClick={handleSendMessage}
+              >
+                Send message
+              </button>
+                </div>
+              </>
+            )}
+            {isChatMinimized && (
+              <div className="stefan-chat-minimized" onClick={() => setIsChatMinimized(false)}>
+                <div className="stefan-chat-avatar">
+                  <img src={gig.owner.imgUrl} alt={gig.owner.fullname} />
+                </div>
+                <div className="stefan-chat-meta">
+                  <div className="stefan-chat-title">Message Stefan G</div>
+                  <div className="stefan-chat-subtitle">
+                    Online · Avg. response time: 1 Hour
+                  </div>
+                </div>
+                <span className="stefan-chat-dot" />
+              </div>
+            )}
+          </div>
+        )}
         <aside>
           <div className="call-to-action">
             <div className="tabs-container">
