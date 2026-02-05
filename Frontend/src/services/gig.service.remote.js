@@ -2,6 +2,7 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { httpService } from './http.service.js'
 import demoData from '@/data/demo-data.json'
+import gigData from '../../data/gig.json'
 
 const BASE_URL = 'gig'
 
@@ -9,6 +10,7 @@ const BASE_URL = 'gig'
 export const gigService = {
   query,
   getById,
+  getDemoGigById,
   save,
   remove,
   getEmptyItem,
@@ -39,6 +41,12 @@ async function query(filterBy = {}, options) {
 
 function getById(id, options) {
   return httpService.get(`${BASE_URL}/${id}`, null, options)
+}
+
+function getDemoGigById(gigId) {
+  if (!gigId) return null
+  const gigs = Array.isArray(gigData) ? gigData : []
+  return gigs.find((gig) => gig?._id === gigId) || null
 }
 
 function remove(id, options) {

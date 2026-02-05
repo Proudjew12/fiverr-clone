@@ -48,19 +48,13 @@ export function GigDetails() {
   }
 
   function handleSuggestionClick(text) {
-    setChatMessages((prev) => [
-      ...prev,
-      { id: `${Date.now()}-${prev.length}`, text },
-    ])
+    setChatMessages((prev) => [...prev, { id: `${Date.now()}-${prev.length}`, text }])
   }
 
   function handleSendMessage() {
     const text = chatInput.trim()
     if (!text) return
-    setChatMessages((prev) => [
-      ...prev,
-      { id: `${Date.now()}-${prev.length}`, text },
-    ])
+    setChatMessages((prev) => [...prev, { id: `${Date.now()}-${prev.length}`, text }])
     setChatInput('')
   }
 
@@ -115,8 +109,8 @@ export function GigDetails() {
 
     return 'unknown'
   }
-  function onSetFilterBy(newFilterBy){
-   setFilterBy({...newFilterBy})
+  function onSetFilterBy(newFilterBy) {
+    setFilterBy({ ...newFilterBy })
   }
   function getAvgRatingFromReviews(reviews = []) {
     if (!reviews.length) return 0
@@ -127,19 +121,40 @@ export function GigDetails() {
   if (isLoading) return <Loader />
   if (!gig) return null
 
+  const ownerLevel = String(gig?.owner?.level || '').toLowerCase()
+  const primaryTag = gig?.tags?.[0] || ''
   const isSignedIn = localStorage.getItem('isSignedIn') === 'true'
   const isSeller = localStorage.getItem('isSeller') === 'true'
-  const isStefan = gig?.owner?.fullname?.toLowerCase?.().includes('stefan')
-  const stefanReviewCount = gig?.reviews?.length || 0
+  const isTopRatedSeller = ownerLevel === 'top rated'
   const reviewTotal = gig?.reviews?.length || 0
-  const ratingCounts = [5, 4, 3, 2, 1].map((score) =>
-    gig?.reviews?.filter((review) => Math.round(review.rate) === score).length || 0
+  const ownerName = gig?.owner?.fullname || 'Seller'
+  const ownerFirstName = ownerName.split(' ')[0] || 'Seller'
+  const ownerDisplayName = (() => {
+    const parts = ownerName.split(' ').filter(Boolean)
+    if (parts.length < 2) return ownerName
+    return `${parts[0]} ${parts[1][0]}.`
+  })()
+  const ownerRoleLabel =
+    {
+      'web-builder': 'Web Builder Specialist',
+      'video-editing': 'Video Editing Specialist',
+      shopify: 'Shopify Store Expert',
+      'ad-social': 'Ad & Social Specialist',
+    }[primaryTag] || 'Creative Specialist'
+  const vettedLabel =
+    {
+      'web-builder': 'Landing Pages',
+      'video-editing': 'Social Media Videos',
+      shopify: 'Shopify Stores',
+      'ad-social': 'Paid Ad Creatives',
+    }[primaryTag] || 'Creative Services'
+  const ratingCounts = [5, 4, 3, 2, 1].map(
+    (score) =>
+      gig?.reviews?.filter((review) => Math.round(review.rate) === score).length || 0
   )
   const ratingAverage = getAvgRatingFromReviews(gig?.reviews || [])
   const ratingPercent = (count) => (reviewTotal ? (count / reviewTotal) * 100 : 0)
 
-  const ownerLevel = String(gig?.owner?.level || '').toLowerCase()
-  const primaryTag = gig?.tags?.[0] || ''
   const typeLabel = tagToTypeLabel[primaryTag] || toTitleCase(primaryTag) || 'Gig'
   const homeTarget = isSignedIn ? '/index' : '/'
 
@@ -192,11 +207,16 @@ export function GigDetails() {
             </div>
             <div className="name-rate-container">
               <div className="owner-details">
-                <div onClick={() => {
+                <div
+                  onClick={() => {
                     sellerTitle.current?.scrollIntoView({
                       behavior: 'smooth',
                     })
-                  }} className="fullname">{gig.owner.fullname}</div>{' '}
+                  }}
+                  className="fullname"
+                >
+                  {gig.owner.fullname}
+                </div>{' '}
                 <div className={'level ' + gig.owner.level.replace(/\s+/g, '-')}>
                   {ownerLevel === 'top rated'
                     ? 'Top Rated'
@@ -206,17 +226,13 @@ export function GigDetails() {
                         ? 'Level 1'
                         : ownerLevel === 'basic'
                           ? 'New'
-                        : ''}
+                          : ''}
                   {ownerLevel !== 'basic' ? (
                     <div className="stars">
                       <SvgIcon icon={'starBlack'} />
+                      <SvgIcon icon={ownerLevel !== '1' ? 'starBlack' : 'starTranspet'} />
                       <SvgIcon
-                        icon={ownerLevel !== '1' ? 'starBlack' : 'starTranspet'}
-                      />
-                      <SvgIcon
-                        icon={
-                          ownerLevel === 'top rated' ? 'starBlack' : 'starTranspet'
-                        }
+                        icon={ownerLevel === 'top rated' ? 'starBlack' : 'starTranspet'}
                       />
                     </div>
                   ) : (
@@ -225,9 +241,8 @@ export function GigDetails() {
                 </div>
               </div>
               <div className="rate">
-                {' '}
-                <RatingByStars rate={getAvgRatingFromReviews()} />
-                {(getAvgRatingFromReviews())?getAvgRatingFromReviews():''}
+                <RatingByStars rate={getAvgRatingFromReviews(gig?.reviews || [])} />
+                {getAvgRatingFromReviews(gig?.reviews || []) || ''}
                 <span
                   className="reviews-counter"
                   onClick={() => {
@@ -303,8 +318,10 @@ export function GigDetails() {
             ))}
           </ul>
           <div className="about-the-seller">
-            <h2 className='seller-title' ref={sellerTitle}>Get to know {gig.owner.fullname}</h2>
-            {isStefan ? (
+            <h2 className="seller-title" ref={sellerTitle}>
+              Get to know {gig.owner.fullname}
+            </h2>
+            {isTopRatedSeller ? (
               <div className="stefan-profile">
                 <div className="stefan-header">
                   <div className="stefan-avatar">
@@ -312,20 +329,18 @@ export function GigDetails() {
                   </div>
                   <div className="stefan-meta">
                     <div className="stefan-name-row">
-                      <span className="stefan-name">Stefan G.</span>
+                      <span className="stefan-name">{ownerDisplayName}</span>
                       <span className="stefan-online">
                         <span className="dot" />
                         Online
                       </span>
                     </div>
-                    <div className="stefan-role">
-                      Performance Marketer And Ad Creative Specialist
-                    </div>
+                    <div className="stefan-role">{ownerRoleLabel}</div>
                     <div className="stefan-rating-row">
                       <span className="stefan-rating">
                         <SvgIcon icon={'star'} />
                         {gig.owner.rate}
-                        <span className="stefan-reviews">({stefanReviewCount})</span>
+                        <span className="stefan-reviews">({reviewTotal})</span>
                       </span>
                       <span className="stefan-divider">|</span>
                       <span className="stefan-toprated">
@@ -360,18 +375,18 @@ export function GigDetails() {
 
                 <div className="stefan-card">
                   <p>
-                    Stefan G. is part of the Leo Pro catalog and has been
+                    {ownerDisplayName} is part of the Leo Pro catalog and has been
                     hand-picked by a dedicated Leo Pro team for their skills and
                     expertise.
                   </p>
                   <div className="stefan-vetted">
                     <p className="stefan-vetted-title">Vetted for</p>
-                    <p className="stefan-vetted-item">✓ Social Media Videos</p>
+                    <p className="stefan-vetted-item">✓ {vettedLabel}</p>
                   </div>
                   <div className="stefan-grid">
                     <div>
                       <span>From</span>
-                      <strong>Serbia</strong>
+                      <strong>{gig.loc || 'United States'}</strong>
                     </div>
                     <div>
                       <span>Member since</span>
@@ -379,7 +394,7 @@ export function GigDetails() {
                     </div>
                     <div>
                       <span>Avg. response time</span>
-                      <strong>1 hour</strong>
+                      <strong>{gig.avgResponseTime || 1} hour</strong>
                     </div>
                     <div>
                       <span>Last delivery</span>
@@ -387,25 +402,20 @@ export function GigDetails() {
                     </div>
                     <div>
                       <span>Languages</span>
-                      <strong>English, Serbian</strong>
+                      <strong>English</strong>
                     </div>
                   </div>
                   <div className="stefan-bio">
-                    <p>Hi, I'm Stefan.</p>
+                    <p>Hi, I'm {ownerFirstName}.</p>
                     <p>
-                      I have 8+ years of experience in content creation and over
-                      3 years in digital marketing, specializing in high-converting
-                      ad creatives and profitable growth strategies.
+                      I focus on conversion-first creatives with clean pacing, clear
+                      messaging, and performance-driven edits tailored to your brand.
                     </p>
                     <p>
-                      I've worked with world-class brands and produced 1000+ ad
-                      creatives that helped generate $10M+ in profitable revenue.
+                      I deliver polished videos that help you retain attention and drive
+                      action across ads, social, and landing pages.
                     </p>
-                    <p>
-                      Now, I help eCommerce brands, agencies, and coaching
-                      businesses create scroll-stopping ads and scale with FB/IG
-                      ads.
-                    </p>
+                    <p>If you have a project ready, message me and we can move fast.</p>
                     <p>Message me now to get started.</p>
                   </div>
                 </div>
@@ -419,12 +429,18 @@ export function GigDetails() {
                   <div className="seller-name-rate">
                     <span className="fullname">{gig.owner.fullname}</span>
                     <span>Performance Marketer And Ad Creative Specialist</span>
-                    <div className='rate-level-container'>
-                      <div className='rate'>
+                    <div className="rate-level-container">
+                      <div className="rate">
                         <SvgIcon icon={'star'} />
                         {gig.owner.rate}
                       </div>
-                      <div className={(ownerLevel === 'basic') ? 'hidden' : 'level ' + gig.owner.level.replace(/\s+/g, '-')}>
+                      <div
+                        className={
+                          ownerLevel === 'basic'
+                            ? 'hidden'
+                            : 'level ' + gig.owner.level.replace(/\s+/g, '-')
+                        }
+                      >
                         {ownerLevel === 'top rated'
                           ? 'Top Rated'
                           : ownerLevel === '2'
@@ -433,7 +449,7 @@ export function GigDetails() {
                               ? 'Level 1'
                               : ownerLevel === 'basic'
                                 ? 'New'
-                              : ''}
+                                : ''}
                         {ownerLevel !== 'basic' ? (
                           <div className="stars">
                             <SvgIcon icon={'starBlack'} />
@@ -536,17 +552,18 @@ export function GigDetails() {
           </div>
           <ReviewList reviews={gig.reviews} filterBy={filterBy} />
         </div>
-        {isStefan && isChatOpen && (
+        {isTopRatedSeller && isChatOpen && (
           <div
             className={`stefan-chat-widget ${isChatMinimized ? 'is-minimized' : ''}`}
             role="dialog"
-            aria-label="Message Stefan G"
+            aria-label={`Message ${ownerDisplayName}`}
           >
             {!isChatMinimized && (
               <>
                 <div className="stefan-chat-top">
                   <span>
-                    It&apos;s {getTimeLabel()} for Stefan G. It might take some time to get a response
+                    It&apos;s {getTimeLabel()} for {ownerDisplayName}. It might take some
+                    time to get a response
                   </span>
                 </div>
                 <div className="stefan-chat-header">
@@ -554,7 +571,7 @@ export function GigDetails() {
                     <img src={gig.owner.imgUrl} alt={gig.owner.fullname} />
                   </div>
                   <div className="stefan-chat-meta">
-                    <div className="stefan-chat-title">Message Stefan G</div>
+                    <div className="stefan-chat-title">Message {ownerDisplayName}</div>
                     <div className="stefan-chat-subtitle">
                       Away · Avg. response time: 1 Hour
                     </div>
@@ -573,100 +590,111 @@ export function GigDetails() {
             {!isChatMinimized && (
               <>
                 <div className="stefan-chat-body">
-              {chatMessages.length === 0 && (
-                <p className="stefan-chat-hint">
-                  Ask Stefan G a question or share your project details (requirements, timeline,
-                  budget, etc.)
-                </p>
-              )}
-              <div className="stefan-chat-thread" ref={chatThreadRef}>
-                {chatMessages.map((message) => (
-                  <div key={message.id} className="stefan-chat-bubble is-user">
-                    {message.text}
+                  {chatMessages.length === 0 && (
+                    <p className="stefan-chat-hint">
+                      Ask {ownerDisplayName} a question or share your project details
+                      (requirements, timeline, budget, etc.)
+                    </p>
+                  )}
+                  <div className="stefan-chat-thread" ref={chatThreadRef}>
+                    {chatMessages.map((message) => (
+                      <div key={message.id} className="stefan-chat-bubble is-user">
+                        {message.text}
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-              {chatMessages.length === 0 && (
-                <div className="stefan-chat-suggestions">
-                  <button
-                    type="button"
-                    onClick={() => handleSuggestionClick('Hey Stefan, can you edit my ads?')}
-                  >
-                    Hey Stefan, can you edit my ads?
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      handleSuggestionClick('Can you help improve my hooks and pacing?')
-                    }
-                  >
-                    Can you help improve my hooks and pacing?
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      handleSuggestionClick('I have a project ready. What do you need?')
-                    }
-                  >
-                    I have a project ready. What do you need?
-                  </button>
+                  {chatMessages.length === 0 && (
+                    <div className="stefan-chat-suggestions">
+                      <button
+                        type="button"
+                        onClick={() =>
+                          handleSuggestionClick(
+                            `Hey ${ownerFirstName}, can you edit my ads?`
+                          )
+                        }
+                      >
+                        Hey {ownerFirstName}, can you edit my ads?
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          handleSuggestionClick(
+                            'Can you help improve my hooks and pacing?'
+                          )
+                        }
+                      >
+                        Can you help improve my hooks and pacing?
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          handleSuggestionClick(
+                            'I have a project ready. What do you need?'
+                          )
+                        }
+                      >
+                        I have a project ready. What do you need?
+                      </button>
+                    </div>
+                  )}
+                  <textarea
+                    className="stefan-chat-input"
+                    rows="3"
+                    maxLength={2500}
+                    placeholder="Type your message..."
+                    value={chatInput}
+                    onChange={(event) => setChatInput(event.target.value)}
+                    onKeyDown={handleChatKeyDown}
+                    ref={chatInputRef}
+                  />
+                  <div className="stefan-chat-count">{chatInput.length}/2500</div>
                 </div>
-              )}
-              <textarea
-                className="stefan-chat-input"
-                rows="3"
-                maxLength={2500}
-                placeholder="Type your message..."
-                value={chatInput}
-                onChange={(event) => setChatInput(event.target.value)}
-                onKeyDown={handleChatKeyDown}
-                ref={chatInputRef}
-              />
-              <div className="stefan-chat-count">{chatInput.length}/2500</div>
-            </div>
-            <div className="stefan-chat-footer">
-              <div className="stefan-chat-actions">
-                <button
-                  type="button"
-                  className="icon-btn icon-emoji"
-                  aria-label="Emoji"
-                  onClick={handleEmojiClick}
-                >
-                  ☺
-                </button>
-                <button
-                  type="button"
-                  className="icon-btn icon-attach"
-                  aria-label="Attach"
-                  onClick={handleAttachClick}
-                >
-                  📎
-                </button>
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  className="chat-file-input"
-                  onChange={handleFileChange}
-                />
-              </div>
-              <button
-                type="button"
-                className={`stefan-chat-send ${chatInput.trim() ? 'is-active' : ''}`}
-                disabled={!chatInput.trim()}
-                onClick={handleSendMessage}
-              >
-                Send message
-              </button>
+                <div className="stefan-chat-footer">
+                  <div className="stefan-chat-actions">
+                    <button
+                      type="button"
+                      className="icon-btn icon-emoji"
+                      aria-label="Emoji"
+                      onClick={handleEmojiClick}
+                    >
+                      ☺
+                    </button>
+                    <button
+                      type="button"
+                      className="icon-btn icon-attach"
+                      aria-label="Attach"
+                      onClick={handleAttachClick}
+                    >
+                      📎
+                    </button>
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      className="chat-file-input"
+                      onChange={handleFileChange}
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    className={`stefan-chat-send ${chatInput.trim() ? 'is-active' : ''}`}
+                    disabled={!chatInput.trim()}
+                    onClick={handleSendMessage}
+                  >
+                    Send message
+                  </button>
                 </div>
               </>
             )}
             {isChatMinimized && (
-              <div className="stefan-chat-minimized" onClick={() => setIsChatMinimized(false)}>
+              <div
+                className="stefan-chat-minimized"
+                onClick={() => setIsChatMinimized(false)}
+              >
                 <div className="stefan-chat-avatar">
                   <img src={gig.owner.imgUrl} alt={gig.owner.fullname} />
                 </div>
                 <div className="stefan-chat-meta">
-                  <div className="stefan-chat-title">Message Stefan G</div>
+                  <div className="stefan-chat-title">Message {ownerDisplayName}</div>
                   <div className="stefan-chat-subtitle">
                     Online · Avg. response time: 1 Hour
                   </div>
@@ -708,7 +736,10 @@ export function GigDetails() {
               <header>
                 <span className="title">
                   {' '}
-                  <span className="price">{Number(gig.price * selectedTab).toFixed(2)}$</span> + taxes & fees
+                  <span className="price">
+                    {Number(gig.price * selectedTab).toFixed(2)}$
+                  </span>{' '}
+                  + taxes & fees
                 </span>
                 <br />
                 <span className="sub-title">
@@ -791,7 +822,6 @@ export function GigDetails() {
                     </span>
                   </button>
                 )}
-                
               </footer>
             </div>
           </div>

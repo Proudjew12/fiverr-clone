@@ -17,6 +17,7 @@ function App() {
           <Route path="/index" element={<GigIndex />} />
           {/* <Route path="/search" element={<SearchResultsPage />} /> */}
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/gig" element={<Navigate to="/index" replace />} />
           <Route path='/gig/:gigId' element={<GigDetails/>}/>
           <Route path="/gig/:gigId/payment/:price" element={<PaymentPage />} />
           <Route path="/dashboard" element={<Navigate to="/dashboard/customer" replace />} />

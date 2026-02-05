@@ -1,36 +1,39 @@
-import { SvgIcon } from '@/components/svg/SvgIcon'
 import { useNavigate } from 'react-router-dom'
-import { gigService, categoryFilters, categories } from '@/services/gig.service.remote.js'
+import { SvgIcon } from '@/components/svg/SvgIcon'
+import { categories, categoryFilters, gigService } from '@/services/gig.service.remote.js'
 
 export function HomeCategories() {
   const navigate = useNavigate()
 
-  function handleCategoryClick(cat) {
-    const filter = categoryFilters[cat.key] || {
-      txt: cat.label.replace(/\s+/g, ' '),
-    }
-    const baseFilter = gigService.getDefaultFilter()
+  function buildSearchQuery(category) {
+    const fallbackText = category.label.replace(/\s+/g, ' ')
+    const { tag, txt = fallbackText } = categoryFilters[category.key] || {}
+    const defaultFilter = gigService.getDefaultFilter()
     const filterBy = {
-      ...baseFilter,
-      txt: filter.txt || '',
-      tags: filter.tag ? [filter.tag] : [],
+      ...defaultFilter,
+      txt,
+      tags: tag ? [tag] : [],
     }
-    const params = gigService.buildSearchParamsFromFilter(filterBy)
-    const search = params.toString()
-    navigate(`/index?${search || ''}`)
+
+    return gigService.buildSearchParamsFromFilter(filterBy).toString()
+  }
+
+  function onCategoryClick(category) {
+    const query = buildSearchQuery(category)
+    navigate(query ? `/index?${query}` : '/index')
   }
 
   return (
     <section className="home-categories">
-      {categories.map((cat) => (
+      {categories.map((category) => (
         <button
-          key={cat.key}
+          key={category.key}
           className="home-category-card grid"
-          onClick={() => handleCategoryClick(cat)}
+          onClick={() => onCategoryClick(category)}
         >
-          <SvgIcon icon={cat.icon} />
+          <SvgIcon icon={category.icon} />
 
-          <span className="home-category-title">{cat.label}</span>
+          <span className="home-category-title">{category.label}</span>
         </button>
       ))}
     </section>

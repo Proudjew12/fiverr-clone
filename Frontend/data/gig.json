@@ -121,7 +121,7 @@
     ],
     "createdAt": 1770242806332,
     "updatedAt": 1770242806332,
-    "descriptionHtml": "<p><span class=\"highlight\">Stop wasting</span> your time and money searching for a <em>perfect video editor</em>. You won't find one because video editors focus on only one thing \u2013 <strong>editing videos!</strong> But when you're running a business, your ads don't just need to look nice, they need to <span class=\"highlight\">SELL!</span></p>\n<p><span class=\"highlight\">Hi, I'm Stefan</span> and this is where my gig comes in. I'm not just going to edit best ads on Leo, but I'm going to do so following a <span class=\"highlight\">conversion-first approach!</span> Meaning that I prioritize <strong>performance</strong> over anything else.</p>\n<p class=\"section-title\"><span class=\"highlight\">Here's how the gig works:</span></p>\n<ul>\n  <li>Message me to discuss your project (and place an order)</li>\n  <li>Send the footage and fill in the requirements</li>\n  <li>Take a rest while we finish your ad in <strong>24 hours*</strong></li>\n  <li>Enjoy up to 3 highly-optimized versions of your ad (with different hooks)</li>\n</ul>\n<p class=\"section-title\"><span class=\"highlight\">Why us?</span></p>\n<ul>\n  <li>Over 8 years in the industry</li>\n  <li>Helped 500+ clients achieve <strong>ACTUAL results</strong></li>\n  <li>Our proven UGC editing formula guarantees more conversions</li>\n  <li>Express delivery time</li>\n</ul>\n<p>As you can see, our service is unlike anything else Leo has to offer.</p>\n<p><span class=\"highlight\">Don't hesitate and save your spot while it's available.</span></p>\n<p class=\"note\"><em>*Due to high demand, 24-hour delivery is only available as an extra.</em></p>\n<p class=\"note\"><span class=\"highlight\">IMPORTANT: Prices will be going up to $250 for the Basic package and $375 for the Standard package SOON!</span></p>"
+    "descriptionHtml": "<p><span class=\"highlight\">Stop wasting</span> your time and money searching for a perfect partner. You need results, not just edits \u2014 and that is exactly what I deliver for your video editing specialist needs on Leo.</p><p><span class=\"highlight\">Hi, I'm Stefan</span> and this is where my gig comes in. I follow a <span class=\"highlight\">conversion-first approach</span> so every decision supports performance, clarity, and growth.</p><p class=\"section-title\"><span class=\"highlight\">Here's how the gig works:</span></p><ul><li>Message me to discuss your project (and place an order)</li><li>Share requirements and assets</li><li>Receive a fast, polished delivery</li><li>Request optimizations if needed</li></ul><p class=\"section-title\"><span class=\"highlight\">Why me?</span></p><ul><li>Pro-level delivery with clear communication</li><li>Performance-focused strategy</li><li>Clean pacing, strong hooks, and brand alignment</li><li>Consistent, reliable results</li></ul><p>Stefan M. is vetted for <strong>Social Media Videos</strong> and brings repeatable results.</p><p><span class=\"highlight\">Save your spot while it's available.</span></p><p class=\"note\"><em>*Fast delivery is available as an extra when timelines are tight.</em></p>"
   },
   {
     "_id": "g1",
@@ -154,7 +154,7 @@
     "reviews": [
       {
         "id": "r1-1",
-        "txt": "Great work and very smooth process.",
+        "txt": "Great work and very smooth process. Communication was fast and the delivery was exactly on brief.",
         "rate": 4.8,
         "by": {
           "_id": "u201",
@@ -164,7 +164,7 @@
       },
       {
         "id": "r1-2",
-        "txt": "High quality output. Will order again.",
+        "txt": "High quality output. Will order again. Strong hooks, clean transitions, and a smooth narrative flow.",
         "rate": 4.9,
         "by": {
           "_id": "u202",
@@ -174,17 +174,68 @@
       },
       {
         "id": "r1-3",
-        "txt": "Quick turnaround and excellent attention to detail.",
+        "txt": "Quick turnaround and excellent attention to detail. Communication was fast and the delivery was exactly on brief.",
         "rate": 5,
         "by": {
           "_id": "u203",
           "fullname": "Harper Stone",
           "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]17.png"
         }
+      },
+      {
+        "id": "rg1-4",
+        "txt": "Great improvements to pacing and clarity. The pacing, clarity, and final polish exceeded expectations.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u502",
+          "fullname": "Isaac Perry",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]31.png"
+        }
+      },
+      {
+        "id": "rg1-5",
+        "txt": "Fantastic delivery and very easy to work with. The final cut looked premium and converted better than our previous ads.",
+        "rate": 5,
+        "by": {
+          "_id": "u816",
+          "fullname": "Daniel Ross",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]22.png"
+        }
+      },
+      {
+        "id": "rg1-6",
+        "txt": "Great improvements to pacing and clarity. Audio, captions, and color grading were all spot on.",
+        "rate": 5,
+        "by": {
+          "_id": "u872",
+          "fullname": "Mila Gomez",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]33.png"
+        }
+      },
+      {
+        "id": "rg1-7",
+        "txt": "High-quality work that matched the brief perfectly. Great creative sense and very responsive to small tweaks.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u863",
+          "fullname": "Mila Gomez",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]77.png"
+        }
+      },
+      {
+        "id": "rg1-8",
+        "txt": "High-quality work that matched the brief perfectly. The pacing, clarity, and final polish exceeded expectations.",
+        "rate": 5,
+        "by": {
+          "_id": "u642",
+          "fullname": "Zoe Hart",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]24.png"
+        }
       }
     ],
     "createdAt": 1770218412574,
-    "updatedAt": 1770218412574
+    "updatedAt": 1770218412574,
+    "descriptionHtml": "<p><span class=\"highlight\">Stop wasting</span> your time and money searching for a perfect partner. You need results, not just edits \u2014 and that is exactly what I deliver for your web builder specialist needs on Leo.</p><p><span class=\"highlight\">Hi, I'm Ava</span> and this is where my gig comes in. I follow a <span class=\"highlight\">conversion-first approach</span> so every decision supports performance, clarity, and growth.</p><p class=\"section-title\"><span class=\"highlight\">Here's how the gig works:</span></p><ul><li>Message me to discuss your project (and place an order)</li><li>Share requirements and assets</li><li>Receive a fast, polished delivery</li><li>Request optimizations if needed</li></ul><p class=\"section-title\"><span class=\"highlight\">Why me?</span></p><ul><li>Pro-level delivery with clear communication</li><li>Performance-focused strategy</li><li>Clean pacing, strong hooks, and brand alignment</li><li>Consistent, reliable results</li></ul><p>Ava B. is vetted for <strong>Landing Pages</strong> and brings repeatable results.</p><p><span class=\"highlight\">Save your spot while it's available.</span></p><p class=\"note\"><em>*Fast delivery is available as an extra when timelines are tight.</em></p>"
   },
   {
     "_id": "g2",
@@ -595,7 +646,7 @@
     "reviews": [
       {
         "id": "r8-1",
-        "txt": "High quality output. Will order again.",
+        "txt": "High quality output. Will order again. Communication was fast and the delivery was exactly on brief.",
         "rate": 4.7,
         "by": {
           "_id": "u208",
@@ -605,7 +656,7 @@
       },
       {
         "id": "r8-2",
-        "txt": "Quick turnaround and excellent attention to detail.",
+        "txt": "Quick turnaround and excellent attention to detail. Audio, captions, and color grading were all spot on.",
         "rate": 4.8,
         "by": {
           "_id": "u209",
@@ -615,17 +666,68 @@
       },
       {
         "id": "r8-3",
-        "txt": "Exactly what I needed. Professional and polished.",
+        "txt": "Exactly what I needed. Professional and polished. The pacing, clarity, and final polish exceeded expectations.",
         "rate": 4.9,
         "by": {
           "_id": "u210",
           "fullname": "Henry Morgan",
           "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]23.png"
         }
+      },
+      {
+        "id": "rg8-4",
+        "txt": "Fantastic delivery and very easy to work with. Strong hooks, clean transitions, and a smooth narrative flow.",
+        "rate": 5,
+        "by": {
+          "_id": "u717",
+          "fullname": "Olivia Tran",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]3.png"
+        }
+      },
+      {
+        "id": "rg8-5",
+        "txt": "Fantastic delivery and very easy to work with. The final cut looked premium and converted better than our previous ads.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u761",
+          "fullname": "Caleb Miles",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]37.png"
+        }
+      },
+      {
+        "id": "rg8-6",
+        "txt": "Fantastic delivery and very easy to work with. Communication was fast and the delivery was exactly on brief.",
+        "rate": 5,
+        "by": {
+          "_id": "u586",
+          "fullname": "Grace Kim",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]1.png"
+        }
+      },
+      {
+        "id": "rg8-7",
+        "txt": "High-quality work that matched the brief perfectly. Strong hooks, clean transitions, and a smooth narrative flow.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u575",
+          "fullname": "Nora Ellis",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]14.png"
+        }
+      },
+      {
+        "id": "rg8-8",
+        "txt": "Fantastic delivery and very easy to work with. Strong hooks, clean transitions, and a smooth narrative flow.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u443",
+          "fullname": "Sofia Reed",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]35.png"
+        }
       }
     ],
     "createdAt": 1769613612574,
-    "updatedAt": 1769613612574
+    "updatedAt": 1769613612574,
+    "descriptionHtml": "<p><span class=\"highlight\">Stop wasting</span> your time and money searching for a perfect partner. You need results, not just edits \u2014 and that is exactly what I deliver for your web builder specialist needs on Leo.</p><p><span class=\"highlight\">Hi, I'm Lucas</span> and this is where my gig comes in. I follow a <span class=\"highlight\">conversion-first approach</span> so every decision supports performance, clarity, and growth.</p><p class=\"section-title\"><span class=\"highlight\">Here's how the gig works:</span></p><ul><li>Message me to discuss your project (and place an order)</li><li>Share requirements and assets</li><li>Receive a fast, polished delivery</li><li>Request optimizations if needed</li></ul><p class=\"section-title\"><span class=\"highlight\">Why me?</span></p><ul><li>Pro-level delivery with clear communication</li><li>Performance-focused strategy</li><li>Clean pacing, strong hooks, and brand alignment</li><li>Consistent, reliable results</li></ul><p>Lucas F. is vetted for <strong>Landing Pages</strong> and brings repeatable results.</p><p><span class=\"highlight\">Save your spot while it's available.</span></p><p class=\"note\"><em>*Fast delivery is available as an extra when timelines are tight.</em></p>"
   },
   {
     "_id": "g9",
@@ -1036,7 +1138,7 @@
     "reviews": [
       {
         "id": "r15-1",
-        "txt": "Quick turnaround and excellent attention to detail.",
+        "txt": "Quick turnaround and excellent attention to detail. Communication was fast and the delivery was exactly on brief.",
         "rate": 5,
         "by": {
           "_id": "u215",
@@ -1046,7 +1148,7 @@
       },
       {
         "id": "r15-2",
-        "txt": "Exactly what I needed. Professional and polished.",
+        "txt": "Exactly what I needed. Professional and polished. Audio, captions, and color grading were all spot on.",
         "rate": 4.7,
         "by": {
           "_id": "u216",
@@ -1056,17 +1158,68 @@
       },
       {
         "id": "r15-3",
-        "txt": "Amazing results \u2014 exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations. Great creative sense and very responsive to small tweaks.",
         "rate": 4.8,
         "by": {
           "_id": "u217",
           "fullname": "Nora Wood",
           "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]3.png"
         }
+      },
+      {
+        "id": "rg15-4",
+        "txt": "Fantastic delivery and very easy to work with. The final cut looked premium and converted better than our previous ads.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u631",
+          "fullname": "Caleb Miles",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]68.png"
+        }
+      },
+      {
+        "id": "rg15-5",
+        "txt": "Fantastic delivery and very easy to work with. The final cut looked premium and converted better than our previous ads.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u665",
+          "fullname": "Grace Kim",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]44.png"
+        }
+      },
+      {
+        "id": "rg15-6",
+        "txt": "Fantastic delivery and very easy to work with. Great creative sense and very responsive to small tweaks.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u537",
+          "fullname": "Noah Blake",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]44.png"
+        }
+      },
+      {
+        "id": "rg15-7",
+        "txt": "Fantastic delivery and very easy to work with. Great creative sense and very responsive to small tweaks.",
+        "rate": 5,
+        "by": {
+          "_id": "u923",
+          "fullname": "Zoe Hart",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]30.png"
+        }
+      },
+      {
+        "id": "rg15-8",
+        "txt": "High-quality work that matched the brief perfectly. Great creative sense and very responsive to small tweaks.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u783",
+          "fullname": "Zoe Hart",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]13.png"
+        }
       }
     ],
     "createdAt": 1769008812574,
-    "updatedAt": 1769008812574
+    "updatedAt": 1769008812574,
+    "descriptionHtml": "<p><span class=\"highlight\">Stop wasting</span> your time and money searching for a perfect partner. You need results, not just edits \u2014 and that is exactly what I deliver for your web builder specialist needs on Leo.</p><p><span class=\"highlight\">Hi, I'm Chloe</span> and this is where my gig comes in. I follow a <span class=\"highlight\">conversion-first approach</span> so every decision supports performance, clarity, and growth.</p><p class=\"section-title\"><span class=\"highlight\">Here's how the gig works:</span></p><ul><li>Message me to discuss your project (and place an order)</li><li>Share requirements and assets</li><li>Receive a fast, polished delivery</li><li>Request optimizations if needed</li></ul><p class=\"section-title\"><span class=\"highlight\">Why me?</span></p><ul><li>Pro-level delivery with clear communication</li><li>Performance-focused strategy</li><li>Clean pacing, strong hooks, and brand alignment</li><li>Consistent, reliable results</li></ul><p>Chloe B. is vetted for <strong>Landing Pages</strong> and brings repeatable results.</p><p><span class=\"highlight\">Save your spot while it's available.</span></p><p class=\"note\"><em>*Fast delivery is available as an extra when timelines are tight.</em></p>"
   },
   {
     "_id": "g16",
@@ -1477,7 +1630,7 @@
     "reviews": [
       {
         "id": "r22-1",
-        "txt": "Exactly what I needed. Professional and polished.",
+        "txt": "Exactly what I needed. Professional and polished. The final cut looked premium and converted better than our previous ads.",
         "rate": 4.9,
         "by": {
           "_id": "u222",
@@ -1487,7 +1640,7 @@
       },
       {
         "id": "r22-2",
-        "txt": "Amazing results \u2014 exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations. Great creative sense and very responsive to small tweaks.",
         "rate": 5,
         "by": {
           "_id": "u223",
@@ -1497,17 +1650,68 @@
       },
       {
         "id": "r22-3",
-        "txt": "Super clean delivery and fast communication.",
+        "txt": "Super clean delivery and fast communication. Communication was fast and the delivery was exactly on brief.",
         "rate": 4.7,
         "by": {
           "_id": "u224",
           "fullname": "Isaac Perry",
           "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]36.png"
         }
+      },
+      {
+        "id": "rg22-4",
+        "txt": "Great improvements to pacing and clarity. The pacing, clarity, and final polish exceeded expectations.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u493",
+          "fullname": "Ethan Price",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]45.png"
+        }
+      },
+      {
+        "id": "rg22-5",
+        "txt": "High-quality work that matched the brief perfectly. Great creative sense and very responsive to small tweaks.",
+        "rate": 5,
+        "by": {
+          "_id": "u638",
+          "fullname": "Mila Gomez",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]50.png"
+        }
+      },
+      {
+        "id": "rg22-6",
+        "txt": "High-quality work that matched the brief perfectly. The pacing, clarity, and final polish exceeded expectations.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u912",
+          "fullname": "Grace Kim",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]53.png"
+        }
+      },
+      {
+        "id": "rg22-7",
+        "txt": "Great improvements to pacing and clarity. Communication was fast and the delivery was exactly on brief.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u835",
+          "fullname": "Daniel Ross",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]40.png"
+        }
+      },
+      {
+        "id": "rg22-8",
+        "txt": "High-quality work that matched the brief perfectly. Strong hooks, clean transitions, and a smooth narrative flow.",
+        "rate": 5,
+        "by": {
+          "_id": "u746",
+          "fullname": "Chloe Martin",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]5.png"
+        }
       }
     ],
     "createdAt": 1768404012574,
-    "updatedAt": 1768404012574
+    "updatedAt": 1768404012574,
+    "descriptionHtml": "<p><span class=\"highlight\">Stop wasting</span> your time and money searching for a perfect partner. You need results, not just edits \u2014 and that is exactly what I deliver for your web builder specialist needs on Leo.</p><p><span class=\"highlight\">Hi, I'm Daniel</span> and this is where my gig comes in. I follow a <span class=\"highlight\">conversion-first approach</span> so every decision supports performance, clarity, and growth.</p><p class=\"section-title\"><span class=\"highlight\">Here's how the gig works:</span></p><ul><li>Message me to discuss your project (and place an order)</li><li>Share requirements and assets</li><li>Receive a fast, polished delivery</li><li>Request optimizations if needed</li></ul><p class=\"section-title\"><span class=\"highlight\">Why me?</span></p><ul><li>Pro-level delivery with clear communication</li><li>Performance-focused strategy</li><li>Clean pacing, strong hooks, and brand alignment</li><li>Consistent, reliable results</li></ul><p>Daniel B. is vetted for <strong>Landing Pages</strong> and brings repeatable results.</p><p><span class=\"highlight\">Save your spot while it's available.</span></p><p class=\"note\"><em>*Fast delivery is available as an extra when timelines are tight.</em></p>"
   },
   {
     "_id": "g23",
@@ -1918,7 +2122,7 @@
     "reviews": [
       {
         "id": "r29-1",
-        "txt": "Amazing results \u2014 exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations. The pacing, clarity, and final polish exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u229",
@@ -1928,7 +2132,7 @@
       },
       {
         "id": "r29-2",
-        "txt": "Super clean delivery and fast communication.",
+        "txt": "Super clean delivery and fast communication. Communication was fast and the delivery was exactly on brief.",
         "rate": 4.9,
         "by": {
           "_id": "u230",
@@ -1938,17 +2142,68 @@
       },
       {
         "id": "r29-3",
-        "txt": "Great work and very smooth process.",
+        "txt": "Great work and very smooth process. Great creative sense and very responsive to small tweaks.",
         "rate": 5,
         "by": {
           "_id": "u231",
           "fullname": "Layla Adams",
           "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]42.png"
         }
+      },
+      {
+        "id": "rg29-4",
+        "txt": "High-quality work that matched the brief perfectly. Audio, captions, and color grading were all spot on.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u745",
+          "fullname": "Daniel Ross",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]9.png"
+        }
+      },
+      {
+        "id": "rg29-5",
+        "txt": "High-quality work that matched the brief perfectly. Audio, captions, and color grading were all spot on.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u534",
+          "fullname": "Henry Stone",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]58.png"
+        }
+      },
+      {
+        "id": "rg29-6",
+        "txt": "Fantastic delivery and very easy to work with. Great creative sense and very responsive to small tweaks.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u818",
+          "fullname": "Isaac Perry",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]24.png"
+        }
+      },
+      {
+        "id": "rg29-7",
+        "txt": "Great improvements to pacing and clarity. Audio, captions, and color grading were all spot on.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u642",
+          "fullname": "Julian Cole",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]26.png"
+        }
+      },
+      {
+        "id": "rg29-8",
+        "txt": "Fantastic delivery and very easy to work with. Communication was fast and the delivery was exactly on brief.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u414",
+          "fullname": "Nora Ellis",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]19.png"
+        }
       }
     ],
     "createdAt": 1767799212575,
-    "updatedAt": 1767799212575
+    "updatedAt": 1767799212575,
+    "descriptionHtml": "<p><span class=\"highlight\">Stop wasting</span> your time and money searching for a perfect partner. You need results, not just edits \u2014 and that is exactly what I deliver for your video editing specialist needs on Leo.</p><p><span class=\"highlight\">Hi, I'm Avery</span> and this is where my gig comes in. I follow a <span class=\"highlight\">conversion-first approach</span> so every decision supports performance, clarity, and growth.</p><p class=\"section-title\"><span class=\"highlight\">Here's how the gig works:</span></p><ul><li>Message me to discuss your project (and place an order)</li><li>Share requirements and assets</li><li>Receive a fast, polished delivery</li><li>Request optimizations if needed</li></ul><p class=\"section-title\"><span class=\"highlight\">Why me?</span></p><ul><li>Pro-level delivery with clear communication</li><li>Performance-focused strategy</li><li>Clean pacing, strong hooks, and brand alignment</li><li>Consistent, reliable results</li></ul><p>Avery P. is vetted for <strong>Social Media Videos</strong> and brings repeatable results.</p><p><span class=\"highlight\">Save your spot while it's available.</span></p><p class=\"note\"><em>*Fast delivery is available as an extra when timelines are tight.</em></p>"
   },
   {
     "_id": "g30",
@@ -2359,7 +2614,7 @@
     "reviews": [
       {
         "id": "r36-1",
-        "txt": "Super clean delivery and fast communication.",
+        "txt": "Super clean delivery and fast communication. The pacing, clarity, and final polish exceeded expectations.",
         "rate": 4.7,
         "by": {
           "_id": "u236",
@@ -2369,7 +2624,7 @@
       },
       {
         "id": "r36-2",
-        "txt": "Great work and very smooth process.",
+        "txt": "Great work and very smooth process. Strong hooks, clean transitions, and a smooth narrative flow.",
         "rate": 4.8,
         "by": {
           "_id": "u237",
@@ -2379,17 +2634,68 @@
       },
       {
         "id": "r36-3",
-        "txt": "High quality output. Will order again.",
+        "txt": "High quality output. Will order again. Great creative sense and very responsive to small tweaks.",
         "rate": 4.9,
         "by": {
           "_id": "u238",
           "fullname": "Leo Morales",
           "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]49.png"
         }
+      },
+      {
+        "id": "rg36-4",
+        "txt": "High-quality work that matched the brief perfectly. Strong hooks, clean transitions, and a smooth narrative flow.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u937",
+          "fullname": "Ethan Price",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]6.png"
+        }
+      },
+      {
+        "id": "rg36-5",
+        "txt": "High-quality work that matched the brief perfectly. Communication was fast and the delivery was exactly on brief.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u439",
+          "fullname": "Henry Stone",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]64.png"
+        }
+      },
+      {
+        "id": "rg36-6",
+        "txt": "Great improvements to pacing and clarity. Strong hooks, clean transitions, and a smooth narrative flow.",
+        "rate": 5,
+        "by": {
+          "_id": "u514",
+          "fullname": "Olivia Tran",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]77.png"
+        }
+      },
+      {
+        "id": "rg36-7",
+        "txt": "High-quality work that matched the brief perfectly. The pacing, clarity, and final polish exceeded expectations.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u610",
+          "fullname": "Lucas Shaw",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]73.png"
+        }
+      },
+      {
+        "id": "rg36-8",
+        "txt": "Great improvements to pacing and clarity. Audio, captions, and color grading were all spot on.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u734",
+          "fullname": "Olivia Tran",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]70.png"
+        }
       }
     ],
     "createdAt": 1767194412575,
-    "updatedAt": 1767194412575
+    "updatedAt": 1767194412575,
+    "descriptionHtml": "<p><span class=\"highlight\">Stop wasting</span> your time and money searching for a perfect partner. You need results, not just edits \u2014 and that is exactly what I deliver for your video editing specialist needs on Leo.</p><p><span class=\"highlight\">Hi, I'm Julian</span> and this is where my gig comes in. I follow a <span class=\"highlight\">conversion-first approach</span> so every decision supports performance, clarity, and growth.</p><p class=\"section-title\"><span class=\"highlight\">Here's how the gig works:</span></p><ul><li>Message me to discuss your project (and place an order)</li><li>Share requirements and assets</li><li>Receive a fast, polished delivery</li><li>Request optimizations if needed</li></ul><p class=\"section-title\"><span class=\"highlight\">Why me?</span></p><ul><li>Pro-level delivery with clear communication</li><li>Performance-focused strategy</li><li>Clean pacing, strong hooks, and brand alignment</li><li>Consistent, reliable results</li></ul><p>Julian K. is vetted for <strong>Social Media Videos</strong> and brings repeatable results.</p><p><span class=\"highlight\">Save your spot while it's available.</span></p><p class=\"note\"><em>*Fast delivery is available as an extra when timelines are tight.</em></p>"
   },
   {
     "_id": "g37",
@@ -2800,7 +3106,7 @@
     "reviews": [
       {
         "id": "r43-1",
-        "txt": "Great work and very smooth process.",
+        "txt": "Great work and very smooth process. Communication was fast and the delivery was exactly on brief.",
         "rate": 5,
         "by": {
           "_id": "u243",
@@ -2810,7 +3116,7 @@
       },
       {
         "id": "r43-2",
-        "txt": "High quality output. Will order again.",
+        "txt": "High quality output. Will order again. Audio, captions, and color grading were all spot on.",
         "rate": 4.7,
         "by": {
           "_id": "u244",
@@ -2820,17 +3126,68 @@
       },
       {
         "id": "r43-3",
-        "txt": "Quick turnaround and excellent attention to detail.",
+        "txt": "Quick turnaround and excellent attention to detail. The final cut looked premium and converted better than our previous ads.",
         "rate": 4.8,
         "by": {
           "_id": "u245",
           "fullname": "Naomi King",
           "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]55.png"
         }
+      },
+      {
+        "id": "rg43-4",
+        "txt": "High-quality work that matched the brief perfectly. The pacing, clarity, and final polish exceeded expectations.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u552",
+          "fullname": "Ava Collins",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]67.png"
+        }
+      },
+      {
+        "id": "rg43-5",
+        "txt": "Great improvements to pacing and clarity. The pacing, clarity, and final polish exceeded expectations.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u676",
+          "fullname": "Mila Gomez",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]7.png"
+        }
+      },
+      {
+        "id": "rg43-6",
+        "txt": "High-quality work that matched the brief perfectly. Communication was fast and the delivery was exactly on brief.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u706",
+          "fullname": "Nora Ellis",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]62.png"
+        }
+      },
+      {
+        "id": "rg43-7",
+        "txt": "Fantastic delivery and very easy to work with. Audio, captions, and color grading were all spot on.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u725",
+          "fullname": "Daniel Ross",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]35.png"
+        }
+      },
+      {
+        "id": "rg43-8",
+        "txt": "Fantastic delivery and very easy to work with. Strong hooks, clean transitions, and a smooth narrative flow.",
+        "rate": 5,
+        "by": {
+          "_id": "u908",
+          "fullname": "Lucas Shaw",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]15.png"
+        }
       }
     ],
     "createdAt": 1766589612575,
-    "updatedAt": 1766589612575
+    "updatedAt": 1766589612575,
+    "descriptionHtml": "<p><span class=\"highlight\">Stop wasting</span> your time and money searching for a perfect partner. You need results, not just edits \u2014 and that is exactly what I deliver for your video editing specialist needs on Leo.</p><p><span class=\"highlight\">Hi, I'm Zoe</span> and this is where my gig comes in. I follow a <span class=\"highlight\">conversion-first approach</span> so every decision supports performance, clarity, and growth.</p><p class=\"section-title\"><span class=\"highlight\">Here's how the gig works:</span></p><ul><li>Message me to discuss your project (and place an order)</li><li>Share requirements and assets</li><li>Receive a fast, polished delivery</li><li>Request optimizations if needed</li></ul><p class=\"section-title\"><span class=\"highlight\">Why me?</span></p><ul><li>Pro-level delivery with clear communication</li><li>Performance-focused strategy</li><li>Clean pacing, strong hooks, and brand alignment</li><li>Consistent, reliable results</li></ul><p>Zoe H. is vetted for <strong>Social Media Videos</strong> and brings repeatable results.</p><p><span class=\"highlight\">Save your spot while it's available.</span></p><p class=\"note\"><em>*Fast delivery is available as an extra when timelines are tight.</em></p>"
   },
   {
     "_id": "g44",
@@ -3241,7 +3598,7 @@
     "reviews": [
       {
         "id": "r50-1",
-        "txt": "High quality output. Will order again.",
+        "txt": "High quality output. Will order again. Audio, captions, and color grading were all spot on.",
         "rate": 4.9,
         "by": {
           "_id": "u250",
@@ -3251,7 +3608,7 @@
       },
       {
         "id": "r50-2",
-        "txt": "Quick turnaround and excellent attention to detail.",
+        "txt": "Quick turnaround and excellent attention to detail. Great creative sense and very responsive to small tweaks.",
         "rate": 5,
         "by": {
           "_id": "u251",
@@ -3261,17 +3618,68 @@
       },
       {
         "id": "r50-3",
-        "txt": "Exactly what I needed. Professional and polished.",
+        "txt": "Exactly what I needed. Professional and polished. Great creative sense and very responsive to small tweaks.",
         "rate": 4.7,
         "by": {
           "_id": "u252",
           "fullname": "Asher Coleman",
           "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]61.png"
         }
+      },
+      {
+        "id": "rg50-4",
+        "txt": "High-quality work that matched the brief perfectly. Strong hooks, clean transitions, and a smooth narrative flow.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u527",
+          "fullname": "Ava Collins",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]69.png"
+        }
+      },
+      {
+        "id": "rg50-5",
+        "txt": "High-quality work that matched the brief perfectly. Strong hooks, clean transitions, and a smooth narrative flow.",
+        "rate": 5,
+        "by": {
+          "_id": "u973",
+          "fullname": "Caleb Miles",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]33.png"
+        }
+      },
+      {
+        "id": "rg50-6",
+        "txt": "Great improvements to pacing and clarity. Communication was fast and the delivery was exactly on brief.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u573",
+          "fullname": "Zoe Hart",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]72.png"
+        }
+      },
+      {
+        "id": "rg50-7",
+        "txt": "Fantastic delivery and very easy to work with. Audio, captions, and color grading were all spot on.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u426",
+          "fullname": "Liam Parker",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]70.png"
+        }
+      },
+      {
+        "id": "rg50-8",
+        "txt": "Great improvements to pacing and clarity. The pacing, clarity, and final polish exceeded expectations.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u555",
+          "fullname": "Ethan Price",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]62.png"
+        }
       }
     ],
     "createdAt": 1769872812575,
-    "updatedAt": 1769872812575
+    "updatedAt": 1769872812575,
+    "descriptionHtml": "<p><span class=\"highlight\">Stop wasting</span> your time and money searching for a perfect partner. You need results, not just edits \u2014 and that is exactly what I deliver for your video editing specialist needs on Leo.</p><p><span class=\"highlight\">Hi, I'm David</span> and this is where my gig comes in. I follow a <span class=\"highlight\">conversion-first approach</span> so every decision supports performance, clarity, and growth.</p><p class=\"section-title\"><span class=\"highlight\">Here's how the gig works:</span></p><ul><li>Message me to discuss your project (and place an order)</li><li>Share requirements and assets</li><li>Receive a fast, polished delivery</li><li>Request optimizations if needed</li></ul><p class=\"section-title\"><span class=\"highlight\">Why me?</span></p><ul><li>Pro-level delivery with clear communication</li><li>Performance-focused strategy</li><li>Clean pacing, strong hooks, and brand alignment</li><li>Consistent, reliable results</li></ul><p>David T. is vetted for <strong>Social Media Videos</strong> and brings repeatable results.</p><p><span class=\"highlight\">Save your spot while it's available.</span></p><p class=\"note\"><em>*Fast delivery is available as an extra when timelines are tight.</em></p>"
   },
   {
     "_id": "g51",
@@ -3682,7 +4090,7 @@
     "reviews": [
       {
         "id": "r57-1",
-        "txt": "Quick turnaround and excellent attention to detail.",
+        "txt": "Quick turnaround and excellent attention to detail. Great creative sense and very responsive to small tweaks.",
         "rate": 4.8,
         "by": {
           "_id": "u257",
@@ -3692,7 +4100,7 @@
       },
       {
         "id": "r57-2",
-        "txt": "Exactly what I needed. Professional and polished.",
+        "txt": "Exactly what I needed. Professional and polished. The final cut looked premium and converted better than our previous ads.",
         "rate": 4.9,
         "by": {
           "_id": "u258",
@@ -3702,17 +4110,68 @@
       },
       {
         "id": "r57-3",
-        "txt": "Amazing results \u2014 exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations. The pacing, clarity, and final polish exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u259",
           "fullname": "Noah Wright",
           "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]68.png"
         }
+      },
+      {
+        "id": "rg57-4",
+        "txt": "High-quality work that matched the brief perfectly. The pacing, clarity, and final polish exceeded expectations.",
+        "rate": 5,
+        "by": {
+          "_id": "u721",
+          "fullname": "Sofia Reed",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]34.png"
+        }
+      },
+      {
+        "id": "rg57-5",
+        "txt": "Great improvements to pacing and clarity. Great creative sense and very responsive to small tweaks.",
+        "rate": 5,
+        "by": {
+          "_id": "u674",
+          "fullname": "Nora Ellis",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]45.png"
+        }
+      },
+      {
+        "id": "rg57-6",
+        "txt": "Great improvements to pacing and clarity. Strong hooks, clean transitions, and a smooth narrative flow.",
+        "rate": 5,
+        "by": {
+          "_id": "u844",
+          "fullname": "Ava Collins",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]24.png"
+        }
+      },
+      {
+        "id": "rg57-7",
+        "txt": "Fantastic delivery and very easy to work with. Great creative sense and very responsive to small tweaks.",
+        "rate": 5,
+        "by": {
+          "_id": "u769",
+          "fullname": "Daniel Ross",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]76.png"
+        }
+      },
+      {
+        "id": "rg57-8",
+        "txt": "High-quality work that matched the brief perfectly. Strong hooks, clean transitions, and a smooth narrative flow.",
+        "rate": 5,
+        "by": {
+          "_id": "u574",
+          "fullname": "Daniel Ross",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]46.png"
+        }
       }
     ],
     "createdAt": 1769268012575,
-    "updatedAt": 1769268012575
+    "updatedAt": 1769268012575,
+    "descriptionHtml": "<p><span class=\"highlight\">Stop wasting</span> your time and money searching for a perfect partner. You need results, not just edits \u2014 and that is exactly what I deliver for your shopify store expert needs on Leo.</p><p><span class=\"highlight\">Hi, I'm Kylie</span> and this is where my gig comes in. I follow a <span class=\"highlight\">conversion-first approach</span> so every decision supports performance, clarity, and growth.</p><p class=\"section-title\"><span class=\"highlight\">Here's how the gig works:</span></p><ul><li>Message me to discuss your project (and place an order)</li><li>Share requirements and assets</li><li>Receive a fast, polished delivery</li><li>Request optimizations if needed</li></ul><p class=\"section-title\"><span class=\"highlight\">Why me?</span></p><ul><li>Pro-level delivery with clear communication</li><li>Performance-focused strategy</li><li>Clean pacing, strong hooks, and brand alignment</li><li>Consistent, reliable results</li></ul><p>Kylie S. is vetted for <strong>Shopify Stores</strong> and brings repeatable results.</p><p><span class=\"highlight\">Save your spot while it's available.</span></p><p class=\"note\"><em>*Fast delivery is available as an extra when timelines are tight.</em></p>"
   },
   {
     "_id": "g58",
@@ -4123,7 +4582,7 @@
     "reviews": [
       {
         "id": "r64-1",
-        "txt": "Exactly what I needed. Professional and polished.",
+        "txt": "Exactly what I needed. Professional and polished. Communication was fast and the delivery was exactly on brief.",
         "rate": 4.7,
         "by": {
           "_id": "u264",
@@ -4133,7 +4592,7 @@
       },
       {
         "id": "r64-2",
-        "txt": "Amazing results \u2014 exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations. Great creative sense and very responsive to small tweaks.",
         "rate": 4.8,
         "by": {
           "_id": "u265",
@@ -4143,17 +4602,68 @@
       },
       {
         "id": "r64-3",
-        "txt": "Super clean delivery and fast communication.",
+        "txt": "Super clean delivery and fast communication. Strong hooks, clean transitions, and a smooth narrative flow.",
         "rate": 4.9,
         "by": {
           "_id": "u266",
           "fullname": "Harper Stone",
           "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]74.png"
         }
+      },
+      {
+        "id": "rg64-4",
+        "txt": "Great improvements to pacing and clarity. Great creative sense and very responsive to small tweaks.",
+        "rate": 5,
+        "by": {
+          "_id": "u860",
+          "fullname": "Olivia Tran",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]38.png"
+        }
+      },
+      {
+        "id": "rg64-5",
+        "txt": "Fantastic delivery and very easy to work with. Great creative sense and very responsive to small tweaks.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u838",
+          "fullname": "Noah Blake",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]55.png"
+        }
+      },
+      {
+        "id": "rg64-6",
+        "txt": "Fantastic delivery and very easy to work with. Great creative sense and very responsive to small tweaks.",
+        "rate": 5,
+        "by": {
+          "_id": "u413",
+          "fullname": "Liam Parker",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]78.png"
+        }
+      },
+      {
+        "id": "rg64-7",
+        "txt": "Fantastic delivery and very easy to work with. Communication was fast and the delivery was exactly on brief.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u588",
+          "fullname": "Ethan Price",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]75.png"
+        }
+      },
+      {
+        "id": "rg64-8",
+        "txt": "Great improvements to pacing and clarity. The pacing, clarity, and final polish exceeded expectations.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u583",
+          "fullname": "Lucas Shaw",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]22.png"
+        }
       }
     ],
     "createdAt": 1768663212575,
-    "updatedAt": 1768663212575
+    "updatedAt": 1768663212575,
+    "descriptionHtml": "<p><span class=\"highlight\">Stop wasting</span> your time and money searching for a perfect partner. You need results, not just edits \u2014 and that is exactly what I deliver for your shopify store expert needs on Leo.</p><p><span class=\"highlight\">Hi, I'm Ava</span> and this is where my gig comes in. I follow a <span class=\"highlight\">conversion-first approach</span> so every decision supports performance, clarity, and growth.</p><p class=\"section-title\"><span class=\"highlight\">Here's how the gig works:</span></p><ul><li>Message me to discuss your project (and place an order)</li><li>Share requirements and assets</li><li>Receive a fast, polished delivery</li><li>Request optimizations if needed</li></ul><p class=\"section-title\"><span class=\"highlight\">Why me?</span></p><ul><li>Pro-level delivery with clear communication</li><li>Performance-focused strategy</li><li>Clean pacing, strong hooks, and brand alignment</li><li>Consistent, reliable results</li></ul><p>Ava B. is vetted for <strong>Shopify Stores</strong> and brings repeatable results.</p><p><span class=\"highlight\">Save your spot while it's available.</span></p><p class=\"note\"><em>*Fast delivery is available as an extra when timelines are tight.</em></p>"
   },
   {
     "_id": "g65",
@@ -4564,7 +5074,7 @@
     "reviews": [
       {
         "id": "r71-1",
-        "txt": "Amazing results \u2014 exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations. The pacing, clarity, and final polish exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u271",
@@ -4574,7 +5084,7 @@
       },
       {
         "id": "r71-2",
-        "txt": "Super clean delivery and fast communication.",
+        "txt": "Super clean delivery and fast communication. The pacing, clarity, and final polish exceeded expectations.",
         "rate": 4.7,
         "by": {
           "_id": "u272",
@@ -4584,17 +5094,68 @@
       },
       {
         "id": "r71-3",
-        "txt": "Great work and very smooth process.",
+        "txt": "Great work and very smooth process. Communication was fast and the delivery was exactly on brief.",
         "rate": 4.8,
         "by": {
           "_id": "u273",
           "fullname": "Henry Morgan",
           "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]9.png"
         }
+      },
+      {
+        "id": "rg71-4",
+        "txt": "Fantastic delivery and very easy to work with. Great creative sense and very responsive to small tweaks.",
+        "rate": 5,
+        "by": {
+          "_id": "u771",
+          "fullname": "Daniel Ross",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]3.png"
+        }
+      },
+      {
+        "id": "rg71-5",
+        "txt": "Great improvements to pacing and clarity. The final cut looked premium and converted better than our previous ads.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u411",
+          "fullname": "Zoe Hart",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]24.png"
+        }
+      },
+      {
+        "id": "rg71-6",
+        "txt": "Fantastic delivery and very easy to work with. The final cut looked premium and converted better than our previous ads.",
+        "rate": 5,
+        "by": {
+          "_id": "u595",
+          "fullname": "Caleb Miles",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]28.png"
+        }
+      },
+      {
+        "id": "rg71-7",
+        "txt": "Great improvements to pacing and clarity. The pacing, clarity, and final polish exceeded expectations.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u900",
+          "fullname": "Olivia Tran",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]26.png"
+        }
+      },
+      {
+        "id": "rg71-8",
+        "txt": "High-quality work that matched the brief perfectly. Communication was fast and the delivery was exactly on brief.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u615",
+          "fullname": "Noah Blake",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]26.png"
+        }
       }
     ],
     "createdAt": 1768058412575,
-    "updatedAt": 1768058412575
+    "updatedAt": 1768058412575,
+    "descriptionHtml": "<p><span class=\"highlight\">Stop wasting</span> your time and money searching for a perfect partner. You need results, not just edits \u2014 and that is exactly what I deliver for your shopify store expert needs on Leo.</p><p><span class=\"highlight\">Hi, I'm Lucas</span> and this is where my gig comes in. I follow a <span class=\"highlight\">conversion-first approach</span> so every decision supports performance, clarity, and growth.</p><p class=\"section-title\"><span class=\"highlight\">Here's how the gig works:</span></p><ul><li>Message me to discuss your project (and place an order)</li><li>Share requirements and assets</li><li>Receive a fast, polished delivery</li><li>Request optimizations if needed</li></ul><p class=\"section-title\"><span class=\"highlight\">Why me?</span></p><ul><li>Pro-level delivery with clear communication</li><li>Performance-focused strategy</li><li>Clean pacing, strong hooks, and brand alignment</li><li>Consistent, reliable results</li></ul><p>Lucas F. is vetted for <strong>Shopify Stores</strong> and brings repeatable results.</p><p><span class=\"highlight\">Save your spot while it's available.</span></p><p class=\"note\"><em>*Fast delivery is available as an extra when timelines are tight.</em></p>"
   },
   {
     "_id": "g72",
@@ -5005,7 +5566,7 @@
     "reviews": [
       {
         "id": "r78-1",
-        "txt": "Super clean delivery and fast communication.",
+        "txt": "Super clean delivery and fast communication. The final cut looked premium and converted better than our previous ads.",
         "rate": 4.9,
         "by": {
           "_id": "u278",
@@ -5015,7 +5576,7 @@
       },
       {
         "id": "r78-2",
-        "txt": "Great work and very smooth process.",
+        "txt": "Great work and very smooth process. Communication was fast and the delivery was exactly on brief.",
         "rate": 5,
         "by": {
           "_id": "u279",
@@ -5025,17 +5586,68 @@
       },
       {
         "id": "r78-3",
-        "txt": "High quality output. Will order again.",
+        "txt": "High quality output. Will order again. Communication was fast and the delivery was exactly on brief.",
         "rate": 4.7,
         "by": {
           "_id": "u280",
           "fullname": "Nora Wood",
           "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]15.png"
         }
+      },
+      {
+        "id": "rg78-4",
+        "txt": "Great improvements to pacing and clarity. Communication was fast and the delivery was exactly on brief.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u587",
+          "fullname": "Isaac Perry",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]48.png"
+        }
+      },
+      {
+        "id": "rg78-5",
+        "txt": "High-quality work that matched the brief perfectly. The final cut looked premium and converted better than our previous ads.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u446",
+          "fullname": "Ethan Price",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]28.png"
+        }
+      },
+      {
+        "id": "rg78-6",
+        "txt": "High-quality work that matched the brief perfectly. Strong hooks, clean transitions, and a smooth narrative flow.",
+        "rate": 5,
+        "by": {
+          "_id": "u916",
+          "fullname": "Zoe Hart",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]4.png"
+        }
+      },
+      {
+        "id": "rg78-7",
+        "txt": "High-quality work that matched the brief perfectly. Strong hooks, clean transitions, and a smooth narrative flow.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u720",
+          "fullname": "Daniel Ross",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]15.png"
+        }
+      },
+      {
+        "id": "rg78-8",
+        "txt": "Fantastic delivery and very easy to work with. Great creative sense and very responsive to small tweaks.",
+        "rate": 5,
+        "by": {
+          "_id": "u975",
+          "fullname": "Chloe Martin",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]5.png"
+        }
       }
     ],
     "createdAt": 1767453612575,
-    "updatedAt": 1767453612575
+    "updatedAt": 1767453612575,
+    "descriptionHtml": "<p><span class=\"highlight\">Stop wasting</span> your time and money searching for a perfect partner. You need results, not just edits \u2014 and that is exactly what I deliver for your ad & social specialist needs on Leo.</p><p><span class=\"highlight\">Hi, I'm Chloe</span> and this is where my gig comes in. I follow a <span class=\"highlight\">conversion-first approach</span> so every decision supports performance, clarity, and growth.</p><p class=\"section-title\"><span class=\"highlight\">Here's how the gig works:</span></p><ul><li>Message me to discuss your project (and place an order)</li><li>Share requirements and assets</li><li>Receive a fast, polished delivery</li><li>Request optimizations if needed</li></ul><p class=\"section-title\"><span class=\"highlight\">Why me?</span></p><ul><li>Pro-level delivery with clear communication</li><li>Performance-focused strategy</li><li>Clean pacing, strong hooks, and brand alignment</li><li>Consistent, reliable results</li></ul><p>Chloe B. is vetted for <strong>Paid Ad Creatives</strong> and brings repeatable results.</p><p><span class=\"highlight\">Save your spot while it's available.</span></p><p class=\"note\"><em>*Fast delivery is available as an extra when timelines are tight.</em></p>"
   },
   {
     "_id": "g79",
@@ -5446,7 +6058,7 @@
     "reviews": [
       {
         "id": "r85-1",
-        "txt": "Great work and very smooth process.",
+        "txt": "Great work and very smooth process. The pacing, clarity, and final polish exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u285",
@@ -5456,7 +6068,7 @@
       },
       {
         "id": "r85-2",
-        "txt": "High quality output. Will order again.",
+        "txt": "High quality output. Will order again. The final cut looked premium and converted better than our previous ads.",
         "rate": 4.9,
         "by": {
           "_id": "u286",
@@ -5466,17 +6078,68 @@
       },
       {
         "id": "r85-3",
-        "txt": "Quick turnaround and excellent attention to detail.",
+        "txt": "Quick turnaround and excellent attention to detail. The pacing, clarity, and final polish exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u287",
           "fullname": "Isaac Perry",
           "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]21.png"
         }
+      },
+      {
+        "id": "rg85-4",
+        "txt": "Fantastic delivery and very easy to work with. Great creative sense and very responsive to small tweaks.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u433",
+          "fullname": "Lucas Shaw",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]38.png"
+        }
+      },
+      {
+        "id": "rg85-5",
+        "txt": "High-quality work that matched the brief perfectly. The final cut looked premium and converted better than our previous ads.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u426",
+          "fullname": "Lucas Shaw",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]42.png"
+        }
+      },
+      {
+        "id": "rg85-6",
+        "txt": "High-quality work that matched the brief perfectly. The pacing, clarity, and final polish exceeded expectations.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u956",
+          "fullname": "Nora Ellis",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]44.png"
+        }
+      },
+      {
+        "id": "rg85-7",
+        "txt": "High-quality work that matched the brief perfectly. Communication was fast and the delivery was exactly on brief.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u737",
+          "fullname": "Lucas Shaw",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]18.png"
+        }
+      },
+      {
+        "id": "rg85-8",
+        "txt": "Fantastic delivery and very easy to work with. Audio, captions, and color grading were all spot on.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u436",
+          "fullname": "Henry Stone",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]52.png"
+        }
       }
     ],
     "createdAt": 1766848812575,
-    "updatedAt": 1766848812575
+    "updatedAt": 1766848812575,
+    "descriptionHtml": "<p><span class=\"highlight\">Stop wasting</span> your time and money searching for a perfect partner. You need results, not just edits \u2014 and that is exactly what I deliver for your ad & social specialist needs on Leo.</p><p><span class=\"highlight\">Hi, I'm Daniel</span> and this is where my gig comes in. I follow a <span class=\"highlight\">conversion-first approach</span> so every decision supports performance, clarity, and growth.</p><p class=\"section-title\"><span class=\"highlight\">Here's how the gig works:</span></p><ul><li>Message me to discuss your project (and place an order)</li><li>Share requirements and assets</li><li>Receive a fast, polished delivery</li><li>Request optimizations if needed</li></ul><p class=\"section-title\"><span class=\"highlight\">Why me?</span></p><ul><li>Pro-level delivery with clear communication</li><li>Performance-focused strategy</li><li>Clean pacing, strong hooks, and brand alignment</li><li>Consistent, reliable results</li></ul><p>Daniel B. is vetted for <strong>Paid Ad Creatives</strong> and brings repeatable results.</p><p><span class=\"highlight\">Save your spot while it's available.</span></p><p class=\"note\"><em>*Fast delivery is available as an extra when timelines are tight.</em></p>"
   },
   {
     "_id": "g86",
@@ -5887,7 +6550,7 @@
     "reviews": [
       {
         "id": "r92-1",
-        "txt": "High quality output. Will order again.",
+        "txt": "High quality output. Will order again. Strong hooks, clean transitions, and a smooth narrative flow.",
         "rate": 4.7,
         "by": {
           "_id": "u292",
@@ -5897,7 +6560,7 @@
       },
       {
         "id": "r92-2",
-        "txt": "Quick turnaround and excellent attention to detail.",
+        "txt": "Quick turnaround and excellent attention to detail. The pacing, clarity, and final polish exceeded expectations.",
         "rate": 4.8,
         "by": {
           "_id": "u293",
@@ -5907,17 +6570,68 @@
       },
       {
         "id": "r92-3",
-        "txt": "Exactly what I needed. Professional and polished.",
+        "txt": "Exactly what I needed. Professional and polished. Great creative sense and very responsive to small tweaks.",
         "rate": 4.9,
         "by": {
           "_id": "u294",
           "fullname": "Layla Adams",
           "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]28.png"
         }
+      },
+      {
+        "id": "rg92-4",
+        "txt": "High-quality work that matched the brief perfectly. The final cut looked premium and converted better than our previous ads.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u877",
+          "fullname": "Grace Kim",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]49.png"
+        }
+      },
+      {
+        "id": "rg92-5",
+        "txt": "High-quality work that matched the brief perfectly. Great creative sense and very responsive to small tweaks.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u961",
+          "fullname": "Noah Blake",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]38.png"
+        }
+      },
+      {
+        "id": "rg92-6",
+        "txt": "High-quality work that matched the brief perfectly. Strong hooks, clean transitions, and a smooth narrative flow.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u804",
+          "fullname": "Nora Ellis",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]64.png"
+        }
+      },
+      {
+        "id": "rg92-7",
+        "txt": "Fantastic delivery and very easy to work with. Great creative sense and very responsive to small tweaks.",
+        "rate": 5,
+        "by": {
+          "_id": "u851",
+          "fullname": "Aria Sullivan",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]71.png"
+        }
+      },
+      {
+        "id": "rg92-8",
+        "txt": "Fantastic delivery and very easy to work with. The pacing, clarity, and final polish exceeded expectations.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u999",
+          "fullname": "Ava Collins",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]69.png"
+        }
       }
     ],
     "createdAt": 1770132012575,
-    "updatedAt": 1770132012575
+    "updatedAt": 1770132012575,
+    "descriptionHtml": "<p><span class=\"highlight\">Stop wasting</span> your time and money searching for a perfect partner. You need results, not just edits \u2014 and that is exactly what I deliver for your ad & social specialist needs on Leo.</p><p><span class=\"highlight\">Hi, I'm Avery</span> and this is where my gig comes in. I follow a <span class=\"highlight\">conversion-first approach</span> so every decision supports performance, clarity, and growth.</p><p class=\"section-title\"><span class=\"highlight\">Here's how the gig works:</span></p><ul><li>Message me to discuss your project (and place an order)</li><li>Share requirements and assets</li><li>Receive a fast, polished delivery</li><li>Request optimizations if needed</li></ul><p class=\"section-title\"><span class=\"highlight\">Why me?</span></p><ul><li>Pro-level delivery with clear communication</li><li>Performance-focused strategy</li><li>Clean pacing, strong hooks, and brand alignment</li><li>Consistent, reliable results</li></ul><p>Avery P. is vetted for <strong>Paid Ad Creatives</strong> and brings repeatable results.</p><p><span class=\"highlight\">Save your spot while it's available.</span></p><p class=\"note\"><em>*Fast delivery is available as an extra when timelines are tight.</em></p>"
   },
   {
     "_id": "g93",
@@ -6328,7 +7042,7 @@
     "reviews": [
       {
         "id": "r99-1",
-        "txt": "Quick turnaround and excellent attention to detail.",
+        "txt": "Quick turnaround and excellent attention to detail. The final cut looked premium and converted better than our previous ads.",
         "rate": 5,
         "by": {
           "_id": "u299",
@@ -6338,7 +7052,7 @@
       },
       {
         "id": "r99-2",
-        "txt": "Exactly what I needed. Professional and polished.",
+        "txt": "Exactly what I needed. Professional and polished. The pacing, clarity, and final polish exceeded expectations.",
         "rate": 4.7,
         "by": {
           "_id": "u300",
@@ -6348,17 +7062,68 @@
       },
       {
         "id": "r99-3",
-        "txt": "Amazing results \u2014 exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations. Strong hooks, clean transitions, and a smooth narrative flow.",
         "rate": 4.8,
         "by": {
           "_id": "u301",
           "fullname": "Leo Morales",
           "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]34.png"
         }
+      },
+      {
+        "id": "rg99-4",
+        "txt": "Great improvements to pacing and clarity. Strong hooks, clean transitions, and a smooth narrative flow.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u975",
+          "fullname": "Ethan Price",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]28.png"
+        }
+      },
+      {
+        "id": "rg99-5",
+        "txt": "High-quality work that matched the brief perfectly. Communication was fast and the delivery was exactly on brief.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u566",
+          "fullname": "Grace Kim",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]17.png"
+        }
+      },
+      {
+        "id": "rg99-6",
+        "txt": "Great improvements to pacing and clarity. Great creative sense and very responsive to small tweaks.",
+        "rate": 5,
+        "by": {
+          "_id": "u456",
+          "fullname": "Ethan Price",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]18.png"
+        }
+      },
+      {
+        "id": "rg99-7",
+        "txt": "Great improvements to pacing and clarity. Communication was fast and the delivery was exactly on brief.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u865",
+          "fullname": "Daniel Ross",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]78.png"
+        }
+      },
+      {
+        "id": "rg99-8",
+        "txt": "Fantastic delivery and very easy to work with. Communication was fast and the delivery was exactly on brief.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u962",
+          "fullname": "Grace Kim",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]63.png"
+        }
       }
     ],
     "createdAt": 1769527212575,
-    "updatedAt": 1769527212575
+    "updatedAt": 1769527212575,
+    "descriptionHtml": "<p><span class=\"highlight\">Stop wasting</span> your time and money searching for a perfect partner. You need results, not just edits \u2014 and that is exactly what I deliver for your ad & social specialist needs on Leo.</p><p><span class=\"highlight\">Hi, I'm Julian</span> and this is where my gig comes in. I follow a <span class=\"highlight\">conversion-first approach</span> so every decision supports performance, clarity, and growth.</p><p class=\"section-title\"><span class=\"highlight\">Here's how the gig works:</span></p><ul><li>Message me to discuss your project (and place an order)</li><li>Share requirements and assets</li><li>Receive a fast, polished delivery</li><li>Request optimizations if needed</li></ul><p class=\"section-title\"><span class=\"highlight\">Why me?</span></p><ul><li>Pro-level delivery with clear communication</li><li>Performance-focused strategy</li><li>Clean pacing, strong hooks, and brand alignment</li><li>Consistent, reliable results</li></ul><p>Julian K. is vetted for <strong>Paid Ad Creatives</strong> and brings repeatable results.</p><p><span class=\"highlight\">Save your spot while it's available.</span></p><p class=\"note\"><em>*Fast delivery is available as an extra when timelines are tight.</em></p>"
   },
   {
     "_id": "g100",
@@ -6769,7 +7534,7 @@
     "reviews": [
       {
         "id": "r106-1",
-        "txt": "Exactly what I needed. Professional and polished.",
+        "txt": "Exactly what I needed. Professional and polished. Great creative sense and very responsive to small tweaks.",
         "rate": 4.9,
         "by": {
           "_id": "u306",
@@ -6779,7 +7544,7 @@
       },
       {
         "id": "r106-2",
-        "txt": "Amazing results \u2014 exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations. The pacing, clarity, and final polish exceeded expectations.",
         "rate": 5,
         "by": {
           "_id": "u307",
@@ -6789,17 +7554,68 @@
       },
       {
         "id": "r106-3",
-        "txt": "Super clean delivery and fast communication.",
+        "txt": "Super clean delivery and fast communication. The final cut looked premium and converted better than our previous ads.",
         "rate": 4.7,
         "by": {
           "_id": "u308",
           "fullname": "Naomi King",
           "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]40.png"
         }
+      },
+      {
+        "id": "rg106-4",
+        "txt": "Fantastic delivery and very easy to work with. Audio, captions, and color grading were all spot on.",
+        "rate": 5,
+        "by": {
+          "_id": "u556",
+          "fullname": "Henry Stone",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]31.png"
+        }
+      },
+      {
+        "id": "rg106-5",
+        "txt": "Fantastic delivery and very easy to work with. Strong hooks, clean transitions, and a smooth narrative flow.",
+        "rate": 5,
+        "by": {
+          "_id": "u892",
+          "fullname": "Olivia Tran",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]45.png"
+        }
+      },
+      {
+        "id": "rg106-6",
+        "txt": "Fantastic delivery and very easy to work with. The final cut looked premium and converted better than our previous ads.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u833",
+          "fullname": "Julian Cole",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]76.png"
+        }
+      },
+      {
+        "id": "rg106-7",
+        "txt": "Fantastic delivery and very easy to work with. The pacing, clarity, and final polish exceeded expectations.",
+        "rate": 4.9,
+        "by": {
+          "_id": "u944",
+          "fullname": "Aria Sullivan",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]65.png"
+        }
+      },
+      {
+        "id": "rg106-8",
+        "txt": "High-quality work that matched the brief perfectly. Great creative sense and very responsive to small tweaks.",
+        "rate": 5,
+        "by": {
+          "_id": "u866",
+          "fullname": "Daniel Ross",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]60.png"
+        }
       }
     ],
     "createdAt": 1768922412575,
-    "updatedAt": 1768922412575
+    "updatedAt": 1768922412575,
+    "descriptionHtml": "<p><span class=\"highlight\">Stop wasting</span> your time and money searching for a perfect partner. You need results, not just edits \u2014 and that is exactly what I deliver for your ad & social specialist needs on Leo.</p><p><span class=\"highlight\">Hi, I'm Zoe</span> and this is where my gig comes in. I follow a <span class=\"highlight\">conversion-first approach</span> so every decision supports performance, clarity, and growth.</p><p class=\"section-title\"><span class=\"highlight\">Here's how the gig works:</span></p><ul><li>Message me to discuss your project (and place an order)</li><li>Share requirements and assets</li><li>Receive a fast, polished delivery</li><li>Request optimizations if needed</li></ul><p class=\"section-title\"><span class=\"highlight\">Why me?</span></p><ul><li>Pro-level delivery with clear communication</li><li>Performance-focused strategy</li><li>Clean pacing, strong hooks, and brand alignment</li><li>Consistent, reliable results</li></ul><p>Zoe H. is vetted for <strong>Paid Ad Creatives</strong> and brings repeatable results.</p><p><span class=\"highlight\">Save your spot while it's available.</span></p><p class=\"note\"><em>*Fast delivery is available as an extra when timelines are tight.</em></p>"
   },
   {
     "_id": "g107",
@@ -7210,7 +8026,7 @@
     "reviews": [
       {
         "id": "r113-1",
-        "txt": "Amazing results \u2014 exceeded expectations.",
+        "txt": "Amazing results \u2014 exceeded expectations. Great creative sense and very responsive to small tweaks.",
         "rate": 4.8,
         "by": {
           "_id": "u313",
@@ -7220,7 +8036,7 @@
       },
       {
         "id": "r113-2",
-        "txt": "Super clean delivery and fast communication.",
+        "txt": "Super clean delivery and fast communication. Communication was fast and the delivery was exactly on brief.",
         "rate": 4.9,
         "by": {
           "_id": "u314",
@@ -7230,17 +8046,68 @@
       },
       {
         "id": "r113-3",
-        "txt": "Great work and very smooth process.",
+        "txt": "Great work and very smooth process. Audio, captions, and color grading were all spot on.",
         "rate": 5,
         "by": {
           "_id": "u315",
           "fullname": "Asher Coleman",
           "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]47.png"
         }
+      },
+      {
+        "id": "rg113-4",
+        "txt": "High-quality work that matched the brief perfectly. Strong hooks, clean transitions, and a smooth narrative flow.",
+        "rate": 5,
+        "by": {
+          "_id": "u986",
+          "fullname": "Chloe Martin",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]49.png"
+        }
+      },
+      {
+        "id": "rg113-5",
+        "txt": "Great improvements to pacing and clarity. The final cut looked premium and converted better than our previous ads.",
+        "rate": 5,
+        "by": {
+          "_id": "u457",
+          "fullname": "Isaac Perry",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]2.png"
+        }
+      },
+      {
+        "id": "rg113-6",
+        "txt": "Fantastic delivery and very easy to work with. Audio, captions, and color grading were all spot on.",
+        "rate": 5,
+        "by": {
+          "_id": "u573",
+          "fullname": "Liam Parker",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]59.png"
+        }
+      },
+      {
+        "id": "rg113-7",
+        "txt": "High-quality work that matched the brief perfectly. Communication was fast and the delivery was exactly on brief.",
+        "rate": 5,
+        "by": {
+          "_id": "u414",
+          "fullname": "Sofia Reed",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]30.png"
+        }
+      },
+      {
+        "id": "rg113-8",
+        "txt": "High-quality work that matched the brief perfectly. Audio, captions, and color grading were all spot on.",
+        "rate": 4.8,
+        "by": {
+          "_id": "u834",
+          "fullname": "Ethan Price",
+          "imgUrl": "/assets/OfficalGigDemoData/ProfilePicture/[Profile]66.png"
+        }
       }
     ],
     "createdAt": 1768317612575,
-    "updatedAt": 1768317612575
+    "updatedAt": 1768317612575,
+    "descriptionHtml": "<p><span class=\"highlight\">Stop wasting</span> your time and money searching for a perfect partner. You need results, not just edits \u2014 and that is exactly what I deliver for your ad & social specialist needs on Leo.</p><p><span class=\"highlight\">Hi, I'm David</span> and this is where my gig comes in. I follow a <span class=\"highlight\">conversion-first approach</span> so every decision supports performance, clarity, and growth.</p><p class=\"section-title\"><span class=\"highlight\">Here's how the gig works:</span></p><ul><li>Message me to discuss your project (and place an order)</li><li>Share requirements and assets</li><li>Receive a fast, polished delivery</li><li>Request optimizations if needed</li></ul><p class=\"section-title\"><span class=\"highlight\">Why me?</span></p><ul><li>Pro-level delivery with clear communication</li><li>Performance-focused strategy</li><li>Clean pacing, strong hooks, and brand alignment</li><li>Consistent, reliable results</li></ul><p>David T. is vetted for <strong>Paid Ad Creatives</strong> and brings repeatable results.</p><p><span class=\"highlight\">Save your spot while it's available.</span></p><p class=\"note\"><em>*Fast delivery is available as an extra when timelines are tight.</em></p>"
   },
   {
     "_id": "g114",
