@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { utilService } from '@/services/util.service'
 
 import { LeoProDd } from '@/components/headerComponents/ProDd'
@@ -20,6 +20,7 @@ const DEFAULT_LOCALE = {
 const FALLBACK_THUMBS = demoData.fallbackThumbs
 const CUSTOMER_NAME = 'Wilson Gray'
 const SELLER_NAME = 'Harrison Parker'
+const CUSTOMER_IMAGE = '/assets/ProfileImgs/PersonTwo.png'
 
 export function AppHeader() {
   const { openDd, toggleDd, closeDd, rootRef, getOptionProps } = useDropdown()
@@ -268,7 +269,12 @@ function SignedInActions({
 }) {
   return (
     <>
-      <HeaderIconButtons />
+      <HeaderIconButtons
+        isSeller={isSeller}
+        openDd={openDd}
+        onToggleDd={onToggleDd}
+        onCloseDd={onCloseDd}
+      />
       {!isSeller && (
         <WishlistDropdown
           isOpen={openDd === 'wishlist'}
@@ -459,15 +465,265 @@ function WishlistDropdown({ isOpen, onToggle, onClose, wishlist = [] }) {
   )
 }
 
-function HeaderIconButtons() {
+function HeaderIconButtons({ isSeller, openDd, onToggleDd, onCloseDd }) {
+  const isMessagesOpen = openDd === 'messages'
+  const [sellerInbox, setSellerInbox] = useState([])
+  const [activeChat, setActiveChat] = useState(null)
+  const [chatInput, setChatInput] = useState('')
+  const hasUnread = sellerInbox.some(
+    (message) => message.unread && message.from !== 'seller'
+  )
+
+  function loadInbox() {
+    try {
+      const stored = JSON.parse(localStorage.getItem('sellerInbox') || '[]')
+      setSellerInbox(Array.isArray(stored) ? stored : [])
+    } catch {
+      setSellerInbox([])
+    }
+  }
+
+  function saveInbox(nextInbox) {
+    setSellerInbox(nextInbox)
+    localStorage.setItem('sellerInbox', JSON.stringify(nextInbox))
+  }
+
+  function clearInbox() {
+    saveInbox([])
+    setActiveChat(null)
+  }
+
+  useEffect(() => {
+    if (!isSeller) return
+    loadInbox()
+    function handleInboxUpdate() {
+      loadInbox()
+    }
+    window.addEventListener('seller-inbox-updated', handleInboxUpdate)
+    window.addEventListener('storage', handleInboxUpdate)
+    return () => {
+      window.removeEventListener('seller-inbox-updated', handleInboxUpdate)
+      window.removeEventListener('storage', handleInboxUpdate)
+    }
+  }, [isSeller])
+
+  const conversations = useMemo(() => {
+    const map = new Map()
+    sellerInbox.forEach((message) => {
+      const key = `${message.gigId || 'gig'}-${message.customerName || 'customer'}`
+      const prev = map.get(key)
+      const unreadCount =
+        (prev?.unreadCount || 0) + (message.unread && message.from !== 'seller' ? 1 : 0)
+      const data = {
+        key,
+        gigId: message.gigId,
+        gigTitle: message.gigTitle || 'Gig',
+        customerName: message.customerName || 'Customer',
+        customerImg: message.customerImg || CUSTOMER_IMAGE,
+        preview: message.text,
+        lastCreatedAt: message.createdAt || 0,
+        unreadCount,
+      }
+      if (!prev || data.lastCreatedAt >= prev.lastCreatedAt) {
+        map.set(key, { ...data, unreadCount })
+      } else {
+        map.set(key, { ...prev, unreadCount })
+      }
+    })
+    return Array.from(map.values()).sort(
+      (a, b) => (b.lastCreatedAt || 0) - (a.lastCreatedAt || 0)
+    )
+  }, [sellerInbox])
+
+  const activeMessages = useMemo(() => {
+    if (!activeChat) return []
+    return sellerInbox
+      .filter(
+        (message) =>
+          `${message.gigId || 'gig'}-${message.customerName || 'customer'}` ===
+          activeChat.key
+      )
+      .sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0))
+  }, [sellerInbox, activeChat])
+
+  function markConversationRead(conversationKey) {
+    const nextInbox = sellerInbox.map((message) => {
+      const key = `${message.gigId || 'gig'}-${message.customerName || 'customer'}`
+      if (key !== conversationKey) return message
+      return { ...message, unread: false }
+    })
+    saveInbox(nextInbox)
+  }
+
+  function handleToggleMessages() {
+    if (isMessagesOpen) {
+      onCloseDd()
+      return
+    }
+    onToggleDd('messages')
+  }
+
+  function openConversation(conversation) {
+    setActiveChat(conversation)
+    markConversationRead(conversation.key)
+    onCloseDd()
+  }
+
+  function handleSendFromSeller() {
+    if (!activeChat) return
+    const text = chatInput.trim()
+    if (!text) return
+    const entry = {
+      id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+      gigId: activeChat.gigId,
+      gigTitle: activeChat.gigTitle,
+      customerName: activeChat.customerName,
+      text,
+      createdAt: Date.now(),
+      unread: false,
+      from: 'seller',
+    }
+    saveInbox([entry, ...sellerInbox])
+    setChatInput('')
+  }
+
+  useEffect(() => {
+    if (!activeChat) return
+    if (!sellerInbox.length) return
+    const exists = sellerInbox.some((message) => {
+      const key = `${message.gigId || 'gig'}-${message.customerName || 'customer'}`
+      return key === activeChat.key
+    })
+    if (!exists) setActiveChat(null)
+  }, [sellerInbox, activeChat])
   return (
     <div className="header-icon-group">
       <button type="button" className="header-icon-btn" aria-label="Notifications">
         <SvgIcon icon="headerBell" />
       </button>
-      <button type="button" className="header-icon-btn" aria-label="Messages">
-        <SvgIcon icon="headerMail" />
-      </button>
+      {isSeller ? (
+        <div className="nav-dd nav-dd-messages">
+          <button
+            type="button"
+            className={`header-icon-btn ${hasUnread ? 'has-unread' : ''}`}
+            aria-label="Messages"
+            aria-expanded={isMessagesOpen}
+            aria-haspopup="dialog"
+            onClick={handleToggleMessages}
+          >
+            <SvgIcon icon="headerMail" />
+          </button>
+          {isMessagesOpen && (
+            <div className="nav-dd-panel nav-dd-panel-messages" aria-label="Messages">
+              <div className="messages-header-row">
+                <div className="messages-header">Messages</div>
+                <button
+                  type="button"
+                  className="messages-clear"
+                  onClick={clearInbox}
+                  disabled={!sellerInbox.length}
+                >
+                  Clear
+                </button>
+              </div>
+              {!conversations.length && (
+                <div className="messages-empty">No incoming messages yet.</div>
+              )}
+              <div className="messages-thread">
+                {conversations.map((conversation) => (
+                  <button
+                    type="button"
+                    key={conversation.key}
+                    className={`messages-item ${
+                      conversation.unreadCount ? 'is-unread' : ''
+                    }`}
+                    onClick={() => openConversation(conversation)}
+                  >
+                    <div className="messages-avatar">
+                      <img
+                        src={conversation.customerImg || CUSTOMER_IMAGE}
+                        alt={conversation.customerName}
+                      />
+                    </div>
+                    <div className="messages-content">
+                      <div className="messages-gig">{conversation.gigTitle}</div>
+                      <div className="messages-meta">
+                        From {conversation.customerName}
+                      </div>
+                      <div className="messages-preview">{conversation.preview}</div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      ) : (
+        <button type="button" className="header-icon-btn" aria-label="Messages">
+          <SvgIcon icon="headerMail" />
+        </button>
+      )}
+      {isSeller && activeChat && (
+        <div className="seller-chat-widget" role="dialog" aria-label="Seller chat">
+          <div className="seller-chat-header">
+            <div className="seller-chat-avatar">
+              <img
+                src={activeChat.customerImg || CUSTOMER_IMAGE}
+                alt={activeChat.customerName}
+              />
+            </div>
+            <div className="seller-chat-meta">
+              <div className="seller-chat-title">
+                Message {activeChat.customerName}
+              </div>
+              <div className="seller-chat-subtitle">{activeChat.gigTitle}</div>
+            </div>
+            <button
+              type="button"
+              className="seller-chat-close"
+              onClick={() => setActiveChat(null)}
+              aria-label="Close chat"
+            >
+              ×
+            </button>
+          </div>
+          <div className="seller-chat-thread">
+            {activeMessages.map((message) => (
+              <div
+                key={message.id}
+                className={`seller-chat-bubble ${
+                  message.from === 'seller' ? 'is-seller' : 'is-customer'
+                }`}
+              >
+                {message.text}
+              </div>
+            ))}
+          </div>
+          <div className="seller-chat-footer">
+            <input
+              type="text"
+              className="seller-chat-input"
+              placeholder="Type your message..."
+              value={chatInput}
+              onChange={(event) => setChatInput(event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  event.preventDefault()
+                  handleSendFromSeller()
+                }
+              }}
+            />
+            <button
+              type="button"
+              className="seller-chat-send"
+              onClick={handleSendFromSeller}
+              disabled={!chatInput.trim()}
+            >
+              Send
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

@@ -25,6 +25,9 @@ export function GigDetails() {
   const reviewsTitle = useRef()
   const sellerTitle = useRef()
   const { gig, gigImgs, index, setIndex, setImg, isLoading } = useGigDetails(gigId)
+  const isSignedIn = localStorage.getItem('isSignedIn') === 'true'
+  const isSeller = localStorage.getItem('isSeller') === 'true'
+  const customerName = localStorage.getItem('userName') || 'Customer'
   const tagToTypeLabel = {
     'web-builder': 'Web Builder',
     'video-editing': 'Video Editing',
@@ -49,6 +52,7 @@ export function GigDetails() {
 
   function handleSuggestionClick(text) {
     setChatMessages((prev) => [...prev, { id: `${Date.now()}-${prev.length}`, text }])
+    pushSellerInboxMessage(text)
   }
 
   function handleSendMessage() {
@@ -56,6 +60,7 @@ export function GigDetails() {
     if (!text) return
     setChatMessages((prev) => [...prev, { id: `${Date.now()}-${prev.length}`, text }])
     setChatInput('')
+    pushSellerInboxMessage(text)
   }
 
   function handleEmojiClick() {
@@ -73,10 +78,12 @@ export function GigDetails() {
   function handleFileChange(event) {
     const file = event.target.files?.[0]
     if (!file) return
+    const text = `Attachment: ${file.name}`
     setChatMessages((prev) => [
       ...prev,
-      { id: `${Date.now()}-${prev.length}`, text: `Attachment: ${file.name}` },
+      { id: `${Date.now()}-${prev.length}`, text },
     ])
+    pushSellerInboxMessage(text)
     event.target.value = ''
   }
 
@@ -123,8 +130,6 @@ export function GigDetails() {
 
   const ownerLevel = String(gig?.owner?.level || '').toLowerCase()
   const primaryTag = gig?.tags?.[0] || ''
-  const isSignedIn = localStorage.getItem('isSignedIn') === 'true'
-  const isSeller = localStorage.getItem('isSeller') === 'true'
   const isTopRatedSeller = ownerLevel === 'top rated'
   const reviewTotal = gig?.reviews?.length || 0
   const ownerName = gig?.owner?.fullname || 'Seller'
@@ -157,6 +162,32 @@ export function GigDetails() {
 
   const typeLabel = tagToTypeLabel[primaryTag] || toTitleCase(primaryTag) || 'Gig'
   const homeTarget = isSignedIn ? '/index' : '/'
+
+  function pushSellerInboxMessage(text) {
+    if (!text || !gig || !gigId) return
+    if (!isSignedIn || isSeller) return
+    const entry = {
+      id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+      gigId,
+      gigTitle: gig.title || 'Gig',
+      customerName,
+      customerImg: '/assets/ProfileImgs/PersonTwo.png',
+      text,
+      createdAt: Date.now(),
+      unread: true,
+      from: 'customer',
+    }
+    let inbox = []
+    try {
+      const stored = localStorage.getItem('sellerInbox')
+      inbox = stored ? JSON.parse(stored) : []
+    } catch {
+      inbox = []
+    }
+    const nextInbox = [entry, ...(Array.isArray(inbox) ? inbox : [])].slice(0, 30)
+    localStorage.setItem('sellerInbox', JSON.stringify(nextInbox))
+    window.dispatchEvent(new Event('seller-inbox-updated'))
+  }
 
   return (
     <div className="main-layout-details">
