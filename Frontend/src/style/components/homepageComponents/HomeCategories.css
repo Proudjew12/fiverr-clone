@@ -1,25 +1,26 @@
 .home-categories {
   background: #fff;
-  padding: 0;
-}
-
-.home-categories-inner {
+  padding: 24px 65px;
   max-width: 1536px;
-  margin: -10px auto;
-  padding: 0 65px;
-  transform: scale(1.03);
-  transform-origin: top left;
-}
-
-.home-categories-row {
+  margin: 0 auto;
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 128px;
   gap: 24px;
-  overflow: visible;
-  padding: 0;
   justify-content: flex-start;
   align-items: stretch;
+  overflow-x: auto;
+}
+
+.home-categories-inner {
+  max-width: 1536px;
+  margin: 0 auto;
+  padding: 0;
+  transform: none;
+}
+
+.home-categories-row {
+  display: contents;
 }
 
 .home-category-card {
@@ -55,8 +56,7 @@
     box-shadow 140ms ease,
     border-color 140ms ease;
 
-  transform: scale(0.98);
-  transform-origin: center;
+  transform: none;
 }
 
 .home-category-card::before {
