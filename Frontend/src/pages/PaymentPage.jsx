@@ -5,7 +5,7 @@ import { Link, useParams } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { useGigById } from '@/hooks/useGigById'
 import { orderService } from '@/services/order.service.remote.js'
-
+import { SOCKET_EMIT_ORDER_GIG,SOCKET_EVENT_ORDER_GIG, socketService } from '@/services/socket.service.js'
 const DEMO_CARD = demoData.payment.demoCard
 const FALLBACK_THUMBS = demoData.fallbackThumbs
 
@@ -71,7 +71,9 @@ export function PaymentPage() {
       status: 'approved',
       previewImg,
     }
-    await orderService.save(order)
+    const savedOrder = await orderService.save(order)
+    
+    socketService.emit(SOCKET_EMIT_ORDER_GIG,savedOrder)
     window.dispatchEvent(new CustomEvent('orders-updated'))
 
     await Swal.fire({
