@@ -26,7 +26,7 @@ export function setupSocketAPI(http) {
             socket.join(topic)
             socket.myTopic = topic
         })
-
+         
 
         socket.on('gig-order',order => {
           loggerService.info(`gig-order from socket [id: ${socket.id}],  order ${order}`)  
@@ -36,6 +36,11 @@ export function setupSocketAPI(http) {
         socket.on('send-msg', msg => {
          loggerService.info(`send-msg from [id: ${socket.id}], msg `,msg)   
          gIo.to('chat').emit('msg-sent',msg)
+        })
+
+        socket.on('add-chat',chat =>{
+            loggerService.info(`add-chat from [id: ${socket.id}], msg `,chat)
+        gIo.to('chat').emit('chat-added',chat)    
         })
     })
 }

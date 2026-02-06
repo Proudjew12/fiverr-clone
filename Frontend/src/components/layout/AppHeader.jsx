@@ -12,7 +12,7 @@ import { useDropdown } from '@/hooks/useDropdown'
 import { useHeaderSearchObserver } from '@/hooks/useHeaderSearchObserver'
 import { useDashboardLists } from '@/hooks/useDashboardLists'
 import demoData from '@/data/demo-data.json'
-import { SOCKET_EMIT_SEND_MSG, SOCKET_EMIT_SET_TOPIC, SOCKET_EVENT_MSG_SENT, socketService } from '@/services/socket.service.js'
+import { SOCKET_EMIT_SEND_MSG, SOCKET_EMIT_SET_TOPIC, SOCKET_EVENT_CHAT_ADDED, SOCKET_EVENT_MSG_SENT, socketService } from '@/services/socket.service.js'
 
 const DEFAULT_LOCALE = {
   langLabel: 'English',
@@ -42,8 +42,12 @@ export function AppHeader() {
   const { orders, wishlist } = useDashboardLists({ buyerName: userName, isSeller })
   const navigate = useNavigate()
   const location = useLocation()
-
+  const [sellerInbox, setSellerInbox] = useState([])
   useEffect(() => {
+    if (isSeller) {
+      socketService.emit(SOCKET_EMIT_SET_TOPIC, 'chat')
+      socketService.on(SOCKET_EVENT_MSG_SENT, handleSendMessage )
+    }
     function handleGlow() {
       setSignInGlow(true)
       setTimeout(() => setSignInGlow(false), 1200)
@@ -54,6 +58,9 @@ export function AppHeader() {
     }
   }, [])
 
+  function handleSendMessage(msg){
+    setSellerInbox(prev=>[...prev,msg])
+  }
 
   function handleSignIn() {
     setIsSignedIn(true)
@@ -99,6 +106,8 @@ export function AppHeader() {
             onToggleDd={toggleDd}
             onCloseDd={closeDd}
             isSignedIn={isSignedIn}
+            sellerInbox={sellerInbox}
+            setSellerInbox={setSellerInbox}
           />
           <HeaderRight
             openDd={openDd}
@@ -113,6 +122,8 @@ export function AppHeader() {
             isSeller={isSeller}
             onToggleSeller={handleToggleSeller}
             signInGlow={signInGlow}
+            sellerInbox={sellerInbox}
+            setSellerInbox={setSellerInbox}
           />
         </div>
       </div>
@@ -144,7 +155,7 @@ function Logo() {
   )
 }
 
-function HeaderMiddle({ openDd, onToggleDd, onCloseDd, isSignedIn }) {
+function HeaderMiddle({ openDd, onToggleDd, onCloseDd, isSignedIn,sellerInbox,setSellerInbox }) {
   return (
     <div className="header-mid flex items-center">
       <HeaderDropdowns
@@ -152,6 +163,8 @@ function HeaderMiddle({ openDd, onToggleDd, onCloseDd, isSignedIn }) {
         onToggleDd={onToggleDd}
         onCloseDd={onCloseDd}
         isSignedIn={isSignedIn}
+        sellerInbox={sellerInbox}
+        setSellerInbox={setSellerInbox}
       />
     </div>
   )
@@ -174,6 +187,8 @@ function HeaderRight({
   isSeller,
   onToggleSeller,
   signInGlow,
+  sellerInbox,
+  setSellerInbox
 }) {
   const dashboardLink = isSeller ? '/dashboard/seller' : '/dashboard/customer'
   return (
@@ -202,6 +217,8 @@ function HeaderRight({
             isSeller={isSeller}
             onToggleSeller={onToggleSeller}
             dashboardLink={dashboardLink}
+            sellerInbox={sellerInbox}
+            setSellerInbox={setSellerInbox}
           />
         ) : (
           <HeaderActions onSignIn={onSignIn} glow={signInGlow} />
@@ -213,7 +230,7 @@ function HeaderRight({
   )
 }
 
-function HeaderDropdowns({ openDd, onToggleDd, onCloseDd, isSignedIn }) {
+function HeaderDropdowns({ openDd, onToggleDd, onCloseDd, isSignedIn, sellerInbox, setSellerInbox }) {
   return (
     <div className="nav-group nav-group-dd flex items-center">
       <ProDropdown
@@ -266,6 +283,8 @@ function SignedInActions({
   wishlist,
   onSignOut,
   isSeller,
+  sellerInbox,
+  setSellerInbox,
   onToggleSeller,
   dashboardLink,
 }) {
@@ -276,6 +295,8 @@ function SignedInActions({
         openDd={openDd}
         onToggleDd={onToggleDd}
         onCloseDd={onCloseDd}
+        sellerInbox={sellerInbox}
+        setSellerInbox={setSellerInbox}
       />
       {!isSeller && (
         <WishlistDropdown
@@ -467,9 +488,8 @@ function WishlistDropdown({ isOpen, onToggle, onClose, wishlist = [] }) {
   )
 }
 
-function HeaderIconButtons({ isSeller, openDd, onToggleDd, onCloseDd }) {
+function HeaderIconButtons({ isSeller, openDd, onToggleDd, onCloseDd, sellerInbox,setSellerInbox }) {
   const isMessagesOpen = openDd === 'messages'
-  const [sellerInbox, setSellerInbox] = useState([])
   const [activeChat, setActiveChat] = useState(null)
   const [chatInput, setChatInput] = useState('')
   const hasUnread = sellerInbox.some(
@@ -500,6 +520,7 @@ function HeaderIconButtons({ isSeller, openDd, onToggleDd, onCloseDd }) {
   }
   useEffect(() => {
     if (!isSeller) return
+
     loadInbox()
     function handleInboxUpdate() {
       loadInbox()
@@ -591,12 +612,15 @@ function HeaderIconButtons({ isSeller, openDd, onToggleDd, onCloseDd }) {
       unread: false,
       from: 'seller',
     }
-    socketService.emit(SOCKET_EMIT_SEND_MSG,entry)
+    socketService.emit(SOCKET_EMIT_SEND_MSG, entry)
     setChatInput('')
   }
   function handleMessage(entry) {
     if (!entry) return
     saveInbox([entry, ...sellerInbox])
+  }
+  function addConversation(conversation) {
+    console.log('lll');
   }
   useEffect(() => {
     if (!activeChat) return
