@@ -1,6 +1,10 @@
+import dns from "dns";
 import { MongoClient } from "mongodb";
 import { config } from "../config/index.js";
 import { loggerService } from "./logger.service.js";
+
+const servers = process.env.DNS_SERVERS;
+if (servers) dns.setServers(servers.split(","));
 
 let dbConn = null;
 let client = null;
