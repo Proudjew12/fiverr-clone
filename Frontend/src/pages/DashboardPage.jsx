@@ -276,6 +276,16 @@ export function DashboardPage() {
                   Clear wishlist
                 </button>
               ))}
+            {isSeller && (
+              <button
+                type="button"
+                className="dashboard-clear-btn"
+                onClick={onClearOrders}
+                disabled={!orders.length}
+              >
+                Clear requests
+              </button>
+            )}
           </div>
           {!isSeller && (
             <div className="dashboard-tabs">
