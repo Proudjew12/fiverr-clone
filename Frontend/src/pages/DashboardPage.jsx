@@ -6,10 +6,12 @@ import demoData from '@/data/demo-data.json'
 import { useDashboardLists } from '@/hooks/useDashboardLists'
 import { SvgIcon } from '@/components/svg/SvgIcon'
 import {
+  SOCKET_EMIT_SEND_MSG,
   SOCKET_EMIT_OPEN_ORDER_CHAT,
   SOCKET_EMIT_ORDER_CHAT_MSG,
   SOCKET_EMIT_SET_TOPIC,
   SOCKET_EMIT_UPDATE_REQUEST,
+  SOCKET_EVENT_MSG_SENT,
   SOCKET_EVENT_ORDER_CHAT_MSG,
   SOCKET_EVENT_ORDER_CHAT_OPENED,
   SOCKET_EVENT_REQUEST_UPDATED,
@@ -89,6 +91,7 @@ export function DashboardPage() {
   const [requestStates, setRequestStates] = useState({})
   const [openRequestMenuId, setOpenRequestMenuId] = useState(null)
   const requestMenuRef = useRef(null)
+  const ordersRef = useRef([])
   const [activeCustomerChat, setActiveCustomerChat] = useState(null)
   const [customerChatInput, setCustomerChatInput] = useState('')
   const [orderChatMessages, setOrderChatMessages] = useState([])
@@ -121,6 +124,10 @@ export function DashboardPage() {
     }, 30000)
     return () => window.clearInterval(intervalId)
   }, [isSeller])
+
+  useEffect(() => {
+    ordersRef.current = orders
+  }, [orders])
   
   useEffect(() => {
     if (isSeller) return
@@ -144,6 +151,11 @@ export function DashboardPage() {
       socketService.off(SOCKET_EVENT_REQUEST_UPDATED, handleRequestUpdated)
     }
   }, [isSeller, setOrders])
+
+  useEffect(() => {
+    if (!activeCustomerChat) return
+    socketService.emit(SOCKET_EMIT_SET_TOPIC, 'chat')
+  }, [activeCustomerChat])
 
   useEffect(() => {
     function handleOutsideClick(ev) {
@@ -184,13 +196,14 @@ export function DashboardPage() {
   }
 
   function resolveChatOrder(orderCandidate, messageCandidate = null) {
+    const sourceOrders = ordersRef.current
     if (orderCandidate?._id) {
-      const existingOrder = orders.find((order) => order._id === orderCandidate._id)
+      const existingOrder = sourceOrders.find((order) => order._id === orderCandidate._id)
       return existingOrder ? { ...existingOrder, ...orderCandidate } : orderCandidate
     }
     const fallbackOrder = buildFallbackOrderFromMessage(messageCandidate)
     if (!fallbackOrder?._id) return null
-    const existingOrder = orders.find((order) => order._id === fallbackOrder._id)
+    const existingOrder = sourceOrders.find((order) => order._id === fallbackOrder._id)
     return existingOrder ? { ...existingOrder, ...fallbackOrder } : fallbackOrder
   }
 
@@ -240,12 +253,14 @@ export function DashboardPage() {
 
     socketService.on(SOCKET_EVENT_ORDER_CHAT_OPENED, handleOrderChatOpened)
     socketService.on(SOCKET_EVENT_ORDER_CHAT_MSG, handleOrderChatMessage)
+    socketService.on(SOCKET_EVENT_MSG_SENT, handleOrderChatMessage)
 
     return () => {
       socketService.off(SOCKET_EVENT_ORDER_CHAT_OPENED, handleOrderChatOpened)
       socketService.off(SOCKET_EVENT_ORDER_CHAT_MSG, handleOrderChatMessage)
+      socketService.off(SOCKET_EVENT_MSG_SENT, handleOrderChatMessage)
     }
-  }, [isSeller, orders, setOrders, userName])
+  }, [isSeller, setOrders, userName])
 
   async function onUpdateRequest(order, status) {
     const statusLabel = getStatusLabel(status)
@@ -352,6 +367,8 @@ export function DashboardPage() {
     }
     appendOrderChatMessage(entry)
     socketService.emit(SOCKET_EMIT_ORDER_CHAT_MSG, entry)
+    // Backward-compatible fallback for older socket backends.
+    socketService.emit(SOCKET_EMIT_SEND_MSG, entry)
     setCustomerChatInput('')
   }
 
