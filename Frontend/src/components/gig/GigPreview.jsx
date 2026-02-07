@@ -87,7 +87,13 @@ export function GigPreview({ gig }) {
             <div className="card-content">
                 <div className="seller-row">
                     <div className="mini-layout-seller">
-                        <img className="seller-avatar" src={owner.imgUrl} alt={owner.fullname} />
+                        <img
+                            className="seller-avatar"
+                            src={owner.imgUrl}
+                            alt={owner.fullname}
+                            loading="lazy"
+                            decoding="async"
+                        />
                         <span className="seller-name">{owner.fullname}</span>
                     </div>
                     {isTopRated ? (

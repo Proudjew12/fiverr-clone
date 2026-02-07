@@ -1,12 +1,15 @@
 import { ReviewList } from '@/components/review/ReviewList'
 import { SvgIcon } from '@/components/svg/SvgIcon'
 import { Loader } from 'lucide-react'
-import { Fragment, useEffect, useRef, useState } from 'react'
+import { Fragment, useCallback, useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useGigDetails } from '@/hooks/useGigDetails.js'
-import { utilService } from '@/services/util.service'
-import { httpService } from '@/services/http.service'
-import {  SOCKET_EMIT_SEND_MSG, SOCKET_EMIT_SET_TOPIC, SOCKET_EVENT_MSG_SENT, socketService } from '@/services/socket.service'
+import {
+  SOCKET_EMIT_SEND_MSG,
+  SOCKET_EMIT_SET_TOPIC,
+  SOCKET_EVENT_MSG_SENT,
+  socketService,
+} from '@/services/socket.service'
 
 export function GigDetails() {
   const { gigId } = useParams()
@@ -36,13 +39,6 @@ export function GigDetails() {
     'ad-social': 'Ad & Social',
   }
 
-  const tagToCategoryLabel = {
-    'web-builder': 'Web Builder',
-    'video-editing': 'Video Editing',
-    shopify: 'Shopify',
-    'ad-social': 'Ad & Social',
-  }
-
   function getTimeLabel() {
     try {
       return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
@@ -59,8 +55,6 @@ export function GigDetails() {
   function handleSendMessage() {
     const text = chatInput.trim()
     if (!text) return
-    const msg = { id: `${Date.now()}-${chatMessages.length}`, text }
-    //setChatMessages((prev) => [...prev, msg])
     setChatInput('')
     pushSellerInboxMessage(text)
   }
@@ -95,17 +89,23 @@ export function GigDetails() {
       handleSendMessage()
     }
   }
-  function handleMessage(entry) {
+  const handleMessage = useCallback((entry) => {
     if (!entry) return
     setChatMessages((prev) => [...prev, entry])
-  }
+  }, [])
+
   useEffect(() => {
-    if (!chatThreadRef.current) return
+    if (!isChatOpen || isChatMinimized) return
     socketService.emit(SOCKET_EMIT_SET_TOPIC, 'chat')
     socketService.on(SOCKET_EVENT_MSG_SENT, handleMessage)
+    return () => {
+      socketService.off(SOCKET_EVENT_MSG_SENT, handleMessage)
+    }
+  }, [handleMessage, isChatOpen, isChatMinimized])
 
+  useEffect(() => {
+    if (!chatThreadRef.current) return
     chatThreadRef.current.scrollTop = chatThreadRef.current.scrollHeight
-    return () => { socketService.off(SOCKET_EVENT_MSG_SENT, handleMessage) }
   }, [chatMessages.length, isChatOpen, isChatMinimized])
 
   function toTitleCase(value) {

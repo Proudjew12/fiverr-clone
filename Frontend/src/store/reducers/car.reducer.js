@@ -11,61 +11,30 @@ const initialState = {
 }
 
 export function carReducer(state = initialState, action) {
-    var newState = state
-    var cars
     switch (action.type) {
         case SET_CARS:
-            newState = { ...state, cars: action.cars }
-            break
+            return { ...state, cars: action.cars }
         case SET_CAR:
-            newState = { ...state, car: action.car }
-            break
-        case REMOVE_CAR:
+            return { ...state, car: action.car }
+        case REMOVE_CAR: {
             const lastRemovedCar = state.cars.find(car => car._id === action.carId)
-            cars = state.cars.filter(car => car._id !== action.carId)
-            newState = { ...state, cars, lastRemovedCar }
-            break
+            const cars = state.cars.filter(car => car._id !== action.carId)
+            return { ...state, cars, lastRemovedCar }
+        }
         case ADD_CAR:
-            newState = { ...state, cars: [...state.cars, action.car] }
-            break
-        case UPDATE_CAR:
-            cars = state.cars.map(car => (car._id === action.car._id) ? action.car : car)
-            newState = { ...state, cars }
-            break
+            return { ...state, cars: [...state.cars, action.car] }
+        case UPDATE_CAR: {
+            const cars = state.cars.map(car => (car._id === action.car._id ? action.car : car))
+            return { ...state, cars }
+        }
         case ADD_CAR_MSG:
-            if (action.msg && state.car) {
-                newState = { ...state, car: { ...state.car, msgs: [...state.car.msgs || [], action.msg] } }
-                break
+            if (!action.msg || !state.car) return state
+            return {
+                ...state,
+                car: { ...state.car, msgs: [...(state.car.msgs || []), action.msg] }
             }
         default:
+            return state
     }
-    return newState
-}
-
-// unitTestReducer()
-
-function unitTestReducer() {
-    var state = initialState
-    const car1 = { _id: 'b101', vendor: 'Car ' + parseInt('' + Math.random() * 10), speed: 12, owner: null, msgs: [] }
-    const car2 = { _id: 'b102', vendor: 'Car ' + parseInt('' + Math.random() * 10), speed: 13, owner: null, msgs: [] }
-
-    state = carReducer(state, { type: SET_CARS, cars: [car1] })
-    console.log('After SET_CARS:', state)
-
-    state = carReducer(state, { type: ADD_CAR, car: car2 })
-    console.log('After ADD_CAR:', state)
-
-    state = carReducer(state, { type: UPDATE_CAR, car: { ...car2, vendor: 'Good' } })
-    console.log('After UPDATE_CAR:', state)
-
-    state = carReducer(state, { type: REMOVE_CAR, carId: car2._id })
-    console.log('After REMOVE_CAR:', state)
-
-    state = carReducer(state, { type: SET_CAR, car: car1 })
-    console.log('After SET_CAR:', state)
-
-    const msg = { id: 'm' + parseInt('' + Math.random() * 100), txt: 'Some msg', by: { _id: 'u123', fullname: 'test' } }
-    state = carReducer(state, { type: ADD_CAR_MSG, carId: car1._id, msg })
-    console.log('After ADD_CAR_MSG:', state)
 }
 

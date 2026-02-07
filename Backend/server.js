@@ -59,7 +59,7 @@ app.use((req, res) => {
 // --------------------
 // Error handler
 // --------------------
-app.use((err, req, res, next) => {
+app.use((err, req, res, _next) => {
   loggerService.error("Server error:", err);
   res.status(err.status || 500).send({ error: err.message || "Server error" });
 });

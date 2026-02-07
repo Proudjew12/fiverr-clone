@@ -11,10 +11,8 @@ export function useGigById(gigId) {
       let data
       try {
         data = await gigService.getById(gigId)
-        
       } catch {
-        console.log('gig is not found');
-        
+        console.error('Gig is not found:', gigId)
       }
       setGig(data)
     } catch (err) {

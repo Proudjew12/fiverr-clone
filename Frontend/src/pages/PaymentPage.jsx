@@ -1,7 +1,7 @@
 import { utilService } from '@/services/util.service'
 import demoData from '@/data/demo-data.json'
 import { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { useGigById } from '@/hooks/useGigById'
 import { orderService } from '@/services/order.service.remote.js'
@@ -10,6 +10,7 @@ const FALLBACK_THUMBS = demoData.fallbackThumbs
 
 export function PaymentPage() {
   const { gigId , price } = useParams()
+  const navigate = useNavigate()
   const { gig, isLoading } = useGigById(gigId)
   const [form, setForm] = useState({
     cardNumber: '',
@@ -80,7 +81,7 @@ export function PaymentPage() {
       icon: 'success',
       confirmButtonText: 'OK',
     })
-    window.location.assign('/dashboard/customer')
+    navigate('/dashboard/customer')
   }
 
   return (

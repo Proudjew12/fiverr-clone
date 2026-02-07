@@ -7,7 +7,7 @@ export async function loadCars(filterBy) {
         const cars = await carService.query(filterBy)
         store.dispatch(getCmdSetCars(cars))
     } catch (err) {
-        console.log('Cannot load cars', err)
+        console.error('Cannot load cars', err)
         throw err
     }
 }
@@ -17,7 +17,7 @@ export async function loadCar(carId) {
         const car = await carService.getById(carId)
         store.dispatch(getCmdSetCar(car))
     } catch (err) {
-        console.log('Cannot load car', err)
+        console.error('Cannot load car', err)
         throw err
     }
 }
@@ -28,7 +28,7 @@ export async function removeCar(carId) {
         await carService.remove(carId)
         store.dispatch(getCmdRemoveCar(carId))
     } catch (err) {
-        console.log('Cannot remove car', err)
+        console.error('Cannot remove car', err)
         throw err
     }
 }
@@ -39,7 +39,7 @@ export async function addCar(car) {
         store.dispatch(getCmdAddCar(savedCar))
         return savedCar
     } catch (err) {
-        console.log('Cannot add car', err)
+        console.error('Cannot add car', err)
         throw err
     }
 }
@@ -50,7 +50,7 @@ export async function updateCar(car) {
         store.dispatch(getCmdUpdateCar(savedCar))
         return savedCar
     } catch (err) {
-        console.log('Cannot save car', err)
+        console.error('Cannot save car', err)
         throw err
     }
 }
@@ -61,7 +61,7 @@ export async function addCarMsg(carId, txt) {
         store.dispatch(getCmdAddCarMsg(msg))
         return msg
     } catch (err) {
-        console.log('Cannot add car msg', err)
+        console.error('Cannot add car msg', err)
         throw err
     }
 }
@@ -102,16 +102,4 @@ function getCmdAddCarMsg(msg) {
         type: ADD_CAR_MSG,
         msg
     }
-}
-
-// unitTestActions()
-async function unitTestActions() {
-    await loadCars()
-    await addCar(carService.getEmptyCar())
-    await updateCar({
-        _id: 'm1oC7',
-        vendor: 'Car-Good',
-    })
-    await removeCar('m1oC7')
-    // TODO unit test addCarMsg
 }

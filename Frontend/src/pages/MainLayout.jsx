@@ -7,10 +7,10 @@ import { SubFooter } from '../components/layout/SubFooter.jsx'
 export function MainLayout() {
   const location = useLocation()
   const isPaymentPage = location.pathname.includes('/payment')
-  const showSubHeader = location.pathname !== '/' && !isPaymentPage
   const isIndexPage = location.pathname === '/index'
   const isDetailsPage = location.pathname.startsWith('/gig')
   const isDashboardPage = location.pathname.startsWith('/dashboard')
+  const showSubHeader = (isIndexPage || isDetailsPage) && !isPaymentPage
 
   return (
     <div

@@ -42,3 +42,7 @@ Thumbs.db
 # =========================
 coverage/
 *.tsbuildinfo
+playwright-report/
+test-results/
+Frontend/playwright-report/
+Frontend/test-results/

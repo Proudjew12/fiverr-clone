@@ -19,6 +19,13 @@
   width: auto;
 }
 
+/* Swiper's base stylesheet can load after this file and reset slide width to 100%.
+   Keep a stronger selector so each category keeps natural width. */
+.sub-header-swiper .swiper-slide.sub-header-slide {
+  width: auto;
+  flex-shrink: 0;
+}
+
 .sub-header-link {
   background: transparent;
   border: 0;
@@ -36,6 +43,10 @@
   color: #62646a;
 }
 
+.sub-header-link.is-active {
+  color: #1f1f1f;
+}
+
 .sub-header-link::after {
   content: '';
   position: absolute;
@@ -50,7 +61,8 @@
 }
 
 .sub-header-link:hover::after,
-.sub-header-link:focus-visible::after {
+.sub-header-link:focus-visible::after,
+.sub-header-link.is-active::after {
   transform: scaleX(1);
 }
 

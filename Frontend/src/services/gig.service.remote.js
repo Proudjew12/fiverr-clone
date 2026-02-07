@@ -1,5 +1,3 @@
-import { storageService } from './async-storage.service.js'
-import { utilService } from './util.service.js'
 import { httpService } from './http.service.js'
 import demoData from '@/data/demo-data.json'
 import gigData from '../../data/gig.json'

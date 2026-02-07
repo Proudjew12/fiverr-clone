@@ -20,7 +20,7 @@ export function useGigDetails(gigId) {
       setGig(data)
       setGigImgs([...(data?.videoUrls || []), ...(data?.imgUrls || [])])
     } catch (error) {
-      console.log('There is no gig with id:', gigId, error)
+      console.error('There is no gig with id:', gigId, error)
     } finally {
       setIsLoading(false)
     }

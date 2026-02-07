@@ -369,7 +369,8 @@ async function updateMongo(gigs) {
   await collection.deleteMany({})
   const { insertedCount } = await collection.insertMany(
     gigs.map((gig) => {
-      const { _id, ...rest } = gig
+      const rest = { ...gig }
+      delete rest._id
       return rest
     })
   )

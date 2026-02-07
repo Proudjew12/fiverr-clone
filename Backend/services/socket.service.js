@@ -14,7 +14,7 @@ export function setupSocketAPI(http) {
     gIo.on('connection', socket => {
         loggerService.info(`New connected socket [id: ${socket.id}]`)
 
-        socket.on('disconnect', socket => {
+        socket.on('disconnect', () => {
             loggerService.info(`Socket disconnected [id: ${socket.id}]`)
         })
 
@@ -70,7 +70,7 @@ function emitToTopic({ topic, type, data }) {
 
 function emitToTopics({ topics = [], type, data }) {
     if (!gIo || !type) return
-    const safeTopics = topics.filter(Boolean)
+    const safeTopics = [...new Set(topics.filter(Boolean))]
     if (!safeTopics.length) {
         gIo.emit(type, data)
         return
@@ -128,15 +128,6 @@ async function _getAllSockets() {
     // return all Socket instances
     const sockets = await gIo.fetchSockets()
     return sockets
-}
-
-async function _printSockets() {
-    const sockets = await _getAllSockets()
-    console.log(`Sockets: (count: ${sockets.length}):`)
-    sockets.forEach(_printSocket)
-}
-function _printSocket(socket) {
-    console.log(`Socket - socketId: ${socket.id} userId: ${socket.userId}`)
 }
 
 export const socketService = {

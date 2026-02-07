@@ -4,7 +4,6 @@ import { GigFilter } from '@/components/filter/GigFilter.jsx'
 import { EmptyState } from '@/components/ui/EmptyState'
 import { useGigFilters } from '@/hooks/useGigFilters'
 import { useGigSearchResults } from '@/hooks/useGigSearchResults'
-import { gigService } from '@/services/gig.service.remote.js'
 
 export function GigIndex() {
   const { filterBy, setFilter, handleFieldChange, sortValue, isSortOn, toggleSort, setSortDirection, clearFilters } =

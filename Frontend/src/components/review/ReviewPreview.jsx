@@ -26,13 +26,23 @@ export function ReviewPreview({ review }) {
       <section className="review-preview">
          <div className="user-container">
             <div className="profile-img-container">
-               <img src={review.by.imgUrl} />
+               <img
+                  src={review.by.imgUrl}
+                  alt={review.by.fullname}
+                  loading="lazy"
+                  decoding="async"
+               />
             </div>
             <div className="user-details-container">
                <p className="fullname">{review.by.fullname}</p>
                <div className="user-nation">
                   <div className="img-container">
-                     <img src={getFlagUrl(nation)} alt="nation"/>
+                     <img
+                        src={getFlagUrl(nation)}
+                        alt="nation"
+                        loading="lazy"
+                        decoding="async"
+                     />
                   </div>
                   <p>{getCountryNameByCode(nation)}</p>
                </div>

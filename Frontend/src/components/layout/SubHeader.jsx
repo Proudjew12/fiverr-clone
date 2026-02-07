@@ -1,11 +1,11 @@
 import 'swiper/css'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Mousewheel } from 'swiper/modules'
-import { useNavigate } from 'react-router-dom'
+import { useMemo } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useSwiperNav } from '@/hooks/useSwiperNav'
 import { SvgIcon } from '@/components/svg/SvgIcon'
 import { gigService } from '@/services/gig.service.remote.js'
-import { utilService } from '@/services/util.service'
 import demoData from '@/data/demo-data.json'
 
 const CATEGORIES = demoData.subHeader.categories
@@ -14,12 +14,17 @@ export function SubHeader() {
   const { onSwiper, onSlideChange, slidePrev, slideNext, isBeginning, isEnd } =
     useSwiperNav()
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const activeTag = useMemo(() => {
+    const tags = searchParams.getAll('tags').filter(Boolean)
+    return tags[0] || ''
+  }, [searchParams])
 
   function onCategoryClick(item) {
     const filterBy = gigService.getDefaultFilter()
     if (item?.tag) filterBy.tags = [item.tag]
-    const queryStr = utilService.buildQueryParams(filterBy)
-    navigate(`/index?${queryStr}`)
+    const queryStr = gigService.buildSearchParamsFromFilter(filterBy).toString()
+    navigate(queryStr ? `/index?${queryStr}` : '/index')
   }
 
   return (
@@ -57,8 +62,9 @@ export function SubHeader() {
             <SwiperSlide key={item.key} className="sub-header-slide">
               <button
                 type="button"
-                className="sub-header-link"
+                className={`sub-header-link ${activeTag === item.tag ? 'is-active' : ''}`}
                 onClick={() => onCategoryClick(item)}
+                aria-current={activeTag === item.tag ? 'true' : undefined}
               >
                 {item.label}
               </button>

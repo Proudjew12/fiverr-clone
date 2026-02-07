@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { utilService } from '@/services/util.service'
 
 import { LeoProDd } from '@/components/headerComponents/ProDd'
@@ -62,24 +62,20 @@ export function AppHeader() {
   const navigate = useNavigate()
   const location = useLocation()
   const [sellerInbox, setSellerInbox] = useState([])
+
   useEffect(() => {
-    if (isSeller) {
-      socketService.emit(SOCKET_EMIT_SET_TOPIC, 'chat')
-      socketService.on(SOCKET_EVENT_MSG_SENT, handleSendMessage )
-    }
+    let timeoutId
     function handleGlow() {
       setSignInGlow(true)
-      setTimeout(() => setSignInGlow(false), 1200)
+      window.clearTimeout(timeoutId)
+      timeoutId = window.setTimeout(() => setSignInGlow(false), 1200)
     }
     window.addEventListener('highlight-signin', handleGlow)
     return () => {
+      window.clearTimeout(timeoutId)
       window.removeEventListener('highlight-signin', handleGlow)
     }
   }, [])
-
-  function handleSendMessage(msg){
-    setSellerInbox(prev=>[...prev,msg])
-  }
 
   function handleSignIn() {
     setIsSignedIn(true)
@@ -102,17 +98,15 @@ export function AppHeader() {
   }
 
   function handleToggleSeller() {
-    setIsSeller((prev) => {
-      const next = !prev
-      localStorage.setItem('isSeller', String(next))
-      localStorage.setItem('userName', next ? SELLER_NAME : CUSTOMER_NAME)
-      if (location.pathname.startsWith('/dashboard')) {
-        window.location.assign(next ? '/dashboard/seller' : '/dashboard/customer')
-      } else {
-        window.location.reload()
-      }
-      return next
-    })
+    const next = !isSeller
+    setIsSeller(next)
+    localStorage.setItem('isSeller', String(next))
+    localStorage.setItem('userName', next ? SELLER_NAME : CUSTOMER_NAME)
+    if (location.pathname.startsWith('/dashboard')) {
+      navigate(next ? '/dashboard/seller' : '/dashboard/customer')
+      return
+    }
+    navigate('/index')
   }
 
   return (
@@ -125,8 +119,6 @@ export function AppHeader() {
             onToggleDd={toggleDd}
             onCloseDd={closeDd}
             isSignedIn={isSignedIn}
-            sellerInbox={sellerInbox}
-            setSellerInbox={setSellerInbox}
           />
           <HeaderRight
             openDd={openDd}
@@ -174,7 +166,7 @@ function Logo() {
   )
 }
 
-function HeaderMiddle({ openDd, onToggleDd, onCloseDd, isSignedIn,sellerInbox,setSellerInbox }) {
+function HeaderMiddle({ openDd, onToggleDd, onCloseDd, isSignedIn }) {
   return (
     <div className="header-mid flex items-center">
       <HeaderDropdowns
@@ -182,8 +174,6 @@ function HeaderMiddle({ openDd, onToggleDd, onCloseDd, isSignedIn,sellerInbox,se
         onToggleDd={onToggleDd}
         onCloseDd={onCloseDd}
         isSignedIn={isSignedIn}
-        sellerInbox={sellerInbox}
-        setSellerInbox={setSellerInbox}
       />
     </div>
   )
@@ -249,7 +239,7 @@ function HeaderRight({
   )
 }
 
-function HeaderDropdowns({ openDd, onToggleDd, onCloseDd, isSignedIn, sellerInbox, setSellerInbox }) {
+function HeaderDropdowns({ openDd, onToggleDd, onCloseDd, isSignedIn }) {
   return (
     <div className="nav-group nav-group-dd flex items-center">
       <ProDropdown
@@ -397,14 +387,13 @@ function OrdersDropdown({
   isSeller,
   dashboardLink,
 }) {
-  const [highlightNowMs, setHighlightNowMs] = useState(0)
+  const [highlightNowMs, setHighlightNowMs] = useState(() => Date.now())
   const label = isSeller ? 'Requests' : 'Orders'
   const emptyLabel = isSeller ? 'No requests yet' : 'No orders yet'
   const viewLabel = isSeller ? 'View all requests' : 'View all orders'
 
   useEffect(() => {
     if (!isSeller) return
-    setHighlightNowMs(Date.now())
     const intervalId = window.setInterval(() => {
       setHighlightNowMs(Date.now())
     }, 30000)
@@ -446,7 +435,13 @@ function OrdersDropdown({
                       isIncomingRequest ? 'orders-dd-item--incoming-request' : ''
                     }`}
                   >
-                    <img className="orders-dd-thumb" src={thumbSrc} alt="" />
+                    <img
+                      className="orders-dd-thumb"
+                      src={thumbSrc}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
                     <div className="orders-dd-content">
                       <Link
                         to={orderLink}
@@ -500,7 +495,13 @@ function WishlistDropdown({ isOpen, onToggle, onClose, wishlist = [] }) {
                   item.previewImg || utilService.pickRandom(FALLBACK_THUMBS)
                 return (
                   <li key={item._id || item.id} className="orders-dd-item">
-                    <img className="orders-dd-thumb" src={thumbSrc} alt="" />
+                    <img
+                      className="orders-dd-thumb"
+                      src={thumbSrc}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
                     <div className="orders-dd-content">
                       <Link
                         to={`/gig/${item.gigId}`}
@@ -528,7 +529,14 @@ function WishlistDropdown({ isOpen, onToggle, onClose, wishlist = [] }) {
   )
 }
 
-function HeaderIconButtons({ isSeller, openDd, onToggleDd, onCloseDd, sellerInbox,setSellerInbox }) {
+function HeaderIconButtons({
+  isSeller,
+  openDd,
+  onToggleDd,
+  onCloseDd,
+  sellerInbox,
+  setSellerInbox,
+}) {
   const isMessagesOpen = openDd === 'messages'
   const [activeChat, setActiveChat] = useState(null)
   const [chatInput, setChatInput] = useState('')
@@ -536,28 +544,49 @@ function HeaderIconButtons({ isSeller, openDd, onToggleDd, onCloseDd, sellerInbo
     (message) => message.unread && message.from !== 'seller'
   )
 
-  function loadInbox() {
+  const loadInbox = useCallback(() => {
     try {
       const stored = JSON.parse(localStorage.getItem('sellerInbox') || '[]')
-      setSellerInbox(Array.isArray(stored) ? stored : [])
+      const parsedInbox = Array.isArray(stored) ? stored.slice(0, 60) : []
+      setSellerInbox(parsedInbox)
     } catch {
       setSellerInbox([])
     }
-  }
+  }, [setSellerInbox])
 
-  function saveInbox(nextInbox) {
-    setSellerInbox(nextInbox)
-    localStorage.setItem('sellerInbox', JSON.stringify(nextInbox))
-  }
+  const saveInbox = useCallback(
+    (nextInboxOrUpdater) => {
+      setSellerInbox((prevInbox) => {
+        const rawNextInbox =
+          typeof nextInboxOrUpdater === 'function'
+            ? nextInboxOrUpdater(prevInbox)
+            : nextInboxOrUpdater
+        const nextInbox = Array.isArray(rawNextInbox) ? rawNextInbox.slice(0, 60) : []
+        localStorage.setItem('sellerInbox', JSON.stringify(nextInbox))
+        return nextInbox
+      })
+    },
+    [setSellerInbox]
+  )
 
   function clearInbox() {
     saveInbox([])
     setActiveChat(null)
   }
-  function handleSendFromCostumer(message) {
-    if (!message) return
-    saveInbox([message, ...sellerInbox])
-  }
+
+  const handleIncomingFromCustomer = useCallback(
+    (message) => {
+      if (!message?.id) return
+      saveInbox((prevInbox) => {
+        if (prevInbox.some((prevMessage) => prevMessage.id === message.id)) {
+          return prevInbox
+        }
+        return [message, ...prevInbox]
+      })
+    },
+    [saveInbox]
+  )
+
   useEffect(() => {
     if (!isSeller) return
 
@@ -572,9 +601,17 @@ function HeaderIconButtons({ isSeller, openDd, onToggleDd, onCloseDd, sellerInbo
     return () => {
       window.removeEventListener('seller-inbox-updated', handleInboxUpdate)
       window.removeEventListener('storage', handleInboxUpdate)
-
     }
-  }, [isSeller])
+  }, [isSeller, loadInbox])
+
+  useEffect(() => {
+    if (!isSeller) return
+    socketService.emit(SOCKET_EMIT_SET_TOPIC, 'chat')
+    socketService.on(SOCKET_EVENT_MSG_SENT, handleIncomingFromCustomer)
+    return () => {
+      socketService.off(SOCKET_EVENT_MSG_SENT, handleIncomingFromCustomer)
+    }
+  }, [handleIncomingFromCustomer, isSeller])
 
   const conversations = useMemo(() => {
     const map = new Map()
@@ -604,24 +641,30 @@ function HeaderIconButtons({ isSeller, openDd, onToggleDd, onCloseDd, sellerInbo
     )
   }, [sellerInbox])
 
+  const resolvedActiveChat = useMemo(() => {
+    if (!activeChat) return null
+    return conversations.find((conversation) => conversation.key === activeChat.key) || null
+  }, [activeChat, conversations])
+
   const activeMessages = useMemo(() => {
-    if (!activeChat) return []
+    if (!resolvedActiveChat) return []
     return sellerInbox
       .filter(
         (message) =>
           `${message.gigId || 'gig'}-${message.customerName || 'customer'}` ===
-          activeChat.key
+          resolvedActiveChat.key
       )
       .sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0))
-  }, [sellerInbox, activeChat])
+  }, [sellerInbox, resolvedActiveChat])
 
   function markConversationRead(conversationKey) {
-    const nextInbox = sellerInbox.map((message) => {
-      const key = `${message.gigId || 'gig'}-${message.customerName || 'customer'}`
-      if (key !== conversationKey) return message
-      return { ...message, unread: false }
+    saveInbox((prevInbox) => {
+      return prevInbox.map((message) => {
+        const key = `${message.gigId || 'gig'}-${message.customerName || 'customer'}`
+        if (key !== conversationKey) return message
+        return { ...message, unread: false }
+      })
     })
-    saveInbox(nextInbox)
   }
 
   function handleToggleMessages() {
@@ -639,14 +682,14 @@ function HeaderIconButtons({ isSeller, openDd, onToggleDd, onCloseDd, sellerInbo
   }
 
   function handleSendFromSeller() {
-    if (!activeChat) return
+    if (!resolvedActiveChat) return
     const text = chatInput.trim()
     if (!text) return
     const entry = {
       id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
-      gigId: activeChat.gigId,
-      gigTitle: activeChat.gigTitle,
-      customerName: activeChat.customerName,
+      gigId: resolvedActiveChat.gigId,
+      gigTitle: resolvedActiveChat.gigTitle,
+      customerName: resolvedActiveChat.customerName,
       text,
       createdAt: Date.now(),
       unread: false,
@@ -655,27 +698,7 @@ function HeaderIconButtons({ isSeller, openDd, onToggleDd, onCloseDd, sellerInbo
     socketService.emit(SOCKET_EMIT_SEND_MSG, entry)
     setChatInput('')
   }
-  function handleMessage(entry) {
-    if (!entry) return
-    saveInbox([entry, ...sellerInbox])
-  }
-  function addConversation(conversation) {
-    console.log('lll');
-  }
-  useEffect(() => {
-    if (!activeChat) return
-    if (!sellerInbox.length) return
-    socketService.emit(SOCKET_EMIT_SET_TOPIC, 'chat')
-    socketService.on(SOCKET_EVENT_MSG_SENT, handleSendFromCostumer)
-    const exists = sellerInbox.some((message) => {
-      const key = `${message.gigId || 'gig'}-${message.customerName || 'customer'}`
-      return key === activeChat.key
-    })
-    if (!exists) setActiveChat(null)
-    return () => {
-      socketService.off(SOCKET_EVENT_MSG_SENT, handleSendFromCostumer)
-    }
-  }, [sellerInbox, activeChat])
+
   return (
     <div className="header-icon-group">
       <button type="button" className="header-icon-btn" aria-label="Notifications">
@@ -722,6 +745,8 @@ function HeaderIconButtons({ isSeller, openDd, onToggleDd, onCloseDd, sellerInbo
                       <img
                         src={conversation.customerImg || CUSTOMER_IMAGE}
                         alt={conversation.customerName}
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
                     <div className="messages-content">
@@ -742,20 +767,22 @@ function HeaderIconButtons({ isSeller, openDd, onToggleDd, onCloseDd, sellerInbo
           <SvgIcon icon="headerMail" />
         </button>
       )}
-      {isSeller && activeChat && (
+      {isSeller && resolvedActiveChat && (
         <div className="seller-chat-widget" role="dialog" aria-label="Seller chat">
           <div className="seller-chat-header">
             <div className="seller-chat-avatar">
               <img
-                src={activeChat.customerImg || CUSTOMER_IMAGE}
-                alt={activeChat.customerName}
+                src={resolvedActiveChat.customerImg || CUSTOMER_IMAGE}
+                alt={resolvedActiveChat.customerName}
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="seller-chat-meta">
               <div className="seller-chat-title">
-                Message {activeChat.customerName}
+                Message {resolvedActiveChat.customerName}
               </div>
-              <div className="seller-chat-subtitle">{activeChat.gigTitle}</div>
+              <div className="seller-chat-subtitle">{resolvedActiveChat.gigTitle}</div>
             </div>
             <button
               type="button"

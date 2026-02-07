@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useSearchParams, useParams } from 'react-router-dom'
 import { utilService } from '@/services/util.service'
 import { orderService } from '@/services/order.service.remote.js'
@@ -75,6 +75,29 @@ function isDiscountReply(text) {
   return String(text || '').trim() === CUSTOMER_DISCOUNT_REPLY
 }
 
+function createMessageId() {
+  return `${Date.now()}-${utilService.makeId(8)}`
+}
+
+function getNowTimestamp() {
+  return Date.now()
+}
+
+function getOrderDateLabel(seed) {
+  const base = String(seed || 'default-seed')
+  let hash = 0
+  for (let i = 0; i < base.length; i++) {
+    hash = (hash * 31 + base.charCodeAt(i)) >>> 0
+  }
+  const start = new Date(2025, 0, 1).getTime()
+  const end = new Date(2026, 11, 31).getTime()
+  const dayMs = 24 * 60 * 60 * 1000
+  const rangeDays = Math.max(1, Math.floor((end - start) / dayMs))
+  const offsetDays = hash % rangeDays
+  const date = new Date(start + offsetDays * dayMs)
+  return date.toLocaleDateString()
+}
+
 export function DashboardPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const { role } = useParams()
@@ -95,7 +118,7 @@ export function DashboardPage() {
   const [activeCustomerChat, setActiveCustomerChat] = useState(null)
   const [customerChatInput, setCustomerChatInput] = useState('')
   const [orderChatMessages, setOrderChatMessages] = useState([])
-  const [highlightNowMs, setHighlightNowMs] = useState(0)
+  const [highlightNowMs, setHighlightNowMs] = useState(() => getNowTimestamp())
   const formatMoney = (value) => `₪${Number(value).toFixed(2)}`
   function setTab(tab) {
     setSearchParams((prevParams) => {
@@ -112,15 +135,36 @@ export function DashboardPage() {
     clearWishlist()
   }
 
+  const appendOrderChatMessage = useCallback((message) => {
+    if (!message?.id) return
+    setOrderChatMessages((prevMessages) => {
+      if (prevMessages.some((prevMessage) => prevMessage.id === message.id)) {
+        return prevMessages
+      }
+      return [...prevMessages, message]
+    })
+  }, [])
+
+  const resolveChatOrder = useCallback((orderCandidate, messageCandidate = null) => {
+    const sourceOrders = ordersRef.current
+    if (orderCandidate?._id) {
+      const existingOrder = sourceOrders.find((order) => order._id === orderCandidate._id)
+      return existingOrder ? { ...existingOrder, ...orderCandidate } : orderCandidate
+    }
+    const fallbackOrder = buildFallbackOrderFromMessage(messageCandidate)
+    if (!fallbackOrder?._id) return null
+    const existingOrder = sourceOrders.find((order) => order._id === fallbackOrder._id)
+    return existingOrder ? { ...existingOrder, ...fallbackOrder } : fallbackOrder
+  }, [])
+
   useEffect(() => {
     localStorage.setItem('isSeller', String(isSeller))
   }, [isSeller])
 
   useEffect(() => {
     if (!isSeller) return
-    setHighlightNowMs(Date.now())
     const intervalId = window.setInterval(() => {
-      setHighlightNowMs(Date.now())
+      setHighlightNowMs(getNowTimestamp())
     }, 30000)
     return () => window.clearInterval(intervalId)
   }, [isSeller])
@@ -131,9 +175,9 @@ export function DashboardPage() {
   
   useEffect(() => {
     if (isSeller) return
-    socketService.emit(SOCKET_EMIT_SET_TOPIC,'request')
+    socketService.emit(SOCKET_EMIT_SET_TOPIC, 'request')
     const handleRequestUpdated = (updated) => {
-      setOrders((prev)=>[...prev.filter(order=>order._id!==updated._id),updated])
+      setOrders((prev) => [...prev.filter((order) => order._id !== updated._id), updated])
 
       const nextStatus = String(updated?.status || '').toLowerCase()
       if (nextStatus !== 'ask') return
@@ -150,7 +194,7 @@ export function DashboardPage() {
     return () => {
       socketService.off(SOCKET_EVENT_REQUEST_UPDATED, handleRequestUpdated)
     }
-  }, [isSeller, setOrders])
+  }, [appendOrderChatMessage, isSeller, resolveChatOrder, setOrders, userName])
 
   useEffect(() => {
     if (!activeCustomerChat) return
@@ -183,28 +227,6 @@ export function DashboardPage() {
     if (status === 'declined') return 'Declined'
     if (status === 'ask') return 'Ask'
     return status
-  }
-
-  function appendOrderChatMessage(message) {
-    if (!message?.id) return
-    setOrderChatMessages((prevMessages) => {
-      if (prevMessages.some((prevMessage) => prevMessage.id === message.id)) {
-        return prevMessages
-      }
-      return [...prevMessages, message]
-    })
-  }
-
-  function resolveChatOrder(orderCandidate, messageCandidate = null) {
-    const sourceOrders = ordersRef.current
-    if (orderCandidate?._id) {
-      const existingOrder = sourceOrders.find((order) => order._id === orderCandidate._id)
-      return existingOrder ? { ...existingOrder, ...orderCandidate } : orderCandidate
-    }
-    const fallbackOrder = buildFallbackOrderFromMessage(messageCandidate)
-    if (!fallbackOrder?._id) return null
-    const existingOrder = sourceOrders.find((order) => order._id === fallbackOrder._id)
-    return existingOrder ? { ...existingOrder, ...fallbackOrder } : fallbackOrder
   }
 
   useEffect(() => {
@@ -260,7 +282,7 @@ export function DashboardPage() {
       socketService.off(SOCKET_EVENT_ORDER_CHAT_MSG, handleOrderChatMessage)
       socketService.off(SOCKET_EVENT_MSG_SENT, handleOrderChatMessage)
     }
-  }, [isSeller, setOrders, userName])
+  }, [appendOrderChatMessage, isSeller, resolveChatOrder, setOrders, userName])
 
   async function onUpdateRequest(order, status) {
     const statusLabel = getStatusLabel(status)
@@ -273,14 +295,14 @@ export function DashboardPage() {
       if (status === 'ask') {
         const text = AUTO_DISCOUNT_MESSAGE
         const initialMessage = {
-          id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+          id: createMessageId(),
           orderId: savedOrder._id,
           gigId: savedOrder.gigId,
           gigTitle: savedOrder.title,
           sellerName: savedOrder.sellerName || 'Seller',
           buyerName: savedOrder.buyerName || 'Customer',
           text,
-          createdAt: Date.now(),
+          createdAt: getNowTimestamp(),
           from: 'seller',
         }
         socketService.emit(SOCKET_EMIT_OPEN_ORDER_CHAT, {
@@ -354,14 +376,14 @@ export function DashboardPage() {
     }
 
     const entry = {
-      id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+      id: createMessageId(),
       orderId: activeCustomerChat._id,
       gigId: activeCustomerChat.gigId,
       gigTitle: activeCustomerChat.title,
       sellerName: activeCustomerChat.sellerName || 'Seller',
       buyerName: activeCustomerChat.buyerName || 'Customer',
       text,
-      createdAt: Date.now(),
+      createdAt: getNowTimestamp(),
       from: isSeller ? 'seller' : 'customer',
       updatedOrder,
     }
@@ -370,21 +392,6 @@ export function DashboardPage() {
     // Backward-compatible fallback for older socket backends.
     socketService.emit(SOCKET_EMIT_SEND_MSG, entry)
     setCustomerChatInput('')
-  }
-
-  function getRandomOrderDate(seed) {
-    const base = String(seed || '') || Math.random().toString(36)
-    let hash = 0
-    for (let i = 0; i < base.length; i++) {
-      hash = (hash * 31 + base.charCodeAt(i)) >>> 0
-    }
-    const start = new Date(2025, 0, 1).getTime()
-    const end = new Date(2026, 11, 31).getTime()
-    const dayMs = 24 * 60 * 60 * 1000
-    const rangeDays = Math.floor((end - start) / dayMs)
-    const offsetDays = hash % rangeDays
-    const date = new Date(start + offsetDays * dayMs)
-    return date.toLocaleDateString()
   }
 
   return (
@@ -527,12 +534,18 @@ export function DashboardPage() {
                     >
                       <div className="orders-cell">
                         <div className="orders-title-row">
-                          <img className="orders-thumb" src={thumbSrc} alt="" />
+                          <img
+                            className="orders-thumb"
+                            src={thumbSrc}
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                          />
                           <Link className="orders-title" to={`/gig/${order.gigId}`}>
                             {order.title}
                           </Link>
                         </div>
-                        <div className="orders-meta">{getRandomOrderDate(order._id)}</div>
+                        <div className="orders-meta">{getOrderDateLabel(order._id)}</div>
                       </div>
                       <div className="orders-cell">
                         {hasDiscount ? (
@@ -711,12 +724,18 @@ export function DashboardPage() {
                     <li key={item._id || item.id} className="orders-row">
                       <div className="orders-cell">
                         <div className="orders-title-row">
-                          <img className="orders-thumb" src={thumbSrc} alt="" />
+                          <img
+                            className="orders-thumb"
+                            src={thumbSrc}
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                          />
                           <Link className="orders-title" to={`/gig/${item.gigId}`}>
                             {item.title}
                           </Link>
                         </div>
-                        <div className="orders-meta">{getRandomOrderDate(item._id)}</div>
+                        <div className="orders-meta">{getOrderDateLabel(item._id)}</div>
                       </div>
                       <div className="orders-cell">{formatMoney(item.price)}</div>
                       <div className="orders-cell">

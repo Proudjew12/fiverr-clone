@@ -12,13 +12,13 @@ export async function getOrders(req,res) {
  }   
 }
 export async function getOrderById(req,res) {
+const {id} = req.params
 try {
-  const {id} = req.params
   const order = await orderService.getById(id)  
   res.json(order)
 } catch (error) {
   loggerService.info('Failed to find an order with id:',id,error)  
-  res.status(error.status || 500).send('Failed to find an order with id:',id)
+  res.status(error.status || 500).send({ error: `Failed to find an order with id: ${id}` })
 }    
 }
 export async function addOrder(req,res) {
