@@ -6,8 +6,7 @@ export function HomeCategories() {
   const navigate = useNavigate()
 
   function buildSearchQuery(category) {
-    const fallbackText = category.label.replace(/\s+/g, ' ')
-    const { tag, txt = fallbackText } = categoryFilters[category.key] || {}
+    const { tag, txt = '' } = categoryFilters[category.key] || {}
     const defaultFilter = gigService.getDefaultFilter()
     const filterBy = {
       ...defaultFilter,
