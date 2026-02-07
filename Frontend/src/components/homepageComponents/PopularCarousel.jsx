@@ -89,8 +89,21 @@ export function PopularCarousel() {
               onSlideChange={onSlideChange}
               slidesPerView="auto"
               spaceBetween={35}
+              slidesOffsetAfter={0}
               grabCursor
               mousewheel={{ forceToAxis: true }}
+              touchStartPreventDefault={false}
+              threshold={4}
+              breakpoints={{
+                0: {
+                  spaceBetween: 12,
+                  slidesOffsetAfter: 16,
+                },
+                431: {
+                  spaceBetween: 35,
+                  slidesOffsetAfter: 0,
+                },
+              }}
             >
               {popularServices.map((s) => (
                 <SwiperSlide key={s.key} className="popular-slide">
