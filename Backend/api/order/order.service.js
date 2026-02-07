@@ -113,10 +113,17 @@ async function removeMany(filterBy = {}) {
 }
 
 function _sanitizeorder(src) {
+  const total = Number(src?.total || 0)
+  const originalTotal =
+    src?.originalTotal === undefined || src?.originalTotal === null
+      ? total
+      : Number(src.originalTotal)
   return {
       gigId: String(src?.gigId || '').trim(),
       title: String(src?.title || '').trim(),
-      total: Number(src?.total || 0),
+      total,
+      originalTotal,
+      discountApplied: Boolean(src?.discountApplied),
       sellerName: String(src?.sellerName || ''),
       buyerName: String(src?.buyerName || ''),
       status: String(src?.status || ''),

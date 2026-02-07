@@ -5,11 +5,73 @@ import { orderService } from '@/services/order.service.remote.js'
 import demoData from '@/data/demo-data.json'
 import { useDashboardLists } from '@/hooks/useDashboardLists'
 import { SvgIcon } from '@/components/svg/SvgIcon'
-import { SOCKET_EMIT_SET_TOPIC, SOCKET_EMIT_UPDATE_REQUEST, SOCKET_EVENT_MSG_SENT, SOCKET_EVENT_REQUEST_UPDATED, socketService } from '@/services/socket.service'
+import {
+  SOCKET_EMIT_OPEN_ORDER_CHAT,
+  SOCKET_EMIT_ORDER_CHAT_MSG,
+  SOCKET_EMIT_SET_TOPIC,
+  SOCKET_EMIT_UPDATE_REQUEST,
+  SOCKET_EVENT_ORDER_CHAT_MSG,
+  SOCKET_EVENT_ORDER_CHAT_OPENED,
+  SOCKET_EVENT_REQUEST_UPDATED,
+  socketService,
+} from '@/services/socket.service'
 
 const SELLER_IMAGE = '/assets/ProfileImgs/PersonOne.png'
 const CUSTOMER_IMAGE = '/assets/ProfileImgs/PersonTwo.png'
 const FALLBACK_THUMBS = demoData.fallbackThumbs
+const NEW_REQUEST_WINDOW_MS = 5 * 60 * 1000
+const DISCOUNT_RATE = 0.5
+const AUTO_DISCOUNT_MESSAGE = 'היי! מגיע לך 50% הנחה על ההזמנה. רוצה שאפעיל לך את זה?'
+const CUSTOMER_DISCOUNT_REPLY = 'תודה רבה! אשמח'
+
+function getOrderTimestamp(order) {
+  const rawTime = order?.createdAt ?? order?.updatedAt
+  if (typeof rawTime === 'number' && Number.isFinite(rawTime)) return rawTime
+  if (typeof rawTime === 'string') {
+    const parsed = Date.parse(rawTime)
+    if (Number.isFinite(parsed)) return parsed
+  }
+  return null
+}
+
+function isFreshPendingRequest(order, resolvedStatus, nowMs) {
+  if (resolvedStatus !== 'pending') return false
+  const createdAt = getOrderTimestamp(order)
+  if (!createdAt) return false
+  const age = nowMs - createdAt
+  return age >= 0 && age <= NEW_REQUEST_WINDOW_MS
+}
+
+function buildFallbackOrderFromMessage(message) {
+  if (!message?.orderId) return null
+  return {
+    _id: message.orderId,
+    gigId: message.gigId,
+    title: message.gigTitle || 'Gig',
+    sellerName: message.sellerName || 'Seller',
+    buyerName: message.buyerName || 'Customer',
+    status: 'Ask',
+    total: Number(message.total || 0),
+  }
+}
+
+function isChatOrderRelevant(order, isSeller, userName) {
+  if (!order?._id) return false
+  if (isSeller) return true
+  if (!order.buyerName) return true
+  return order.buyerName === userName
+}
+
+function isChatMessageRelevant(message, isSeller, userName) {
+  if (!message?.orderId) return false
+  if (isSeller) return true
+  if (!message.buyerName) return true
+  return message.buyerName === userName
+}
+
+function isDiscountReply(text) {
+  return String(text || '').trim() === CUSTOMER_DISCOUNT_REPLY
+}
 
 export function DashboardPage() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -27,9 +89,10 @@ export function DashboardPage() {
   const [requestStates, setRequestStates] = useState({})
   const [openRequestMenuId, setOpenRequestMenuId] = useState(null)
   const requestMenuRef = useRef(null)
-  const [customerInbox, setCustomerInbox] = useState([])
   const [activeCustomerChat, setActiveCustomerChat] = useState(null)
   const [customerChatInput, setCustomerChatInput] = useState('')
+  const [orderChatMessages, setOrderChatMessages] = useState([])
+  const [highlightNowMs, setHighlightNowMs] = useState(0)
   const formatMoney = (value) => `₪${Number(value).toFixed(2)}`
   function setTab(tab) {
     setSearchParams((prevParams) => {
@@ -49,33 +112,38 @@ export function DashboardPage() {
   useEffect(() => {
     localStorage.setItem('isSeller', String(isSeller))
   }, [isSeller])
+
+  useEffect(() => {
+    if (!isSeller) return
+    setHighlightNowMs(Date.now())
+    const intervalId = window.setInterval(() => {
+      setHighlightNowMs(Date.now())
+    }, 30000)
+    return () => window.clearInterval(intervalId)
+  }, [isSeller])
   
   useEffect(() => {
     if (isSeller) return
     socketService.emit(SOCKET_EMIT_SET_TOPIC,'request')
-    socketService.on(SOCKET_EVENT_REQUEST_UPDATED,(updated)=>{
+    const handleRequestUpdated = (updated) => {
       setOrders((prev)=>[...prev.filter(order=>order._id!==updated._id),updated])
-    })
-    function loadInbox() {
-      try {
-        const stored = JSON.parse(localStorage.getItem('customerInbox') || '[]')
-        setCustomerInbox(Array.isArray(stored) ? stored : [])
-      } catch {
-        setCustomerInbox([])
+
+      const nextStatus = String(updated?.status || '').toLowerCase()
+      if (nextStatus !== 'ask') return
+
+      const nextOrder = resolveChatOrder(updated, updated?._chatBootstrap)
+      if (!isChatOrderRelevant(nextOrder, isSeller, userName)) return
+
+      setActiveCustomerChat(nextOrder)
+      if (isChatMessageRelevant(updated?._chatBootstrap, isSeller, userName)) {
+        appendOrderChatMessage(updated._chatBootstrap)
       }
     }
-    function handleInboxUpdate() {
-      loadInbox()
-    }
-    loadInbox()
-    window.addEventListener('customer-inbox-updated', handleInboxUpdate)
-    window.addEventListener('storage', handleInboxUpdate)
+    socketService.on(SOCKET_EVENT_REQUEST_UPDATED, handleRequestUpdated)
     return () => {
-      window.removeEventListener('customer-inbox-updated', handleInboxUpdate)
-      window.removeEventListener('storage', handleInboxUpdate)
-      socketService.off(SOCKET_EVENT_REQUEST_UPDATED,()=>{})
+      socketService.off(SOCKET_EVENT_REQUEST_UPDATED, handleRequestUpdated)
     }
-  }, [isSeller])
+  }, [isSeller, setOrders])
 
   useEffect(() => {
     function handleOutsideClick(ev) {
@@ -105,69 +173,115 @@ export function DashboardPage() {
     return status
   }
 
-  function pushCustomerInboxMessage(order, text) {
-    if (!order || !text) return
-    const entry = {
-      id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
-      orderId: order._id,
-      gigId: order.gigId,
-      gigTitle: order.title,
-      sellerName: order.sellerName || 'Seller',
-      text,
-      createdAt: Date.now(),
-      unread: true,
-      from: 'seller',
-    }
-    let inbox = []
-    try {
-      const stored = localStorage.getItem('customerInbox')
-      inbox = stored ? JSON.parse(stored) : []
-    } catch {
-      inbox = []
-    }
-    const nextInbox = [entry, ...(Array.isArray(inbox) ? inbox : [])].slice(0, 30)
-    localStorage.setItem('customerInbox', JSON.stringify(nextInbox))
-    window.dispatchEvent(new Event('customer-inbox-updated'))
+  function appendOrderChatMessage(message) {
+    if (!message?.id) return
+    setOrderChatMessages((prevMessages) => {
+      if (prevMessages.some((prevMessage) => prevMessage.id === message.id)) {
+        return prevMessages
+      }
+      return [...prevMessages, message]
+    })
   }
 
-  function pushSellerInboxMessage(order, text) {
-    if (!order || !text) return
-    const entry = {
-      id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
-      gigId: order.gigId,
-      gigTitle: order.title,
-      customerName: order.buyerName || 'Customer',
-      customerImg: '/assets/ProfileImgs/PersonTwo.png',
-      text,
-      createdAt: Date.now(),
-      unread: true,
-      from: 'customer',
+  function resolveChatOrder(orderCandidate, messageCandidate = null) {
+    if (orderCandidate?._id) {
+      const existingOrder = orders.find((order) => order._id === orderCandidate._id)
+      return existingOrder ? { ...existingOrder, ...orderCandidate } : orderCandidate
     }
-    let inbox = []
-    try {
-      const stored = localStorage.getItem('sellerInbox')
-      inbox = stored ? JSON.parse(stored) : []
-    } catch {
-      inbox = []
-    }
-    const nextInbox = [entry, ...(Array.isArray(inbox) ? inbox : [])].slice(0, 30)
-    localStorage.setItem('sellerInbox', JSON.stringify(nextInbox))
-    window.dispatchEvent(new Event('seller-inbox-updated'))
+    const fallbackOrder = buildFallbackOrderFromMessage(messageCandidate)
+    if (!fallbackOrder?._id) return null
+    const existingOrder = orders.find((order) => order._id === fallbackOrder._id)
+    return existingOrder ? { ...existingOrder, ...fallbackOrder } : fallbackOrder
   }
+
+  useEffect(() => {
+    function handleOrderChatOpened(payload) {
+      const nextOrder = resolveChatOrder(payload?.order, payload?.message)
+      if (!isChatOrderRelevant(nextOrder, isSeller, userName)) return
+
+      setActiveCustomerChat(nextOrder)
+      setOrders((prevOrders) => {
+        if (!nextOrder?._id) return prevOrders
+        const exists = prevOrders.some((order) => order._id === nextOrder._id)
+        if (!exists) return [{ ...nextOrder, status: 'Ask' }, ...prevOrders]
+        return prevOrders.map((order) =>
+          order._id === nextOrder._id ? { ...order, ...nextOrder, status: 'Ask' } : order
+        )
+      })
+
+      if (isChatMessageRelevant(payload?.message, isSeller, userName)) {
+        appendOrderChatMessage(payload.message)
+      }
+    }
+
+    function handleOrderChatMessage(message) {
+      if (!isChatMessageRelevant(message, isSeller, userName)) return
+      appendOrderChatMessage(message)
+
+      const updatedOrder = message?.updatedOrder
+      if (updatedOrder?._id && isChatOrderRelevant(updatedOrder, isSeller, userName)) {
+        setOrders((prevOrders) => {
+          const exists = prevOrders.some((order) => order._id === updatedOrder._id)
+          if (!exists) return [updatedOrder, ...prevOrders]
+          return prevOrders.map((order) =>
+            order._id === updatedOrder._id ? { ...order, ...updatedOrder } : order
+          )
+        })
+      }
+
+      const nextOrder = resolveChatOrder(null, message)
+      if (!isChatOrderRelevant(nextOrder, isSeller, userName)) return
+      setActiveCustomerChat((prevOrder) =>
+        prevOrder?._id === nextOrder._id
+          ? { ...prevOrder, ...(updatedOrder || {}) }
+          : nextOrder
+      )
+    }
+
+    socketService.on(SOCKET_EVENT_ORDER_CHAT_OPENED, handleOrderChatOpened)
+    socketService.on(SOCKET_EVENT_ORDER_CHAT_MSG, handleOrderChatMessage)
+
+    return () => {
+      socketService.off(SOCKET_EVENT_ORDER_CHAT_OPENED, handleOrderChatOpened)
+      socketService.off(SOCKET_EVENT_ORDER_CHAT_MSG, handleOrderChatMessage)
+    }
+  }, [isSeller, orders, setOrders, userName])
 
   async function onUpdateRequest(order, status) {
     const statusLabel = getStatusLabel(status)
     const updated = { ...order, status: statusLabel }
-    socketService.emit(SOCKET_EMIT_UPDATE_REQUEST,updated)
     setRequestStates((prev) => ({ ...prev, [order._id]: status }))
     setOpenRequestMenuId(null)
     try {
-      await orderService.save(updated)
+      const savedOrder = await orderService.save(updated)
       window.dispatchEvent(new CustomEvent('orders-updated'))
       if (status === 'ask') {
-        const message =
-          'Hi there! Before I start, could you share the requirements, timeline, and any brand/style notes you want me to follow?'
-        pushCustomerInboxMessage(updated, message)
+        const text = AUTO_DISCOUNT_MESSAGE
+        const initialMessage = {
+          id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+          orderId: savedOrder._id,
+          gigId: savedOrder.gigId,
+          gigTitle: savedOrder.title,
+          sellerName: savedOrder.sellerName || 'Seller',
+          buyerName: savedOrder.buyerName || 'Customer',
+          text,
+          createdAt: Date.now(),
+          from: 'seller',
+        }
+        socketService.emit(SOCKET_EMIT_OPEN_ORDER_CHAT, {
+          order: savedOrder,
+          message: initialMessage,
+        })
+        // Fallback for older socket backends that only rebroadcast `update-request`.
+        socketService.emit(SOCKET_EMIT_UPDATE_REQUEST, {
+          ...savedOrder,
+          _chatBootstrap: initialMessage,
+        })
+        appendOrderChatMessage(initialMessage)
+        setActiveCustomerChat(savedOrder)
+      } else {
+        // Keep status updates live on older socket backends.
+        socketService.emit(SOCKET_EMIT_UPDATE_REQUEST, savedOrder)
       }
     } catch (err) {
       console.error('Failed to update order status', err)
@@ -175,31 +289,70 @@ export function DashboardPage() {
   }
 
   const activeCustomerMessages = activeCustomerChat
-    ? customerInbox
+    ? orderChatMessages
         .filter((message) => message.orderId === activeCustomerChat._id)
         .sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0))
     : []
+  const canShowDiscountSuggestion =
+    !isSeller &&
+    !!activeCustomerChat &&
+    !activeCustomerChat.discountApplied &&
+    activeCustomerMessages.some(
+      (message) => message.from === 'seller' && message.text === AUTO_DISCOUNT_MESSAGE
+    ) &&
+    !activeCustomerMessages.some(
+      (message) => message.from === 'customer' && isDiscountReply(message.text)
+    )
 
-  function handleCustomerSend() {
+  async function handleCustomerSend(forcedText = '') {
     if (!activeCustomerChat) return
-    const text = customerChatInput.trim()
+    const text = String(forcedText || customerChatInput).trim()
     if (!text) return
+    const isDiscountApproval = !isSeller && isDiscountReply(text)
+    let updatedOrder = null
+
+    if (isDiscountApproval) {
+      const originalTotal = Number(
+        activeCustomerChat.originalTotal ?? activeCustomerChat.total ?? 0
+      )
+      const discountedTotal = Number((originalTotal * DISCOUNT_RATE).toFixed(2))
+      const discountPayload = {
+        ...activeCustomerChat,
+        originalTotal,
+        total: discountedTotal,
+        discountApplied: true,
+      }
+      try {
+        updatedOrder = await orderService.save(discountPayload)
+        socketService.emit(SOCKET_EMIT_UPDATE_REQUEST, updatedOrder)
+        setOrders((prevOrders) =>
+          prevOrders.map((order) =>
+            order._id === updatedOrder._id ? { ...order, ...updatedOrder } : order
+          )
+        )
+        setActiveCustomerChat((prevOrder) =>
+          prevOrder?._id === updatedOrder._id ? { ...prevOrder, ...updatedOrder } : prevOrder
+        )
+      } catch (err) {
+        console.error('Failed to apply discount on order', err)
+      }
+    }
+
     const entry = {
       id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
       orderId: activeCustomerChat._id,
       gigId: activeCustomerChat.gigId,
       gigTitle: activeCustomerChat.title,
       sellerName: activeCustomerChat.sellerName || 'Seller',
+      buyerName: activeCustomerChat.buyerName || 'Customer',
       text,
       createdAt: Date.now(),
-      unread: false,
-      from: 'customer',
+      from: isSeller ? 'seller' : 'customer',
+      updatedOrder,
     }
-    const nextInbox = [entry, ...customerInbox]
-    localStorage.setItem('customerInbox', JSON.stringify(nextInbox))
-    setCustomerInbox(nextInbox)
+    appendOrderChatMessage(entry)
+    socketService.emit(SOCKET_EMIT_ORDER_CHAT_MSG, entry)
     setCustomerChatInput('')
-    pushSellerInboxMessage(activeCustomerChat, text)
   }
 
   function getRandomOrderDate(seed) {
@@ -340,8 +493,21 @@ export function DashboardPage() {
                 {(isSeller ? orders.slice(0, 3) : orders).map((order) => {
                   const thumbSrc =
                     order.previewImg || utilService.pickRandom(FALLBACK_THUMBS)
+                  const resolvedStatus =
+                    requestStates[order._id] || String(order.status || '').toLowerCase()
+                  const isIncomingRequest =
+                    isSeller && isFreshPendingRequest(order, resolvedStatus, highlightNowMs)
+                  const hasDiscount =
+                    !!order.discountApplied ||
+                    Number(order.originalTotal || 0) > Number(order.total || 0)
+                  const originalTotal = Number(order.originalTotal ?? order.total ?? 0)
                   return (
-                    <li key={order._id} className="orders-row">
+                    <li
+                      key={order._id}
+                      className={`orders-row ${
+                        isIncomingRequest ? 'orders-row--incoming-request' : ''
+                      }`}
+                    >
                       <div className="orders-cell">
                         <div className="orders-title-row">
                           <img className="orders-thumb" src={thumbSrc} alt="" />
@@ -349,53 +515,88 @@ export function DashboardPage() {
                             {order.title}
                           </Link>
                         </div>
-                      <div className="orders-meta">
-                        {getRandomOrderDate(order._id)}
+                        <div className="orders-meta">{getRandomOrderDate(order._id)}</div>
                       </div>
+                      <div className="orders-cell">
+                        {hasDiscount ? (
+                          <div className="orders-price-discount">
+                            <span className="orders-price-old">{formatMoney(originalTotal)}</span>
+                            <span className="orders-price-new">{formatMoney(order.total)}</span>
+                          </div>
+                        ) : (
+                          formatMoney(order.total)
+                        )}
                       </div>
-                      <div className="orders-cell">{formatMoney(order.total)}</div>
                       <div className="orders-cell">
                         {isSeller ? (
                           (() => {
-                            const resolvedStatus =
-                              requestStates[order._id] ||
-                              String(order.status || '').toLowerCase()
-                            if (
-                              resolvedStatus === 'accepted' ||
-                              resolvedStatus === 'declined' ||
-                              resolvedStatus === 'ask'
-                            ) {
+                            if (resolvedStatus === 'accepted' || resolvedStatus === 'declined') {
                               return (
                                 <span
                                   className={`request-status ${resolvedStatus}`}
                                   aria-label={
                                     resolvedStatus === 'accepted'
                                       ? 'Accepted'
-                                      : resolvedStatus === 'declined'
-                                        ? 'Declined'
-                                        : 'Asked customer'
+                                      : 'Declined'
                                   }
                                   title={
                                     resolvedStatus === 'accepted'
                                       ? 'Accepted'
-                                      : resolvedStatus === 'declined'
-                                        ? 'Declined'
-                                        : 'Asked customer'
+                                      : 'Declined'
                                   }
                                 >
                                   {resolvedStatus === 'accepted'
                                     ? '✓'
-                                    : resolvedStatus === 'declined'
-                                      ? '✕'
-                                      : '?'}
+                                    : '✕'}
                                 </span>
+                              )
+                            }
+                            if (resolvedStatus === 'ask') {
+                              return (
+                                <div className="request-actions" ref={requestMenuRef}>
+                                  <button
+                                    type="button"
+                                    className="request-status ask request-status-btn"
+                                    aria-haspopup="menu"
+                                    aria-expanded={openRequestMenuId === order._id}
+                                    aria-label="Asked customer"
+                                    title="Asked customer"
+                                    onClick={() =>
+                                      setOpenRequestMenuId((prev) =>
+                                        prev === order._id ? null : order._id
+                                      )
+                                    }
+                                  >
+                                    ?
+                                  </button>
+                                  {openRequestMenuId === order._id && (
+                                    <div className="request-menu" role="menu">
+                                      <button
+                                        type="button"
+                                        className="request-menu-item"
+                                        onClick={() => onUpdateRequest(order, 'accepted')}
+                                      >
+                                        Accept
+                                      </button>
+                                      <button
+                                        type="button"
+                                        className="request-menu-item"
+                                        onClick={() => onUpdateRequest(order, 'declined')}
+                                      >
+                                        Decline
+                                      </button>
+                                    </div>
+                                  )}
+                                </div>
                               )
                             }
                             return (
                               <div className="request-actions" ref={requestMenuRef}>
                                 <button
                                   type="button"
-                                  className="request-menu-btn"
+                                  className={`request-menu-btn ${
+                                    isIncomingRequest ? 'is-incoming' : ''
+                                  }`}
                                   aria-haspopup="menu"
                                   aria-expanded={openRequestMenuId === order._id}
                                   onClick={() =>
@@ -442,21 +643,7 @@ export function DashboardPage() {
                                 <button
                                   type="button"
                                   className="orders-chat-btn"
-                                  onClick={() => {
-                                    setActiveCustomerChat(order)
-                                    setCustomerInbox((prev) => {
-                                      const nextInbox = prev.map((msg) =>
-                                        msg.orderId === order._id
-                                          ? { ...msg, unread: false }
-                                          : msg
-                                      )
-                                      localStorage.setItem(
-                                        'customerInbox',
-                                        JSON.stringify(nextInbox)
-                                      )
-                                      return nextInbox
-                                    })
-                                  }}
+                                  onClick={() => setActiveCustomerChat(order)}
                                 >
                                   Open chat
                                 </button>
@@ -527,12 +714,15 @@ export function DashboardPage() {
         </section>
       </main>
 
-      {!isSeller && activeCustomerChat && (
+      {activeCustomerChat && (
         <div className="customer-chat-widget" role="dialog" aria-label="Customer chat">
           <div className="customer-chat-header">
             <div className="customer-chat-meta">
               <div className="customer-chat-title">
-                Message {activeCustomerChat.sellerName || 'Seller'}
+                Message{' '}
+                {isSeller
+                  ? activeCustomerChat.buyerName || 'Customer'
+                  : activeCustomerChat.sellerName || 'Seller'}
               </div>
               <div className="customer-chat-subtitle">{activeCustomerChat.title}</div>
             </div>
@@ -550,13 +740,26 @@ export function DashboardPage() {
               <div
                 key={message.id}
                 className={`customer-chat-bubble ${
-                  message.from === 'customer' ? 'is-customer' : 'is-seller'
+                  message.from === (isSeller ? 'seller' : 'customer')
+                    ? 'is-customer'
+                    : 'is-seller'
                 }`}
               >
                 {message.text}
               </div>
             ))}
           </div>
+          {canShowDiscountSuggestion && (
+            <div className="customer-chat-quick-actions">
+              <button
+                type="button"
+                className="customer-chat-quick-btn"
+                onClick={() => handleCustomerSend(CUSTOMER_DISCOUNT_REPLY)}
+              >
+                {CUSTOMER_DISCOUNT_REPLY}
+              </button>
+            </div>
+          )}
           <div className="customer-chat-footer">
             <input
               type="text"

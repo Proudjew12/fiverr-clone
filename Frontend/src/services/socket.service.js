@@ -5,10 +5,14 @@ export const SOCKET_EMIT_SET_TOPIC = 'set-topic'
 export const SOCKET_EMIT_ORDER_GIG = 'gig-order'
 export const SOCKET_EMIT_SEND_MSG = 'send-msg'
 export const SOCKET_EMIT_UPDATE_REQUEST= 'update-request'
+export const SOCKET_EMIT_OPEN_ORDER_CHAT = 'open-order-chat'
+export const SOCKET_EMIT_ORDER_CHAT_MSG = 'send-order-chat-msg'
 
 export const SOCKET_EVENT_ORDER_GIG = 'ordered-gig'
 export const SOCKET_EVENT_MSG_SENT = 'msg-sent'
 export const SOCKET_EVENT_REQUEST_UPDATED = 'request-updated'
+export const SOCKET_EVENT_ORDER_CHAT_OPENED = 'order-chat-opened'
+export const SOCKET_EVENT_ORDER_CHAT_MSG = 'order-chat-msg'
 
 const baseUrl =
 	import.meta.env.VITE_SOCKET_URL ||
@@ -68,25 +72,23 @@ function createDummySocketService() {
 			if (eventName === SOCKET_EMIT_ORDER_GIG) {
 				listeners = listenersMap[SOCKET_EVENT_ORDER_GIG]
 			}
-            if(eventName === SOCKET_EMIT_UPDATE_REQUEST){
-				
-                listeners = listenersMap[SOCKET_EVENT_REQUEST_UPDATED]
-            }
-			if(eventName === SOCKET_EMIT_ADD_CHAT){
-				listeners = listenersMap[SOCKET_EVENT_CHAT_ADDED]
+			if (eventName === SOCKET_EMIT_UPDATE_REQUEST) {
+				listeners = listenersMap[SOCKET_EVENT_REQUEST_UPDATED]
+			}
+			if (eventName === SOCKET_EMIT_SEND_MSG) {
+				listeners = listenersMap[SOCKET_EVENT_MSG_SENT]
+			}
+			if (eventName === SOCKET_EMIT_OPEN_ORDER_CHAT) {
+				listeners = listenersMap[SOCKET_EVENT_ORDER_CHAT_OPENED]
+			}
+			if (eventName === SOCKET_EMIT_ORDER_CHAT_MSG) {
+				listeners = listenersMap[SOCKET_EVENT_ORDER_CHAT_MSG]
 			}
 			if (!listeners) return
 
 			listeners.forEach(listener => {
 				listener(data)
 			})
-		},
-		// Functions for easy testing of pushed data
-		testChatMsg() {
-			this.emit(SOCKET_EVENT_ADD_MSG, { from: 'Someone', txt: 'Aha it worked!' })
-		},
-		testUserUpdate() {
-			this.emit(SOCKET_EVENT_USER_UPDATED, { ...userService.getLoggedinUser(), score: 555 })
 		},
 	}
 	window.listenersMap = listenersMap

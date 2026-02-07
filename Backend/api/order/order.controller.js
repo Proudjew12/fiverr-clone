@@ -1,5 +1,6 @@
 import { orderService } from "./order.service.js";
 import { loggerService } from "../../services/logger.service.js";
+import { socketService } from "../../services/socket.service.js";
 
 export async function getOrders(req,res) {
  try {
@@ -23,6 +24,7 @@ try {
 export async function addOrder(req,res) {
     try {
         const saved = await orderService.add(req.body)
+        socketService.emitToTopic({ topic: 'seller', type: 'ordered-gig', data: saved })
         res.status(201).json(saved)
       } catch (err) {
         loggerService.error('Failed to add order', err)
@@ -53,6 +55,8 @@ export async function updateOrder(req,res) {
 try {
     const { id } = req.params
     const saved = await orderService.update({ ...req.body, _id: id })
+    socketService.emitToTopic({ topic: 'request', type: 'request-updated', data: saved })
+    socketService.emitToTopic({ topic: 'seller', type: 'request-updated', data: saved })
     res.json(saved)
   } catch (err) {
     loggerService.error('Failed to update order', err)

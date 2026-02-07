@@ -2,6 +2,7 @@ import {loggerService} from './logger.service.js'
 import {Server} from 'socket.io'
 
 var gIo = null
+const ORDER_CHAT_TOPICS = ['seller', 'request', 'chat']
 
 export function setupSocketAPI(http) {
     gIo = new Server(http, {
@@ -18,13 +19,14 @@ export function setupSocketAPI(http) {
         })
 
         socket.on('set-topic', topic => {
-            if (socket.myTopic === topic) return
-            if (socket.myTopic) {
-                socket.leave(socket.myTopic)
-                loggerService.info(`Socket is leaving topic ${socket.myTopic} [id: ${socket.id}]`)
-            }
+            if (!topic) return
+
+            if (!socket.myTopics) socket.myTopics = new Set()
+            if (socket.myTopics.has(topic)) return
+
             socket.join(topic)
-            socket.myTopic = topic
+            socket.myTopics.add(topic)
+            loggerService.info(`Socket joined topic ${topic} [id: ${socket.id}]`)
         })
          
 
@@ -40,7 +42,18 @@ export function setupSocketAPI(http) {
 
         socket.on('update-request',(order )=>{
             loggerService.info(`update-request from [id: ${socket.id}], request `,order)
-        gIo.to('request').emit('request-updated',order)    
+        gIo.to('request').emit('request-updated',order)
+        gIo.to('seller').emit('request-updated',order)
+        })
+
+        socket.on('open-order-chat', payload => {
+            loggerService.info(`open-order-chat from [id: ${socket.id}]`, payload)
+            emitToTopics({ topics: ORDER_CHAT_TOPICS, type: 'order-chat-opened', data: payload })
+        })
+
+        socket.on('send-order-chat-msg', message => {
+            loggerService.info(`send-order-chat-msg from [id: ${socket.id}]`, message)
+            emitToTopics({ topics: ORDER_CHAT_TOPICS, type: 'order-chat-msg', data: message })
         })
     })
 }
@@ -48,6 +61,26 @@ export function setupSocketAPI(http) {
 function emitTo({ type, data, label }) {
     if (label) gIo.to('watching:' + label.toString()).emit(type, data)
     else gIo.emit(type, data)
+}
+
+function emitToTopic({ topic, type, data }) {
+    if (!gIo || !topic || !type) return
+    gIo.to(topic).emit(type, data)
+}
+
+function emitToTopics({ topics = [], type, data }) {
+    if (!gIo || !type) return
+    const safeTopics = topics.filter(Boolean)
+    if (!safeTopics.length) {
+        gIo.emit(type, data)
+        return
+    }
+
+    let broadcast = gIo
+    safeTopics.forEach(topic => {
+        broadcast = broadcast.to(topic)
+    })
+    broadcast.emit(type, data)
 }
 
 async function emitToUser({ type, data, userId }) {
@@ -111,6 +144,8 @@ export const socketService = {
     setupSocketAPI,
     // emit to everyone / everyone in a specific room (label)
     emitTo, 
+    // emit to a specific socket.io room/topic
+    emitToTopic,
     // emit to a specific user (if currently active in system)
     emitToUser, 
     // Send to all sockets BUT not the current socket - if found

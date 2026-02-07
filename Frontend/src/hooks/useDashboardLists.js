@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react'
 import { orderService } from '@/services/order.service.remote.js'
 import { wishlistService } from '@/services/wishlist.service.remote.js'
-import { SOCKET_EVENT_ORDER_GIG, socketService } from '@/services/socket.service.js'
+import {
+  SOCKET_EVENT_ORDER_GIG,
+  SOCKET_EVENT_REQUEST_UPDATED,
+  socketService,
+} from '@/services/socket.service.js'
 
 export function useDashboardLists({ buyerName, isSeller } = {}) {
   const [orders, setOrders] = useState([])
@@ -9,12 +13,32 @@ export function useDashboardLists({ buyerName, isSeller } = {}) {
 
   useEffect(() => {
     let isMounted = true
-    socketService.emit('set-topic', 'seller')
-    socketService.on(SOCKET_EVENT_ORDER_GIG,onOrderReceived)
+    if (isSeller) {
+      socketService.emit('set-topic', 'seller')
+      socketService.on(SOCKET_EVENT_ORDER_GIG, onOrderReceived)
+      socketService.on(SOCKET_EVENT_REQUEST_UPDATED, onOrderUpdated)
+    }
 
     function onOrderReceived(order) {
-    setOrders(prevOrders => [...prevOrders, order])
-  }
+      if (!order?._id) return
+      setOrders((prevOrders) => {
+        if (prevOrders.some((prevOrder) => prevOrder._id === order._id)) {
+          return prevOrders
+        }
+        return [order, ...prevOrders]
+      })
+    }
+
+    function onOrderUpdated(updatedOrder) {
+      if (!updatedOrder?._id) return
+      setOrders((prevOrders) => {
+        const exists = prevOrders.some((order) => order._id === updatedOrder._id)
+        if (!exists) return [updatedOrder, ...prevOrders]
+        return prevOrders.map((order) =>
+          order._id === updatedOrder._id ? { ...order, ...updatedOrder } : order
+        )
+      })
+    }
     async function load() {
       const orderParams = isSeller ? {} : buyerName ? { buyerName } : {}
       const orders = await orderService.query(orderParams)
@@ -48,7 +72,8 @@ export function useDashboardLists({ buyerName, isSeller } = {}) {
       isMounted = false
       window.removeEventListener('orders-updated', onOrdersUpdated)
       window.removeEventListener('wishlist-updated', onWishlistUpdated)
-      socketService.off(SOCKET_EVENT_ORDER_GIG,onOrderReceived)
+      socketService.off(SOCKET_EVENT_ORDER_GIG, onOrderReceived)
+      socketService.off(SOCKET_EVENT_REQUEST_UPDATED, onOrderUpdated)
     }
   }, [buyerName, isSeller])
 

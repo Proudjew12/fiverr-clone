@@ -22,6 +22,25 @@ const FALLBACK_THUMBS = demoData.fallbackThumbs
 const CUSTOMER_NAME = 'Wilson Gray'
 const SELLER_NAME = 'Harrison Parker'
 const CUSTOMER_IMAGE = '/assets/ProfileImgs/PersonTwo.png'
+const NEW_REQUEST_WINDOW_MS = 5 * 60 * 1000
+
+function getOrderTimestamp(order) {
+  const rawTime = order?.createdAt ?? order?.updatedAt
+  if (typeof rawTime === 'number' && Number.isFinite(rawTime)) return rawTime
+  if (typeof rawTime === 'string') {
+    const parsed = Date.parse(rawTime)
+    if (Number.isFinite(parsed)) return parsed
+  }
+  return null
+}
+
+function isFreshPendingRequest(order, nowMs) {
+  if (String(order?.status || '').toLowerCase() !== 'pending') return false
+  const createdAt = getOrderTimestamp(order)
+  if (!createdAt) return false
+  const age = nowMs - createdAt
+  return age >= 0 && age <= NEW_REQUEST_WINDOW_MS
+}
 
 export function AppHeader() {
   const { openDd, toggleDd, closeDd, rootRef, getOptionProps } = useDropdown()
@@ -378,9 +397,19 @@ function OrdersDropdown({
   isSeller,
   dashboardLink,
 }) {
+  const [highlightNowMs, setHighlightNowMs] = useState(0)
   const label = isSeller ? 'Requests' : 'Orders'
   const emptyLabel = isSeller ? 'No requests yet' : 'No orders yet'
   const viewLabel = isSeller ? 'View all requests' : 'View all orders'
+
+  useEffect(() => {
+    if (!isSeller) return
+    setHighlightNowMs(Date.now())
+    const intervalId = window.setInterval(() => {
+      setHighlightNowMs(Date.now())
+    }, 30000)
+    return () => window.clearInterval(intervalId)
+  }, [isSeller])
 
   return (
     <div className="nav-dd">
@@ -405,17 +434,28 @@ function OrdersDropdown({
               {orders.slice(0, 3).map((order) => {
                 const thumbSrc =
                   order.previewImg || utilService.pickRandom(FALLBACK_THUMBS)
+                const isIncomingRequest =
+                  isSeller && isFreshPendingRequest(order, highlightNowMs)
+                const orderLink = isSeller
+                  ? `${dashboardLink}?tab=orders`
+                  : `/gig/${order.gigId}`
                 return (
-                  <li key={order._id} className="orders-dd-item">
+                  <li
+                    key={order._id}
+                    className={`orders-dd-item ${
+                      isIncomingRequest ? 'orders-dd-item--incoming-request' : ''
+                    }`}
+                  >
                     <img className="orders-dd-thumb" src={thumbSrc} alt="" />
                     <div className="orders-dd-content">
                       <Link
-                        to={`/gig/${order.gigId}`}
+                        to={orderLink}
                         className="orders-dd-title"
                         onClick={onClose}
                       >
                         {order.title}
                       </Link>
+                      {isIncomingRequest && <span className="orders-dd-tag">New request</span>}
                     </div>
                   </li>
                 )
