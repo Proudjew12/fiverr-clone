@@ -66,6 +66,7 @@ export function useDashboardLists({ buyerName, isSeller } = {}) {
 
   return {
     orders,
+    setOrders,
     wishlist,
     clearOrders,
     clearWishlist,

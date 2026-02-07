@@ -4,11 +4,11 @@ const { VITE_LOCAL, DEV } = import.meta.env
 export const SOCKET_EMIT_SET_TOPIC = 'set-topic'
 export const SOCKET_EMIT_ORDER_GIG = 'gig-order'
 export const SOCKET_EMIT_SEND_MSG = 'send-msg'
-export const SOCKET_EMIT_ADD_CHAT= 'add-chat'
+export const SOCKET_EMIT_UPDATE_REQUEST= 'update-request'
 
 export const SOCKET_EVENT_ORDER_GIG = 'ordered-gig'
 export const SOCKET_EVENT_MSG_SENT = 'msg-sent'
-export const SOCKET_EVENT_CHAT_ADDED = 'chat-added'
+export const SOCKET_EVENT_REQUEST_UPDATED = 'request-updated'
 
 const baseUrl =
 	import.meta.env.VITE_SOCKET_URL ||
@@ -68,9 +68,9 @@ function createDummySocketService() {
 			if (eventName === SOCKET_EMIT_ORDER_GIG) {
 				listeners = listenersMap[SOCKET_EVENT_ORDER_GIG]
 			}
-            if(eventName === SOCKET_EMIT_SEND_MSG){
+            if(eventName === SOCKET_EMIT_UPDATE_REQUEST){
 				
-                listeners = listenersMap[SOCKET_EVENT_MSG_SENT]
+                listeners = listenersMap[SOCKET_EVENT_REQUEST_UPDATED]
             }
 			if(eventName === SOCKET_EMIT_ADD_CHAT){
 				listeners = listenersMap[SOCKET_EVENT_CHAT_ADDED]

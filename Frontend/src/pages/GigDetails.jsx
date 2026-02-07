@@ -6,7 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useGigDetails } from '@/hooks/useGigDetails.js'
 import { utilService } from '@/services/util.service'
 import { httpService } from '@/services/http.service'
-import { SOCKET_EMIT_ADD_CHAT, SOCKET_EMIT_SEND_MSG, SOCKET_EMIT_SET_TOPIC, SOCKET_EVENT_MSG_SENT, socketService } from '@/services/socket.service'
+import {  SOCKET_EMIT_SEND_MSG, SOCKET_EMIT_SET_TOPIC, SOCKET_EVENT_MSG_SENT, socketService } from '@/services/socket.service'
 
 export function GigDetails() {
   const { gigId } = useParams()
