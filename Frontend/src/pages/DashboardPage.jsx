@@ -282,7 +282,15 @@ export function DashboardPage() {
                             </div>
                           )
                         ) : (
-                          <span className="orders-status">{order.status}</span>
+                          <span
+                            className={`orders-status ${
+                              order.status
+                                ? order.status.toLowerCase().replace(/\s+/g, '-')
+                                : ''
+                            }`}
+                          >
+                            {order.status}
+                          </span>
                         )}
                       </div>
                     </li>

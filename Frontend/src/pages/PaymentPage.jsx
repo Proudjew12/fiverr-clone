@@ -68,7 +68,7 @@ export function PaymentPage() {
       total,
       sellerName: gig?.owner?.fullname || 'Seller',
       buyerName,
-      status: 'approved',
+      status: 'Pending',
       previewImg,
     }
     const savedOrder = await orderService.save(order)

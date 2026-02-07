@@ -176,6 +176,26 @@
   letter-spacing: 0.04em;
 }
 
+.orders-head span:nth-child(2),
+.orders-row .orders-cell:nth-child(2) {
+  justify-self: start;
+  text-align: left;
+}
+
+.orders-head span:nth-child(2) {
+  margin-left: -0.9rem;
+}
+
+.orders-head span:last-child,
+.orders-row .orders-cell:last-child {
+  justify-self: center;
+  text-align: center;
+}
+
+.orders-head span:last-child {
+  margin-left: -2rem;
+}
+
 .orders-table--seller .orders-head span:last-child,
 .orders-table--seller .orders-row .orders-cell:last-child {
   justify-self: center;
@@ -189,10 +209,6 @@
 .orders-table--seller .orders-row .orders-cell:nth-child(2) {
   justify-self: start;
   text-align: left;
-}
-
-.orders-table--seller .orders-head span:nth-child(2) {
-  margin-left: -0.8rem;
 }
 
 .orders-list {
@@ -239,11 +255,26 @@
   justify-content: center;
   padding: 4px 10px;
   border-radius: 999px;
-  background: #e8f7ef;
-  color: #1c7c54;
+  background: #f1f3f5;
+  color: #5b6168;
   font-weight: 700;
   font-size: 0.8rem;
   text-transform: capitalize;
+}
+
+.orders-status.pending {
+  background: #e8f1ff;
+  color: #2457a6;
+}
+
+.orders-status.approved {
+  background: #e8f7ef;
+  color: #1c7c54;
+}
+
+.orders-status.declined {
+  background: #ffecec;
+  color: #b42318;
 }
 
 .orders-status.wishlist-status {
