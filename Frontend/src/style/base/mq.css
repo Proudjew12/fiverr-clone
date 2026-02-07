@@ -343,9 +343,24 @@
   }
 
   .sub-header-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     font-size: 16px;
     line-height: 1.2;
     padding: 2px 0 4px;
+  }
+
+  .sub-header-link::before {
+    content: '|';
+    order: 2;
+    color: #b7b9bf;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .sub-header-swiper .swiper-slide:last-child .sub-header-link::before {
+    content: none;
   }
 
   .home-page {
