@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useSearchParams, useParams } from 'react-router-dom'
 import { utilService } from '@/services/util.service'
+import { orderService } from '@/services/order.service.remote.js'
 import demoData from '@/data/demo-data.json'
 import { useDashboardLists } from '@/hooks/useDashboardLists'
 import { SvgIcon } from '@/components/svg/SvgIcon'
@@ -25,6 +26,9 @@ export function DashboardPage() {
   const [requestStates, setRequestStates] = useState({})
   const [openRequestMenuId, setOpenRequestMenuId] = useState(null)
   const requestMenuRef = useRef(null)
+  const [customerInbox, setCustomerInbox] = useState([])
+  const [activeCustomerChat, setActiveCustomerChat] = useState(null)
+  const [customerChatInput, setCustomerChatInput] = useState('')
   const formatMoney = (value) => `₪${Number(value).toFixed(2)}`
   function setTab(tab) {
     setSearchParams((prevParams) => {
@@ -43,6 +47,28 @@ export function DashboardPage() {
 
   useEffect(() => {
     localStorage.setItem('isSeller', String(isSeller))
+  }, [isSeller])
+
+  useEffect(() => {
+    if (isSeller) return
+    function loadInbox() {
+      try {
+        const stored = JSON.parse(localStorage.getItem('customerInbox') || '[]')
+        setCustomerInbox(Array.isArray(stored) ? stored : [])
+      } catch {
+        setCustomerInbox([])
+      }
+    }
+    function handleInboxUpdate() {
+      loadInbox()
+    }
+    loadInbox()
+    window.addEventListener('customer-inbox-updated', handleInboxUpdate)
+    window.addEventListener('storage', handleInboxUpdate)
+    return () => {
+      window.removeEventListener('customer-inbox-updated', handleInboxUpdate)
+      window.removeEventListener('storage', handleInboxUpdate)
+    }
   }, [isSeller])
 
   useEffect(() => {
@@ -66,9 +92,107 @@ export function DashboardPage() {
     }
   }, [])
 
-  function onUpdateRequest(id, status) {
-    setRequestStates((prev) => ({ ...prev, [id]: status }))
+  function getStatusLabel(status) {
+    if (status === 'accepted') return 'Accepted'
+    if (status === 'declined') return 'Declined'
+    if (status === 'ask') return 'Ask'
+    return status
+  }
+
+  function pushCustomerInboxMessage(order, text) {
+    if (!order || !text) return
+    const entry = {
+      id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+      orderId: order._id,
+      gigId: order.gigId,
+      gigTitle: order.title,
+      sellerName: order.sellerName || 'Seller',
+      text,
+      createdAt: Date.now(),
+      unread: true,
+      from: 'seller',
+    }
+    let inbox = []
+    try {
+      const stored = localStorage.getItem('customerInbox')
+      inbox = stored ? JSON.parse(stored) : []
+    } catch {
+      inbox = []
+    }
+    const nextInbox = [entry, ...(Array.isArray(inbox) ? inbox : [])].slice(0, 30)
+    localStorage.setItem('customerInbox', JSON.stringify(nextInbox))
+    window.dispatchEvent(new Event('customer-inbox-updated'))
+  }
+
+  function pushSellerInboxMessage(order, text) {
+    if (!order || !text) return
+    const entry = {
+      id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+      gigId: order.gigId,
+      gigTitle: order.title,
+      customerName: order.buyerName || 'Customer',
+      customerImg: '/assets/ProfileImgs/PersonTwo.png',
+      text,
+      createdAt: Date.now(),
+      unread: true,
+      from: 'customer',
+    }
+    let inbox = []
+    try {
+      const stored = localStorage.getItem('sellerInbox')
+      inbox = stored ? JSON.parse(stored) : []
+    } catch {
+      inbox = []
+    }
+    const nextInbox = [entry, ...(Array.isArray(inbox) ? inbox : [])].slice(0, 30)
+    localStorage.setItem('sellerInbox', JSON.stringify(nextInbox))
+    window.dispatchEvent(new Event('seller-inbox-updated'))
+  }
+
+  async function onUpdateRequest(order, status) {
+    const statusLabel = getStatusLabel(status)
+    const updated = { ...order, status: statusLabel }
+    setRequestStates((prev) => ({ ...prev, [order._id]: status }))
     setOpenRequestMenuId(null)
+    try {
+      await orderService.save(updated)
+      window.dispatchEvent(new CustomEvent('orders-updated'))
+      if (status === 'ask') {
+        const message =
+          'Hi there! Before I start, could you share the requirements, timeline, and any brand/style notes you want me to follow?'
+        pushCustomerInboxMessage(updated, message)
+      }
+    } catch (err) {
+      console.error('Failed to update order status', err)
+    }
+  }
+
+  const activeCustomerMessages = activeCustomerChat
+    ? customerInbox
+        .filter((message) => message.orderId === activeCustomerChat._id)
+        .sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0))
+    : []
+
+  function handleCustomerSend() {
+    if (!activeCustomerChat) return
+    const text = customerChatInput.trim()
+    if (!text) return
+    const entry = {
+      id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+      orderId: activeCustomerChat._id,
+      gigId: activeCustomerChat.gigId,
+      gigTitle: activeCustomerChat.title,
+      sellerName: activeCustomerChat.sellerName || 'Seller',
+      text,
+      createdAt: Date.now(),
+      unread: false,
+      from: 'customer',
+    }
+    const nextInbox = [entry, ...customerInbox]
+    localStorage.setItem('customerInbox', JSON.stringify(nextInbox))
+    setCustomerInbox(nextInbox)
+    setCustomerChatInput('')
+    pushSellerInboxMessage(activeCustomerChat, text)
   }
 
   function getRandomOrderDate(seed) {
@@ -215,82 +339,124 @@ export function DashboardPage() {
                       <div className="orders-cell">{formatMoney(order.total)}</div>
                       <div className="orders-cell">
                         {isSeller ? (
-                          requestStates[order._id] ? (
-                            <span
-                              className={`request-status ${requestStates[order._id]}`}
-                              aria-label={
-                                requestStates[order._id] === 'accepted'
-                                  ? 'Accepted'
-                                  : requestStates[order._id] === 'declined'
-                                    ? 'Declined'
-                                    : 'Asked customer'
-                              }
-                              title={
-                                requestStates[order._id] === 'accepted'
-                                  ? 'Accepted'
-                                  : requestStates[order._id] === 'declined'
-                                    ? 'Declined'
-                                    : 'Asked customer'
-                              }
-                            >
-                              {requestStates[order._id] === 'accepted'
-                                ? '✓'
-                                : requestStates[order._id] === 'declined'
-                                  ? '✕'
-                                  : '?'}
-                            </span>
-                          ) : (
-                            <div className="request-actions" ref={requestMenuRef}>
-                              <button
-                                type="button"
-                                className="request-menu-btn"
-                                aria-haspopup="menu"
-                                aria-expanded={openRequestMenuId === order._id}
-                                onClick={() =>
-                                  setOpenRequestMenuId((prev) =>
-                                    prev === order._id ? null : order._id
-                                  )
-                                }
-                              >
-                                <span aria-hidden="true">⋯</span>
-                              </button>
-                              {openRequestMenuId === order._id && (
-                                <div className="request-menu" role="menu">
-                                  <button
-                                    type="button"
-                                    className="request-menu-item"
-                                    onClick={() => onUpdateRequest(order._id, 'accepted')}
-                                  >
-                                    Accept
-                                  </button>
-                                  <button
-                                    type="button"
-                                    className="request-menu-item"
-                                    onClick={() => onUpdateRequest(order._id, 'declined')}
-                                  >
-                                    Decline
-                                  </button>
-                                  <button
-                                    type="button"
-                                    className="request-menu-item"
-                                    onClick={() => onUpdateRequest(order._id, 'ask')}
-                                  >
-                                    Ask the Customer
-                                  </button>
-                                </div>
-                              )}
-                            </div>
-                          )
+                          (() => {
+                            const resolvedStatus =
+                              requestStates[order._id] ||
+                              String(order.status || '').toLowerCase()
+                            if (
+                              resolvedStatus === 'accepted' ||
+                              resolvedStatus === 'declined' ||
+                              resolvedStatus === 'ask'
+                            ) {
+                              return (
+                                <span
+                                  className={`request-status ${resolvedStatus}`}
+                                  aria-label={
+                                    resolvedStatus === 'accepted'
+                                      ? 'Accepted'
+                                      : resolvedStatus === 'declined'
+                                        ? 'Declined'
+                                        : 'Asked customer'
+                                  }
+                                  title={
+                                    resolvedStatus === 'accepted'
+                                      ? 'Accepted'
+                                      : resolvedStatus === 'declined'
+                                        ? 'Declined'
+                                        : 'Asked customer'
+                                  }
+                                >
+                                  {resolvedStatus === 'accepted'
+                                    ? '✓'
+                                    : resolvedStatus === 'declined'
+                                      ? '✕'
+                                      : '?'}
+                                </span>
+                              )
+                            }
+                            return (
+                              <div className="request-actions" ref={requestMenuRef}>
+                                <button
+                                  type="button"
+                                  className="request-menu-btn"
+                                  aria-haspopup="menu"
+                                  aria-expanded={openRequestMenuId === order._id}
+                                  onClick={() =>
+                                    setOpenRequestMenuId((prev) =>
+                                      prev === order._id ? null : order._id
+                                    )
+                                  }
+                                >
+                                  <span aria-hidden="true">⋯</span>
+                                </button>
+                                {openRequestMenuId === order._id && (
+                                  <div className="request-menu" role="menu">
+                                    <button
+                                      type="button"
+                                      className="request-menu-item"
+                                      onClick={() => onUpdateRequest(order, 'accepted')}
+                                    >
+                                      Accept
+                                    </button>
+                                    <button
+                                      type="button"
+                                      className="request-menu-item"
+                                      onClick={() => onUpdateRequest(order, 'declined')}
+                                    >
+                                      Decline
+                                    </button>
+                                    <button
+                                      type="button"
+                                      className="request-menu-item"
+                                      onClick={() => onUpdateRequest(order, 'ask')}
+                                    >
+                                      Ask the Customer
+                                    </button>
+                                  </div>
+                                )}
+                              </div>
+                            )
+                          })()
                         ) : (
-                          <span
-                            className={`orders-status ${
-                              order.status
-                                ? order.status.toLowerCase().replace(/\s+/g, '-')
-                                : ''
-                            }`}
-                          >
-                            {order.status}
-                          </span>
+                          (() => {
+                            const statusText = String(order.status || '').toLowerCase()
+                            if (statusText === 'ask') {
+                              return (
+                                <button
+                                  type="button"
+                                  className="orders-chat-btn"
+                                  onClick={() => {
+                                    setActiveCustomerChat(order)
+                                    setCustomerInbox((prev) => {
+                                      const nextInbox = prev.map((msg) =>
+                                        msg.orderId === order._id
+                                          ? { ...msg, unread: false }
+                                          : msg
+                                      )
+                                      localStorage.setItem(
+                                        'customerInbox',
+                                        JSON.stringify(nextInbox)
+                                      )
+                                      return nextInbox
+                                    })
+                                  }}
+                                >
+                                  Open chat
+                                </button>
+                              )
+                            }
+                            return (
+                              <span
+                                className={`orders-status ${
+                                  order.status
+                                    ? order.status.toLowerCase().replace(/\s+/g, '-')
+                                    : ''
+                                }`}
+                              >
+                                {order.status}
+                              </span>
+                            )
+                          })()
                         )}
                       </div>
                     </li>
@@ -343,6 +509,62 @@ export function DashboardPage() {
           )}
         </section>
       </main>
+
+      {!isSeller && activeCustomerChat && (
+        <div className="customer-chat-widget" role="dialog" aria-label="Customer chat">
+          <div className="customer-chat-header">
+            <div className="customer-chat-meta">
+              <div className="customer-chat-title">
+                Message {activeCustomerChat.sellerName || 'Seller'}
+              </div>
+              <div className="customer-chat-subtitle">{activeCustomerChat.title}</div>
+            </div>
+            <button
+              type="button"
+              className="customer-chat-close"
+              onClick={() => setActiveCustomerChat(null)}
+              aria-label="Close chat"
+            >
+              ×
+            </button>
+          </div>
+          <div className="customer-chat-thread">
+            {activeCustomerMessages.map((message) => (
+              <div
+                key={message.id}
+                className={`customer-chat-bubble ${
+                  message.from === 'customer' ? 'is-customer' : 'is-seller'
+                }`}
+              >
+                {message.text}
+              </div>
+            ))}
+          </div>
+          <div className="customer-chat-footer">
+            <input
+              type="text"
+              className="customer-chat-input"
+              placeholder="Type your message..."
+              value={customerChatInput}
+              onChange={(event) => setCustomerChatInput(event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  event.preventDefault()
+                  handleCustomerSend()
+                }
+              }}
+            />
+            <button
+              type="button"
+              className="customer-chat-send"
+              onClick={handleCustomerSend}
+              disabled={!customerChatInput.trim()}
+            >
+              Send
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   )
 }

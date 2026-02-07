@@ -26,7 +26,6 @@ export function BudgetFilter({ handleChange }) {
                         onChange={(e) => setLocalPrice(e.target.value)}
                         className="price-input"
                         placeholder=""
-                        className="price-input"
                     />
                 </div>
             </div>

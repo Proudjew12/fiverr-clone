@@ -10,7 +10,9 @@ export const SOCKET_EVENT_ORDER_GIG = 'ordered-gig'
 export const SOCKET_EVENT_MSG_SENT = 'msg-sent'
 export const SOCKET_EVENT_CHAT_ADDED = 'chat-added'
 
-const baseUrl = process.env.NODE_ENV === 'production' ? '' : '//localhost:3030'
+const baseUrl =
+	import.meta.env.VITE_SOCKET_URL ||
+	(import.meta.env.PROD ? '' : '//localhost:3030')
 
 export const socketService = VITE_LOCAL === 'true' ? createDummySocketService() : createSocketService()
 
