@@ -3,8 +3,13 @@ const { VITE_LOCAL, DEV } = import.meta.env
 
 export const SOCKET_EMIT_SET_TOPIC = 'set-topic'
 export const SOCKET_EMIT_ORDER_GIG = 'gig-order'
+export const SOCKET_EMIT_SEND_MSG = 'send-msg'
+export const SOCKET_EMIT_ADD_CHAT= 'add-chat'
 
 export const SOCKET_EVENT_ORDER_GIG = 'ordered-gig'
+export const SOCKET_EVENT_MSG_SENT = 'msg-sent'
+export const SOCKET_EVENT_CHAT_ADDED = 'chat-added'
+
 const baseUrl = process.env.NODE_ENV === 'production' ? '' : '//localhost:3030'
 
 export const socketService = VITE_LOCAL === 'true' ? createDummySocketService() : createSocketService()
@@ -61,7 +66,13 @@ function createDummySocketService() {
 			if (eventName === SOCKET_EMIT_ORDER_GIG) {
 				listeners = listenersMap[SOCKET_EVENT_ORDER_GIG]
 			}
-
+            if(eventName === SOCKET_EMIT_SEND_MSG){
+				
+                listeners = listenersMap[SOCKET_EVENT_MSG_SENT]
+            }
+			if(eventName === SOCKET_EMIT_ADD_CHAT){
+				listeners = listenersMap[SOCKET_EVENT_CHAT_ADDED]
+			}
 			if (!listeners) return
 
 			listeners.forEach(listener => {

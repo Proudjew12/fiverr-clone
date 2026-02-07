@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useGigDetails } from '@/hooks/useGigDetails.js'
 import { utilService } from '@/services/util.service'
 import { httpService } from '@/services/http.service'
+import { SOCKET_EMIT_ADD_CHAT, SOCKET_EMIT_SEND_MSG, SOCKET_EMIT_SET_TOPIC, SOCKET_EVENT_MSG_SENT, socketService } from '@/services/socket.service'
 
 export function GigDetails() {
   const { gigId } = useParams()
@@ -51,14 +52,15 @@ export function GigDetails() {
   }
 
   function handleSuggestionClick(text) {
-    setChatMessages((prev) => [...prev, { id: `${Date.now()}-${prev.length}`, text }])
+    // setChatMessages((prev) => [...prev, { id: `${Date.now()}-${prev.length}`, text }])
     pushSellerInboxMessage(text)
   }
 
   function handleSendMessage() {
     const text = chatInput.trim()
     if (!text) return
-    setChatMessages((prev) => [...prev, { id: `${Date.now()}-${prev.length}`, text }])
+    const msg = { id: `${Date.now()}-${chatMessages.length}`, text }
+    //setChatMessages((prev) => [...prev, msg])
     setChatInput('')
     pushSellerInboxMessage(text)
   }
@@ -93,10 +95,17 @@ export function GigDetails() {
       handleSendMessage()
     }
   }
-
+  function handleMessage(entry) {
+    if (!entry) return
+    setChatMessages((prev) => [...prev, entry])
+  }
   useEffect(() => {
     if (!chatThreadRef.current) return
+    socketService.emit(SOCKET_EMIT_SET_TOPIC, 'chat')
+    socketService.on(SOCKET_EVENT_MSG_SENT, handleMessage)
+
     chatThreadRef.current.scrollTop = chatThreadRef.current.scrollHeight
+    return () => { socketService.off(SOCKET_EVENT_MSG_SENT, handleMessage) }
   }, [chatMessages.length, isChatOpen, isChatMinimized])
 
   function toTitleCase(value) {
@@ -184,6 +193,8 @@ export function GigDetails() {
     } catch {
       inbox = []
     }
+    socketService.emit(SOCKET_EMIT_SET_TOPIC,'chat')
+    socketService.emit(SOCKET_EMIT_SEND_MSG, entry)
     const nextInbox = [entry, ...(Array.isArray(inbox) ? inbox : [])].slice(0, 30)
     localStorage.setItem('sellerInbox', JSON.stringify(nextInbox))
     window.dispatchEvent(new Event('seller-inbox-updated'))
@@ -544,9 +555,8 @@ export function GigDetails() {
                   <button
                     key={score}
                     type="button"
-                    className={`breakdown-row ${
-                      filterBy?.rating === score ? 'is-active' : ''
-                    }`}
+                    className={`breakdown-row ${filterBy?.rating === score ? 'is-active' : ''
+                      }`}
                     onClick={() =>
                       onSetFilterBy(
                         filterBy?.rating === score ? {} : { ...filterBy, rating: score }
@@ -629,7 +639,8 @@ export function GigDetails() {
                   )}
                   <div className="stefan-chat-thread" ref={chatThreadRef}>
                     {chatMessages.map((message) => (
-                      <div key={message.id} className="stefan-chat-bubble is-user">
+                      <div key={message.id} className={`seller-chat-bubble ${message.from === 'seller' ?  'is-customer' :'is-seller'
+                        }`}>
                         {message.text}
                       </div>
                     ))}
