@@ -12,7 +12,7 @@ import { useDropdown } from '@/hooks/useDropdown'
 import { useHeaderSearchObserver } from '@/hooks/useHeaderSearchObserver'
 import { useDashboardLists } from '@/hooks/useDashboardLists'
 import demoData from '@/data/demo-data.json'
-import { SOCKET_EMIT_SEND_MSG, SOCKET_EMIT_SET_TOPIC, SOCKET_EVENT_CHAT_ADDED, SOCKET_EVENT_MSG_SENT, socketService } from '@/services/socket.service.js'
+import { SOCKET_EMIT_SEND_MSG, SOCKET_EMIT_SET_TOPIC, SOCKET_EVENT_MSG_SENT, socketService } from '@/services/socket.service.js'
 
 const DEFAULT_LOCALE = {
   langLabel: 'English',

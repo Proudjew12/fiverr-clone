@@ -5,6 +5,7 @@ import { orderService } from '@/services/order.service.remote.js'
 import demoData from '@/data/demo-data.json'
 import { useDashboardLists } from '@/hooks/useDashboardLists'
 import { SvgIcon } from '@/components/svg/SvgIcon'
+import { SOCKET_EMIT_SET_TOPIC, SOCKET_EMIT_UPDATE_REQUEST, SOCKET_EVENT_MSG_SENT, SOCKET_EVENT_REQUEST_UPDATED, socketService } from '@/services/socket.service'
 
 const SELLER_IMAGE = '/assets/ProfileImgs/PersonOne.png'
 const CUSTOMER_IMAGE = '/assets/ProfileImgs/PersonTwo.png'
@@ -15,7 +16,7 @@ export function DashboardPage() {
   const { role } = useParams()
   const isSeller = role === 'seller'
   const userName = isSeller ? 'Harrison Parker' : 'Wilson Gray'
-  const { orders, wishlist, clearOrders, clearWishlist } = useDashboardLists({
+  const { orders, setOrders, wishlist, clearOrders, clearWishlist } = useDashboardLists({
     buyerName: userName,
     isSeller,
   })
@@ -48,9 +49,13 @@ export function DashboardPage() {
   useEffect(() => {
     localStorage.setItem('isSeller', String(isSeller))
   }, [isSeller])
-
+  
   useEffect(() => {
     if (isSeller) return
+    socketService.emit(SOCKET_EMIT_SET_TOPIC,'request')
+    socketService.on(SOCKET_EVENT_REQUEST_UPDATED,(updated)=>{
+      setOrders((prev)=>[...prev.filter(order=>order._id!==updated._id),updated])
+    })
     function loadInbox() {
       try {
         const stored = JSON.parse(localStorage.getItem('customerInbox') || '[]')
@@ -68,6 +73,7 @@ export function DashboardPage() {
     return () => {
       window.removeEventListener('customer-inbox-updated', handleInboxUpdate)
       window.removeEventListener('storage', handleInboxUpdate)
+      socketService.off(SOCKET_EVENT_REQUEST_UPDATED,()=>{})
     }
   }, [isSeller])
 
@@ -152,6 +158,7 @@ export function DashboardPage() {
   async function onUpdateRequest(order, status) {
     const statusLabel = getStatusLabel(status)
     const updated = { ...order, status: statusLabel }
+    socketService.emit(SOCKET_EMIT_UPDATE_REQUEST,updated)
     setRequestStates((prev) => ({ ...prev, [order._id]: status }))
     setOpenRequestMenuId(null)
     try {

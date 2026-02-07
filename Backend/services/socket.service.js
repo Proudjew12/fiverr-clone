@@ -38,9 +38,9 @@ export function setupSocketAPI(http) {
          gIo.to('chat').emit('msg-sent',msg)
         })
 
-        socket.on('add-chat',chat =>{
-            loggerService.info(`add-chat from [id: ${socket.id}], msg `,chat)
-        gIo.to('chat').emit('chat-added',chat)    
+        socket.on('update-request',(order )=>{
+            loggerService.info(`update-request from [id: ${socket.id}], request `,order)
+        gIo.to('request').emit('request-updated',order)    
         })
     })
 }
