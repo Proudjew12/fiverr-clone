@@ -1,0 +1,75 @@
+.backend-warmup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(26, 163, 78, 0.18), transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(0, 0, 0, 0.06), transparent 35%),
+    #f5f7f8;
+}
+
+.backend-warmup-card {
+  width: min(560px, 100%);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(16, 24, 40, 0.08);
+  box-shadow: 0 20px 60px rgba(16, 24, 40, 0.12);
+  padding: 24px;
+}
+
+.backend-warmup-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #5f6b7a;
+  margin-bottom: 8px;
+}
+
+.backend-warmup-title {
+  margin: 0 0 12px;
+  font-size: clamp(20px, 3vw, 30px);
+  line-height: 1.15;
+  color: #101828;
+}
+
+.backend-warmup-percent {
+  font-size: 40px;
+  line-height: 1;
+  font-weight: 800;
+  color: #127a35;
+  margin-bottom: 14px;
+}
+
+.backend-warmup-track {
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  background: #e8edf0;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.backend-warmup-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #179a44, #21c55d);
+  transition: width 220ms ease;
+}
+
+.backend-warmup-detail {
+  margin: 0;
+  color: #344054;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.backend-warmup-attempt {
+  margin: 8px 0 0;
+  color: #667085;
+  font-size: 12px;
+  line-height: 1.4;
+}
