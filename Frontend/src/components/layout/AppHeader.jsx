@@ -13,6 +13,7 @@ import { useHeaderSearchObserver } from '@/hooks/useHeaderSearchObserver'
 import { useDashboardLists } from '@/hooks/useDashboardLists'
 import demoData from '@/data/demo-data.json'
 import { SOCKET_EMIT_SEND_MSG, SOCKET_EMIT_SET_TOPIC, SOCKET_EVENT_MSG_SENT, socketService } from '@/services/socket.service.js'
+import { mediaUrlService } from '@/services/media-url.service'
 
 const DEFAULT_LOCALE = {
   langLabel: 'English',
@@ -21,7 +22,7 @@ const DEFAULT_LOCALE = {
 const FALLBACK_THUMBS = demoData.fallbackThumbs
 const CUSTOMER_NAME = 'Wilson Gray'
 const SELLER_NAME = 'Harrison Parker'
-const CUSTOMER_IMAGE = '/assets/ProfileImgs/PersonTwo.png'
+const CUSTOMER_IMAGE = mediaUrlService.resolve('/assets/ProfileImgs/PersonTwo.webp')
 const NEW_REQUEST_WINDOW_MS = 5 * 60 * 1000
 
 function getOrderTimestamp(order) {

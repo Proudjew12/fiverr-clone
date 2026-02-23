@@ -3,6 +3,7 @@ import { SearchBar } from '@/components/homepageComponents/SearchBar'
 import demoData from '@/data/demo-data.json'
 import { useNavigate } from 'react-router-dom'
 import { gigService } from '@/services/gig.service.remote.js'
+import { mediaUrlService } from '@/services/media-url.service'
 
 const { heroChips: HERO_CHIPS, trustedBy: TRUSTED_BY } = demoData.home
 
@@ -41,7 +42,10 @@ export function HomeHero() {
   return (
     <section className="home-hero">
       <video className="home-hero-video" autoPlay muted loop playsInline preload="auto">
-        <source src="/assets/HomePage/video/HeroVid.webm" type="video/webm" />
+        <source
+          src={mediaUrlService.resolve('/assets/HomePage/video/HeroVid.webm')}
+          type="video/webm"
+        />
       </video>
 
       <div className="home-hero-overlay" aria-hidden="true" />

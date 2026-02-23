@@ -4,10 +4,14 @@ import {Server} from 'socket.io'
 var gIo = null
 const ORDER_CHAT_TOPICS = ['seller', 'request', 'chat']
 
-export function setupSocketAPI(http) {
+export function setupSocketAPI(http, options = {}) {
+    const origins = Array.isArray(options.origins) ? options.origins.filter(Boolean) : []
+    const socketCorsOrigin = origins.length ? origins : '*'
+
     gIo = new Server(http, {
         cors: {
-            origin: '*',
+            origin: socketCorsOrigin,
+            credentials: true,
         }
     })
 

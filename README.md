@@ -29,17 +29,22 @@ fiverr-clone/
 ├── Frontend/
 │   ├── src/
 │   │   ├── components/
+│   │   ├── data/
+│   │   ├── hooks/
 │   │   ├── pages/
 │   │   ├── services/
 │   │   ├── store/
 │   │   └── style/
 │   ├── public/
-│   └── package.json
+│   ├── tests/
+│   │   └── e2e/        # Playwright tests (optional)
+│   └── playwright.config.js
 ├── Backend/
 │   ├── api/
 │   ├── services/
 │   ├── middlewares/
 │   ├── config/
+│   ├── scripts/        # DB/data maintenance scripts
 │   └── server.js
 └── README.md
 ```
@@ -66,12 +71,26 @@ Create `Backend/.env`:
 
 ```env
 NODE_ENV=development
+PORT=3030
 DB_URL=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/
 DB_NAME=fiverr_shared
 CORS_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
 ```
 
-### 4. Run development servers
+`PORT` is optional (defaults to `3030`).
+
+### 4. Configure frontend environment (optional)
+
+Create `Frontend/.env` if you want to override the default local URLs:
+
+```env
+VITE_API_URL=http://127.0.0.1:3030/api/
+VITE_SOCKET_URL=http://127.0.0.1:3030
+```
+
+Without `Frontend/.env`, the app uses local defaults in development.
+
+### 5. Run development servers
 
 ```bash
 npm --prefix Backend run dev
@@ -98,7 +117,8 @@ npm --prefix Frontend run dev
 - `npm --prefix Frontend run e2e:headed`
 - `npm --prefix Frontend run e2e:report`
 
-Note: `e2e` scripts require Playwright tests under `Frontend/tests/e2e`.
+Note: `e2e` scripts look for tests under `Frontend/tests/e2e`.
+Playwright can auto-start the backend and frontend servers for local runs.
 
 ## API and Realtime
 

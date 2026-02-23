@@ -1,3 +1,7 @@
+import { mediaUrlService } from '@/services/media-url.service'
+
+const assetPath = (path) => mediaUrlService.resolve(path)
+
 export function SvgIcon({ icon, className = '', ...props }) {
   const el = _getIcon(icon, { className, props })
   return <>{el || null}</>
@@ -181,7 +185,7 @@ function _getIcon(icon, ctx) {
 
     headerGlobe: (
       <img
-        src="/assets/HeaderIcons/3[H].svg"
+        src={assetPath('/assets/HeaderIcons/3[H].svg')}
         alt=""
         draggable="false"
         {...props}
@@ -191,7 +195,7 @@ function _getIcon(icon, ctx) {
 
     headerSearch: (
       <img
-        src="/assets/HeaderIcons/5[H].svg"
+        src={assetPath('/assets/HeaderIcons/5[H].svg')}
         alt=""
         draggable="false"
         {...props}
@@ -286,7 +290,7 @@ function _getIcon(icon, ctx) {
 
     footerLinkedIn: (
       <img
-        src="/assets/FooterIcons/2[F].svg"
+        src={assetPath('/assets/FooterIcons/2[F].svg')}
         alt=""
         draggable="false"
         {...props}
@@ -296,7 +300,7 @@ function _getIcon(icon, ctx) {
 
     footerGithub: (
       <img
-        src="/assets/FooterIcons/4[F].svg"
+        src={assetPath('/assets/FooterIcons/4[F].svg')}
         alt=""
         draggable="false"
         {...props}
@@ -306,7 +310,7 @@ function _getIcon(icon, ctx) {
 
     footerGlobe: (
       <img
-        src="/assets/FooterIcons/1[F].svg"
+        src={assetPath('/assets/FooterIcons/1[F].svg')}
         alt=""
         draggable="false"
         {...props}
@@ -316,7 +320,7 @@ function _getIcon(icon, ctx) {
 
     footerAccessibility: (
       <img
-        src="/assets/FooterIcons/3[F].svg"
+        src={assetPath('/assets/FooterIcons/3[F].svg')}
         alt=""
         draggable="false"
         {...props}
@@ -326,7 +330,7 @@ function _getIcon(icon, ctx) {
 
     popularCarousel1: (
       <img
-        src="/assets/PopularCarouselImgs/1[Carousel].png"
+        src={assetPath('/assets/PopularCarouselImgs/1[Carousel].png')}
         alt=""
         draggable="false"
         loading="lazy"
@@ -336,7 +340,7 @@ function _getIcon(icon, ctx) {
     ),
     popularCarousel2: (
       <img
-        src="/assets/PopularCarouselImgs/2[Carousel].png"
+        src={assetPath('/assets/PopularCarouselImgs/2[Carousel].png')}
         alt=""
         draggable="false"
         loading="lazy"
@@ -346,7 +350,7 @@ function _getIcon(icon, ctx) {
     ),
     popularCarousel3: (
       <img
-        src="/assets/PopularCarouselImgs/3[Carousel].png"
+        src={assetPath('/assets/PopularCarouselImgs/3[Carousel].png')}
         alt=""
         draggable="false"
         loading="lazy"
@@ -356,7 +360,7 @@ function _getIcon(icon, ctx) {
     ),
     popularCarousel4: (
       <img
-        src="/assets/PopularCarouselImgs/4[Carousel].png"
+        src={assetPath('/assets/PopularCarouselImgs/4[Carousel].png')}
         alt=""
         draggable="false"
         loading="lazy"
@@ -366,7 +370,7 @@ function _getIcon(icon, ctx) {
     ),
     popularCarousel5: (
       <img
-        src="/assets/PopularCarouselImgs/5[Carousel].png"
+        src={assetPath('/assets/PopularCarouselImgs/5[Carousel].png')}
         alt=""
         draggable="false"
         loading="lazy"
@@ -376,7 +380,7 @@ function _getIcon(icon, ctx) {
     ),
     popularCarousel6: (
       <img
-        src="/assets/PopularCarouselImgs/6[Carousel].png"
+        src={assetPath('/assets/PopularCarouselImgs/6[Carousel].png')}
         alt=""
         draggable="false"
         loading="lazy"
@@ -386,7 +390,7 @@ function _getIcon(icon, ctx) {
     ),
     popularCarousel7: (
       <img
-        src="/assets/PopularCarouselImgs/7[Carousel].png"
+        src={assetPath('/assets/PopularCarouselImgs/7[Carousel].png')}
         alt=""
         draggable="false"
         loading="lazy"
@@ -396,7 +400,7 @@ function _getIcon(icon, ctx) {
     ),
     popularCarousel8: (
       <img
-        src="/assets/PopularCarouselImgs/8[Carousel].png"
+        src={assetPath('/assets/PopularCarouselImgs/8[Carousel].png')}
         alt=""
         draggable="false"
         loading="lazy"
@@ -423,7 +427,7 @@ function _getIcon(icon, ctx) {
     ),
     heroTrustedMeta: (
       <img
-        src="/assets/heroSvg/meta.svg"
+        src={assetPath('/assets/heroSvg/meta.svg')}
         alt=""
         draggable="false"
         loading="lazy"
@@ -433,7 +437,7 @@ function _getIcon(icon, ctx) {
     ),
     heroTrustedGoogle: (
       <img
-        src="/assets/heroSvg/google.svg"
+        src={assetPath('/assets/heroSvg/google.svg')}
         alt=""
         draggable="false"
         loading="lazy"
@@ -443,7 +447,7 @@ function _getIcon(icon, ctx) {
     ),
     heroTrustedNetflix: (
       <img
-        src="/assets/heroSvg/netflix.svg"
+        src={assetPath('/assets/heroSvg/netflix.svg')}
         alt=""
         draggable="false"
         loading="lazy"
@@ -453,7 +457,7 @@ function _getIcon(icon, ctx) {
     ),
     heroTrustedPG: (
       <img
-        src="/assets/heroSvg/p-and-g.svg"
+        src={assetPath('/assets/heroSvg/p-and-g.svg')}
         alt=""
         draggable="false"
         loading="lazy"
@@ -463,7 +467,7 @@ function _getIcon(icon, ctx) {
     ),
     heroTrustedPayPal: (
       <img
-        src="/assets/heroSvg/paypal.svg"
+        src={assetPath('/assets/heroSvg/paypal.svg')}
         alt=""
         draggable="false"
         loading="lazy"
@@ -473,7 +477,7 @@ function _getIcon(icon, ctx) {
     ),
     heroTrustedPayoneer: (
       <img
-        src="/assets/heroSvg/payoneer.svg"
+        src={assetPath('/assets/heroSvg/payoneer.svg')}
         alt=""
         draggable="false"
         loading="lazy"
@@ -483,7 +487,7 @@ function _getIcon(icon, ctx) {
     ),
     proHireIcon: (
       <img
-        src="/assets/HeaderIcons/1[H].png"
+        src={assetPath('/assets/HeaderIcons/1[H].png')}
         alt=""
         width={56}
         height={56}
@@ -496,7 +500,7 @@ function _getIcon(icon, ctx) {
 
     proOfferIcon: (
       <img
-        src="/assets/HeaderIcons/2[H].png"
+        src={assetPath('/assets/HeaderIcons/2[H].png')}
         alt=""
         width={56}
         height={56}
@@ -535,7 +539,7 @@ function _getIcon(icon, ctx) {
           {...rest}
         >
           <image
-            href="/assets/Heart/heart.svg"
+            href={assetPath('/assets/Heart/heart.svg')}
             x={filled ? -34 : 0}
             y="0"
             width="68"
@@ -562,7 +566,7 @@ function _getIcon(icon, ctx) {
   if (typeof val === 'string') {
     return (
       <img
-        src={val}
+        src={assetPath(val)}
         alt=""
         aria-hidden="true"
         draggable="false"

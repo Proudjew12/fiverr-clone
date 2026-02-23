@@ -1,6 +1,17 @@
 import { loggerService } from "../../services/logger.service.js";
 import { authService } from "./auth.service.js";
 
+function getAuthCookieOptions() {
+  const isProd = process.env.NODE_ENV === 'production'
+
+  return {
+    httpOnly: true,
+    sameSite: isProd ? 'none' : 'lax',
+    secure: isProd,
+    path: '/',
+  }
+}
+
 export async function login(req, res) {
   const { username, password } = req.body
   try {
@@ -8,7 +19,7 @@ export async function login(req, res) {
     const loginToken = authService.getLoginToken(user)
 
     loggerService.info('User login: ', user)
-    res.cookie('loginToken', loginToken)
+    res.cookie('loginToken', loginToken, getAuthCookieOptions())
 
     res.json(user)
   } catch (err) {
@@ -33,7 +44,7 @@ export async function signup(req, res) {
     const user = await authService.login(username, password)
     const loginToken = authService.getLoginToken(user)
 
-    res.cookie('loginToken', loginToken)
+    res.cookie('loginToken', loginToken, getAuthCookieOptions())
     res.json(user)
   } catch (err) {
     loggerService.error('Failed to signup ' + err)
@@ -43,7 +54,7 @@ export async function signup(req, res) {
 
 export async function logout(req, res) {
   try {
-    res.clearCookie('loginToken')
+    res.clearCookie('loginToken', getAuthCookieOptions())
     res.send({ msg: 'Logged out successfully' })
   } catch (_err) {
     res.status(500).send({ err: 'Failed to logout' })

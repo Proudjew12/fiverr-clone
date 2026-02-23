@@ -3,11 +3,13 @@ import { useRef } from 'react'
 import { SvgIcon } from '@/components/svg/SvgIcon'
 import demoData from '@/data/demo-data.json'
 import { utilService } from '@/services/util.service'
+import { mediaUrlService } from '@/services/media-url.service'
 import { useWishlist } from '@/hooks/useWishlist'
 
 export function GigPreview({ gig }) {
     const { title, price, owner, videoUrls, _id } = gig
     const vidRef = useRef(null)
+    const previewVideoSrc = getVideoSrc(videoUrls)
     const isSignedIn = localStorage.getItem('isSignedIn') === 'true'
     const isSeller = localStorage.getItem('isSeller') === 'true'
     const ownerLevel = String(owner?.level || '').toLowerCase()
@@ -24,21 +26,17 @@ export function GigPreview({ gig }) {
     })
 
     const handleMouseEnter = () => {
-        if (vidRef.current) vidRef.current.play()
+        if (!vidRef.current) return
+        const playPromise = vidRef.current.play()
+        if (typeof playPromise?.catch === 'function') {
+            playPromise.catch(() => {})
+        }
     }
 
     const handleMouseLeave = () => {
-        if (vidRef.current) {
-            vidRef.current.pause()
-            vidRef.current.currentTime = 0
-        }
-    }
-
-    const handleLoadedData = () => {
-        if (vidRef.current) {
-            vidRef.current.pause()
-            vidRef.current.currentTime = 0
-        }
+        if (!vidRef.current) return
+        vidRef.current.pause()
+        vidRef.current.currentTime = 0
     }
 
     function onToggleWishlist(event) {
@@ -68,18 +66,18 @@ export function GigPreview({ gig }) {
 
                 <video
                     ref={vidRef}
+                    key={previewVideoSrc}
                     width="600"
                     muted
                     loop
                     preload="metadata"
                     playsInline
-                    onLoadedData={handleLoadedData}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                     className="gig-video"
                     style={{ cursor: 'pointer' }}
                 >
-                    <source src={getVideoSrc(videoUrls)} type="video/mp4" />
+                    <source src={previewVideoSrc} type="video/mp4" />
                 </video>
             </div>
 
@@ -149,10 +147,12 @@ export function GigPreview({ gig }) {
 }
 
 function getVideoSrc(videoUrls) {
-    if (Array.isArray(videoUrls)) {
-        const src = videoUrls.find((item) => typeof item === 'string' && item.trim())
-        if (src) return src
-    }
-    if (typeof videoUrls === 'string' && videoUrls.trim()) return videoUrls.trim()
-    return utilService.pickRandom(demoData.randomGig.videos)
+  if (Array.isArray(videoUrls)) {
+    const src = videoUrls.find((item) => typeof item === 'string' && item.trim())
+    if (src) return mediaUrlService.resolve(src)
+  }
+  if (typeof videoUrls === 'string' && videoUrls.trim()) {
+    return mediaUrlService.resolve(videoUrls.trim())
+  }
+  return mediaUrlService.resolve(utilService.pickRandom(demoData.randomGig.videos))
 }

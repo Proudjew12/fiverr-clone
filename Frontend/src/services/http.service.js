@@ -1,8 +1,10 @@
 import Axios from 'axios'
 
-const BASE_URL =
+const RAW_BASE_URL =
   import.meta.env.VITE_API_URL ||
   (import.meta.env.PROD ? '/api/' : 'http://localhost:3030/api/')
+
+const BASE_URL = normalizeApiBaseUrl(RAW_BASE_URL)
 
 const axios = Axios.create({ withCredentials: true })
 
@@ -19,6 +21,12 @@ export const httpService = {
   delete(endpoint, data, options) {
     return request(endpoint, 'DELETE', data, null, options)
   },
+}
+
+function normalizeApiBaseUrl(url) {
+  const trimmed = String(url || '').trim()
+  if (!trimmed) return '/api/'
+  return trimmed.endsWith('/') ? trimmed : `${trimmed}/`
 }
 
 async function request(endpoint, method, data = null, params = null, options = null) {

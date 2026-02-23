@@ -4,6 +4,7 @@ import { Loader } from 'lucide-react'
 import { Fragment, useCallback, useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useGigDetails } from '@/hooks/useGigDetails.js'
+import { mediaUrlService } from '@/services/media-url.service'
 import {
   SOCKET_EMIT_SEND_MSG,
   SOCKET_EMIT_SET_TOPIC,
@@ -180,7 +181,7 @@ export function GigDetails() {
       gigId,
       gigTitle: gig.title || 'Gig',
       customerName,
-      customerImg: '/assets/ProfileImgs/PersonTwo.png',
+      customerImg: mediaUrlService.resolve('/assets/ProfileImgs/PersonTwo.webp'),
       text,
       createdAt: Date.now(),
       unread: true,

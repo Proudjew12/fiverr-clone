@@ -7,6 +7,7 @@ export function HomeCategories() {
 
   function buildSearchQuery(category) {
     const { tag, txt = '' } = categoryFilters[category.key] || {}
+
     const defaultFilter = gigService.getDefaultFilter()
     const filterBy = {
       ...defaultFilter,

@@ -5,6 +5,7 @@ import { orderService } from '@/services/order.service.remote.js'
 import demoData from '@/data/demo-data.json'
 import { useDashboardLists } from '@/hooks/useDashboardLists'
 import { SvgIcon } from '@/components/svg/SvgIcon'
+import { mediaUrlService } from '@/services/media-url.service'
 import {
   SOCKET_EMIT_SEND_MSG,
   SOCKET_EMIT_OPEN_ORDER_CHAT,
@@ -18,8 +19,8 @@ import {
   socketService,
 } from '@/services/socket.service'
 
-const SELLER_IMAGE = '/assets/ProfileImgs/PersonOne.png'
-const CUSTOMER_IMAGE = '/assets/ProfileImgs/PersonTwo.png'
+const SELLER_IMAGE = mediaUrlService.resolve('/assets/ProfileImgs/PersonOne.webp')
+const CUSTOMER_IMAGE = mediaUrlService.resolve('/assets/ProfileImgs/PersonTwo.webp')
 const FALLBACK_THUMBS = demoData.fallbackThumbs
 const NEW_REQUEST_WINDOW_MS = 5 * 60 * 1000
 const DISCOUNT_RATE = 0.5

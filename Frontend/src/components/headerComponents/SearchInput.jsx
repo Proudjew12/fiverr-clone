@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useSearchForm } from '@/hooks/useSearchForm'
+import { mediaUrlService } from '@/services/media-url.service'
 
 export function SearchInput() {
   const { longInputRef, shortInputRef, formKey, onSubmit } = useSearchForm({
@@ -55,7 +56,7 @@ export function SearchInput() {
       <button className="search-btn grid place-center" type="submit" aria-label="Search">
         <img
           className="search-icon"
-          src="/assets/HeaderIcons/5[H].svg"
+          src={mediaUrlService.resolve('/assets/HeaderIcons/5[H].svg')}
           alt=""
           draggable="false"
         />

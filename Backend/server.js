@@ -18,7 +18,6 @@ import { setupSocketAPI } from "./services/socket.service.js";
 
 const app = express();
 const httpServer = http.createServer(app);
-setupSocketAPI(httpServer)
 // --------------------
 // Middleware
 // --------------------
@@ -30,6 +29,8 @@ const origins =
   Array.isArray(config.corsOrigins) && config.corsOrigins.length
     ? config.corsOrigins
     : fallbackDevOrigins;
+
+setupSocketAPI(httpServer, { origins });
 
 app.use(
   cors({

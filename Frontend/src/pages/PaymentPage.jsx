@@ -1,4 +1,5 @@
 import { utilService } from '@/services/util.service'
+import { mediaUrlService } from '@/services/media-url.service'
 import demoData from '@/data/demo-data.json'
 import { useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
@@ -7,6 +8,9 @@ import { useGigById } from '@/hooks/useGigById'
 import { orderService } from '@/services/order.service.remote.js'
 const DEMO_CARD = demoData.payment.demoCard
 const FALLBACK_THUMBS = demoData.fallbackThumbs
+const FALLBACK_PREVIEW_IMAGE = mediaUrlService.resolve(
+  '/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png'
+)
 
 export function PaymentPage() {
   const { gigId , price } = useParams()
@@ -35,13 +39,12 @@ export function PaymentPage() {
 
   function getPreviewImg() {
     const src = gig?.imgUrls?.[0]
-    if (!src)
-      return '/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png'
+    if (!src) return FALLBACK_PREVIEW_IMAGE
     const ext = String(src).split('.').pop().toLowerCase()
     if (['mp4', 'webm', 'ogg'].includes(ext)) {
-      return '/assets/Popular-Services/Video-Editing/img/0d93cdad-9c44-4d44-b3f2-6052d0faab17.png'
+      return FALLBACK_PREVIEW_IMAGE
     }
-    return src
+    return mediaUrlService.resolve(src)
   }
 
   if (isLoading) return <div className="payment-loading">Loading...</div>

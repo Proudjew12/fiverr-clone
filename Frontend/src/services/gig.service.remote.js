@@ -1,4 +1,5 @@
 import { httpService } from './http.service.js'
+import { mediaUrlService } from './media-url.service.js'
 import demoData from '@/data/demo-data.json'
 import gigData from '../../data/gig.json'
 
@@ -34,17 +35,20 @@ export const categoryFilters = {
 
 async function query(filterBy = {}, options) {
   const gigs = await httpService.get(BASE_URL, filterBy, options)
-  return gigs
+  return Array.isArray(gigs) ? gigs.map(mediaUrlService.normalizeGig) : gigs
 }
 
 function getById(id, options) {
-  return httpService.get(`${BASE_URL}/${id}`, null, options)
+  return httpService
+    .get(`${BASE_URL}/${id}`, null, options)
+    .then((gig) => mediaUrlService.normalizeGig(gig))
 }
 
 function getDemoGigById(gigId) {
   if (!gigId) return null
   const gigs = Array.isArray(gigData) ? gigData : []
-  return gigs.find((gig) => gig?._id === gigId) || null
+  const gig = gigs.find((gig) => gig?._id === gigId) || null
+  return mediaUrlService.normalizeGig(gig)
 }
 
 function remove(id, options) {
@@ -54,7 +58,9 @@ function remove(id, options) {
 function save(item, options) {
   const method = item?._id ? 'put' : 'post'
   const endpoint = item?._id ? `${BASE_URL}/${item._id}` : BASE_URL
-  return httpService[method](endpoint, item, options)
+  return httpService[method](endpoint, item, options).then((gig) =>
+    mediaUrlService.normalizeGig(gig)
+  )
 }
 
 function getEmptyItem() {

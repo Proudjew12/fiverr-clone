@@ -14,9 +14,11 @@ export const SOCKET_EVENT_REQUEST_UPDATED = 'request-updated'
 export const SOCKET_EVENT_ORDER_CHAT_OPENED = 'order-chat-opened'
 export const SOCKET_EVENT_ORDER_CHAT_MSG = 'order-chat-msg'
 
-const baseUrl =
+const rawBaseUrl =
 	import.meta.env.VITE_SOCKET_URL ||
 	(import.meta.env.PROD ? '' : '//localhost:3030')
+
+const baseUrl = normalizeSocketBaseUrl(rawBaseUrl)
 
 export const socketService = VITE_LOCAL === 'true' ? createDummySocketService() : createSocketService()
 
@@ -29,7 +31,7 @@ function createSocketService() {
 	var socket = null
 	const socketService = {
 		setup() {
-			socket = io(baseUrl)
+			socket = io(baseUrl, { withCredentials: true })
 		},
 		on(eventName, cb) {
 			socket.on(eventName, cb)
@@ -47,6 +49,12 @@ function createSocketService() {
 		},
 	}
 	return socketService
+}
+
+function normalizeSocketBaseUrl(url) {
+	const trimmed = String(url || '').trim()
+	if (!trimmed) return ''
+	return trimmed.replace(/\/+$/, '')
 }
 
 function createDummySocketService() {
