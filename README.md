@@ -1,73 +1,57 @@
-# Fiverr Clone (Learning Project)
+# Fiverr Clone
 
-A full-stack Fiverr-style marketplace clone built for learning and practice.
+A full-stack Fiverr-style marketplace clone built for learning and portfolio use.
 
 This is an educational project, not a production system.
 
+## Live Demo
+
+- 👉 [Open the live demo (GitHub Pages)](https://proudjew12.github.io/fiverr-clone/)
+
+### What visitors should expect
+
+- The frontend is hosted on GitHub Pages.
+- The backend API is hosted on Render (free tier).
+- If Render is sleeping, the app shows a real backend warm-up loader before opening.
+- After warm-up, gigs are loaded from MongoDB through the backend API automatically.
+
+### Optional debugging links
+
+- These are not needed for normal visitors.
+- Health: [https://fiverr-clone-w92i.onrender.com/api/health](https://fiverr-clone-w92i.onrender.com/api/health)
+- Gigs API: [https://fiverr-clone-w92i.onrender.com/api/gig](https://fiverr-clone-w92i.onrender.com/api/gig)
+
+## Project Overview
+
+This project recreates a Fiverr-like marketplace experience with a React frontend and an Express/MongoDB backend. It includes dynamic gig data, authentication, orders, wishlist functionality, and realtime features with Socket.IO.
+
 ## Tech Stack
 
-### Frontend
-- React (Vite)
-- React Router
-- Redux Toolkit
-- Socket.IO client
-- Swiper
-- CSS (no CSS-in-JS)
+- Frontend: React (Vite), React Router, Redux Toolkit, Socket.IO client, Swiper, CSS
+- Backend: Node.js, Express, MongoDB (native driver), Socket.IO, cookie-based auth
+- Hosting: GitHub Pages (frontend) + Render (backend) + MongoDB Atlas
 
-### Backend
-- Node.js
-- Express
-- MongoDB (native driver, no Mongoose)
-- Socket.IO
-- Cookie-based login token
-- REST API
+## Key Features
 
-## Project Structure
+- Gig browsing and gig details pages
+- Dynamic data loaded from backend API (`/api/gig`)
+- Cookie-based authentication
+- Orders and wishlist flows
+- Realtime events with Socket.IO
+- Render cold-start detection with a real startup/warm-up screen
 
-```text
-fiverr-clone/
-├── Frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── data/
-│   │   ├── hooks/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   ├── store/
-│   │   └── style/
-│   ├── public/
-│   ├── tests/
-│   │   └── e2e/        # Playwright tests (optional)
-│   └── playwright.config.js
-├── Backend/
-│   ├── api/
-│   ├── services/
-│   ├── middlewares/
-│   ├── config/
-│   ├── scripts/        # DB/data maintenance scripts
-│   └── server.js
-└── README.md
-```
+## Run Locally
 
-## Getting Started
-
-### 1. Clone
+### 1. Clone and install
 
 ```bash
 git clone https://github.com/Proudjew12/fiverr-clone.git
 cd fiverr-clone
-```
-
-### 2. Install dependencies
-
-```bash
 npm --prefix Backend install
 npm --prefix Frontend install
 ```
 
-### 3. Configure backend environment
-
-Create `Backend/.env`:
+### 2. Backend environment (`Backend/.env`)
 
 ```env
 NODE_ENV=development
@@ -77,20 +61,16 @@ DB_NAME=fiverr_shared
 CORS_ORIGINS=http://localhost:5173,http://127.0.0.1:5173
 ```
 
-`PORT` is optional (defaults to `3030`).
-
-### 4. Configure frontend environment (optional)
-
-Create `Frontend/.env` if you want to override the default local URLs:
+### 3. Frontend environment (`Frontend/.env`, optional)
 
 ```env
 VITE_API_URL=http://127.0.0.1:3030/api/
 VITE_SOCKET_URL=http://127.0.0.1:3030
 ```
 
-Without `Frontend/.env`, the app uses local defaults in development.
+If omitted, the frontend uses local defaults in development.
 
-### 5. Run development servers
+### 4. Start both apps
 
 ```bash
 npm --prefix Backend run dev
@@ -100,45 +80,12 @@ npm --prefix Frontend run dev
 - Frontend: `http://localhost:5173`
 - Backend: `http://localhost:3030`
 
-## Available Scripts
+## Deployment Notes
 
-### Backend
-- `npm --prefix Backend run dev`
-- `npm --prefix Backend start`
-- `npm --prefix Backend run lint`
-
-### Frontend
-- `npm --prefix Frontend run dev`
-- `npm --prefix Frontend run build`
-- `npm --prefix Frontend run preview`
-- `npm --prefix Frontend run lint`
-- `npm --prefix Frontend run format`
-- `npm --prefix Frontend run e2e`
-- `npm --prefix Frontend run e2e:headed`
-- `npm --prefix Frontend run e2e:report`
-
-Note: `e2e` scripts look for tests under `Frontend/tests/e2e`.
-Playwright can auto-start the backend and frontend servers for local runs.
-
-## API and Realtime
-
-### REST endpoints
-- `/api/health`
-- `/api/gig`
-- `/api/order`
-- `/api/user`
-- `/api/wishlist`
-- `/api/auth`
-
-### Socket events
-- Client emits: `set-topic`, `gig-order`, `send-msg`, `update-request`, `open-order-chat`, `send-order-chat-msg`
-- Server emits: `ordered-gig`, `msg-sent`, `request-updated`, `order-chat-opened`, `order-chat-msg`
-
-## Notes
-
-- MongoDB credentials are not committed to the repository.
-- Collaborators can use shared Atlas credentials.
-- Non-collaborators can run the full project with their own `.env` and database.
+- GitHub Pages hosts only the frontend static files.
+- Render hosts the backend API and may cold-start after inactivity (free tier).
+- The backend root URL may return `{"error":"Not found"}`; use `/api/health` for health checks.
+- MongoDB credentials and secrets must stay in backend environment variables (never in frontend code).
 
 ## License
 
