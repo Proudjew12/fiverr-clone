@@ -6,7 +6,7 @@ This is an educational project, not a production system.
 
 ## Live Demo
 
-- 👉 [[Open the live demo (GitHub Pages)](https://proudjew12.github.io/fiverr-clone/)](https://proudjew12.github.io/fiverr-clone/)
+- 👉 [[Open the live demo (GitHub Pages)](https://proudjew12.github.io/fiverr-clone/)]
 
 ### What visitors should expect
 
