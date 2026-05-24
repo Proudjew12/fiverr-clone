@@ -6,7 +6,7 @@ This is an educational project, not a production system.
 
 ## Live Demo
 
-- 👉 [Open the live demo (GitHub Pages)](https://proudjew12.github.io/fiverr-clone/)
+- 👉 [[Open the live demo (GitHub Pages)](https://proudjew12.github.io/fiverr-clone/)](https://proudjew12.github.io/fiverr-clone/)
 
 ### What visitors should expect
 
@@ -14,12 +14,6 @@ This is an educational project, not a production system.
 - The backend API is hosted on Render (free tier).
 - If Render is sleeping, the app shows a real backend warm-up loader before opening.
 - After warm-up, gigs are loaded from MongoDB through the backend API automatically.
-
-### Optional debugging links
-
-- These are not needed for normal visitors.
-- Health: [https://fiverr-clone-w92i.onrender.com/api/health](https://fiverr-clone-w92i.onrender.com/api/health)
-- Gigs API: [https://fiverr-clone-w92i.onrender.com/api/gig](https://fiverr-clone-w92i.onrender.com/api/gig)
 
 ## Project Overview
 
